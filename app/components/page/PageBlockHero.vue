@@ -86,26 +86,20 @@ const imageLast = computed(
   .image-position--inline-end {
     max-width: var(--app-max-width);
     margin-inline: auto;
+    grid-template-columns: 3fr 2fr;
 
-    &:has(.hero-image) {
-      grid-template-columns: 3fr 2fr;
-
-      h1 {
-        font-size: min(calc(var(--font-size-xs) + 3vw), var(--font-size-xxl));
-      }
+    h1 {
+      font-size: min(calc(var(--font-size-xs) + 3vw), var(--font-size-xxl));
     }
   }
 
   .image-position--inline-start {
     max-width: var(--app-max-width);
     margin-inline: auto;
+    grid-template-columns: 2fr 3fr;
 
-    &:has(.hero-image) {
-      grid-template-columns: 2fr 3fr;
-
-      h1 {
-        font-size: min(calc(var(--font-size-xs) + 3vw), var(--font-size-xxl));
-      }
+    h1 {
+      font-size: min(calc(var(--font-size-xs) + 3vw), var(--font-size-xxl));
     }
   }
 }

@@ -56,42 +56,5 @@ defineProps<{
       }
     }
   }
-
-  h2 {
-    font-family: var(--font-family);
-    font-size: var(--font-size-sm);
-    color: var(--color-accent-text);
-    margin-block-end: 0.5rem;
-  }
-
-  .nav-list-item-icon {
-    color: var(--color-accent);
-    margin-block-start: 0.2em;
-  }
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    &:hover {
-      color: var(--color-accent);
-
-      .iconify {
-        color: var(--color-accent);
-      }
-    }
-  }
-}
-
-.contact-wrapper {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.address-wrapper {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.5rem;
 }
 </style>

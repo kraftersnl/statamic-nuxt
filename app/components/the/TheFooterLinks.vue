@@ -21,14 +21,14 @@ defineProps<{
       <span>{{ data.phone }}</span>
     </NuxtLink>
 
-    <div v-if="data?.address" class="address-wrapper">
+    <div v-if="data?.address" class="grid-list-item">
       <Icon name="heroicons-solid:location-marker" class="nav-list-item-icon" />
       <address>
         {{ data.address }}
       </address>
     </div>
 
-    <div v-if="data?.po_box" class="address-wrapper">
+    <div v-if="data?.po_box" class="grid-list-item">
       <Icon name="heroicons-solid:location-marker" class="nav-list-item-icon" />
       <address>
         {{ data.po_box }}
@@ -42,35 +42,26 @@ defineProps<{
   >
     <h2>Social Media</h2>
 
-    <NuxtLink
-      v-if="data?.facebook"
-      :to="data.facebook"
-      target="_blank"
-      external
-    >
-      <Icon name="mdi:facebook" />
-      <span>Facebook</span>
-    </NuxtLink>
+    <div v-if="data?.facebook" class="grid-list-item">
+      <Icon name="mdi:facebook" class="social-icon" />
+      <NuxtLink :to="data.facebook" target="_blank" external>
+        <span>Facebook</span>
+      </NuxtLink>
+    </div>
 
-    <NuxtLink
-      v-if="data?.instagram"
-      :to="data.instagram"
-      target="_blank"
-      external
-    >
-      <Icon name="mdi:instagram" />
-      <span>Instagram</span>
-    </NuxtLink>
+    <div v-if="data?.instagram" class="grid-list-item">
+      <Icon name="mdi:instagram" class="social-icon" />
+      <NuxtLink :to="data.instagram" target="_blank" external>
+        <span>Instagram</span>
+      </NuxtLink>
+    </div>
 
-    <NuxtLink
-      v-if="data?.linkedin"
-      :to="data.linkedin"
-      target="_blank"
-      external
-    >
-      <Icon name="mdi:linkedin" />
-      <span>LinkedIn</span>
-    </NuxtLink>
+    <div v-if="data?.linkedin" class="grid-list-item">
+      <Icon name="mdi:linkedin" class="social-icon" />
+      <NuxtLink :to="data.linkedin" target="_blank" external>
+        <span>LinkedIn</span>
+      </NuxtLink>
+    </div>
   </div>
 
   <div v-if="data?.kvk || data?.bank || data?.btw" class="contact-wrapper">
@@ -104,23 +95,46 @@ defineProps<{
     margin-block-end: 0.5rem;
   }
 
-  .nav-list-item-icon {
-    color: var(--color-accent);
-    margin-block-start: 0.2em;
-  }
-
   a {
+    color: var(--color-text);
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
 
     &:hover {
-      color: var(--color-accent);
+      color: var(--color-black);
 
       .iconify {
-        color: var(--color-accent);
+        color: var(--color-grey-text);
       }
     }
+  }
+
+  .nav-list-item-icon {
+    color: var(--color-grey-graphic);
+    margin-block-start: 0.2em;
+  }
+
+  .social-icon {
+    font-size: var(--font-size-md);
+    margin-block-start: 0.1em;
+  }
+
+  [class*='linkedin'] {
+    color: #3276c8;
+  }
+
+  [class*='facebook'] {
+    color: #0866ff;
+  }
+
+  [class*='instagram'] {
+    background: linear-gradient(
+      55.01deg,
+      #ff7a00 12.35%,
+      #ff0169 56.52%,
+      #d300c5 100%
+    );
   }
 
   .contact-wrapper {
@@ -128,7 +142,7 @@ defineProps<{
     gap: 0.5rem;
   }
 
-  .address-wrapper {
+  .grid-list-item {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 0.5rem;
