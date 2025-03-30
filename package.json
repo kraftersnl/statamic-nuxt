@@ -3,6 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "main": "./nuxt.config.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kraftersnl/statamic-nuxt.git"
+  },
   "scripts": {
     "dev": "nuxi dev .playground",
     "dev:prepare": "nuxt prepare .playground",
