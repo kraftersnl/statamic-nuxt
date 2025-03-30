@@ -23,7 +23,7 @@ const {
       :fetch-priority="fetchPriority ?? (loading === 'lazy' ? 'low' : 'high')"
       :width="width"
       :height="height"
-      sizes="xxl:1920px"
+      sizes="md:1024px xxl:1920px"
       class="statamic-image"
       placeholder
     />
