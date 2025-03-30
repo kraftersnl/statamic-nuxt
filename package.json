@@ -1,5 +1,5 @@
 {
-  "name": "statamic-nuxt-layer",
+  "name": "statamic-nuxt",
   "type": "module",
   "version": "0.0.1",
   "main": "./nuxt.config.ts",
