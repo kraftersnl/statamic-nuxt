@@ -35,12 +35,6 @@ export default defineNuxtConfig({
     },
   },
 
-  app: {
-    head: {
-      link: [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
-    },
-  },
-
   css: [join(currentDir, './app/assets/main.css')],
 
   modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots'],
