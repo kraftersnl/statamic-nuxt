@@ -36,7 +36,7 @@ defineProps<{ content?: StatamicContentBlock[] }>();
 <style>
 .bard-content {
   margin-inline: auto;
-  max-width: 800px;
+  max-width: 860px;
   display: grid;
   gap: 1rem;
 

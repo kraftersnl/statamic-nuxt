@@ -59,7 +59,7 @@ const imageLast = computed(
   }
 
   h1 {
-    font-size: min(calc(var(--font-size-xs) + 3vw), var(--font-size-xxxl));
+    font-size: min(calc(var(--font-size-sm) + 3vw), var(--font-size-xxxl));
   }
 
   p {

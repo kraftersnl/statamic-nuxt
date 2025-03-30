@@ -1,8 +1,7 @@
 <script setup lang="ts">
 useHead({ titleTemplate: '%s | ' + useRuntimeConfig().public.siteTitle });
 
-const { footerLogo = '/favicon.svg' } = defineProps<{
-  footerLogo?: string | false;
+defineProps<{
   navList?: MenuItem[];
 }>();
 
@@ -50,13 +49,9 @@ if (typeof window !== 'undefined') {
       <NuxtPage />
     </NuxtLayout>
 
-    <LazyTheFooter
-      :data="company?.data"
-      :footer-logo="footerLogo"
-      :nav-list="navList"
-    >
-      <template #logo>
-        <slot name="logo" />
+    <LazyTheFooter :data="company?.data" :nav-list="navList">
+      <template #favicon>
+        <slot name="favicon" />
       </template>
 
       <template #copyright>

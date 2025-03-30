@@ -1,7 +1,6 @@
 <script setup lang="ts">
 defineProps<{
   data?: StatamicGlobalCompany;
-  footerLogo?: string | false;
   navList?: MenuItem[];
 }>();
 </script>
@@ -11,9 +10,7 @@ defineProps<{
     <hr />
 
     <div class="footer-content">
-      <template v-if="footerLogo">
-        <NuxtImg :src="footerLogo" alt="" width="120" height="120" />
-      </template>
+      <slot name="favicon" />
 
       <TheFooterLinks :data="data" />
     </div>

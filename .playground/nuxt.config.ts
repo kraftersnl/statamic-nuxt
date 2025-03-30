@@ -3,7 +3,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteTitle: 'Demo',
+      siteTitle: 'Nuxt Layer for Statamic',
       contactEmail: 'info@krafters.nl',
     },
   },

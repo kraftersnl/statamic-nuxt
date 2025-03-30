@@ -20,7 +20,9 @@ Refer to a local directory with `extends` in nuxt.config.ts:
 
 ```ts
 defineNuxtConfig({
-  extends: ['../statamic-nuxt'],
+  $development: {
+    extends: ['../statamic-nuxt'],
+  },
 });
 ```
 
@@ -49,4 +51,26 @@ The `siteUrl` and `statamicUrl` variables are covered by your .env variables
 ```bash
 NUXT_PUBLIC_SITE_URL = http://localhost:3000
 NUXT_PUBLIC_STATAMIC_URL = http://localhost:8000
+```
+
+## Components & Slots
+
+Content can be customised by using slots with `<TheLayout>` component in `app.vue`.
+
+```html
+<template>
+  <TheLayout>
+    <template #logo>
+      <LogoKrafters />
+    </template>
+
+    <template #favicon>
+      <NuxtImg src="/favicon.svg" alt="" width="120" height="120" />
+    </template>
+
+    <template #copyright>
+      <span>Website gemaakt door Krafters</span>
+    </template>
+  </TheLayout>
+</template>
 ```
