@@ -40,6 +40,15 @@ export default defineNuxtConfig({
   image: {
     quality: 80,
     format: ['avif', 'webp'],
+    densities: [1, 2],
+    screens: {
+      favicon: 120,
+      favicon2x: 240,
+      normalImage: 480,
+      normalImage2x: 960,
+      bigImage: 960,
+      bigImage2x: 1920,
+    },
   },
 
   modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots'],
