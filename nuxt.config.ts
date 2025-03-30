@@ -8,12 +8,12 @@ export default defineNuxtConfig({
     extends: ['github:kraftersnl/krafters-ui'],
   },
 
-  $development: {
-    extends: ['../krafters-ui'],
-  },
-
   $test: {
     extends: ['github:kraftersnl/krafters-ui'],
+  },
+
+  $development: {
+    extends: ['../krafters-ui'],
   },
 
   runtimeConfig: {
@@ -37,9 +37,9 @@ export default defineNuxtConfig({
     },
   },
 
-  css: [join(currentDir, './app/assets/main.css')],
-
   modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots'],
+
+  css: [join(currentDir, './app/assets/main.css')],
 
   future: {
     compatibilityVersion: 4,
