@@ -1,0 +1,45 @@
+<script setup lang="ts">
+const route = useRoute();
+
+// get collection from URL
+const pathParts = route.path.split('/');
+const collection =
+  pathParts[1] !== '' &&
+  pathParts[2] !== '' &&
+  typeof pathParts[2] !== 'undefined'
+    ? pathParts[1]
+    : 'pages';
+
+const { data: entries } = await useAsyncData<{ data: StatamicPageEntry[] }>(
+  route.path,
+  () =>
+    $fetch(`/api/collections/${collection}/entries/`, {
+      baseURL: useRuntimeConfig().public.statamicUrl,
+      token: route.query.token,
+      query: {
+        'filter[url]': stripTrailingSlash(route.path),
+      },
+    })
+);
+
+if (!entries.value?.data?.length && !route.query.token) {
+  throw showError({
+    statusCode: 404,
+    statusMessage: 'Page not found',
+  });
+}
+
+const page = computed(() => entries.value?.data?.[0]);
+
+useSeoMeta({
+  title: page.value?.title,
+  // description: page.value?.summary,
+  ogImage: page.value?.image?.permalink || '/krafters-logo-og.png',
+});
+</script>
+
+<template>
+  <div class="page-wrapper">
+    <PageBlockMapper :data="page?.blocks" />
+  </div>
+</template>

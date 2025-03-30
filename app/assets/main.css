@@ -1,0 +1,110 @@
+:where(:root) {
+  --app-max-width: 1280px;
+  --app-header-height: 4rem;
+
+  --font-size-xxxxl: 4rem;
+  --font-size-xxxl: 3rem;
+  --font-size-xxl: 2.5rem;
+  --font-size-xl: 2rem;
+  --font-size-lg: 1.5rem;
+  --font-size-md: 1.25rem;
+  --font-size-sm: 1rem;
+  --font-size-xs: 0.9rem;
+  --font-size-xxs: 0.8rem;
+  --font-size-xxxs: 0.7rem;
+
+  @media (min-width: 480px) {
+    --app-padding-inline: 2rem;
+  }
+}
+
+.dark-mode {
+  --color-accent: #ffffff;
+  --color-accent-bg: #333333;
+  --color-accent-text: #999999;
+
+  --color-grey-text: #888888;
+  --color-grey-graphic: #666666;
+  --color-grey-bg: #1a1a1a;
+  --color-card-bg: #000000;
+  --color-bg: #0a0a0a;
+  --color-sub-footer: #000000;
+}
+
+.light-mode {
+  --color-accent: #333333;
+  --color-accent-bg: #dddddd;
+  --color-accent-text: #555555;
+
+  --color-grey-text: #666666;
+  --color-grey-graphic: #888888;
+  --color-grey-bg: #f4f4f4;
+  --color-bg: #ffffff;
+  --color-sub-footer: #f4f4f4;
+}
+
+body {
+  font-size: var(--font-size-md);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading, var(--font-family));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block-start: 0;
+  margin-block-end: 1rem;
+}
+
+p:has(+ h2) {
+  margin-block-end: 3rem;
+}
+p:has(+ h3) {
+  margin-block-end: 2.5rem;
+}
+p:has(+ h4) {
+  margin-block-end: 2rem;
+}
+p:has(+ h5) {
+  margin-block-end: 1.5rem;
+}
+
+h1 {
+  color: var(--color-accent);
+}
+
+h2 {
+  font-size: var(--font-size-xxl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-lg);
+}
+
+a {
+  text-underline-offset: 0.35em;
+}
+
+p,
+ul,
+ol {
+  > a:hover {
+    color: var(--color-accent);
+  }
+}

@@ -1,0 +1,22 @@
+<script setup lang="ts">
+defineProps<{ icon: string }>();
+</script>
+
+<template>
+  <span class="icon" aria-hidden="true" v-html="icon" />
+</template>
+
+<style>
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: inherit;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+</style>
