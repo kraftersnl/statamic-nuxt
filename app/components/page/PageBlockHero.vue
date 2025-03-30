@@ -24,8 +24,8 @@ const imageLast = computed(
         loading="eager"
         :data="data?.image"
         :class="data?.full_width_image ? 'image--full-width' : ''"
-        width="320"
-        height="160"
+        width="960"
+        height="480"
         sizes="normal:960px big:1440px"
       />
     </div>

@@ -11,7 +11,12 @@ defineProps<{ data: BasicBlock }>();
       <ContentBlockMapper :content="data?.content" />
 
       <div v-if="data?.image" class="image-column">
-        <StatamicImage :data="data.image" sizes="normal:960px" />
+        <StatamicImage
+          :data="data.image"
+          width="480"
+          height="360"
+          sizes="normal:480px"
+        />
       </div>
     </div>
   </section>
