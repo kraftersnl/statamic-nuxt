@@ -4,7 +4,7 @@ This project is a [Nuxt Layer](https://nuxt.com/docs/getting-started/layers) for
 
 ## Installation
 
-Copy example .env file and create a Personal Access Token at [GitHub](https://github.com/settings/tokens?type=beta) with **Contents** and **Metadata** read-permissions. See [unjs/giget documentation](https://github.com/unjs/giget/#providing-token-for-private-repositories) for more information.
+Copy example .env file and [create a Personal Access Token at GitHub](https://github.com/settings/tokens?type=beta). See [unjs/giget documentation](https://github.com/unjs/giget/#providing-token-for-private-repositories) for more information.
 
 ```bash
 cp .env.example .env
