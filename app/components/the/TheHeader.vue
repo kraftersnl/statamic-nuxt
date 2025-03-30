@@ -42,9 +42,11 @@ const mainNav = computed((): MenuItem[] =>
         </template>
       </MobileMenu>
 
-      <NuxtLink v-if="$slots.logo" to="/" class="logo-link">
+      <NuxtLink to="/" class="logo-link">
         <span class="visuallyhidden">Home</span>
-        <slot name="logo" />
+        <div class="logo-slot">
+          <slot name="logo" />
+        </div>
       </NuxtLink>
 
       <MenuList :list="mainNav" button-variant="topbar" inline />
@@ -84,7 +86,7 @@ const mainNav = computed((): MenuItem[] =>
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
@@ -94,9 +96,15 @@ const mainNav = computed((): MenuItem[] =>
   }
 
   .logo-link {
-    display: grid;
     margin-inline: auto;
-    padding-right: 3rem;
+    padding-right: 3.5rem;
+
+    .logo-slot {
+      display: grid;
+    }
+    &:has(.logo-slot:empty) {
+      display: none;
+    }
 
     @media (min-width: 768px) {
       margin-left: 0;
@@ -106,7 +114,7 @@ const mainNav = computed((): MenuItem[] =>
 
   .menu-list-nav {
     display: none;
-    margin-inline-end: 4rem;
+    padding-inline-end: 3rem;
   }
 
   @media (min-width: 768px) {
