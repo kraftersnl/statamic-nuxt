@@ -23,6 +23,7 @@ const {
       :fetch-priority="fetchPriority ?? (loading === 'lazy' ? 'low' : 'high')"
       :width="width"
       :height="height"
+      sizes="favicon:120px normal:480px big:960px"
       class="statamic-image"
       placeholder
     />

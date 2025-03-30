@@ -44,10 +44,10 @@ export default defineNuxtConfig({
     screens: {
       favicon: 120,
       favicon2x: 240,
-      normalImage: 480,
-      normalImage2x: 960,
-      bigImage: 960,
-      bigImage2x: 1920,
+      normal: 480,
+      normal2x: 960,
+      big: 960,
+      big2x: 1920,
     },
   },
 
