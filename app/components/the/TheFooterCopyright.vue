@@ -1,11 +1,11 @@
 <script setup lang="ts">
 defineProps<{
-  text: string;
+  text?: string;
 }>();
 </script>
 
 <template>
-  <span class="footer-copyright">
+  <span v-if="text" class="footer-copyright">
     &copy; {{ new Date().getFullYear() }}
     {{ text }}
   </span>

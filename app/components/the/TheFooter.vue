@@ -46,14 +46,19 @@ defineProps<{
     row-gap: 4rem;
     column-gap: 2rem;
 
+    > *:not(img) {
+      flex-basis: 200px;
+    }
+
+    @media (min-width: 768px) {
+      &:not(:has(img)) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
     @media (min-width: 1024px) {
       display: flex;
       flex-wrap: wrap;
-      /* grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); */
-
-      > *:not(img) {
-        flex-basis: 200px;
-      }
     }
   }
 }

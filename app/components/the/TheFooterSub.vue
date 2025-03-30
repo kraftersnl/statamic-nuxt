@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   data?: StatamicGlobalCompany;
-  navList?: boolean;
+  navList?: MenuItem[];
 }>();
 </script>
 
@@ -11,7 +11,7 @@ defineProps<{
       <TheFooterNav v-if="navList?.length" :list="navList" />
 
       <slot name="copyright">
-        <TheFooterCopyright :text="data.title" />
+        <TheFooterCopyright :text="data?.title" />
       </slot>
 
       <!-- <NuxtLink

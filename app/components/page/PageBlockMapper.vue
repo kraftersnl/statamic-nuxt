@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import PageBlockBasic from '~/components/page/PageBlockBasic.vue';
-import PageBlockForm from '~/components/page/PageBlockForm.vue';
-import PageBlockArticles from '~/components/page/PageBlockArticles.vue';
-import PageBlockEmployees from '~/components/page/PageBlockEmployees.vue';
-
 defineProps<{ data?: StatamicPageBlock[] }>();
 
 const PageBlockHero = resolveComponent('PageBlockHero');
+const PageBlockBasic = resolveComponent('PageBlockBasic');
+const PageBlockForm = resolveComponent('PageBlockForm');
+const PageBlockArticles = resolveComponent('PageBlockArticles');
+const PageBlockEmployees = resolveComponent('PageBlockEmployees');
+const PageBlockSponsors = resolveComponent('PageBlockSponsors');
 
 function getBlockComponent(block: StatamicPageBlock) {
   if (block.type === 'hero') return PageBlockHero;
@@ -14,6 +14,7 @@ function getBlockComponent(block: StatamicPageBlock) {
   if (block.type === 'form') return PageBlockForm;
   if (block.type === 'articles') return PageBlockArticles;
   if (block.type === 'employees') return PageBlockEmployees;
+  if (block.type === 'sponsors') return PageBlockSponsors;
 }
 </script>
 

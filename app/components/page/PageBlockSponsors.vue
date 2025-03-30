@@ -7,11 +7,7 @@ defineProps<{ data?: SponsorsBlock }>();
     <div class="page-block-content">
       <ContentBlockMapper :content="data?.content" />
 
-      <ul
-        v-if="collection === 'sponsors'"
-        role="list"
-        class="sponsors-entries-list"
-      >
+      <ul role="list" class="entries-list">
         <li v-for="entry in data?.entries" :key="entry.id">
           <StatamicSponsor :data="entry" />
         </li>
@@ -31,6 +27,14 @@ defineProps<{ data?: SponsorsBlock }>();
     p {
       font-size: var(--font-size-lg);
     }
+  }
+
+  .entries-list {
+    column-gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 4rem;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  navList: MenuItem;
+  navList: MenuItem[];
 }>();
 </script>
 
