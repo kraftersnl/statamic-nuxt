@@ -86,12 +86,13 @@ const mainNav = computed((): MenuItem[] =>
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
 
   @media (min-width: 768px) {
+    justify-content: center;
     gap: 2rem;
   }
 
