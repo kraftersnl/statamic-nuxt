@@ -5,10 +5,7 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
   $production: {
-    extends: [
-      'github:kraftersnl/krafters-ui',
-      { auth: process.env.GITHUB_TOKEN },
-    ],
+    extends: ['github:kraftersnl/krafters-ui'],
   },
 
   $development: {
@@ -16,10 +13,7 @@ export default defineNuxtConfig({
   },
 
   $test: {
-    extends: [
-      'github:kraftersnl/krafters-ui',
-      { auth: process.env.GITHUB_TOKEN },
-    ],
+    extends: ['github:kraftersnl/krafters-ui'],
   },
 
   runtimeConfig: {

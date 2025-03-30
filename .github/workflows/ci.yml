@@ -19,8 +19,8 @@ jobs:
 
       - name: Install packages
         run: pnpm install
-        env:
-          GIGET_AUTH: ${{ secrets.GIGET_AUTH }}
+        # env:
+        #   GIGET_AUTH: ${{ secrets.GIGET_AUTH }}
 
       - name: Run tests
         run: pnpm run test
