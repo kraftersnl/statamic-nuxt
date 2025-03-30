@@ -22,10 +22,10 @@ const {
       :loading="loading"
       :fetch-priority="fetchPriority ?? (loading === 'lazy' ? 'low' : 'high')"
       format="webp"
-      quality="90"
+      quality="80"
       :width="width"
       :height="height"
-      sizes="480px md:640px xl:1280px"
+      sizes="480px md:640px lg:1280px xl:1440px"
       densities="1x 2x"
       class="statamic-image"
     />
