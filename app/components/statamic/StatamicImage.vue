@@ -21,12 +21,9 @@ const {
       :alt="data?.alt || ''"
       :loading="loading"
       :fetch-priority="fetchPriority ?? (loading === 'lazy' ? 'low' : 'high')"
-      format="webp"
-      quality="80"
       :width="width"
       :height="height"
-      sizes="100vw md:960px lg:1280px xl:1920px"
-      densities="1x 2x"
+      sizes="xxl:1920px"
       class="statamic-image"
       placeholder
     />

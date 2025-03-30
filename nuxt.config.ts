@@ -37,6 +37,12 @@ export default defineNuxtConfig({
     },
   },
 
+  image: {
+    quality: 80,
+    format: ['avif', 'webp'],
+    densities: [1, 2, 3],
+  },
+
   modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots'],
 
   css: [join(currentDir, './app/assets/main.css')],
