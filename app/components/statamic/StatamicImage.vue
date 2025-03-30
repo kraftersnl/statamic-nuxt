@@ -25,9 +25,9 @@ const {
       quality="80"
       :width="width"
       :height="height"
-      sizes="480px md:960px lg:1600px xl:1920px"
       densities="1x 2x"
       class="statamic-image"
+      placeholder
     />
 
     <figcaption v-if="caption" class="image-caption">
