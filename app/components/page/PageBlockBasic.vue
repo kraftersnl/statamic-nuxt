@@ -15,7 +15,7 @@ defineProps<{ data: BasicBlock }>();
           :data="data.image"
           width="480"
           height="360"
-          sizes="normal:480px"
+          sizes="mobile:480px normal:640px"
         />
       </div>
     </div>
