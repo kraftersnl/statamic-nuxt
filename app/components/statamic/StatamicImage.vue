@@ -25,7 +25,7 @@ const {
       quality="90"
       :width="width"
       :height="height"
-      sizes="480px md:640px xl:960px"
+      sizes="480px md:640px xl:1280px"
       densities="1x 2x"
       class="statamic-image"
     />
