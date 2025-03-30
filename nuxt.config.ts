@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   },
 
   $test: {
-    extends: ['../krafters-ui'],
+    extends: ['github:kraftersnl/krafters-ui'],
   },
 
   runtimeConfig: {
