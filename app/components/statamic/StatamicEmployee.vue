@@ -32,11 +32,10 @@ defineProps<{
 
   figure {
     order: -1;
-    height: 120px;
-    width: 120px;
     margin-inline: auto;
 
     img {
+      width: 120px;
       border-radius: var(--radius-full);
     }
   }

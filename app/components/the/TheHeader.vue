@@ -96,9 +96,11 @@ const mainNav = computed((): MenuItem[] =>
   .logo-link {
     display: grid;
     margin-inline: auto;
+    padding-right: 3rem;
 
     @media (min-width: 768px) {
       margin-left: 0;
+      padding-right: 0;
     }
   }
 

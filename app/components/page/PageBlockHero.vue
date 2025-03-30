@@ -51,7 +51,6 @@ const imageLast = computed(
 .hero-block {
   padding-block-end: 5rem;
   display: grid;
-  display: grid;
   gap: 2rem;
   align-items: center;
 
