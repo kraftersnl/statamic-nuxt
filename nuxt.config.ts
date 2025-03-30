@@ -4,17 +4,7 @@ import { dirname, join } from 'path';
 const currentDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
-  $production: {
-    extends: ['github:kraftersnl/krafters-ui'],
-  },
-
-  $development: {
-    extends: ['../krafters-ui'],
-  },
-
-  $test: {
-    extends: ['github:kraftersnl/krafters-ui'],
-  },
+  extends: ['github:kraftersnl/krafters-ui'],
 
   runtimeConfig: {
     public: {
