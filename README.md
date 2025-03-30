@@ -4,12 +4,6 @@ This project is a [Nuxt Layer](https://nuxt.com/docs/getting-started/layers) for
 
 ## Installation
 
-Copy example .env file:
-
-```bash
-cp .env.example .env
-```
-
 ### Extend from GitHub repository
 
 Refer to the layer with `extends` in nuxt.config.ts:
@@ -28,4 +22,31 @@ Refer to a local directory with `extends` in nuxt.config.ts:
 defineNuxtConfig({
   extends: ['../statamic-nuxt'],
 });
+```
+
+## Configuration
+
+Components access `useRuntimeConfig().public` for various purposes, like SEO and error handling. Override the default values in `nuxt.config.ts`:
+
+```ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      siteTitle: 'Statamic Nuxt Layer',
+      contactEmail: 'info@krafters.nl',
+      ogImage: '/og.png',
+      // siteUrl: import.meta.env.NUXT_PUBLIC_SITE_URL,
+      // statamicUrl: import.meta.env.NUXT_PUBLIC_STATAMIC_URL,
+    },
+  },
+});
+```
+
+### Environment variables
+
+The `siteUrl` and `statamicUrl` variables are covered by your .env variables
+
+```bash
+NUXT_PUBLIC_SITE_URL = http://localhost:3000
+NUXT_PUBLIC_STATAMIC_URL = http://localhost:8000
 ```

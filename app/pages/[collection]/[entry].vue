@@ -25,7 +25,7 @@ const page = computed(() => entries.value?.data?.[0] || undefined);
 useSeoMeta({
   title: page.value?.title,
   description: page.value?.summary,
-  ogImage: page.value?.image?.permalink || '/krafters-logo-og.png',
+  ogImage: page.value?.image?.permalink || useRuntimeConfig().public.ogImage,
 });
 </script>
 
@@ -34,11 +34,3 @@ useSeoMeta({
     <PageBlockMapper :data="page?.blocks" />
   </div>
 </template>
-
-<style>
-.entry-page {
-  .hero-image .image--full-width img {
-    /* max-height: 65svh; */
-  }
-}
-</style>

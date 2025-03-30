@@ -82,7 +82,10 @@ async function handleSubmit(formData: FormData) {
       <Callout v-if="showErrorMessage" color="red">
         Er ging helaas iets mis. Probeer het later opnieuw of neem contact met
         ons op via
-        <a href="mailto:info@krafters.nl">info@krafters.nl</a>.
+        <a :href="'mailto:' + useRuntimeConfig().public.contactEmail">{{
+          useRuntimeConfig().public.contactEmail
+        }}</a
+        >.
       </Callout>
     </div>
 

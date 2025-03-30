@@ -33,8 +33,8 @@ const page = computed(() => entries.value?.data?.[0]);
 
 useSeoMeta({
   title: page.value?.title,
-  // description: page.value?.summary,
-  ogImage: page.value?.image?.permalink || '/krafters-logo-og.png',
+  description: page.value?.summary,
+  ogImage: page.value?.image?.permalink || useRuntimeConfig().public.ogImage,
 });
 </script>
 

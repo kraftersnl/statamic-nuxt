@@ -19,6 +19,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteTitle: 'Statamic Nuxt Layer',
+      contactEmail: 'info@krafters.nl',
+      ogImage: '/og.png',
       siteUrl: import.meta.env.NUXT_PUBLIC_SITE_URL,
       statamicUrl: import.meta.env.NUXT_PUBLIC_STATAMIC_URL,
     },
