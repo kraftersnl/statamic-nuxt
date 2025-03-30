@@ -13,9 +13,9 @@ defineProps<{ data: BasicBlock }>();
       <div v-if="data?.image" class="image-column">
         <StatamicImage
           :data="data.image"
-          width="480"
-          height="360"
-          sizes="mobile:480px normal:640px"
+          width="400"
+          height="267"
+          sizes="mobile:400px normal:800px"
         />
       </div>
     </div>

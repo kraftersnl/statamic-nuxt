@@ -25,7 +25,7 @@ const imageLast = computed(
         :data="data?.image"
         :class="data?.full_width_image ? 'image--full-width' : ''"
         width="640"
-        height="32480"
+        height="320"
         sizes="mobile:640px normal:960px big:1440px"
       />
     </div>
