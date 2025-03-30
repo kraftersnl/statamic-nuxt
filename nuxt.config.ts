@@ -31,11 +31,9 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots'],
-
   css: [join(currentDir, './app/assets/main.css')],
 
-  devtools: { enabled: true },
+  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots'],
 
   future: {
     compatibilityVersion: 4,
