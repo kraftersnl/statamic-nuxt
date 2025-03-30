@@ -26,6 +26,7 @@ const imageLast = computed(
         :class="data?.full_width_image ? 'image--full-width' : ''"
         width="320"
         height="160"
+        sizes="normal:960px big:1440px"
       />
     </div>
 

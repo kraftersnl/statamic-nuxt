@@ -42,6 +42,8 @@ export default defineNuxtConfig({
     format: ['avif', 'webp'],
     densities: [1, 2],
     screens: {
+      small: 320,
+      small2x: 640,
       normal: 480,
       normal2x: 960,
       big: 960,
