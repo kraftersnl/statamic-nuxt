@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const { loading = 'lazy' } = defineProps<{
+const {
+  loading = 'lazy',
+  width = '240',
+  height = '160',
+} = defineProps<{
   data?: StatamicImage;
   loading?: 'lazy' | 'eager';
   fetchPriority?: 'high' | 'low' | 'auto';
