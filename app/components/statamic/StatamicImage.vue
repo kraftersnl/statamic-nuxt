@@ -3,10 +3,12 @@ const {
   loading = 'lazy',
   width = '240',
   height = '160',
+  sizes = 'normal:480px big:960px',
 } = defineProps<{
   data?: StatamicImage;
   loading?: 'lazy' | 'eager';
   fetchPriority?: 'high' | 'low' | 'auto';
+  sizes?: string;
   caption?: string;
   width?: string;
   height?: string;
@@ -23,7 +25,7 @@ const {
       :fetch-priority="fetchPriority ?? (loading === 'lazy' ? 'low' : 'high')"
       :width="width"
       :height="height"
-      sizes="favicon:120px normal:480px big:960px"
+      :sizes="sizes"
       class="statamic-image"
       placeholder
     />

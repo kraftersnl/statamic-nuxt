@@ -42,8 +42,6 @@ export default defineNuxtConfig({
     format: ['avif', 'webp'],
     densities: [1, 2],
     screens: {
-      favicon: 120,
-      favicon2x: 240,
       normal: 480,
       normal2x: 960,
       big: 960,
