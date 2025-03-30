@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   $production: {
     extends: [
       'github:kraftersnl/krafters-ui',
-      { auth: process.env.GIGET_AUTH },
+      { auth: process.env.GITHUB_TOKEN },
     ],
   },
 
@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   $test: {
     extends: [
       'github:kraftersnl/krafters-ui',
-      { auth: process.env.GIGET_AUTH },
+      { auth: process.env.GITHUB_TOKEN },
     ],
   },
 
@@ -46,20 +46,6 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
     },
   },
-
-  icon: {
-    clientBundle: {
-      scan: true,
-      sizeLimitKb: 256,
-      icons: ['heroicons-solid:sun', 'heroicons-solid:moon'],
-    },
-  },
-
-  // eslint: {
-  //   config: {
-  //     rootDir: fileURLToPath(new URL('..', import.meta.url)),
-  //   },
-  // },
 
   modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots'],
 
