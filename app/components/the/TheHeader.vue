@@ -103,6 +103,7 @@ const mainNav = computed((): MenuItem[] =>
     .logo-slot {
       display: grid;
     }
+
     &:has(.logo-slot:empty) {
       display: none;
     }

@@ -3,7 +3,8 @@ const {
   loading = 'lazy',
   width = '240',
   height = '160',
-  sizes = 'small:640px normal:960px big:1440px',
+  sizes = 'small:640px normal:960px big:1280px',
+  placeholder = true,
 } = defineProps<{
   data?: StatamicImage;
   loading?: 'lazy' | 'eager';
@@ -12,6 +13,7 @@ const {
   caption?: string;
   width?: string;
   height?: string;
+  placeholder?: number[] | boolean;
 }>();
 </script>
 
@@ -27,7 +29,7 @@ const {
       :height="height"
       :sizes="sizes"
       class="statamic-image"
-      placeholder
+      :placeholder="placeholder"
     />
 
     <figcaption v-if="caption" class="image-caption">
