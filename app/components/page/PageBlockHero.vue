@@ -43,7 +43,7 @@ const imageLast = computed(
         :class="data?.full_width_image ? 'image--full-width' : ''"
         width="320"
         height="180"
-        :placeholder="[64, 32, 90, 50]"
+        :placeholder="[64, 32, 90, 250]"
       />
     </div>
   </section>
