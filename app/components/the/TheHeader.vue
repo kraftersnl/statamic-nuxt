@@ -4,6 +4,9 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
   () =>
     $fetch('/api/navs/main/tree/', {
       baseURL: useRuntimeConfig().public.statamicUrl,
+      query: {
+        fields: 'id,title,icon,url,link,slug,published',
+      },
     })
 );
 

@@ -33,7 +33,11 @@ function getBlockComponent(block: StatamicPageBlock) {
   scroll-margin-block: 1rem;
 
   &:not(.hero-block) {
-    padding-block-end: 10rem;
+    padding-block-end: 5rem;
+
+    @media (min-width: 768px) {
+      padding-block-end: 10rem;
+    }
   }
 
   @media (min-width: 360px) and (min-height: 360px) {

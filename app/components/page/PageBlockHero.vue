@@ -51,10 +51,13 @@ const imageLast = computed(
 
 <style>
 .hero-block {
-  padding-block-end: 5rem;
   display: grid;
   gap: 2rem;
   align-items: center;
+
+  @media (min-width: 768px) {
+    padding-block-end: 5rem;
+  }
 
   .page-block-content {
     padding-block: 2rem;

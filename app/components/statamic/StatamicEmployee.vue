@@ -6,11 +6,20 @@ defineProps<{
 
 <template>
   <div class="employee-entry">
-    <h3 class="employee-name">{{ data?.title }}</h3>
+    <h3 v-if="data?.title" class="employee-name">
+      {{ data.title }}
+    </h3>
 
-    <span class="employee-jobtitle">{{ data?.jobtitle }}</span>
+    <span v-if="data?.jobtitle" class="employee-jobtitle">
+      {{ data.jobtitle }}
+    </span>
 
-    <StatamicImage :data="data?.image" width="120" height="120" />
+    <StatamicImage
+      v-if="data?.image"
+      :data="data.image"
+      width="120"
+      height="120"
+    />
   </div>
 </template>
 

@@ -13,11 +13,8 @@ export const mockCompanyData: StatamicGlobalCompany = {
 export const mockMainNavData: NavTreeItem[] = [
   {
     page: {
-      entry_id: null,
       id: 'e66ac4f1-7c26-43ee-ab48-53ea2ee6bb3a',
-      permalink: 'http://localhost:8000/#websites',
       title: 'Websites',
-      uri: '/#websites',
       url: '/#websites',
     },
     depth: 1,
@@ -25,11 +22,8 @@ export const mockMainNavData: NavTreeItem[] = [
   },
   {
     page: {
-      entry_id: null,
       id: '62b155c3-af5c-492e-81d9-ff3c79b4ec89',
-      permalink: 'http://localhost:8000/#webapps',
       title: 'Webapplicaties',
-      uri: '/#webapps',
       url: '/#webapps',
     },
     depth: 1,
@@ -37,11 +31,8 @@ export const mockMainNavData: NavTreeItem[] = [
   },
   {
     page: {
-      entry_id: null,
       id: '554c3171-6659-49fa-b338-9d41c507940d',
-      permalink: 'http://localhost:8000/#team',
       title: 'Team',
-      uri: '/#team',
       url: '/#team',
     },
     depth: 1,
@@ -49,12 +40,39 @@ export const mockMainNavData: NavTreeItem[] = [
   },
   {
     page: {
-      entry_id: null,
       id: 'f89ff669-3b8d-473a-ab2f-9a216231e9c3',
-      permalink: 'http://localhost:8000/#contact',
       title: 'Contact',
-      uri: '/#contact',
       url: '/#contact',
+    },
+    depth: 1,
+    children: [],
+  },
+];
+
+export const mockFooterNavData: NavTreeItem[] = [
+  {
+    page: {
+      id: '449274d7-8c34-4553-ac19-4f2ff1ecffe5',
+      title: 'Algemene voorwaarden',
+      url: '/algemene-voorwaarden',
+    },
+    depth: 1,
+    children: [],
+  },
+  {
+    page: {
+      id: 'f95430a2-e8a8-44d9-9b6d-0ab99462c016',
+      title: 'Privacy',
+      url: '/privacy',
+    },
+    depth: 1,
+    children: [],
+  },
+  {
+    page: {
+      id: '61102191-341f-486f-a6c0-edf7e2f87af4',
+      title: 'Toegankelijkheid',
+      url: '/toegankelijkheid',
     },
     depth: 1,
     children: [],
@@ -276,7 +294,7 @@ export const mockPageData: StatamicPageEntry[] = [
         ],
         anchor: 'team',
         id: 'm7xqy838',
-        type: 'employees',
+        type: 'team',
       },
       {
         content: [

@@ -21,5 +21,13 @@ defineProps<{
   flex-wrap: wrap;
   column-gap: 1.5rem;
   row-gap: 1rem;
+
+  a {
+    color: var(--color-grey-text);
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
 }
 </style>

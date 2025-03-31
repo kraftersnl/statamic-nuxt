@@ -15,9 +15,10 @@ const { data: entries } = await useAsyncData<{ data: StatamicPageEntry[] }>(
   () =>
     $fetch(`/api/collections/${collection}/entries/`, {
       baseURL: useRuntimeConfig().public.statamicUrl,
-      token: route.query.token,
       query: {
         'filter[url]': stripTrailingSlash(route.path),
+        fields: 'id,blocks,url,permalink,image,published',
+        token: route.query.token,
       },
     })
 );

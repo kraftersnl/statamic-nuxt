@@ -10,6 +10,9 @@ declare global {
     title: string;
     link?: string;
     url?: string;
+    permalink?: string;
+    slug?: string;
+    status?: string;
     icon?: string;
   };
 

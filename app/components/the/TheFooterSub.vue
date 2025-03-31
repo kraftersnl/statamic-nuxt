@@ -8,11 +8,12 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
   () =>
     $fetch('/api/navs/footer/tree/', {
       baseURL: useRuntimeConfig().public.statamicUrl,
+      query: {
+        fields: 'id,title,icon,url,link,slug,status',
+      },
     }),
   { lazy: true }
 );
-
-console.log(nav.value?.data);
 
 const footerNav = computed((): MenuItem[] =>
   nav.value?.data?.length
@@ -39,6 +40,7 @@ const footerNav = computed((): MenuItem[] =>
 
 <style>
 .subfooter {
+  color: var(--color-grey-text);
   font-size: var(--font-size-xxs);
   background-color: var(--color-sub-footer);
   padding-block: 1.5rem;
@@ -52,7 +54,6 @@ const footerNav = computed((): MenuItem[] =>
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
-    color: var(--color-grey-text);
 
     &:has(nav) {
       justify-content: space-between;

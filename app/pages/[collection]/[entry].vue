@@ -8,6 +8,7 @@ const { data: entries } = await useAsyncData<{ data: StatamicArticleEntry[] }>(
       baseURL: useRuntimeConfig().public.statamicUrl,
       query: {
         'filter[url]': stripTrailingSlash(route.path),
+        fields: 'id,blocks,url,permalink,image,published',
         token: route.query.token,
       },
     })
