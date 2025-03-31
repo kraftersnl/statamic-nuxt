@@ -106,10 +106,6 @@ defineProps<{
 
     &:hover {
       color: var(--color-black);
-
-      .iconify {
-        color: var(--color-grey-text);
-      }
     }
   }
 

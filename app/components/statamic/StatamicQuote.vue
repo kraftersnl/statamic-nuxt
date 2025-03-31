@@ -20,10 +20,6 @@ defineProps<{
 .blockquote-wrapper {
   blockquote {
     border-color: var(--color-grey-bg);
-
-    p {
-      margin-block-end: 1rem;
-    }
   }
 
   .author {

@@ -16,11 +16,15 @@ defineProps<{
 
 <style>
 .footer-nav-list {
-  flex-grow: 1;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   column-gap: 1.5rem;
-  row-gap: 1rem;
+  row-gap: 0.75rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 
   a {
     color: var(--color-grey-text);

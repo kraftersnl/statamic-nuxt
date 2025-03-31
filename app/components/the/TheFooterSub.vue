@@ -40,6 +40,7 @@ const footerNav = computed((): MenuItem[] =>
 
 <style>
 .subfooter {
+  text-align: center;
   color: var(--color-grey-text);
   font-size: var(--font-size-xxs);
   background-color: var(--color-sub-footer);
@@ -49,14 +50,18 @@ const footerNav = computed((): MenuItem[] =>
     max-width: var(--app-max-width);
     padding-inline: var(--app-padding-inline);
     margin-inline: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
     gap: 2rem;
 
-    &:has(nav) {
-      justify-content: space-between;
+    @media (min-width: 768px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      &:has(nav) {
+        justify-content: space-between;
+      }
     }
   }
 }

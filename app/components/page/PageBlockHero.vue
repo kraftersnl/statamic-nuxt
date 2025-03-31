@@ -54,6 +54,7 @@ const imageLast = computed(
   display: grid;
   gap: 2rem;
   align-items: center;
+  padding-block-end: 2.5rem;
 
   @media (min-width: 768px) {
     padding-block-end: 5rem;
