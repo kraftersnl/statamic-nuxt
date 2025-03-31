@@ -133,6 +133,8 @@ declare global {
     email?: string;
     phone?: string;
     linkedin?: string;
+    facebook?: string;
+    instagram?: string;
     address?: string;
     po_box?: string;
     kvk?: string;

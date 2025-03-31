@@ -2,7 +2,7 @@
 const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
   'main-nav',
   () =>
-    $fetch('/api/navs/main/tree', {
+    $fetch('/api/navs/main/tree/', {
       baseURL: useRuntimeConfig().public.statamicUrl,
     })
 );

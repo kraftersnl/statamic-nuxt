@@ -45,9 +45,28 @@ defineProps<{ content?: StatamicContentBlock[] }>();
     border-radius: var(--radius-sm);
   }
 
+  p,
   ul,
   ol {
-    margin-block-end: 1rem;
+    > a:hover {
+      color: var(--color-accent);
+    }
+
+    &:has(+ h2) {
+      margin-block-end: 3rem;
+    }
+    &:has(+ h3) {
+      margin-block-end: 2.5rem;
+    }
+    &:has(+ h4) {
+      margin-block-end: 2rem;
+    }
+    &:has(+ h5) {
+      margin-block-end: 1.5rem;
+    }
+    &:has(+ h6) {
+      margin-block-end: 1rem;
+    }
   }
 
   ul > li::marker {

@@ -1,58 +1,61 @@
 <script setup lang="ts">
 defineProps<{
   data?: StatamicGlobalCompany;
-  navList?: MenuItem[];
 }>();
+
+const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
+  'footer-nav',
+  () =>
+    $fetch('/api/navs/footer/tree/', {
+      baseURL: useRuntimeConfig().public.statamicUrl,
+    }),
+  { lazy: true }
+);
+
+console.log(nav.value?.data);
+
+const footerNav = computed((): MenuItem[] =>
+  nav.value?.data?.length
+    ? nav.value.data.map((x) => ({
+        id: x.page.id,
+        to: x.page.url,
+        label: x.page.title,
+      }))
+    : []
+);
 </script>
 
 <template>
-  <div class="footer-sub">
-    <div class="footer-sub-content">
-      <TheFooterNav v-if="navList?.length" :list="navList" />
+  <div class="subfooter">
+    <div class="subfooter-content">
+      <TheFooterNav v-if="footerNav?.length" :list="footerNav" />
 
       <slot name="copyright">
         <TheFooterCopyright :text="data?.title" />
       </slot>
-
-      <!-- <NuxtLink
-        v-if="data?.linkedin"
-        :to="data.linkedin"
-        class="linkedin-link"
-        target="_blank"
-        external
-      >
-        <span class="visuallyhidden">{{ data?.title + ' op LinkedIn' }}</span>
-        <Icon name="entypo-social:linkedin-with-circle" />
-      </NuxtLink> -->
     </div>
   </div>
 </template>
 
 <style>
-.footer-sub {
-  font-size: var(--font-size-xs);
+.subfooter {
+  font-size: var(--font-size-xxs);
   background-color: var(--color-sub-footer);
-  padding-inline: 2rem;
   padding-block: 1.5rem;
 
-  .footer-sub-content {
+  .subfooter-content {
+    max-width: var(--app-max-width);
+    padding-inline: var(--app-padding-inline);
+    margin-inline: auto;
     display: flex;
     justify-content: center;
-    margin-inline: auto;
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
-    max-width: var(--app-max-width);
     color: var(--color-grey-text);
-    font-size: var(--font-size-xxs);
-  }
 
-  .linkedin-link {
-    display: flex;
-    font-size: var(--font-size-xl);
-
-    .iconify {
-      color: #3276c8 !important;
+    &:has(nav) {
+      justify-content: space-between;
     }
   }
 }

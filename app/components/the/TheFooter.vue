@@ -1,7 +1,6 @@
 <script setup lang="ts">
 defineProps<{
   data?: StatamicGlobalCompany;
-  navList?: MenuItem[];
 }>();
 </script>
 
@@ -15,7 +14,7 @@ defineProps<{
       <TheFooterLinks :data="data" />
     </div>
 
-    <TheFooterSub :data="data" :nav-list="navList">
+    <TheFooterSub :data="data">
       <template #copyright>
         <slot name="copyright" />
       </template>
@@ -42,10 +41,6 @@ defineProps<{
     margin-inline: auto;
     row-gap: 4rem;
     column-gap: 2rem;
-
-    > *:not(img) {
-      flex-basis: 200px;
-    }
 
     @media (min-width: 768px) {
       &:not(:has(img)) {

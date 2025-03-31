@@ -45,6 +45,7 @@ defineProps<{
     <div v-if="data?.facebook" class="grid-list-item">
       <Icon name="mdi:facebook" class="social-icon" />
       <NuxtLink :to="data.facebook" target="_blank" external>
+        <span class="visuallyhidden">{{ data?.title }} op</span>
         <span>Facebook</span>
       </NuxtLink>
     </div>
@@ -52,6 +53,7 @@ defineProps<{
     <div v-if="data?.instagram" class="grid-list-item">
       <Icon name="mdi:instagram" class="social-icon" />
       <NuxtLink :to="data.instagram" target="_blank" external>
+        <span class="visuallyhidden">{{ data?.title }} op</span>
         <span>Instagram</span>
       </NuxtLink>
     </div>
@@ -59,6 +61,7 @@ defineProps<{
     <div v-if="data?.linkedin" class="grid-list-item">
       <Icon name="mdi:linkedin" class="social-icon" />
       <NuxtLink :to="data.linkedin" target="_blank" external>
+        <span class="visuallyhidden">{{ data?.title }} op</span>
         <span>LinkedIn</span>
       </NuxtLink>
     </div>
