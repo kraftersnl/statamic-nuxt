@@ -52,6 +52,7 @@ declare global {
   type StatamicEntry = {
     id: string;
     title: string;
+    summary?: string;
     slug: string;
     url: string;
     permalink?: string;
@@ -64,7 +65,6 @@ declare global {
 
   type StatamicArticleEntry = StatamicEntry & {
     blocks?: StatamicPageBlock[];
-    summary?: string;
     date?: string;
   };
 
