@@ -60,10 +60,6 @@ const imageLast = computed(
     padding-block-end: 5rem;
   }
 
-  .page-block-content {
-    padding-block: 2rem;
-  }
-
   h1 {
     font-size: min(calc(var(--font-size-sm) + 3vw), var(--font-size-xxxl));
   }
@@ -87,8 +83,21 @@ const imageLast = computed(
   }
 }
 
-@media (min-width: 1024px) {
-  .image-position--inline-end {
+.hero-block.image-position--block-start {
+  .page-block-content {
+    padding-block: var(--app-header-height);
+  }
+}
+
+.hero-block.image-position--block-end {
+  padding-block: var(--app-header-height) calc(2 * var(--app-header-height));
+}
+
+.hero-block.image-position--inline-end {
+  padding-block: var(--app-header-height);
+
+  @media (min-width: 1024px) {
+    padding-block-end: calc(2 * var(--app-header-height));
     max-width: var(--app-max-width);
     margin-inline: auto;
     grid-template-columns: 3fr 2fr;
@@ -97,8 +106,13 @@ const imageLast = computed(
       font-size: min(calc(var(--font-size-xs) + 3vw), var(--font-size-xxl));
     }
   }
+}
 
-  .image-position--inline-start {
+.hero-block.image-position--inline-start {
+  padding-block: var(--app-header-height);
+
+  @media (min-width: 1024px) {
+    padding-block-end: calc(2 * var(--app-header-height));
     max-width: var(--app-max-width);
     margin-inline: auto;
     grid-template-columns: 2fr 3fr;

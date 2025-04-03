@@ -127,8 +127,9 @@ declare global {
     validate?: string[];
     width?: number;
     options?: {
-      [key: string]: string;
-    };
+      key?: string;
+      value?: string;
+    }[];
   };
 
   type StatamicGlobalCompany = {

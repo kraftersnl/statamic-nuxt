@@ -19,33 +19,50 @@ const { data: form } = await useAsyncData<{ data: StatamicForm }>(
 );
 
 async function handleSubmit(formData: FormData) {
-  submittingForm.value = true;
-  const response = await $fetch<{
-    redirect?: string;
-    submission?: unknown;
-    submission_created?: boolean;
-    success?: boolean;
-  }>(`/api/forms/${props.data.form?.handle}`, {
-    method: 'POST',
-    body: formData,
-    headers: { 'X-Requested-With': 'XMLHttpRequest' },
-  });
+  try {
+    submittingForm.value = true;
 
-  if (response?.success) {
-    showSuccessMessage.value = true;
-  } else {
+    const response = await $fetch<{
+      redirect?: string;
+      submission?: unknown;
+      submission_created?: boolean;
+      success?: boolean;
+      errors: string[];
+    }>(`/api/forms/${props.data.form?.handle}`, {
+      method: 'POST',
+      body: formData,
+      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+    });
+
+    if (response?.success) {
+      showSuccessMessage.value = true;
+    } else {
+      showErrorMessage.value = true;
+    }
+  } catch (error) {
+    console.log(error);
     showErrorMessage.value = true;
+  } finally {
+    submittingForm.value = false;
   }
-  submittingForm.value = false;
 }
 </script>
 
 <template>
   <Form
-    v-if="form?.data && Object.keys(form.data.fields)?.length"
+    v-if="form?.data?.fields && Object.keys(form.data.fields)?.length"
     @submit="handleSubmit"
   >
     <template v-for="field in form.data.fields" :key="field.handle">
+      <CheckboxGroup
+        v-if="field.type === 'checkboxes'"
+        class="form-group"
+        :name="field.handle"
+        :options="field.options"
+        :label="field.display"
+        :required="field.validate?.includes('required')"
+      />
+
       <ClientOnly v-if="field.handle === 'source'">
         <input type="hidden" :value="currentRoute.fullPath" name="source" />
       </ClientOnly>

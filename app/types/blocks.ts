@@ -16,6 +16,7 @@ declare global {
 
   type BasicBlock = StatamicPageBlock & {
     image_pos?: StatamicSelectOption;
+    image_caption?: string;
   };
 
   type FormBlock = StatamicPageBlock & {
@@ -80,6 +81,7 @@ declare global {
     type: 'video';
     id: string;
     video_url?: string;
+    image_caption?: string;
   };
 
   type QuoteContentBlock = StatamicQuote & {

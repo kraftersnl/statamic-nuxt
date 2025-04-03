@@ -45,6 +45,8 @@ const {
 }
 
 .image-caption {
+  font-size: smaller;
+  color: var(--color-grey-text);
   padding-block-start: 1rem;
   text-align: center;
   font-style: italic;

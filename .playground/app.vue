@@ -9,7 +9,7 @@
     </template>
 
     <template #copyright>
-      <!-- <span>Website gemaakt door Krafters</span> -->
+      <!-- <span>Website door Krafters</span> -->
     </template>
   </TheLayout>
 </template>

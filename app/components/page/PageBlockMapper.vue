@@ -1,4 +1,13 @@
 <script setup lang="ts">
+// import {
+//   PageBlockHero,
+//   PageBlockBasic,
+//   PageBlockForm,
+//   PageBlockArticles,
+//   PageBlockEmployees,
+//   PageBlockSponsors,
+// } from '#components';
+
 defineProps<{ data?: StatamicPageBlock[] }>();
 
 const PageBlockHero = resolveComponent('PageBlockHero');

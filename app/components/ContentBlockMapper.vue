@@ -28,6 +28,7 @@ defineProps<{ content?: StatamicContentBlock[] }>();
       <VideoPlayer
         v-if="contentBlock?.type === 'video'"
         :url="contentBlock?.video_url"
+        :caption="contentBlock?.image_caption"
       />
     </template>
   </div>
