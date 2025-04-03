@@ -3,20 +3,22 @@ defineProps<{ data?: ButtonContentBlock }>();
 </script>
 
 <template>
-  <NuxtLink :to="data?.button_link" class="content-block-link">
-    <span>{{ data?.button_label }}</span>
-
-    <StatamicIcon v-if="data?.button_icon" :icon="data.button_icon" />
-  </NuxtLink>
+  <Button
+    :to="data?.button_link"
+    :label="data?.button_label"
+    :variant="data?.button_variant?.key"
+    icon-pos="end"
+    size="lg"
+    class="content-block-link"
+  >
+    <template #icon>
+      <StatamicIcon v-if="data?.button_icon" :icon="data.button_icon" />
+    </template>
+  </Button>
 </template>
 
 <style>
 .content-block-link {
-  display: inline-flex;
-  gap: 0.25rem;
-
-  &:hover {
-    color: var(--color-accent);
-  }
+  max-width: max-content;
 }
 </style>
