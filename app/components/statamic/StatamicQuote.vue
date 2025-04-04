@@ -23,9 +23,8 @@ defineProps<{
   }
 
   .author {
-    font-weight: 400;
     font-style: italic;
-    font-size: var(--font-size-sm);
+    font-size: smaller;
     color: var(--color-grey-text);
   }
 }

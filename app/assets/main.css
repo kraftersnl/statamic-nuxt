@@ -88,6 +88,12 @@ a {
   text-underline-offset: 0.35em;
 }
 
+blockquote {
+  p {
+    font-size: larger;
+  }
+}
+
 /* p,
 ul,
 ol {
