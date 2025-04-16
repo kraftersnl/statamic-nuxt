@@ -20,15 +20,12 @@ const radioValue = ref<string>();
 
         <ul role="list" class="radio-list">
           <li v-for="option in options" :key="'radio-' + option.value">
-            <input
-              :id="option.key"
+            <Radio
               v-model="radioValue"
+              :label="option.value"
               :value="option.key"
               :name="name"
-              type="radio"
             />
-
-            <label :for="option.key">{{ option.value }}</label>
           </li>
         </ul>
       </fieldset>
@@ -41,26 +38,13 @@ const radioValue = ref<string>();
   margin-block-end: 0.5rem;
 
   legend {
-    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     margin-block-end: 1rem;
   }
 
-  input[type='radio'] {
-    margin: 0;
-    margin-top: 1px;
-    width: 1rem;
-    height: 1rem;
-  }
-
-  label {
-    padding-inline-start: 0.5rem;
-    font-size: var(--font-size-sm);
-  }
-
   .radio-list {
     display: grid;
-    /* gap: 0.5rem; */
+    gap: 0.5rem;
   }
 }
 </style>
