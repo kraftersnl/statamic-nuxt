@@ -19,7 +19,10 @@ const { data: company } = await useAsyncData<{ data: StatamicGlobalCompany }>(
 
 if (typeof window !== 'undefined') {
   window.onmessage = function (e) {
+    console.log('post message event data', e.data);
     if (e.data.name === 'statamic.preview.updated') {
+      const id = e.data.reference.split('::')[1];
+      console.log('ID', id);
       refreshNuxtData();
     }
   };

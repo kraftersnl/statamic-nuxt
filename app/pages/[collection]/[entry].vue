@@ -14,7 +14,7 @@ const { data: entries } = await useAsyncData<{ data: StatamicArticleEntry[] }>(
     })
 );
 
-if (!entries.value?.data?.length && !route.query.token) {
+if (!entries.value?.data?.length && !route.query.preview) {
   throw showError({
     statusCode: 404,
     statusMessage: 'Entry not found',

@@ -23,7 +23,7 @@ const { data: entries } = await useAsyncData<{ data: StatamicPageEntry[] }>(
     })
 );
 
-if (!entries.value?.data?.length && !route.query.token) {
+if (!entries.value?.data?.length && !route.query.preview) {
   throw showError({
     statusCode: 404,
     statusMessage: 'Page not found',
