@@ -71,6 +71,7 @@ const imageLast = computed(
   .hero-image {
     img {
       max-height: var(--image-max-height, none);
+      max-width: 1920px;
       object-fit: cover;
       margin-inline: auto;
     }
