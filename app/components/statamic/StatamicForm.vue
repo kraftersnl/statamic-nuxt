@@ -54,6 +54,14 @@ async function handleSubmit(formData: FormData) {
     @submit="handleSubmit"
   >
     <template v-for="field in form.data.fields" :key="field.handle">
+      <RadioGroup
+        v-if="field.type === 'radio'"
+        class="form-group"
+        :name="field.handle"
+        :options="field.options"
+        :label="field.display"
+      />
+
       <CheckboxGroup
         v-if="field.type === 'checkboxes'"
         class="form-group"

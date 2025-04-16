@@ -9,23 +9,26 @@ defineProps<{
   }[];
 }>();
 
-const checkboxValues = ref<string[]>([]);
+const radioValue = ref<string>();
 </script>
 
 <template>
-  <div class="checkboxes-wrapper">
+  <div class="radios-wrapper">
     <template v-if="options">
       <fieldset>
         <legend>{{ label }}</legend>
 
-        <ul role="list" class="checkbox-list">
-          <li v-for="option in options" :key="'checkbox-' + option.key">
-            <Checkbox
-              v-model="checkboxValues"
-              :label="option.value"
+        <ul role="list" class="radio-list">
+          <li v-for="option in options" :key="'radio-' + option.value">
+            <input
+              :id="option.key"
+              v-model="radioValue"
               :value="option.key"
               :name="name"
+              type="radio"
             />
+
+            <label :for="option.key">{{ option.value }}</label>
           </li>
         </ul>
       </fieldset>
@@ -34,7 +37,7 @@ const checkboxValues = ref<string[]>([]);
 </template>
 
 <style>
-.checkboxes-wrapper {
+.radios-wrapper {
   margin-block-end: 0.5rem;
 
   legend {
@@ -43,9 +46,21 @@ const checkboxValues = ref<string[]>([]);
     margin-block-end: 1rem;
   }
 
-  .checkbox-list {
+  input[type='radio'] {
+    margin: 0;
+    margin-top: 1px;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  label {
+    padding-inline-start: 0.5rem;
+    font-size: var(--font-size-sm);
+  }
+
+  .radio-list {
     display: grid;
-    gap: 0.5rem;
+    /* gap: 0.5rem; */
   }
 }
 </style>
