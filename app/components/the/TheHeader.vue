@@ -10,7 +10,7 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
     })
 );
 
-const mobileMenuRef = useTemplateRef<DialogComponent>('mobileMenu');
+const mobileMenuRef = useTemplateRef<MobileMenuComponent>('mobileMenu');
 
 const mainNav = computed((): MenuItem[] =>
   nav.value?.data?.length
