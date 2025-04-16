@@ -19,6 +19,10 @@ declare global {
     image_caption?: string;
   };
 
+  type GridBlock = StatamicPageBlock & {
+    images?: StatamicImage[];
+  };
+
   type FormBlock = StatamicPageBlock & {
     form?: StatamicForm;
     form_button_label?: string;

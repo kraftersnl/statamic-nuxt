@@ -6,6 +6,7 @@
 //   PageBlockArticles,
 //   PageBlockEmployees,
 //   PageBlockSponsors,
+//   PageBlockGrid,
 // } from '#components';
 
 defineProps<{ data?: StatamicPageBlock[] }>();
@@ -16,6 +17,7 @@ const PageBlockForm = resolveComponent('PageBlockForm');
 const PageBlockArticles = resolveComponent('PageBlockArticles');
 const PageBlockEmployees = resolveComponent('PageBlockEmployees');
 const PageBlockSponsors = resolveComponent('PageBlockSponsors');
+const PageBlockGrid = resolveComponent('PageBlockGrid');
 
 function getBlockComponent(block: StatamicPageBlock) {
   if (block.type === 'hero') return PageBlockHero;
@@ -24,6 +26,7 @@ function getBlockComponent(block: StatamicPageBlock) {
   if (block.type === 'articles') return PageBlockArticles;
   if (block.type === 'employees') return PageBlockEmployees;
   if (block.type === 'sponsors') return PageBlockSponsors;
+  if (block.type === 'grid') return PageBlockGrid;
 }
 </script>
 
