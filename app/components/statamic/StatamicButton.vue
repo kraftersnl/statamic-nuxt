@@ -7,6 +7,8 @@ defineProps<{ data?: ButtonContentBlock }>();
     :to="data?.button_link"
     :label="data?.button_label"
     :variant="data?.button_variant?.key"
+    :target="data?.button_link?.startsWith('http') ? '_blank' : undefined"
+    :external="data?.button_link?.startsWith('http')"
     icon-pos="end"
     size="lg"
     class="content-block-link"

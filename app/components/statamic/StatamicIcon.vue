@@ -1,9 +1,9 @@
 <script setup lang="ts">
-defineProps<{ icon: string }>();
+defineProps<{ icon?: string }>();
 </script>
 
 <template>
-  <span class="icon" aria-hidden="true" v-html="icon" />
+  <span v-if="icon" class="icon" aria-hidden="true" v-html="icon" />
 </template>
 
 <style>

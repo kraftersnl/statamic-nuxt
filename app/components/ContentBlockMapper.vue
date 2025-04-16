@@ -13,7 +13,7 @@ defineProps<{ content?: StatamicContentBlock[] }>();
         :caption="contentBlock.image_caption"
       />
 
-      <StatamicLink
+      <StatamicButton
         v-if="contentBlock?.type === 'button'"
         :data="contentBlock"
       />
