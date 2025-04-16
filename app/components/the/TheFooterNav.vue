@@ -25,13 +25,5 @@ defineProps<{
   @media (min-width: 768px) {
     flex-direction: row;
   }
-
-  a {
-    color: var(--color-grey-text);
-
-    &:hover {
-      color: var(--color-text);
-    }
-  }
 }
 </style>

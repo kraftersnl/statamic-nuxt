@@ -64,5 +64,13 @@ const footerNav = computed((): MenuItem[] =>
       }
     }
   }
+
+  a {
+    color: var(--color-grey-text);
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
 }
 </style>
