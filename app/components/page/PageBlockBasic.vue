@@ -5,7 +5,11 @@ defineProps<{ data: BasicBlock }>();
 <template>
   <section
     :id="data?.anchor"
-    :class="`page-block basic-block image-position--${data?.image_pos?.key}`"
+    :class="[
+      'page-block',
+      'basic-block',
+      `image-position--${data?.image_pos?.key}`,
+    ]"
   >
     <div class="page-block-content">
       <ContentBlockMapper :content="data?.content" />

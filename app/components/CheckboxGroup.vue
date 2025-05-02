@@ -38,7 +38,6 @@ const checkboxValues = ref<string[]>([]);
   margin-block-end: 0.5rem;
 
   legend {
-    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     margin-block-end: 1rem;
   }

@@ -12,9 +12,12 @@ const imageLast = computed(
 <template>
   <section
     :id="data?.anchor"
-    :class="`page-block hero-block
-      image-position--${data?.image_pos?.key}
-    `"
+    :class="[
+      'page-block',
+      'hero-block',
+      `image-position--${data?.image_pos?.key}
+    `,
+    ]"
     :style="[
       data?.image_max_height && `--image-max-height: ${data?.image_max_height}`,
     ]"
@@ -23,7 +26,7 @@ const imageLast = computed(
       <StatamicImage
         loading="eager"
         :data="data?.image"
-        :class="data?.full_width_image ? 'image--full-width' : ''"
+        :class="[data?.full_width_image && 'image--full-width']"
         width="640"
         height="320"
         sizes="mobile:640px normal:960px big:1440px"
@@ -40,7 +43,7 @@ const imageLast = computed(
       <StatamicImage
         loading="eager"
         :data="data?.image"
-        :class="data?.full_width_image ? 'image--full-width' : ''"
+        :class="[data?.full_width_image && 'image--full-width']"
         width="320"
         height="180"
         :placeholder="[64, 32, 90, 250]"
