@@ -48,7 +48,7 @@ defineProps<{
   }
 
   img {
-    width: 140px;
+    width: 120px;
   }
 }
 </style>
