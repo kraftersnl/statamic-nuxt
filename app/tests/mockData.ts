@@ -167,7 +167,11 @@ export const mockPageData: StatamicPageEntry[] = [
           alt: null,
         },
         image_caption: null,
-        image_pos: { value: 'inline-end', label: 'Right', key: 'inline-end' },
+        image_position: {
+          value: 'inline-end',
+          label: 'Right',
+          key: 'inline-end',
+        },
         anchor: 'websites',
         id: 'm7xdgqp3',
         type: 'basic',
@@ -187,7 +191,7 @@ export const mockPageData: StatamicPageEntry[] = [
           alt: null,
         },
         image_caption: null,
-        image_pos: {
+        image_position: {
           value: 'inline-start',
           label: 'Left',
           key: 'inline-start',

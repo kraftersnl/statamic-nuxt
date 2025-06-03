@@ -72,6 +72,10 @@ declare global {
     jobtitle?: string;
   };
 
+  type StatamicTestimonialEntry = StatamicEntry & {
+    sub_title?: string;
+  };
+
   type StatamicSponsorsEntry = StatamicEntry & {
     website?: string;
   };

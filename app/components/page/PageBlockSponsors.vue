@@ -19,6 +19,7 @@ defineProps<{ data?: SponsorsBlock }>();
 <style>
 .sponsors-block {
   .page-block-content {
+    padding-block: 2rem 8rem;
     text-align: center;
     display: grid;
     justify-content: center;

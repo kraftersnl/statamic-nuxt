@@ -1,9 +1,11 @@
 <script setup lang="ts">
-const { hTag = 'h3' } = defineProps<{
+const { hTag = 'h3', loading = 'eager' } = defineProps<{
   data: StatamicArticleEntry;
   hTag?: string;
   loading?: 'lazy' | 'eager';
 }>();
+
+const { locale } = useI18n();
 </script>
 
 <template>
@@ -25,13 +27,15 @@ const { hTag = 'h3' } = defineProps<{
           </NuxtLink>
         </component>
 
-        <time
+        <NuxtTime
           v-if="data.date"
-          :datetime="data.date.slice(0, 10)"
+          :datetime="data.date"
+          :locale="locale"
+          day="numeric"
+          month="long"
+          year="numeric"
           class="card-date"
-        >
-          {{ d(data.date) }}
-        </time>
+        />
 
         <p v-if="data.summary">{{ data.summary }}</p>
       </div>

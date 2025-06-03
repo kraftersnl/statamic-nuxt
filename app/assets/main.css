@@ -3,8 +3,8 @@
   --app-header-height: 4rem;
 
   --font-size-xxxxl: 4rem;
-  --font-size-xxxl: 3rem;
-  --font-size-xxl: 2.5rem;
+  --font-size-xxxl: 3.5rem;
+  --font-size-xxl: 3rem;
   --font-size-xl: 2rem;
   --font-size-lg: 1.5rem;
   --font-size-md: 1.25rem;
@@ -16,36 +16,6 @@
   @media (min-width: 480px) {
     --app-padding-inline: 2rem;
   }
-}
-
-.dark-mode {
-  --color-accent: hsl(0 0% 100%);
-  --color-accent-bg: hsl(0 0% 20%);
-  --color-accent-text: hsl(0 0% 60%);
-
-  --color-grey-text: hsl(0 0% 50%);
-  --color-grey-graphic: hsl(0 0% 40%);
-  --color-grey-bg: hsl(0 0% 10%);
-  --color-bg: hsl(0 0% 4%);
-  --color-card-bg: hsl(0 0% 0%);
-  --color-white: hsl(0 0% 0%);
-
-  --color-sub-footer: hsl(0 0% 0%);
-}
-
-.light-mode {
-  --color-accent: hsl(0 0% 20%);
-  --color-accent-bg: hsl(0 0% 87%);
-  --color-accent-text: hsl(0 0% 33%);
-
-  --color-grey-text: hsl(0 0% 40%);
-  --color-grey-graphic: hsl(0 0% 50%);
-  --color-grey-bg: hsl(0 0% 96%);
-  --color-bg: hsl(0 0% 100%);
-  --color-card-bg: white;
-  --color-white: white;
-
-  --color-sub-footer: hsl(0 0% 96%);
 }
 
 body {
@@ -69,18 +39,18 @@ h5,
 h6 {
   margin-block-start: 0;
   margin-block-end: 1rem;
-}
 
-h1 {
-  color: var(--color-accent);
+  @media (min-width: 360px) {
+    hyphens: none;
+  }
 }
 
 h2 {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-xxl);
 }
 
 h3 {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
 }
 
 h4,
@@ -98,11 +68,3 @@ blockquote {
     font-size: larger;
   }
 }
-
-/* p,
-ul,
-ol {
-  > a:hover {
-    color: var(--color-accent);
-  }
-} */

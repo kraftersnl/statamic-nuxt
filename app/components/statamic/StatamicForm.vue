@@ -19,6 +19,15 @@ const { data: form } = await useAsyncData<{ data: StatamicForm }>(
 );
 
 async function handleSubmit(formData: FormData) {
+  const checkboxFields = Object.values(form.value?.data?.fields)?.filter(
+    (f) => f.type === 'checkboxes'
+  );
+
+  const checkboxValues = formData.getAll('checkboxes');
+  formData.set(checkboxFields[0]?.handle, checkboxValues.split(','));
+
+  // return console.log(Object.fromEntries(formData));
+
   try {
     submittingForm.value = true;
 
@@ -60,6 +69,7 @@ async function handleSubmit(formData: FormData) {
         :name="field.handle"
         :options="field.options"
         :label="field.display"
+        variant="krafters"
       />
 
       <CheckboxGroup
@@ -69,6 +79,7 @@ async function handleSubmit(formData: FormData) {
         :options="field.options"
         :label="field.display"
         :required="field.validate?.includes('required')"
+        variant="krafters"
       />
 
       <ClientOnly v-if="field.handle === 'source'">
@@ -82,7 +93,8 @@ async function handleSubmit(formData: FormData) {
         :name="field.handle"
         :autocomplete="field.autocomplete"
         :required="field.validate?.includes('required')"
-        size="lg"
+        size="xl"
+        variant="krafters"
         :style="`--col-width: ${field.width}%`"
       />
 
@@ -92,6 +104,7 @@ async function handleSubmit(formData: FormData) {
         :name="field.handle"
         :required="field.validate?.includes('required')"
         :style="`--col-width: ${field.width}%`"
+        variant="krafters"
       />
     </template>
 
@@ -119,10 +132,10 @@ async function handleSubmit(formData: FormData) {
 
     <Button
       type="submit"
-      icon="paper-airplane"
-      size="lg"
-      variant="primary"
+      variant="cta"
       class="form-button"
+      icon="chevron-right"
+      icon-pos="end"
       :label="data.form_button_label || 'Verzenden'"
       :loading="submittingForm"
       :disabled="showSuccessMessage || showErrorMessage"
@@ -130,5 +143,3 @@ async function handleSubmit(formData: FormData) {
     />
   </Form>
 </template>
-
-<style></style>

@@ -61,7 +61,7 @@ Content can be customised by using slots with `<TheLayout>` component in `app.vu
 <template>
   <TheLayout>
     <template #logo>
-      <LogoKrafters />
+      <KraftersLogo />
     </template>
 
     <template #favicon>

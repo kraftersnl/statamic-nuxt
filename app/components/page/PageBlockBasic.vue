@@ -8,32 +8,55 @@ defineProps<{ data: BasicBlock }>();
     :class="[
       'page-block',
       'basic-block',
-      `image-position--${data?.image_pos?.key}`,
+      `image-position--${data?.image_position?.key}`,
     ]"
   >
     <div class="page-block-content">
-      <ContentBlockMapper :content="data?.content" />
+      <h2 v-if="data.super_title || data.title">
+        <span v-if="data.super_title" class="super-title">
+          {{ data.super_title }}
+        </span>
 
-      <div v-if="data?.image" class="image-column">
-        <StatamicImage
-          :data="data.image"
-          :caption="data.image_caption"
-          width="400"
-          height="267"
-          sizes="mobile:400px normal:800px"
-        />
-      </div>
+        <span v-if="data.title" class="title">
+          {{ data.title }}
+        </span>
+      </h2>
+
+      <ContentBlockMapper :content="data?.content" />
+    </div>
+
+    <div v-if="data?.image?.permalink" class="image-column">
+      <StatamicImage
+        :data="data.image"
+        :caption="data.image_caption"
+        width="400"
+        height="267"
+        sizes="mobile:400px normal:800px"
+      />
     </div>
   </section>
 </template>
 
 <style>
-.basic-block {
+.page-block.basic-block {
+  max-width: var(--app-max-width);
+  margin-inline: auto;
+
+  @media (min-width: 1200px) {
+    /* display: grid; */
+    align-items: center;
+    gap: 2rem;
+    grid-template-columns: var(--app-padding-inline) var(--app-max-width) var(
+        --app-padding-inline
+      );
+  }
+
   .image-column {
     width: 100%;
-    max-width: 480px;
+    max-width: 400px;
     margin-inline: auto;
     margin-block-start: 0.25rem;
+    margin-block-end: 1.5rem;
 
     img {
       width: 100%;
@@ -41,11 +64,23 @@ defineProps<{ data: BasicBlock }>();
       border-radius: var(--radius-lg);
     }
   }
+
+  .page-block-content {
+    padding-block: 5rem;
+
+    @media (min-width: 1200px) {
+      padding-inline: var(--app-padding-inline);
+    }
+
+    p {
+      max-width: 64ch;
+    }
+  }
 }
 
 @media (min-width: 768px) {
   .image-position--inline-end {
-    .page-block-content:has(.image-column) {
+    &:has(.image-column) {
       display: grid;
       align-items: center;
       gap: 4rem;
@@ -54,7 +89,7 @@ defineProps<{ data: BasicBlock }>();
   }
 
   .image-position--inline-start {
-    .page-block-content:has(.image-column) {
+    &:has(.image-column) {
       display: grid;
       align-items: center;
       gap: 4rem;

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineProps<{
+  alwaysDark?: boolean;
+}>();
+
 const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
   'main-nav',
   () =>
@@ -25,7 +29,9 @@ const mainNav = computed((): MenuItem[] =>
 </script>
 
 <template>
-  <header class="app-header">
+  <slot name="top" />
+
+  <header :class="['app-header', alwaysDark && 'dark-mode']">
     <div class="app-header-content">
       <MobileMenu
         ref="mobileMenu"
@@ -53,6 +59,8 @@ const mainNav = computed((): MenuItem[] =>
       </NuxtLink>
 
       <MenuList :list="mainNav" button-variant="topbar" inline />
+
+      <slot name="right" />
     </div>
 
     <ThemeToggle />
@@ -70,7 +78,7 @@ const mainNav = computed((): MenuItem[] =>
 
 .app-header {
   position: relative;
-  background-color: rgb(var(--rgb-app-nav) / 85%);
+  background-color: rgb(var(--rgb-app-nav) / 94%);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 

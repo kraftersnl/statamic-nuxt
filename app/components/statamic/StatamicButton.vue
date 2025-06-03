@@ -1,16 +1,23 @@
 <script setup lang="ts">
-defineProps<{ data?: ButtonContentBlock }>();
+const props = defineProps<{ data?: ButtonContentBlock }>();
+
+const variant = computed(() =>
+  props.data?.button_variant?.key === 'primary'
+    ? 'cta'
+    : props.data?.button_variant?.key
+);
 </script>
 
 <template>
   <Button
     :to="data?.button_link"
     :label="data?.button_label"
-    :variant="data?.button_variant?.key"
+    :variant="variant"
     :target="data?.button_link?.startsWith('http') ? '_blank' : undefined"
     :external="data?.button_link?.startsWith('http')"
     icon-pos="end"
     size="lg"
+    radius="sm"
     class="content-block-link"
   >
     <template #icon>

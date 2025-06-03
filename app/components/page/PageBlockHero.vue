@@ -1,11 +1,14 @@
 <script setup lang="ts">
 const props = defineProps<{ data?: HeroBlock }>();
 
+const imageBg = computed(
+  () => props.data?.image && props.data?.image_position?.key === 'background'
+);
 const imageFirst = computed(
-  () => props.data?.image && props.data?.image_pos?.key.endsWith('-start')
+  () => props.data?.image && props.data?.image_position?.key?.endsWith('-start')
 );
 const imageLast = computed(
-  () => props.data?.image && props.data?.image_pos?.key.endsWith('-end')
+  () => props.data?.image && props.data?.image_position?.key?.endsWith('-end')
 );
 </script>
 
@@ -15,32 +18,35 @@ const imageLast = computed(
     :class="[
       'page-block',
       'hero-block',
-      `image-position--${data?.image_pos?.key}
-    `,
+      `image-position--${data?.image_position?.key}`,
+      `background-color--${data.background_color?.key}`,
     ]"
     :style="[
       data?.image_max_height && `--image-max-height: ${data?.image_max_height}`,
+      imageBg && `background-image: url(${data?.image?.permalink})`,
     ]"
   >
-    <div v-if="imageFirst" class="hero-image">
+    <div class="hero-block-wrapper">
       <StatamicImage
+        v-if="imageFirst"
+        class="hero-image"
         loading="eager"
         :data="data?.image"
         :class="[data?.full_width_image && 'image--full-width']"
-        width="640"
-        height="320"
+        width="320"
+        height="180"
         sizes="mobile:640px normal:960px big:1440px"
       />
-    </div>
 
-    <div class="page-block-content">
-      <h1 v-if="data?.title">{{ data.title }}</h1>
+      <div class="page-block-content">
+        <h1 v-if="data?.title">{{ data.title }}</h1>
 
-      <ContentBlockMapper :content="data?.content" />
-    </div>
+        <ContentBlockMapper :content="data?.content" />
+      </div>
 
-    <div v-if="imageLast" class="hero-image">
       <StatamicImage
+        v-if="imageLast"
+        class="hero-image"
         loading="eager"
         :data="data?.image"
         :class="[data?.full_width_image && 'image--full-width']"
@@ -55,13 +61,9 @@ const imageLast = computed(
 <style>
 .hero-block {
   display: grid;
-  gap: 2rem;
-  align-items: center;
-  padding-block-end: 2.5rem;
-
-  @media (min-width: 768px) {
-    padding-block-end: 5rem;
-  }
+  min-height: calc(
+    100svh - var(--app-header-height) - var(--app-top-header-height)
+  );
 
   h1 {
     font-size: min(calc(var(--font-size-sm) + 3vw), var(--font-size-xxxl));
@@ -71,19 +73,56 @@ const imageLast = computed(
     font-size: min(calc(var(--font-size-sm) + 1vw), var(--font-size-lg));
   }
 
+  .hero-block-wrapper {
+    width: 100%;
+    display: grid;
+    align-items: center;
+    margin-inline: auto;
+    row-gap: 4rem;
+  }
+
   .hero-image {
     img {
-      max-height: var(--image-max-height, none);
-      max-width: 1920px;
-      object-fit: cover;
-      margin-inline: auto;
+      width: 100%;
     }
+  }
+}
 
-    .image--full-width {
-      img {
-        width: 100%;
-      }
-    }
+.hero-block.image-position--background {
+  align-items: end;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  &::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, hsl(0 0 0 / 50%));
+  }
+
+  .page-block-content {
+    z-index: 1;
+    width: 100%;
+    display: grid;
+    text-align: left;
+    padding-block: var(--app-header-height);
+  }
+
+  h1 {
+    color: white;
+    max-width: 501px;
+    text-wrap: balance;
+    margin-block-end: 0;
+    font-size: min(calc(var(--font-size-lg) + 4vw), var(--font-size-xxxxxl));
+  }
+
+  .bard-content {
+    color: white;
+    margin-inline: 0;
+    max-width: none;
   }
 }
 
@@ -97,32 +136,53 @@ const imageLast = computed(
   padding-block: var(--app-header-height) calc(2 * var(--app-header-height));
 }
 
-.hero-block.image-position--inline-end {
-  padding-block: var(--app-header-height);
+@media (min-width: 1280px) {
+  .hero-block.image-position--inline-end {
+    .hero-block-wrapper {
+      grid-template-columns:
+        1fr calc(var(--app-max-width) / 2)
+        calc(var(--app-max-width) / 2)
+        1fr;
+    }
 
-  @media (min-width: 1024px) {
-    padding-block-end: calc(2 * var(--app-header-height));
-    max-width: var(--app-max-width);
-    margin-inline: auto;
-    grid-template-columns: 3fr 2fr;
+    .page-block-content {
+      grid-column: 2 / span 1;
+      padding-inline-end: 4rem;
+    }
 
-    h1 {
-      font-size: min(calc(var(--font-size-xs) + 3vw), var(--font-size-xxl));
+    .hero-image {
+      grid-column: 3 / span 2;
+
+      img {
+        width: 100%;
+        height: calc(
+          100svh - var(--app-header-height) - var(--app-top-header-height)
+        );
+      }
     }
   }
-}
 
-.hero-block.image-position--inline-start {
-  padding-block: var(--app-header-height);
+  .hero-block.image-position--inline-start {
+    .hero-block-wrapper {
+      grid-template-columns:
+        1fr calc(var(--app-max-width) / 2)
+        calc(var(--app-max-width) / 2)
+        1fr;
+    }
+    .page-block-content {
+      grid-column: 3 / span 1;
+      padding-inline-start: 4rem;
+    }
 
-  @media (min-width: 1024px) {
-    padding-block-end: calc(2 * var(--app-header-height));
-    max-width: var(--app-max-width);
-    margin-inline: auto;
-    grid-template-columns: 2fr 3fr;
+    .hero-image {
+      grid-column: 1 / span 2;
 
-    h1 {
-      font-size: min(calc(var(--font-size-xs) + 3vw), var(--font-size-xxl));
+      img {
+        width: 100%;
+        height: calc(
+          100svh - var(--app-header-height) - var(--app-top-header-height)
+        );
+      }
     }
   }
 }

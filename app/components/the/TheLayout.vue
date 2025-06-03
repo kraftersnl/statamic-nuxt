@@ -39,24 +39,39 @@ if (typeof window !== 'undefined') {
 
     <SkipLink />
 
-    <TheHeader>
-      <template #logo>
-        <slot name="logo" />
-      </template>
-    </TheHeader>
+    <div class="header-main-wrapper">
+      <slot name="header">
+        <TheHeader>
+          <template #logo>
+            <slot name="logo" />
+          </template>
+        </TheHeader>
+      </slot>
 
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
 
-    <LazyTheFooter :data="company?.data" :nav-list="navList">
-      <template #favicon>
-        <slot name="favicon" />
-      </template>
+    <slot name="footer" v-bind="{ company }">
+      <LazyTheFooter :data="company?.data" :nav-list="navList">
+        <template #favicon>
+          <slot name="favicon" />
+        </template>
 
-      <template #copyright>
-        <slot name="copyright" />
-      </template>
-    </LazyTheFooter>
+        <template #copyright>
+          <slot name="copyright" />
+        </template>
+      </LazyTheFooter>
+    </slot>
   </div>
 </template>
+
+<style>
+.header-main-wrapper {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  background-color: var(--color-bg);
+}
+</style>

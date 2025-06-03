@@ -11,12 +11,49 @@ declare global {
     title?: string;
     full_width_image?: boolean;
     image_max_height?: string;
-    image_pos?: StatamicSelectOption;
+    image_position?: StatamicSelectOption;
+    background_color?: StatamicSelectOption;
   };
 
   type BasicBlock = StatamicPageBlock & {
-    image_pos?: StatamicSelectOption;
+    image_position?: StatamicSelectOption;
     image_caption?: string;
+    super_title?: string;
+    title?: string;
+  };
+
+  type ColumnsBlock = StatamicPageBlock & {
+    columns: Column[];
+  };
+
+  type TestimonialsBlock = StatamicPageBlock & {
+    super_title?: string;
+    title?: string;
+    entries?: StatamicTestimonialEntry[];
+  };
+
+  type TwoColsTextBlock = StatamicPageBlock & {
+    super_title?: string;
+    title?: string;
+    content?: StatamicContentBlock[];
+    background_color?: StatamicSelectOption;
+    background_shape?: StatamicSelectOption;
+    shape_position?: StatamicSelectOption;
+    image?: StatamicImage;
+  };
+
+  type TwoColsImageBlock = StatamicPageBlock & {
+    super_title?: string;
+    title?: string;
+    content?: StatamicContentBlock[];
+    background_color?: StatamicSelectOption;
+    image?: StatamicImage;
+    image_position?: StatamicSelectOption;
+  };
+
+  type Column = {
+    content?: StatamicContentBlock[];
+    background_color?: StatamicSelectOption;
   };
 
   type GridBlock = StatamicPageBlock & {
@@ -26,6 +63,9 @@ declare global {
   type FormBlock = StatamicPageBlock & {
     form?: StatamicForm;
     form_button_label?: string;
+    super_title?: string;
+    title?: string;
+    description?: string;
   };
 
   type ArticlesBlock = StatamicPageBlock & {
@@ -46,6 +86,7 @@ declare global {
 
   type StatamicContentBlock =
     | TextContentBlock
+    | IconContentBlock
     | ButtonContentBlock
     | ImageContentBlock
     | VideoContentBlock
@@ -56,6 +97,12 @@ declare global {
     type: 'text';
     id?: string;
     text: string;
+  };
+
+  type IconContentBlock = {
+    type: 'icon';
+    id?: string;
+    icon: string;
   };
 
   type ButtonContentBlock = {

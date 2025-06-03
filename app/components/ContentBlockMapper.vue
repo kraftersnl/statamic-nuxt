@@ -7,6 +7,12 @@ defineProps<{ content?: StatamicContentBlock[] }>();
     <template v-for="contentBlock in content" :key="contentBlock.id">
       <div v-if="contentBlock.type === 'text'" v-html="contentBlock.text" />
 
+      <StatamicIcon
+        v-if="contentBlock?.type === 'icon'"
+        :icon="contentBlock.icon"
+        class="statamic-icon"
+      />
+
       <StatamicImage
         v-if="contentBlock?.type === 'image'"
         :data="contentBlock.image"
@@ -37,9 +43,14 @@ defineProps<{ content?: StatamicContentBlock[] }>();
 <style>
 .bard-content {
   margin-inline: auto;
-  max-width: 860px;
   display: grid;
   gap: 1rem;
+
+  .statamic-icon svg {
+    width: var(--font-size-xxl);
+    height: var(--font-size-xxl);
+    margin-block-end: 1rem;
+  }
 
   figure {
     margin-block-end: 2rem;

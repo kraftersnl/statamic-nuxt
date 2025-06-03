@@ -1,0 +1,191 @@
+<script setup lang="ts">
+const props = defineProps<{ data: TestimonialsBlock }>();
+
+const testimonialList = ref<StatamicTestimonialEntry[]>();
+
+const { data: entries } = await useAsyncData<{
+  data: StatamicTestimonialEntry[];
+}>('testimonials', () =>
+  $fetch(`/api/collections/testimonials/entries/`, {
+    baseURL: useRuntimeConfig().public.statamicUrl,
+    query: {
+      fields: 'id,title,sub_title,summary,image',
+    },
+  })
+);
+
+testimonialList.value = entries.value?.data;
+
+const testimonialsWrapperRef = useTemplateRef('testimonialsWrapper');
+
+const { x, arrivedState } = useScroll(testimonialsWrapperRef, {
+  behavior: 'smooth',
+});
+
+const scrollWidth = computed(
+  () =>
+    testimonialsWrapperRef.value?.scrollWidth / testimonialList.value?.length
+);
+</script>
+
+<template>
+  <section :id="data?.anchor" :class="['page-block', 'testimonials-block']">
+    <div class="background-shape-wrapper">
+      <CircleDots />
+      <CircleStripes />
+    </div>
+
+    <div class="page-block-content">
+      <div class="left-column">
+        <h2 v-if="data.super_title || data.title">
+          <span v-if="data.super_title" class="super-title">
+            {{ data.super_title }}
+          </span>
+
+          <span v-if="data.title" class="title">
+            {{ data.title }}
+          </span>
+        </h2>
+      </div>
+
+      <div class="testimonials-wrapper">
+        <ul
+          ref="testimonialsWrapper"
+          role="list"
+          class="testimonials-list"
+          @scroll="handleScroll"
+        >
+          <li v-for="t in testimonialList" :key="t.id">
+            <StatamicTestimonial :data="t" />
+          </li>
+        </ul>
+
+        <ClientOnly>
+          <div v-if="testimonialList?.length > 1" class="carousel-controls">
+            <Button
+              icon="material-symbols:arrow-back"
+              radius="full"
+              label="Vorige ervaring"
+              hide-label
+              :disabled="arrivedState.left"
+              @click="x = x + -1 * scrollWidth"
+            />
+            <Button
+              icon="material-symbols:arrow-forward"
+              radius="full"
+              label="Volgende ervaring"
+              hide-label
+              :disabled="arrivedState.right"
+              @click="x = x + scrollWidth"
+            />
+          </div>
+        </ClientOnly>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style>
+.page-block.testimonials-block {
+  isolation: isolate;
+  background-color: var(--color-black-bg);
+  color: #ffffff;
+
+  h2 {
+    margin-block-end: 8rem;
+    display: grid;
+
+    .super-title {
+      font-size: var(--font-size-xxxs);
+      color: var(--color-grey-graph);
+      letter-spacing: 10%;
+      text-transform: uppercase;
+      margin-block-end: 1.5rem;
+    }
+  }
+
+  .page-block-content {
+    display: grid;
+    padding-block: 5rem;
+
+    padding-inline: 5rem;
+    @media (min-width: 1200px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    p {
+      margin-block-end: 1.5rem;
+
+      &:first-of-type {
+        margin-block-start: 3rem;
+      }
+    }
+
+    .testimonials-list {
+      padding-block-end: 2.5rem;
+      display: flex;
+      gap: 4rem;
+      grid-auto-flow: column;
+      overflow: scroll;
+      scroll-snap-type: x mandatory;
+
+      &:focus-visible {
+        outline: 2px solid white;
+        outline-offset: 0.5rem;
+        border-radius: var(--radius-xs);
+      }
+
+      li {
+        width: 100%;
+        scroll-snap-align: center;
+        flex: none;
+      }
+    }
+    .carousel-controls {
+      margin-block-start: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      .button {
+        --focus-color: white;
+      }
+    }
+  }
+
+  .background-shape-wrapper {
+    position: relative;
+  }
+
+  .background-shape {
+    position: absolute;
+    z-index: -1;
+  }
+
+  .background-shape--circle-stripes {
+    --color-shape: var(--color-brown-graphic);
+    opacity: 100%;
+    top: 200px;
+    width: min(100%, 140px);
+    height: auto;
+    right: var(--app-padding-inline);
+
+    @media (min-width: 1200px) {
+      left: 460px;
+      right: auto;
+    }
+  }
+
+  .background-shape--circle-dots {
+    opacity: 25%;
+    height: auto;
+    width: min(80vw, 400px);
+    top: 180px;
+    left: 2rem;
+
+    @media (min-width: 1200px) {
+      top: 100px;
+      left: 5rem;
+    }
+  }
+}
+</style>
