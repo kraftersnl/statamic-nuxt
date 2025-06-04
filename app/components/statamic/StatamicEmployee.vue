@@ -10,8 +10,8 @@ defineProps<{
       {{ data.title }}
     </h3>
 
-    <span v-if="data?.jobtitle" class="employee-jobtitle">
-      {{ data.jobtitle }}
+    <span v-if="data?.sub_title" class="employee-jobtitle">
+      {{ data.sub_title }}
     </span>
 
     <StatamicImage
@@ -32,6 +32,7 @@ defineProps<{
   .employee-name {
     font-size: var(--font-size-md);
     margin-block: 1rem 0.5rem;
+    white-space: nowrap;
   }
 
   .employee-jobtitle {
@@ -45,6 +46,7 @@ defineProps<{
 
     img {
       width: 120px;
+      height: 120px;
       border-radius: var(--radius-full);
     }
   }

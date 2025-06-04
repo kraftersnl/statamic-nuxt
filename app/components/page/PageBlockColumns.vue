@@ -41,17 +41,6 @@ defineProps<{ data: ColumnsBlock }>();
   }
 
   .page-block-column {
-    &:nth-of-type(odd) {
-      @media (min-width: 1200px) {
-        /* grid-column: 2 / 3; */
-      }
-    }
-    &:nth-of-type(even) {
-      @media (min-width: 1200px) {
-        /* grid-column: 3 / 4; */
-      }
-    }
-
     &.background-color--grey {
       background-color: var(--color-grey-bg);
     }

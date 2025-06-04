@@ -1,5 +1,16 @@
 <script setup lang="ts">
 defineProps<{ data?: EmployeesBlock }>();
+
+const { data: entries } = await useAsyncData<{
+  data: StatamicEmployeeEntry[];
+}>('testimonials', () =>
+  $fetch(`/api/collections/employees/entries/`, {
+    baseURL: useRuntimeConfig().public.statamicUrl,
+    query: {
+      fields: 'id,title,sub_title,summary,image',
+    },
+  })
+);
 </script>
 
 <template>
@@ -7,8 +18,8 @@ defineProps<{ data?: EmployeesBlock }>();
     <div class="page-block-content">
       <ContentBlockMapper :content="data?.content" />
 
-      <ul v-if="data?.entries?.length" role="list" class="entries-list">
-        <li v-for="entry in data?.entries" :key="entry.id">
+      <ul v-if="entries?.data?.length" role="list" class="entries-list">
+        <li v-for="entry in entries?.data" :key="entry.id">
           <StatamicEmployee :data="entry" />
         </li>
       </ul>
@@ -19,6 +30,7 @@ defineProps<{ data?: EmployeesBlock }>();
 <style>
 .employees-block {
   .page-block-content {
+    padding-block: 4rem;
     max-width: 800px;
     text-align: center;
     display: grid;

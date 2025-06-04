@@ -99,8 +99,7 @@ defineProps<{ data?: FormBlock }>();
     }
 
     h2 {
-      font-size: var(--font-size-lg);
-      max-width: 29ch;
+      font-size: var(--font-size-xl);
     }
   }
 }

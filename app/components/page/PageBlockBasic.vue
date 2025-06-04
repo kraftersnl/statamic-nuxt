@@ -9,8 +9,14 @@ defineProps<{ data: BasicBlock }>();
       'page-block',
       'basic-block',
       `image-position--${data?.image_position?.key}`,
+      `shape-position--${data?.shape_position?.key}`,
+      `background-color--${data.background_color?.key}`,
     ]"
   >
+    <CircleStripes v-if="data.background_shape?.key === 'circle_stripes'" />
+    <CircleDots v-if="data.background_shape?.key === 'circle_dots'" />
+    <RectangleDots v-if="data.background_shape?.key === 'rectangle_dots'" />
+
     <div class="page-block-content">
       <h2 v-if="data.super_title || data.title">
         <span v-if="data.super_title" class="super-title">
@@ -25,15 +31,15 @@ defineProps<{ data: BasicBlock }>();
       <ContentBlockMapper :content="data?.content" />
     </div>
 
-    <div v-if="data?.image?.permalink" class="image-column">
-      <StatamicImage
-        :data="data.image"
-        :caption="data.image_caption"
-        width="400"
-        height="267"
-        sizes="mobile:400px normal:800px"
-      />
-    </div>
+    <StatamicImage
+      v-if="data?.image?.permalink"
+      :data="data.image"
+      :caption="data.image_caption"
+      width="400"
+      height="267"
+      sizes="mobile:400px normal:800px"
+      class="image-column"
+    />
   </section>
 </template>
 
@@ -42,13 +48,17 @@ defineProps<{ data: BasicBlock }>();
   max-width: var(--app-max-width);
   margin-inline: auto;
 
-  @media (min-width: 1200px) {
-    /* display: grid; */
-    align-items: center;
-    gap: 2rem;
-    grid-template-columns: var(--app-padding-inline) var(--app-max-width) var(
-        --app-padding-inline
-      );
+  &.shape-position--block-end {
+    padding-block-end: 4rem;
+
+    @media (min-width: 1200px) {
+      padding-block-end: 0;
+    }
+
+    .background-shape--circle-dots {
+      right: 10vw;
+      left: auto;
+    }
   }
 
   .image-column {
@@ -73,7 +83,7 @@ defineProps<{ data: BasicBlock }>();
     }
 
     p {
-      max-width: 64ch;
+      max-width: 58ch;
     }
   }
 }

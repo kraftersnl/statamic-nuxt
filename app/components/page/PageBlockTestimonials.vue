@@ -107,9 +107,10 @@ const scrollWidth = computed(
   .page-block-content {
     display: grid;
     padding-block: 5rem;
+    padding-inline: 2rem;
 
-    padding-inline: 5rem;
     @media (min-width: 1200px) {
+      padding-inline: 5rem;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
     }

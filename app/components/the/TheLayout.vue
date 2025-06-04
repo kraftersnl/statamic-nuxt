@@ -73,5 +73,6 @@ if (typeof window !== 'undefined') {
   z-index: 1;
   isolation: isolate;
   background-color: var(--color-bg);
+  overflow: clip; /* cut off background shape when revealing footer*/
 }
 </style>

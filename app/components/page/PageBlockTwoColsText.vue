@@ -38,10 +38,10 @@ defineProps<{ data: TwoColsTextBlock }>();
 <style>
 .page-block.two-cols-text-block {
   .page-block-content {
-    display: grid;
     padding-block: 5rem;
 
     @media (min-width: 1200px) {
+      display: grid;
       padding-inline: var(--app-padding-inline);
       gap: 4rem;
       grid-template-columns: 1fr 1fr;

@@ -6,6 +6,7 @@ const PageBlockTwoColsText = resolveComponent('PageBlockTwoColsText');
 const PageBlockTwoColsImage = resolveComponent('PageBlockTwoColsImage');
 const PageBlockTestimonials = resolveComponent('PageBlockTestimonials');
 const PageBlockBasic = resolveComponent('PageBlockBasic');
+const PageBlockImage = resolveComponent('PageBlockImage');
 const PageBlockColumns = resolveComponent('PageBlockColumns');
 const PageBlockForm = resolveComponent('PageBlockForm');
 const PageBlockArticles = resolveComponent('PageBlockArticles');
@@ -20,6 +21,7 @@ function getBlockComponent(block: StatamicPageBlock) {
   if (block.type === 'testimonials') return PageBlockTestimonials;
   if (block.type === 'basic') return PageBlockBasic;
   if (block.type === 'columns') return PageBlockColumns;
+  if (block.type === 'image') return PageBlockImage;
   if (block.type === 'form') return PageBlockForm;
   if (block.type === 'articles') return PageBlockArticles;
   if (block.type === 'employees') return PageBlockEmployees;
@@ -54,6 +56,10 @@ function getBlockComponent(block: StatamicPageBlock) {
     scroll-margin-block: 4rem;
   }
 
+  h2 {
+    font-size: var(--font-calc-heading-2, var(--font-size-xl));
+  }
+
   :where(h2:has(.super-title)) {
     margin-block-end: 0;
     display: grid;
@@ -64,6 +70,9 @@ function getBlockComponent(block: StatamicPageBlock) {
       letter-spacing: 10%;
       text-transform: uppercase;
       margin-block-end: 1.5rem;
+    }
+    .title {
+      max-width: min(100%, 640px);
     }
   }
 
@@ -85,18 +94,16 @@ function getBlockComponent(block: StatamicPageBlock) {
   }
 
   .background-shape--rectangle-dots {
-    left: 80px;
     width: var(--shape-width, 120px);
     height: auto;
+    right: var(--app-padding-inline);
+
+    @media (min-width: 1200px) {
+      left: 160px;
+    }
   }
 
-  .background-shape--circle-stripes {
-    bottom: -20%;
-    left: var(--app-padding-inline);
-    width: var(--shape-width, 140px);
-    height: auto;
-  }
-
+  .background-shape--circle-stripes,
   .background-shape--circle-dots {
     height: auto;
   }
@@ -110,6 +117,19 @@ function getBlockComponent(block: StatamicPageBlock) {
       width: var(--shape-width, 320px);
     }
 
+    .background-shape--circle-stripes {
+      top: -8%;
+      left: 0;
+      margin-left: -70px;
+      width: var(--shape-width, 140px);
+
+      @media (min-width: 1200px) {
+        top: -12%;
+        width: var(--shape-width, 240px);
+        left: 160px;
+      }
+    }
+
     .background-shape--rectangle-dots {
       top: 10%;
     }
@@ -119,11 +139,17 @@ function getBlockComponent(block: StatamicPageBlock) {
     .background-shape--circle-dots {
       bottom: -20%;
       width: var(--shape-width, 240px);
-      left: 30vw;
+      left: 25vw;
+    }
+
+    .background-shape--circle-stripes {
+      bottom: -20%;
+      left: var(--app-padding-inline);
+      width: var(--shape-width, 140px);
     }
 
     .background-shape--rectangle-dots {
-      bottom: 10%;
+      bottom: 6%;
     }
   }
 }

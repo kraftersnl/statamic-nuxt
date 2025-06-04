@@ -27,7 +27,6 @@ defineProps<{
 </template>
 
 <style>
-/* 3rem */
 .testimonial-card {
   .author-name {
     font-size: var(--font-size-sm);

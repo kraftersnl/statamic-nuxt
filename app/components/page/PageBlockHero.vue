@@ -66,7 +66,9 @@ const imageLast = computed(
   );
 
   h1 {
-    font-size: min(calc(var(--font-size-sm) + 3vw), var(--font-size-xxxl));
+    max-width: min(100%, 640px);
+    margin-block-end: 0;
+    font-size: min(calc(var(--font-size-lg) + 4vw), var(--font-size-xxxxxl));
   }
 
   p {
@@ -89,9 +91,9 @@ const imageLast = computed(
 }
 
 .hero-block.image-position--background {
-  align-items: end;
   background-size: cover;
-  background-position: center center;
+  background-position: 50% 50%;
+  background-attachment: fixed;
   background-repeat: no-repeat;
 
   &::after {
@@ -100,7 +102,21 @@ const imageLast = computed(
     width: 100%;
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent 50%, hsl(0 0 0 / 50%));
+    background: linear-gradient(to bottom, transparent 0%, hsl(0 0 0 / 75%));
+
+    @media (min-width: 1024px) {
+      background: linear-gradient(to bottom, transparent 50%, hsl(0 0 0 / 50%));
+    }
+  }
+
+  h1 {
+    color: white;
+  }
+
+  .bard-content {
+    color: white;
+    margin-inline: 0;
+    max-width: min(100%, 640px);
   }
 
   .page-block-content {
@@ -109,20 +125,6 @@ const imageLast = computed(
     display: grid;
     text-align: left;
     padding-block: var(--app-header-height);
-  }
-
-  h1 {
-    color: white;
-    max-width: 501px;
-    text-wrap: balance;
-    margin-block-end: 0;
-    font-size: min(calc(var(--font-size-lg) + 4vw), var(--font-size-xxxxxl));
-  }
-
-  .bard-content {
-    color: white;
-    margin-inline: 0;
-    max-width: none;
   }
 }
 
@@ -136,8 +138,12 @@ const imageLast = computed(
   padding-block: var(--app-header-height) calc(2 * var(--app-header-height));
 }
 
-@media (min-width: 1280px) {
-  .hero-block.image-position--inline-end {
+.hero-block.image-position--inline-end {
+  .page-block-content {
+    padding-block-start: 4rem;
+  }
+
+  @media (min-width: 1280px) {
     .hero-block-wrapper {
       grid-template-columns:
         1fr calc(var(--app-max-width) / 2)
