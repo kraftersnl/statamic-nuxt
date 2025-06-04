@@ -93,16 +93,7 @@ const scrollWidth = computed(
   color: #ffffff;
 
   h2 {
-    margin-block-end: 8rem;
-    display: grid;
-
-    .super-title {
-      font-size: var(--font-size-xxxs);
-      color: var(--color-grey-graph);
-      letter-spacing: 10%;
-      text-transform: uppercase;
-      margin-block-end: 1.5rem;
-    }
+    margin-block-end: 10rem;
   }
 
   .page-block-content {

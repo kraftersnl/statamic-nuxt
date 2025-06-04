@@ -6,8 +6,10 @@ defineProps<{ data?: CustomListItem[] }>();
   <ul v-if="data?.length" role="list" class="statamic-icon-list">
     <li v-for="item in data">
       <StatamicIcon :icon="item.icon" />
+
       <div class="list-item-content">
         <h3 v-if="item.title" class="list-item-title">{{ item.title }}</h3>
+
         <span class="list-item-text">{{ item.text }}</span>
       </div>
     </li>
@@ -23,7 +25,12 @@ defineProps<{ data?: CustomListItem[] }>();
   > li {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 1rem;
+    gap: 1.25rem;
+  }
+
+  h3 {
+    font-size: var(--font-size-md);
+    margin-block-end: 0.75rem;
   }
 
   .icon svg {

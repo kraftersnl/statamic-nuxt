@@ -5,6 +5,7 @@ const PageBlockHero = resolveComponent('PageBlockHero');
 const PageBlockTwoColsText = resolveComponent('PageBlockTwoColsText');
 const PageBlockTwoColsImage = resolveComponent('PageBlockTwoColsImage');
 const PageBlockTestimonials = resolveComponent('PageBlockTestimonials');
+const PageBlockProjects = resolveComponent('PageBlockProjects');
 const PageBlockBasic = resolveComponent('PageBlockBasic');
 const PageBlockImage = resolveComponent('PageBlockImage');
 const PageBlockColumns = resolveComponent('PageBlockColumns');
@@ -19,6 +20,7 @@ function getBlockComponent(block: StatamicPageBlock) {
   if (block.type === 'two_cols_text') return PageBlockTwoColsText;
   if (block.type === 'two_cols_image') return PageBlockTwoColsImage;
   if (block.type === 'testimonials') return PageBlockTestimonials;
+  if (block.type === 'projects') return PageBlockProjects;
   if (block.type === 'basic') return PageBlockBasic;
   if (block.type === 'columns') return PageBlockColumns;
   if (block.type === 'image') return PageBlockImage;
@@ -57,7 +59,7 @@ function getBlockComponent(block: StatamicPageBlock) {
   }
 
   h2 {
-    font-size: var(--font-calc-heading-2, var(--font-size-xl));
+    font-size: var(--font-calc-heading-2, var(--font-size-xxxl));
   }
 
   :where(h2:has(.super-title)) {
@@ -109,10 +111,8 @@ function getBlockComponent(block: StatamicPageBlock) {
   }
 
   &.shape-position--block-start {
-    padding-block-start: 8rem;
-
     .background-shape--circle-dots {
-      top: 0%;
+      top: 2%;
       left: 25%;
       width: var(--shape-width, 320px);
     }

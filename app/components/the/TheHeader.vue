@@ -70,7 +70,7 @@ const mainNav = computed((): MenuItem[] =>
 </template>
 
 <style>
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .app-header-content .mobile-menu-wrapper {
     display: none;
   }
@@ -102,7 +102,7 @@ const mainNav = computed((): MenuItem[] =>
   align-items: center;
   gap: 1rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     justify-content: center;
     gap: 2rem;
   }
@@ -119,7 +119,7 @@ const mainNav = computed((): MenuItem[] =>
       display: none;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       margin-left: 0;
       padding-right: 0;
     }
@@ -130,7 +130,7 @@ const mainNav = computed((): MenuItem[] =>
     padding-inline-end: 3rem;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .menu-list-nav {
       display: block;
     }

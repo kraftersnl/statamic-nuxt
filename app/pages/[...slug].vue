@@ -13,7 +13,7 @@ const collection =
 const { data: entries } = await useAsyncData<{ data: StatamicPageEntry[] }>(
   route.path,
   () =>
-    $fetch(`/api/collections/${collection}/entries/`, {
+    $fetch(`/api/collections/${collection}/entries`, {
       baseURL: useRuntimeConfig().public.statamicUrl,
       query: {
         'filter[url]': stripTrailingSlash(route.path),

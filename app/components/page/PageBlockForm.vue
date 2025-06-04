@@ -19,6 +19,7 @@ defineProps<{ data?: FormBlock }>();
         <p>{{ data?.description }}</p>
 
         <StatamicForm v-if="data?.form?.handle" :data="data" />
+        <ContentBlockMapper v-else :content="data?.content" />
       </div>
 
       <div class="right-column">
@@ -26,7 +27,10 @@ defineProps<{ data?: FormBlock }>();
           <CircleDots />
         </div>
 
-        <ContentBlockMapper :content="data?.content" />
+        <ContentBlockMapper
+          v-if="data?.form?.handle"
+          :content="data?.content"
+        />
       </div>
     </div>
   </section>
@@ -35,7 +39,7 @@ defineProps<{ data?: FormBlock }>();
 <style>
 .page-block.form-block {
   --focus-color: var(--color-accent-graphic);
-  border-bottom: 2px solid var(--color-brown-graphic);
+  border-bottom: 2px solid var(--color-accent-graphic);
 
   .background-shape-wrapper {
     position: relative;
@@ -71,18 +75,6 @@ defineProps<{ data?: FormBlock }>();
   .left-column {
     @media (min-width: 1200px) {
       padding-inline-end: var(--app-padding-inline);
-    }
-
-    h2 {
-      display: grid;
-
-      .super-title {
-        font-size: var(--font-size-xxxs);
-        color: var(--color-grey-graph);
-        letter-spacing: 10%;
-        text-transform: uppercase;
-        margin-block-end: 1.5rem;
-      }
     }
 
     p {

@@ -49,7 +49,6 @@ defineProps<{ data: BasicBlock }>();
 
 <style>
 .page-block.basic-block {
-  max-width: var(--app-max-width);
   margin-inline: auto;
 
   &.shape-position--block-end {
@@ -80,6 +79,7 @@ defineProps<{ data: BasicBlock }>();
   }
 
   .page-block-content {
+    max-width: var(--app-max-width);
     padding-block: 5rem;
 
     @media (min-width: 1200px) {

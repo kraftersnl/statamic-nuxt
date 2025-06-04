@@ -68,8 +68,12 @@ declare global {
     date?: string;
   };
 
+  type StatamicProjectEntry = StatamicEntry & {
+    sub_title?: string;
+  };
+
   type StatamicEmployeesEntry = StatamicEntry & {
-    jobtitle?: string;
+    sub_title?: string;
   };
 
   type StatamicTestimonialEntry = StatamicEntry & {

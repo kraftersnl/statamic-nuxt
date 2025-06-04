@@ -94,7 +94,6 @@ defineProps<{
   h2 {
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
-    color: var(--color-accent-text);
     margin-block-end: 0.5rem;
   }
 
