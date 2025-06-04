@@ -8,7 +8,8 @@ defineProps<{ data: TwoColsImageBlock }>();
     :class="[
       'page-block',
       'two-cols-image-block',
-      `background-color--${data.background_color?.key}`,
+      data.background_color?.key &&
+        `background-color--${data.background_color.key}`,
     ]"
   >
     <div
@@ -53,33 +54,16 @@ defineProps<{ data: TwoColsImageBlock }>();
 
 <style>
 .page-block.two-cols-image-block {
-  display: grid;
-
   @media (min-width: 1200px) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  h2 {
-    margin-block-end: 0;
     display: grid;
-
-    .super-title {
-      font-size: var(--font-size-xxxs);
-      color: var(--color-grey-text);
-      letter-spacing: 10%;
-      text-transform: uppercase;
-      margin-block-end: 1.5rem;
-    }
-
-    .title {
-      max-width: 18ch;
-    }
+    grid-template-columns: 1fr 1fr;
   }
 
   .image-column {
     img {
       aspect-ratio: 1;
       height: auto;
+      min-height: calc(100svh - var(--app-header-height));
       width: 100%;
       object-fit: cover;
     }
@@ -94,7 +78,7 @@ defineProps<{ data: TwoColsImageBlock }>();
     }
 
     p {
-      max-width: 37ch;
+      max-width: 640ch;
     }
   }
 }

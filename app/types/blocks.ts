@@ -87,6 +87,7 @@ declare global {
   type StatamicContentBlock =
     | TextContentBlock
     | IconContentBlock
+    | ListContentBlock
     | ButtonContentBlock
     | ImageContentBlock
     | VideoContentBlock
@@ -107,11 +108,24 @@ declare global {
 
   type ButtonContentBlock = {
     type: 'button';
-    id: string;
-    button_label: string;
+    id?: string;
+    button_label?: string;
     button_link?: string;
     button_icon?: string;
     button_variant: StatamicSelectOption;
+  };
+
+  type ListContentBlock = {
+    type: 'list';
+    id?: string;
+    list: CustomListItem[];
+  };
+
+  type CustomListItem = {
+    icon?: string;
+    title?: string;
+    text?: string;
+    id?: string;
   };
 
   type FormContentBlock = {

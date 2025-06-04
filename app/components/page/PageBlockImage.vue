@@ -8,7 +8,8 @@ defineProps<{ data: BasicBlock }>();
     :class="[
       'page-block',
       'image-block',
-      `background-color--${data.background_color?.key}`,
+      data.background_color?.key &&
+        `background-color--${data.background_color.key}`,
     ]"
   >
     <div class="page-block-content">

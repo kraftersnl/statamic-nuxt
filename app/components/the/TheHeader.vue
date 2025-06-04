@@ -65,7 +65,7 @@ const mainNav = computed((): MenuItem[] =>
 
     <ThemeToggle />
 
-    <NuxtLoadingIndicator color="var(--color-accent)" />
+    <NuxtLoadingIndicator color="var(--color-accent-graphic)" />
   </header>
 </template>
 

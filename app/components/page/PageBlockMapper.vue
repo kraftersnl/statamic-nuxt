@@ -61,7 +61,7 @@ function getBlockComponent(block: StatamicPageBlock) {
   }
 
   :where(h2:has(.super-title)) {
-    margin-block-end: 0;
+    margin-block-end: 2rem;
     display: grid;
 
     .super-title {
@@ -72,7 +72,7 @@ function getBlockComponent(block: StatamicPageBlock) {
       margin-block-end: 1.5rem;
     }
     .title {
-      max-width: min(100%, 640px);
+      max-width: 640px;
     }
   }
 
@@ -109,7 +109,7 @@ function getBlockComponent(block: StatamicPageBlock) {
   }
 
   &.shape-position--block-start {
-    padding-block-start: 6rem;
+    padding-block-start: 8rem;
 
     .background-shape--circle-dots {
       top: 0%;
@@ -137,7 +137,7 @@ function getBlockComponent(block: StatamicPageBlock) {
 
   &.shape-position--block-end {
     .background-shape--circle-dots {
-      bottom: -20%;
+      top: 340px;
       width: var(--shape-width, 240px);
       left: 25vw;
     }

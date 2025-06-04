@@ -60,6 +60,7 @@ async function handleSubmit(formData: FormData) {
 <template>
   <Form
     v-if="form?.data?.fields && Object.keys(form.data.fields)?.length"
+    style="--column-gap: 0.75rem"
     @submit="handleSubmit"
   >
     <template v-for="field in form.data.fields" :key="field.handle">
@@ -93,9 +94,9 @@ async function handleSubmit(formData: FormData) {
         :name="field.handle"
         :autocomplete="field.autocomplete"
         :required="field.validate?.includes('required')"
-        size="xl"
+        size="lg"
         variant="krafters"
-        :style="`--col-width: ${field.width}%`"
+        :style="`--col-width: calc(${field.width}% - var(--column-gap))`"
       />
 
       <Textarea
@@ -103,7 +104,7 @@ async function handleSubmit(formData: FormData) {
         :label="field.display"
         :name="field.handle"
         :required="field.validate?.includes('required')"
-        :style="`--col-width: ${field.width}%`"
+        :style="`--col-width: calc(${field.width}% - var(--column-gap))`"
         variant="krafters"
       />
     </template>

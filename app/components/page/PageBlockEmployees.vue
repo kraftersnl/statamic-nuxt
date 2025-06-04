@@ -3,7 +3,7 @@ defineProps<{ data?: EmployeesBlock }>();
 
 const { data: entries } = await useAsyncData<{
   data: StatamicEmployeeEntry[];
-}>('testimonials', () =>
+}>('employees', () =>
   $fetch(`/api/collections/employees/entries/`, {
     baseURL: useRuntimeConfig().public.statamicUrl,
     query: {

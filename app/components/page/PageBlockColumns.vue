@@ -9,7 +9,8 @@ defineProps<{ data: ColumnsBlock }>();
       :key="i"
       :class="[
         'page-block-column',
-        `background-color--${col.background_color?.key}`,
+        data.background_color?.key &&
+          `background-color--${data.background_color.key}`,
       ]"
     >
       <div
@@ -36,7 +37,7 @@ defineProps<{ data: ColumnsBlock }>();
     padding-block: 2rem;
 
     .statamic-icon {
-      color: var(--color-accent);
+      color: var(--color-accent-graphic);
     }
   }
 

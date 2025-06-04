@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ content?: StatamicContentBlock[] }>();
+const props = defineProps<{ content?: StatamicContentBlock[] }>();
 </script>
 
 <template>
@@ -11,6 +11,11 @@ defineProps<{ content?: StatamicContentBlock[] }>();
         v-if="contentBlock?.type === 'icon'"
         :icon="contentBlock.icon"
         class="statamic-icon"
+      />
+
+      <StatamicIconList
+        v-if="contentBlock?.type === 'list'"
+        :data="contentBlock.list"
       />
 
       <StatamicImage
@@ -61,7 +66,7 @@ defineProps<{ content?: StatamicContentBlock[] }>();
   ul,
   ol {
     > a:hover {
-      color: var(--color-accent);
+      color: var(--color-accent-text);
     }
 
     &:has(+ h2) {

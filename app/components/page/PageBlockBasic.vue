@@ -8,9 +8,13 @@ defineProps<{ data: BasicBlock }>();
     :class="[
       'page-block',
       'basic-block',
-      `image-position--${data?.image_position?.key}`,
-      `shape-position--${data?.shape_position?.key}`,
-      `background-color--${data.background_color?.key}`,
+      data?.image_position?.key &&
+        `image-position--${data?.image_position.key}`,
+      data.background_color?.key &&
+        `background-color--${data.background_color.key}`,
+      data.background_shape?.key &&
+        `background-shape--${data.background_shape.key}`,
+      data.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
   >
     <CircleStripes v-if="data.background_shape?.key === 'circle_stripes'" />

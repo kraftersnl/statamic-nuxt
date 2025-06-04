@@ -8,9 +8,11 @@ defineProps<{ data: TwoColsTextBlock }>();
     :class="[
       'page-block',
       'two-cols-text-block',
-      `background-color--${data.background_color?.key}`,
-      `background-shape--${data.background_shape?.key}`,
-      `shape-position--${data.shape_position?.key}`,
+      data.background_color?.key &&
+        `background-color--${data.background_color.key}`,
+      data.background_shape?.key &&
+        `background-shape--${data.background_shape.key}`,
+      data.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
   >
     <CircleStripes v-if="data.background_shape?.key === 'circle_stripes'" />

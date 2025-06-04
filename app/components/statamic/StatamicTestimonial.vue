@@ -28,6 +28,10 @@ defineProps<{
 
 <style>
 .testimonial-card {
+  .testimonial-author {
+    display: grid;
+  }
+
   .author-name {
     font-size: var(--font-size-sm);
     margin-block-end: 0;
@@ -52,21 +56,21 @@ defineProps<{
     }
   }
 
-  .testimonial-author {
-    display: grid;
-  }
-
   blockquote {
     border: none;
     padding: 0;
     margin-block-start: 3rem;
-    font-size: var(--font-size-xl);
     line-height: 1.35;
+    font-size: var(--font-size-xl);
 
-    &::before {
+    @media (min-width: 1024px) {
+      font-size: var(--font-size-xxl);
+    }
+
+    &:not(:empty)::before {
       content: open-quote;
     }
-    &::after {
+    &:not(:empty)::after {
       content: close-quote;
     }
   }

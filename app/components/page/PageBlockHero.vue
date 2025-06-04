@@ -18,8 +18,13 @@ const imageLast = computed(
     :class="[
       'page-block',
       'hero-block',
-      `image-position--${data?.image_position?.key}`,
-      `background-color--${data.background_color?.key}`,
+      data?.image_position?.key &&
+        `image-position--${data?.image_position.key}`,
+      data.background_color?.key &&
+        `background-color--${data.background_color.key}`,
+      data.background_shape?.key &&
+        `background-shape--${data.background_shape.key}`,
+      data.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
     :style="[
       data?.image_max_height && `--image-max-height: ${data?.image_max_height}`,
@@ -66,13 +71,13 @@ const imageLast = computed(
   );
 
   h1 {
-    max-width: min(100%, 640px);
+    max-width: 640px;
     margin-block-end: 0;
-    font-size: min(calc(var(--font-size-lg) + 4vw), var(--font-size-xxxxxl));
+    font-size: var(--font-calc-heading-1);
   }
 
   p {
-    font-size: min(calc(var(--font-size-sm) + 1vw), var(--font-size-lg));
+    font-size: var(--font-calc-body-1);
   }
 
   .hero-block-wrapper {
@@ -92,7 +97,7 @@ const imageLast = computed(
 
 .hero-block.image-position--background {
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: 50% calc(50% + var(--app-header-height));
   background-attachment: fixed;
   background-repeat: no-repeat;
 
@@ -116,7 +121,7 @@ const imageLast = computed(
   .bard-content {
     color: white;
     margin-inline: 0;
-    max-width: min(100%, 640px);
+    max-width: 640px;
   }
 
   .page-block-content {
@@ -167,14 +172,22 @@ const imageLast = computed(
       }
     }
   }
+}
 
-  .hero-block.image-position--inline-start {
+.hero-block.image-position--inline-start {
+  .hero-block-wrapper {
+    align-content: start;
+  }
+
+  @media (min-width: 1280px) {
     .hero-block-wrapper {
+      align-items: center;
       grid-template-columns:
         1fr calc(var(--app-max-width) / 2)
         calc(var(--app-max-width) / 2)
         1fr;
     }
+
     .page-block-content {
       grid-column: 3 / span 1;
       padding-inline-start: 4rem;

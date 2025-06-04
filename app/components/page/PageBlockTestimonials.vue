@@ -87,6 +87,7 @@ const scrollWidth = computed(
 
 <style>
 .page-block.testimonials-block {
+  overflow: clip;
   isolation: isolate;
   background-color: var(--color-black-bg);
   color: #ffffff;
@@ -123,8 +124,12 @@ const scrollWidth = computed(
       }
     }
 
+    .testimonials-wrapper {
+      display: grid;
+    }
+
     .testimonials-list {
-      padding-block-end: 2.5rem;
+      padding-block-end: 5rem;
       display: flex;
       gap: 4rem;
       grid-auto-flow: column;
