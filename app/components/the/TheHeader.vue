@@ -4,7 +4,7 @@ defineProps<{
 }>();
 
 const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
-  'main-nav',
+  'main-navigation',
   () =>
     $fetch('/api/navs/main/tree/', {
       baseURL: useRuntimeConfig().public.statamicUrl,
