@@ -18,6 +18,7 @@ const imageLast = computed(
     :class="[
       'page-block',
       'hero-block',
+      data.background_fixed && `background-attachment--fixed`,
       data?.image_position?.key &&
         `image-position--${data?.image_position.key}`,
       data.background_color?.key &&
@@ -66,9 +67,7 @@ const imageLast = computed(
 <style>
 .hero-block {
   display: grid;
-  min-height: calc(
-    100svh - var(--app-header-height) - var(--app-top-header-height)
-  );
+  min-height: calc(100svh - var(--app-header-height));
 
   h1 {
     max-width: 640px;
@@ -95,10 +94,13 @@ const imageLast = computed(
   }
 }
 
+.background-attachment--fixed {
+  background-attachment: fixed;
+}
+
 .hero-block.image-position--background {
   background-size: cover;
-  background-position: 50% calc(50% + var(--app-header-height));
-  background-attachment: fixed;
+  background-position: 50% 50%;
   background-repeat: no-repeat;
 
   &::after {
@@ -198,9 +200,7 @@ const imageLast = computed(
 
       img {
         width: 100%;
-        height: calc(
-          100svh - var(--app-header-height) - var(--app-top-header-height)
-        );
+        height: calc(100svh - var(--app-header-height));
       }
     }
   }

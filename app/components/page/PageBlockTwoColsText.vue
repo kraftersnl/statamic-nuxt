@@ -15,11 +15,11 @@ defineProps<{ data: TwoColsTextBlock }>();
       data.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
   >
-    <CircleStripes v-if="data.background_shape?.key === 'circle_stripes'" />
-    <CircleDots v-if="data.background_shape?.key === 'circle_dots'" />
-    <RectangleDots v-if="data.background_shape?.key === 'rectangle_dots'" />
-
     <div class="page-block-content">
+      <CircleStripes v-if="data.background_shape?.key === 'circle_stripes'" />
+      <CircleDots v-if="data.background_shape?.key === 'circle_dots'" />
+      <RectangleDots v-if="data.background_shape?.key === 'rectangle_dots'" />
+
       <div class="left-column">
         <h2 v-if="data.super_title || data.title">
           <span v-if="data.super_title" class="super-title">

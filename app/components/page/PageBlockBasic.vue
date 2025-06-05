@@ -17,11 +17,11 @@ defineProps<{ data: BasicBlock }>();
       data.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
   >
-    <CircleStripes v-if="data.background_shape?.key === 'circle_stripes'" />
-    <CircleDots v-if="data.background_shape?.key === 'circle_dots'" />
-    <RectangleDots v-if="data.background_shape?.key === 'rectangle_dots'" />
-
     <div class="page-block-content">
+      <CircleStripes v-if="data.background_shape?.key === 'circle_stripes'" />
+      <CircleDots v-if="data.background_shape?.key === 'circle_dots'" />
+      <RectangleDots v-if="data.background_shape?.key === 'rectangle_dots'" />
+
       <h2 v-if="data.super_title || data.title">
         <span v-if="data.super_title" class="super-title">
           {{ data.super_title }}
@@ -50,19 +50,6 @@ defineProps<{ data: BasicBlock }>();
 <style>
 .page-block.basic-block {
   margin-inline: auto;
-
-  &.shape-position--block-end {
-    padding-block-end: 4rem;
-
-    @media (min-width: 1200px) {
-      padding-block-end: 0;
-    }
-
-    .background-shape--circle-dots {
-      right: 10vw;
-      left: auto;
-    }
-  }
 
   .image-column {
     width: 100%;

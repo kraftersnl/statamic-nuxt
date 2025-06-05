@@ -39,7 +39,6 @@ defineProps<{ data?: FormBlock }>();
 <style>
 .page-block.form-block {
   --focus-color: var(--color-accent-graphic);
-  border-bottom: 2px solid var(--color-accent-graphic);
 
   .background-shape-wrapper {
     position: relative;
@@ -78,7 +77,7 @@ defineProps<{ data?: FormBlock }>();
     }
 
     p {
-      margin-block: 2rem;
+      margin-block: 2rem 4rem;
     }
   }
 

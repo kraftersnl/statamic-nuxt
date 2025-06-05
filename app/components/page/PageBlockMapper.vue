@@ -44,6 +44,7 @@ function getBlockComponent(block: StatamicPageBlock) {
 
 <style>
 .page-block-content {
+  position: relative;
   max-width: var(--app-max-width);
   padding-inline: var(--app-padding-inline);
   margin-inline: auto;
@@ -63,7 +64,6 @@ function getBlockComponent(block: StatamicPageBlock) {
   }
 
   :where(h2:has(.super-title)) {
-    margin-block-end: 2rem;
     display: grid;
 
     .super-title {
@@ -82,10 +82,11 @@ function getBlockComponent(block: StatamicPageBlock) {
     background-color: var(--color-bg);
   }
   &.background-color--grey {
-    background-color: var(--color-grey-bg);
+    background-color: var(--color-accent-grey);
   }
   &.background-color--black {
     --color-grey-text: hsl(132 4% 76%);
+    --color-accent-text: hsl(260 86% 70%);
     background-color: var(--color-black-bg);
     color: #ffffff;
   }
@@ -98,10 +99,10 @@ function getBlockComponent(block: StatamicPageBlock) {
   .background-shape--rectangle-dots {
     width: var(--shape-width, 120px);
     height: auto;
-    right: var(--app-padding-inline);
+    right: 0;
 
     @media (min-width: 1200px) {
-      left: 160px;
+      left: var(--app-padding-inline);
     }
   }
 
@@ -137,9 +138,9 @@ function getBlockComponent(block: StatamicPageBlock) {
 
   &.shape-position--block-end {
     .background-shape--circle-dots {
-      top: 340px;
+      bottom: -120px;
+      left: 30%;
       width: var(--shape-width, 240px);
-      left: 25vw;
     }
 
     .background-shape--circle-stripes {
