@@ -54,12 +54,24 @@ defineProps<{ data?: StepsBlock }>();
       }
     }
 
+    @container (max-width: 583px) {
+      + .step-item::after {
+        content: '';
+        position: absolute;
+        top: calc(-1.5rem - 2px);
+        left: 50%;
+        height: calc(1.5rem + 1px);
+        width: 2px;
+        background-color: var(--color-grey-bg);
+      }
+    }
+
     @container (min-width: 1200px) {
       + .step-item::after {
+        content: '';
         position: absolute;
         left: calc(-1.5rem - 2px);
         top: 50%;
-        content: '';
         width: calc(1.5rem + 1px);
         height: 2px;
         background-color: var(--color-grey-bg);
