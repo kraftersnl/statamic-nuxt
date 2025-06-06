@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ data: BasicBlock }>();
+defineProps<{ data?: BasicBlock }>();
 </script>
 
 <template>
@@ -8,12 +8,12 @@ defineProps<{ data: BasicBlock }>();
     :class="[
       'page-block',
       'image-block',
-      data.background_color?.key &&
+      data?.background_color?.key &&
         `background-color--${data.background_color.key}`,
     ]"
   >
     <div class="page-block-content">
-      <h2 v-if="data.super_title || data.title">
+      <h2 v-if="data?.super_title || data?.title">
         <span v-if="data.super_title" class="super-title">
           {{ data.super_title }}
         </span>

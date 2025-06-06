@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ data: TwoColsImageBlock }>();
+defineProps<{ data?: TwoColsImageBlock }>();
 </script>
 
 <template>
@@ -8,7 +8,7 @@ defineProps<{ data: TwoColsImageBlock }>();
     :class="[
       'page-block',
       'two-cols-image-block',
-      data.background_color?.key &&
+      data?.background_color?.key &&
         `background-color--${data.background_color.key}`,
     ]"
   >
@@ -25,7 +25,7 @@ defineProps<{ data: TwoColsImageBlock }>();
     </div>
 
     <div class="page-block-content">
-      <h2 v-if="data.super_title || data.title">
+      <h2 v-if="data?.super_title || data?.title">
         <span v-if="data.super_title" class="super-title">
           {{ data.super_title }}
         </span>

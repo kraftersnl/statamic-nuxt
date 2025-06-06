@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ data: TwoColsTextBlock }>();
+defineProps<{ data?: TwoColsTextBlock }>();
 </script>
 
 <template>
@@ -8,20 +8,20 @@ defineProps<{ data: TwoColsTextBlock }>();
     :class="[
       'page-block',
       'two-cols-text-block',
-      data.background_color?.key &&
+      data?.background_color?.key &&
         `background-color--${data.background_color.key}`,
-      data.background_shape?.key &&
+      data?.background_shape?.key &&
         `background-shape--${data.background_shape.key}`,
-      data.shape_position?.key && `shape-position--${data.shape_position.key}`,
+      data?.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
   >
     <div class="page-block-content">
-      <CircleStripes v-if="data.background_shape?.key === 'circle_stripes'" />
-      <CircleDots v-if="data.background_shape?.key === 'circle_dots'" />
-      <RectangleDots v-if="data.background_shape?.key === 'rectangle_dots'" />
+      <CircleStripes v-if="data?.background_shape?.key === 'circle_stripes'" />
+      <CircleDots v-if="data?.background_shape?.key === 'circle_dots'" />
+      <RectangleDots v-if="data?.background_shape?.key === 'rectangle_dots'" />
 
       <div class="left-column">
-        <h2 v-if="data.super_title || data.title">
+        <h2 v-if="data?.super_title || data?.title">
           <span v-if="data.super_title" class="super-title">
             {{ data.super_title }}
           </span>

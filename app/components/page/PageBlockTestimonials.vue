@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const props = defineProps<{ data: TestimonialsBlock }>();
+import { useScroll } from '@vueuse/core';
+
+defineProps<{ data?: TestimonialsBlock }>();
 
 const testimonialList = ref<StatamicTestimonialEntry[]>();
 
@@ -24,7 +26,8 @@ const { x, arrivedState } = useScroll(testimonialsWrapperRef, {
 
 const scrollWidth = computed(
   () =>
-    testimonialsWrapperRef.value?.scrollWidth / testimonialList.value?.length
+    (testimonialsWrapperRef.value?.scrollWidth ?? 0) /
+    (testimonialList.value?.length ?? 0)
 );
 </script>
 
@@ -37,7 +40,7 @@ const scrollWidth = computed(
 
     <div class="page-block-content">
       <div class="left-column">
-        <h2 v-if="data.super_title || data.title">
+        <h2 v-if="data?.super_title || data?.title">
           <span v-if="data.super_title" class="super-title">
             {{ data.super_title }}
           </span>
@@ -49,19 +52,17 @@ const scrollWidth = computed(
       </div>
 
       <div class="testimonials-wrapper">
-        <ul
-          ref="testimonialsWrapper"
-          role="list"
-          class="testimonials-list"
-          @scroll="handleScroll"
-        >
+        <ul ref="testimonialsWrapper" role="list" class="testimonials-list">
           <li v-for="t in testimonialList" :key="t.id">
             <StatamicTestimonial :data="t" />
           </li>
         </ul>
 
         <ClientOnly>
-          <div v-if="testimonialList?.length > 1" class="carousel-controls">
+          <div
+            v-if="testimonialList?.length ?? 0 > 1"
+            class="carousel-controls"
+          >
             <Button
               icon="material-symbols:arrow-back"
               radius="full"

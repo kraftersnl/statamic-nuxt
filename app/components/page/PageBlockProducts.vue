@@ -1,11 +1,11 @@
 <script setup lang="ts">
-defineProps<{ data: ProductsBlock }>();
+defineProps<{ data?: ProductsBlock }>();
 </script>
 
 <template>
   <section :id="data?.anchor" :class="['page-block', 'products-block']">
     <div class="page-block-content">
-      <h2 v-if="data.super_title || data.title">
+      <h2 v-if="data?.super_title || data?.title">
         <span v-if="data.super_title" class="super-title">
           {{ data.super_title }}
         </span>

@@ -175,6 +175,10 @@ const imageLast = computed(
 .hero-block.image-position--inline-end {
   .page-block-content {
     padding-block-start: 4rem;
+
+    @media (min-width: 1024px) {
+      padding-block-start: 0;
+    }
   }
 
   @media (min-width: 1280px) {

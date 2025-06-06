@@ -19,10 +19,23 @@ declare global {
     image_caption?: string;
     super_title?: string;
     title?: string;
+    background_color?: StatamicSelectOption;
+    background_shape?: StatamicSelectOption;
+    shape_position?: StatamicSelectOption;
   };
 
   type ColumnsBlock = StatamicPageBlock & {
     columns: Column[];
+  };
+
+  type StepsBlock = StatamicPageBlock & {
+    list: Step[];
+  };
+
+  type Step = {
+    id?: string;
+    title?: string;
+    icon?: string;
   };
 
   type TestimonialsBlock = StatamicPageBlock & {

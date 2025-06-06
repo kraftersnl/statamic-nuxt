@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ data: BasicBlock }>();
+defineProps<{ data?: BasicBlock }>();
 </script>
 
 <template>
@@ -10,19 +10,19 @@ defineProps<{ data: BasicBlock }>();
       'basic-block',
       data?.image_position?.key &&
         `image-position--${data?.image_position.key}`,
-      data.background_color?.key &&
+      data?.background_color?.key &&
         `background-color--${data.background_color.key}`,
-      data.background_shape?.key &&
+      data?.background_shape?.key &&
         `background-shape--${data.background_shape.key}`,
-      data.shape_position?.key && `shape-position--${data.shape_position.key}`,
+      data?.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
   >
     <div class="page-block-content">
-      <CircleStripes v-if="data.background_shape?.key === 'circle_stripes'" />
-      <CircleDots v-if="data.background_shape?.key === 'circle_dots'" />
-      <RectangleDots v-if="data.background_shape?.key === 'rectangle_dots'" />
+      <CircleStripes v-if="data?.background_shape?.key === 'circle_stripes'" />
+      <CircleDots v-if="data?.background_shape?.key === 'circle_dots'" />
+      <RectangleDots v-if="data?.background_shape?.key === 'rectangle_dots'" />
 
-      <h2 v-if="data.super_title || data.title">
+      <h2 v-if="data?.super_title || data?.title">
         <span v-if="data.super_title" class="super-title">
           {{ data.super_title }}
         </span>
