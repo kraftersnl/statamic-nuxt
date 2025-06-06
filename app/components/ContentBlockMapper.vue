@@ -87,7 +87,7 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
   }
 
   ul > li::marker {
-    color: var(--color-accent-text);
+    color: var(--color-accent-graphic);
   }
 }
 </style>

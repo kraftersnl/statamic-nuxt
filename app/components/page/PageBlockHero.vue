@@ -18,7 +18,6 @@ const imageLast = computed(
     :class="[
       'page-block',
       'hero-block',
-      data.background_fixed && `background-attachment--fixed`,
       data?.image_position?.key &&
         `image-position--${data?.image_position.key}`,
       data.background_color?.key &&
@@ -32,17 +31,22 @@ const imageLast = computed(
       imageBg && `background-image: url(${data?.image?.permalink})`,
     ]"
   >
+    <div class="background-shapes-wrapper">
+      <CircleDots />
+      <CircleStripes />
+    </div>
+
     <div class="hero-block-wrapper">
-      <StatamicImage
-        v-if="imageFirst"
-        class="hero-image"
-        loading="eager"
-        :data="data?.image"
-        :class="[data?.full_width_image && 'image--full-width']"
-        width="320"
-        height="180"
-        sizes="mobile:640px normal:960px big:1440px"
-      />
+      <div v-if="imageFirst" class="hero-image">
+        <StatamicImage
+          class="hero-image"
+          loading="eager"
+          :data="data?.image"
+          width="320"
+          height="180"
+          sizes="mobile:640px normal:960px big:1440px"
+        />
+      </div>
 
       <div class="page-block-content">
         <h1 v-if="data?.title">{{ data.title }}</h1>
@@ -55,7 +59,6 @@ const imageLast = computed(
         class="hero-image"
         loading="eager"
         :data="data?.image"
-        :class="[data?.full_width_image && 'image--full-width']"
         width="320"
         height="180"
         :placeholder="[64, 32, 90, 250]"
@@ -88,14 +91,44 @@ const imageLast = computed(
   }
 
   .hero-image {
+    z-index: -1;
+    height: 100%;
+
     img {
       width: 100%;
     }
   }
-}
 
-.background-attachment--fixed {
-  background-attachment: fixed;
+  .background-shapes-wrapper {
+    isolation: isolate;
+    position: absolute;
+    inset: 0;
+    overflow: clip;
+  }
+
+  .background-shape {
+    position: absolute;
+    mix-blend-mode: screen;
+  }
+
+  .background-shape--circle-stripes {
+    color: var(--color-accent-brown);
+    opacity: 1;
+    width: min(25%, 240px);
+    right: calc(-1 * var(--app-padding-inline));
+    top: 20%;
+  }
+
+  .background-shape--circle-dots {
+    width: min(50%, 480px);
+    inset: 0;
+    margin: auto;
+    margin-inline-end: 10%;
+  }
+
+  .background-attachment--fixed {
+    background-attachment: fixed;
+  }
 }
 
 .hero-block.image-position--background {
@@ -127,7 +160,7 @@ const imageLast = computed(
   }
 
   .page-block-content {
-    z-index: 1;
+    z-index: 2;
     width: 100%;
     display: grid;
     text-align: left;
@@ -146,10 +179,6 @@ const imageLast = computed(
 }
 
 .hero-block.image-position--inline-end {
-  .page-block-content {
-    padding-block-start: 4rem;
-  }
-
   @media (min-width: 1280px) {
     .hero-block-wrapper {
       grid-template-columns:

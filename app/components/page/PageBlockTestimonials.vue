@@ -30,7 +30,7 @@ const scrollWidth = computed(
 
 <template>
   <section :id="data?.anchor" :class="['page-block', 'testimonials-block']">
-    <div class="background-shape-wrapper">
+    <div class="background-shapes-wrapper">
       <CircleDots />
       <CircleStripes />
     </div>
@@ -149,7 +149,7 @@ const scrollWidth = computed(
     }
   }
 
-  .background-shape-wrapper {
+  .background-shapes-wrapper {
     position: relative;
   }
 
@@ -159,7 +159,7 @@ const scrollWidth = computed(
   }
 
   .background-shape--circle-stripes {
-    --color-shape: var(--color-brown-graphic);
+    --color-shape: var(--color-accent-green);
     opacity: 100%;
     top: 200px;
     width: min(100%, 140px);

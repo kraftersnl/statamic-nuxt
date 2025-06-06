@@ -23,7 +23,7 @@ defineProps<{ data?: FormBlock }>();
       </div>
 
       <div class="right-column">
-        <div class="background-shape-wrapper">
+        <div class="background-shapes-wrapper">
           <CircleDots />
         </div>
 
@@ -40,7 +40,7 @@ defineProps<{ data?: FormBlock }>();
 .page-block.form-block {
   --focus-color: var(--color-accent-graphic);
 
-  .background-shape-wrapper {
+  .background-shapes-wrapper {
     position: relative;
     display: grid;
     align-content: end;

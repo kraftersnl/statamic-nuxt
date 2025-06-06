@@ -36,9 +36,8 @@ const mainNav = computed((): MenuItem[] =>
       <MobileMenu
         ref="mobileMenu"
         button-variant="ghost"
-        button-size="lg"
-        button-icon-size="lg"
         position="inline-start"
+        menu-button-size="xl"
       >
         <template #default>
           <MenuList
@@ -46,7 +45,6 @@ const mainNav = computed((): MenuItem[] =>
             button-variant="sidebar"
             button-size="xl"
             font-size="md"
-            label="Menu"
           />
         </template>
       </MobileMenu>
@@ -78,9 +76,10 @@ const mainNav = computed((): MenuItem[] =>
 
 .app-header {
   position: relative;
-  background-color: rgb(var(--rgb-app-nav) / 94%);
+  background-color: var(--color-white);
+  /* background-color: rgb(var(--rgb-app-nav) / 94%);
   -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px); */
 
   @media (min-width: 360px) and (min-height: 360px) {
     position: sticky;
@@ -94,10 +93,7 @@ const mainNav = computed((): MenuItem[] =>
   padding-inline: var(--app-padding-inline);
   max-width: var(--app-max-width);
   min-height: var(--app-header-height);
-  width: 100%;
-  height: 100%;
   display: flex;
-  justify-content: start;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
