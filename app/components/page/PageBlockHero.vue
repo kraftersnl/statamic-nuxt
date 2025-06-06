@@ -179,6 +179,10 @@ const imageLast = computed(
 }
 
 .hero-block.image-position--inline-end {
+  .page-block-content {
+    padding-block-start: 4rem;
+  }
+
   @media (min-width: 1280px) {
     .hero-block-wrapper {
       grid-template-columns:
@@ -207,7 +211,12 @@ const imageLast = computed(
 
 .hero-block.image-position--inline-start {
   .hero-block-wrapper {
-    align-content: start;
+    align-content: center;
+  }
+
+  .page-block-content {
+    padding-block-start: 2rem;
+    padding-block-end: 4rem;
   }
 
   @media (min-width: 1280px) {
@@ -222,6 +231,7 @@ const imageLast = computed(
     .page-block-content {
       grid-column: 3 / span 1;
       padding-inline-start: 4rem;
+      padding-block: 4rem 0;
     }
 
     .hero-image {

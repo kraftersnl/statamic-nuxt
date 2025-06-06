@@ -119,10 +119,10 @@ function getBlockComponent(block: StatamicPageBlock) {
     }
 
     .background-shape--circle-stripes {
-      top: -8%;
-      left: 0;
-      margin-left: -70px;
-      width: var(--shape-width, 140px);
+      top: -12%;
+      left: 55%;
+      margin-right: -5%;
+      width: var(--shape-width, 180px);
 
       @media (min-width: 1200px) {
         top: -12%;
