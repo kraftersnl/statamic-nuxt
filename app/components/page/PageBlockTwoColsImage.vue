@@ -70,11 +70,11 @@ defineProps<{ data: TwoColsImageBlock }>();
   }
 
   .page-block-content {
-    padding-block: 5rem 2rem;
+    padding-block: 5rem;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1200px) {
       padding-inline: 5rem;
-      padding-block-start: 8rem;
+      padding-block: 8rem 2rem;
     }
 
     p {

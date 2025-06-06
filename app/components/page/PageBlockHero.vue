@@ -98,11 +98,11 @@ const imageLast = computed(
     position: absolute;
     inset: 0;
     overflow: clip;
+    mix-blend-mode: screen;
   }
 
   .background-shape {
     position: absolute;
-    mix-blend-mode: screen;
   }
 
   .background-shape--circle-stripes {

@@ -31,6 +31,26 @@ declare global {
     entries?: StatamicTestimonialEntry[];
   };
 
+  type ProductsBlock = StatamicPageBlock & {
+    super_title?: string;
+    title?: string;
+    products?: Product[];
+  };
+
+  type Product = StatamicButton & {
+    id: string;
+    title?: string;
+    text?: string;
+    image?: StatamicImage;
+  };
+
+  type ProjectsBlock = StatamicPageBlock & {
+    super_title?: string;
+    title?: string;
+    entries?: StatamicProjectEntry[];
+    background_color?: StatamicSelectOption;
+  };
+
   type TwoColsTextBlock = StatamicPageBlock & {
     super_title?: string;
     title?: string;
@@ -67,13 +87,10 @@ declare global {
     description?: string;
   };
 
-  type ArticlesBlock = StatamicPageBlock & {
-    entries: StatamicArticleEntry[];
-    button_label?: string;
-    button_link?: string;
-    button_icon?: string;
-    button_variant?: StatamicSelectOption;
-  };
+  type ArticlesBlock = StatamicPageBlock &
+    StatamicButton & {
+      entries: StatamicArticleEntry[];
+    };
 
   type EmployeesBlock = StatamicPageBlock & {
     entries: StatamicEmployeesEntry[];
@@ -105,13 +122,9 @@ declare global {
     icon: string;
   };
 
-  type ButtonContentBlock = {
+  type ButtonContentBlock = StatamicButton & {
     type: 'button';
     id?: string;
-    button_label?: string;
-    button_link?: string;
-    button_icon?: string;
-    button_variant: StatamicSelectOption;
   };
 
   type ListContentBlock = {
