@@ -20,18 +20,12 @@ const imageLast = computed(
       'hero-block',
       data?.image_position?.key &&
         `image-position--${data?.image_position.key}`,
-      data.background_color?.key &&
+      data?.background_color?.key &&
         `background-color--${data.background_color.key}`,
-      data.background_shape?.key &&
-        `background-shape--${data.background_shape.key}`,
-      data.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
-    :style="[
-      data?.image_max_height && `--image-max-height: ${data?.image_max_height}`,
-      imageBg && `background-image: url(${data?.image?.permalink})`,
-    ]"
+    :style="[imageBg && `background-image: url(${data?.image?.permalink})`]"
   >
-    <div class="background-shapes-wrapper">
+    <div v-if="data?.show_background_shapes" class="background-shapes-wrapper">
       <CircleDots />
       <CircleStripes />
     </div>

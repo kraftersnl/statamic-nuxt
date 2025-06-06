@@ -9,8 +9,7 @@ declare global {
 
   type HeroBlock = StatamicPageBlock & {
     title?: string;
-    full_width_image?: boolean;
-    image_max_height?: string;
+    show_background_shapes?: boolean;
     image_position?: StatamicSelectOption;
     background_color?: StatamicSelectOption;
   };
