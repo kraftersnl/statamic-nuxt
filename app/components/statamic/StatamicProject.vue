@@ -38,6 +38,10 @@ defineProps<{
   }
   .project-image {
     width: 100%;
+
+    img {
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
   }
 }
 </style>
