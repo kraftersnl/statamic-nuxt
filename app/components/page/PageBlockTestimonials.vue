@@ -32,7 +32,15 @@ const scrollWidth = computed(
 </script>
 
 <template>
-  <section :id="data?.anchor" :class="['page-block', 'testimonials-block']">
+  <section
+    :id="data?.anchor"
+    :class="[
+      'page-block',
+      'testimonials-block',
+      data?.background_color?.key &&
+        `background-color--${data.background_color.key}`,
+    ]"
+  >
     <div class="background-shapes-wrapper">
       <CircleDots />
       <CircleStripes />
@@ -90,8 +98,6 @@ const scrollWidth = computed(
 .page-block.testimonials-block {
   overflow: clip;
   isolation: isolate;
-  background-color: var(--color-black-bg);
-  color: #ffffff;
 
   h2 {
     margin-block-end: 10rem;

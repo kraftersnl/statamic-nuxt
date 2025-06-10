@@ -1,8 +1,4 @@
 <script setup lang="ts">
-defineProps<{
-  alwaysDark?: boolean;
-}>();
-
 const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
   'main-nav',
   () =>
@@ -31,7 +27,7 @@ const mainNav = computed((): MenuItem[] =>
 <template>
   <slot name="top" />
 
-  <header :class="['app-header', alwaysDark && 'dark-mode']">
+  <header class="app-header">
     <div class="app-header-content">
       <MobileMenu
         ref="mobileMenu"
@@ -136,6 +132,6 @@ const mainNav = computed((): MenuItem[] =>
 .theme-toggle-button {
   position: absolute;
   right: 2rem;
-  top: 1rem;
+  top: calc((var(--app-header-height) - 2rem) / 2);
 }
 </style>
