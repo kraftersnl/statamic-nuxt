@@ -176,7 +176,7 @@ const imageLast = computed(
   .page-block-content {
     padding-block-start: 4rem;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1200px) {
       padding-block-start: 0;
     }
   }
