@@ -68,7 +68,7 @@ const scrollWidth = computed(
 
         <ClientOnly>
           <div
-            v-if="testimonialList?.length ?? 0 > 1"
+            v-if="(testimonialList?.length ?? 0) > 1"
             class="carousel-controls"
           >
             <Button
