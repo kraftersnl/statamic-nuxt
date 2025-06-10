@@ -41,6 +41,7 @@ declare global {
   type TestimonialsBlock = StatamicPageBlock & {
     super_title?: string;
     title?: string;
+    background_color?: StatamicSelectOption;
     entries?: StatamicTestimonialEntry[];
   };
 
