@@ -6,22 +6,14 @@ defineProps<{
 
 <template>
   <div class="project-entry">
-    <h2 v-if="data?.title || data?.sub_title">
-      <span v-if="data.title" class="super-title">
-        {{ data.title }}
-      </span>
-
-      <span v-if="data?.sub_title" class="title">
-        {{ data.sub_title }}
-      </span>
-    </h2>
+    <DoubleTitle :title="data?.title" :super-title="data?.sub_title" />
 
     <p v-if="data?.summary">{{ data.summary }}</p>
 
     <StatamicImage
       v-if="data?.image"
       :data="data.image"
-      width="1920"
+      width="1440"
       height="480"
       class="project-image"
     />

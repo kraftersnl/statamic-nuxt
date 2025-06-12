@@ -35,8 +35,6 @@ const { data: entries } = await useAsyncData<{
 
 <style>
 .page-block.projects-block {
-  /* background-color: var(--color-grey-bg); */
-
   .page-block-content {
     display: grid;
     padding-block-start: 5rem;
@@ -47,6 +45,7 @@ const { data: entries } = await useAsyncData<{
     }
 
     @media (min-width: 1200px) {
+      padding-block-start: 8rem;
       padding-inline: 5rem;
     }
   }

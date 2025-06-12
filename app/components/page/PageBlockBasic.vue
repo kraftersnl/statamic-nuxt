@@ -22,15 +22,7 @@ defineProps<{ data?: BasicBlock }>();
       <CircleDots v-if="data?.background_shape?.key === 'circle_dots'" />
       <RectangleDots v-if="data?.background_shape?.key === 'rectangle_dots'" />
 
-      <h2 v-if="data?.super_title || data?.title">
-        <span v-if="data.super_title" class="super-title">
-          {{ data.super_title }}
-        </span>
-
-        <span v-if="data.title" class="title">
-          {{ data.title }}
-        </span>
-      </h2>
+      <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
 
       <ContentBlockMapper :content="data?.content" />
     </div>
@@ -70,6 +62,7 @@ defineProps<{ data?: BasicBlock }>();
     padding-block: 5rem;
 
     @media (min-width: 1200px) {
+      padding-block: 8rem;
       padding-inline: var(--app-padding-inline);
     }
 

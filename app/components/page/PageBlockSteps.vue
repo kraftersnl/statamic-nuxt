@@ -18,7 +18,7 @@ defineProps<{ data?: StepsBlock }>();
 <style>
 .page-block.steps-block {
   .page-block-content {
-    padding-block-end: 2rem;
+    padding-block-end: 8rem;
 
     @media (min-width: 1200px) {
       display: grid;

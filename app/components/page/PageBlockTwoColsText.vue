@@ -21,15 +21,7 @@ defineProps<{ data?: TwoColsTextBlock }>();
       <RectangleDots v-if="data?.background_shape?.key === 'rectangle_dots'" />
 
       <div class="left-column">
-        <h2 v-if="data?.super_title || data?.title">
-          <span v-if="data.super_title" class="super-title">
-            {{ data.super_title }}
-          </span>
-
-          <span v-if="data.title" class="title">
-            {{ data.title }}
-          </span>
-        </h2>
+        <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
       </div>
 
       <ContentBlockMapper :content="data?.content" />
@@ -43,6 +35,7 @@ defineProps<{ data?: TwoColsTextBlock }>();
     padding-block: 5rem;
 
     @media (min-width: 1200px) {
+      padding-block: 8rem;
       display: grid;
       padding-inline: var(--app-padding-inline);
       gap: 4rem;

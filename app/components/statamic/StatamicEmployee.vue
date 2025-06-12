@@ -6,14 +6,15 @@ defineProps<{
 
 <template>
   <div class="employee-entry">
-    <h3 v-if="data?.title" class="employee-name">
-      {{ data.title }}
-    </h3>
+    <div class="employee-details">
+      <h3 v-if="data?.title" class="employee-name">
+        {{ data.title }}
+      </h3>
 
-    <span v-if="data?.sub_title" class="employee-jobtitle">
-      {{ data.sub_title }}
-    </span>
-
+      <span v-if="data?.sub_title" class="employee-jobtitle">
+        {{ data.sub_title }}
+      </span>
+    </div>
     <StatamicImage
       v-if="data?.image"
       :data="data.image"
@@ -26,12 +27,18 @@ defineProps<{
 <style>
 .employee-entry {
   display: grid;
-  justify-content: center;
+  align-items: center;
   text-align: center;
+  gap: 1.5rem;
+
+  @container (min-width: 400px) {
+    text-align: left;
+    grid-template-columns: 120px auto;
+  }
 
   .employee-name {
     font-size: var(--font-size-md);
-    margin-block: 1rem 0.5rem;
+    margin-block: 0;
     white-space: nowrap;
   }
 

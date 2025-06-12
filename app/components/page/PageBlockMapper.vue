@@ -67,21 +67,6 @@ function getBlockComponent(block: StatamicPageBlock) {
     font-size: var(--font-calc-heading-2, var(--font-size-xxxl));
   }
 
-  :where(h2:has(.super-title)) {
-    display: grid;
-
-    .super-title {
-      font-size: var(--font-size-xxxs);
-      color: var(--color-grey-text);
-      letter-spacing: 10%;
-      text-transform: uppercase;
-      margin-block-end: 1.5rem;
-    }
-    .title {
-      max-width: 640px;
-    }
-  }
-
   &.background-color--white {
     background-color: var(--color-bg);
   }
@@ -129,7 +114,7 @@ function getBlockComponent(block: StatamicPageBlock) {
       width: var(--shape-width, 180px);
 
       @media (min-width: 1200px) {
-        top: -12%;
+        top: -8%;
         width: var(--shape-width, 240px);
         left: 160px;
       }

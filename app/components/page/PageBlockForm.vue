@@ -6,15 +6,7 @@ defineProps<{ data?: FormBlock }>();
   <section :id="data?.anchor" class="page-block form-block">
     <div class="page-block-content">
       <div class="left-column">
-        <h2 v-if="data?.super_title || data?.title">
-          <span v-if="data.super_title" class="super-title">
-            {{ data.super_title }}
-          </span>
-
-          <span v-if="data.title" class="title">
-            {{ data.title }}
-          </span>
-        </h2>
+        <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
 
         <p>{{ data?.description }}</p>
 
