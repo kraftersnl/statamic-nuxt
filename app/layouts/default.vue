@@ -10,8 +10,6 @@
 
 <style>
 .app-layout {
-  /* min-height: calc(100dvh - var(--app-header-height)); */
-
   main {
     display: grid;
   }

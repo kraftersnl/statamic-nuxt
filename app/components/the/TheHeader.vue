@@ -53,10 +53,9 @@ const mainNav = computed((): MenuItem[] =>
       </NuxtLink>
 
       <MenuList :list="mainNav" button-variant="topbar" inline />
-
-      <slot name="right" />
     </div>
 
+    <slot name="right" />
     <ThemeToggle />
 
     <NuxtLoadingIndicator color="var(--color-accent-graphic)" />
