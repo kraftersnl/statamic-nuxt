@@ -72,9 +72,6 @@ const mainNav = computed((): MenuItem[] =>
 .app-header {
   position: relative;
   background-color: var(--color-white);
-  /* background-color: rgb(var(--rgb-app-nav) / 94%);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px); */
 
   @media (min-width: 360px) and (min-height: 360px) {
     position: sticky;
