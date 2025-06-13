@@ -60,7 +60,7 @@ function getBlockComponent(block: StatamicPageBlock) {
   scroll-margin-block: 1rem;
 
   @media (min-width: 360px) and (min-height: 360px) {
-    scroll-margin-block: 4rem;
+    scroll-margin-block: 3rem;
   }
 
   h2 {
