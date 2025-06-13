@@ -80,6 +80,7 @@ const imageLast = computed(
     width: 100%;
     display: grid;
     align-items: center;
+    align-content: center;
     margin-inline: auto;
     row-gap: 4rem;
   }
@@ -208,10 +209,6 @@ const imageLast = computed(
 }
 
 .hero-block.image-position--inline-start {
-  .hero-block-wrapper {
-    align-content: center;
-  }
-
   .page-block-content {
     padding-block-start: 2rem;
     padding-block-end: 4rem;

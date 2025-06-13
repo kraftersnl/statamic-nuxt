@@ -115,6 +115,7 @@ const mainNav = computed((): MenuItem[] =>
   }
 
   .menu-list-nav {
+    margin-inline: auto;
     display: none;
     padding-inline-end: 3rem;
   }

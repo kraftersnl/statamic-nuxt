@@ -9,6 +9,18 @@
   --font-size-xs: 0.9rem;
   --font-size-xxs: 0.8rem;
   --font-size-xxxs: 0.7rem;
+
+  --font-calc-body-1: min(calc(var(--font-size-sm) + 1vw), var(--font-size-lg));
+
+  --font-calc-heading-1: min(
+    calc(var(--font-size-lg) + 4vw),
+    var(--font-size-xxxxl)
+  );
+
+  --font-calc-heading-2: min(
+    calc(var(--font-size-lg) + 4vw),
+    var(--font-size-xxxl)
+  );
 }
 
 body {
