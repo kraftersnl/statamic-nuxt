@@ -48,6 +48,7 @@ defineProps<{ data?: TwoColsImageBlock }>();
 .page-block.two-cols-image-block {
   @media (min-width: 1200px) {
     display: grid;
+    align-items: center;
     grid-template-columns: 1fr 1fr;
   }
 
