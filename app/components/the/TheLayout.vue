@@ -35,6 +35,8 @@ if (typeof window !== 'undefined') {
 
 <template>
   <div ref="app" tabindex="-1">
+    <slot name="dialog" />
+
     <NuxtRouteAnnouncer />
 
     <SkipLink />
