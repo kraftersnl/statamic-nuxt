@@ -10,7 +10,7 @@ defineProps<{ data?: CustomListItem[] }>();
       <div class="list-item-content">
         <h3 v-if="item.title" class="list-item-title">{{ item.title }}</h3>
 
-        <span class="list-item-text">{{ item.text }}</span>
+        <span v-if="item.text" class="list-item-text">{{ item.text }}</span>
       </div>
     </li>
   </ul>
@@ -20,7 +20,7 @@ defineProps<{ data?: CustomListItem[] }>();
 .statamic-icon-list {
   margin-block: 1.5rem;
   display: grid;
-  gap: 2.5rem;
+  gap: 2rem;
 
   > li {
     display: grid;
@@ -28,9 +28,13 @@ defineProps<{ data?: CustomListItem[] }>();
     gap: 1.25rem;
   }
 
-  h3 {
+  .list-item-title {
+    margin-block: 0;
     font-size: var(--font-size-md);
-    margin-block-end: 0.75rem;
+  }
+
+  .list-item-text {
+    margin-block: 0.75rem;
   }
 
   .icon svg {

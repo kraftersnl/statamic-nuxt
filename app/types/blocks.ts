@@ -141,6 +141,11 @@ declare global {
     id?: string;
   };
 
+  type ButtonGroupContentBlock = {
+    type: 'button_group';
+    buttons?: StatamicButton[];
+  };
+
   type ListContentBlock = {
     type: 'list';
     id?: string;

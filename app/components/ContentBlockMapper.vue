@@ -29,6 +29,11 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
         :data="contentBlock"
       />
 
+      <StatamicButtonGroup
+        v-if="contentBlock?.type === 'button_group'"
+        :data="contentBlock"
+      />
+
       <StatamicQuote
         v-if="contentBlock?.type === 'quote'"
         :data="contentBlock"
@@ -65,8 +70,27 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
   p,
   ul,
   ol {
-    > a:hover {
-      color: var(--color-accent-text);
+    > a {
+      @media (prefers-reduced-motion: no-preference) {
+        text-decoration: none;
+        border-bottom: 1.5px solid var(--color-text);
+        background-image: linear-gradient(var(--color-accent-graphic));
+        background-size: 0% 1.5px;
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        transition-timing-function: ease-in-out;
+        transition: background-size var(--duration-md),
+          border-color var(--duration-sm) var(--duration-sm),
+          color var(--duration-sm) var(--duration-sm);
+
+        &:hover {
+          transition: background-size var(--duration-md),
+            border-color var(--duration-sm), color var(--duration-sm);
+          background-size: 100% 1.5px;
+          border-color: var(--color-accent-graphic);
+          color: var(--color-accent-text);
+        }
+      }
     }
 
     &:has(+ h2) {

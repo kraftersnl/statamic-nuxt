@@ -92,6 +92,7 @@ const mainNav = computed((): MenuItem[] =>
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
+  padding-inline-end: 7.5rem;
 
   @media (min-width: 1024px) {
     justify-content: center;
@@ -99,8 +100,8 @@ const mainNav = computed((): MenuItem[] =>
   }
 
   .logo-link {
+    outline-offset: 0.5rem;
     margin-inline: auto;
-    padding-right: 3.5rem;
 
     .logo-slot {
       display: grid;

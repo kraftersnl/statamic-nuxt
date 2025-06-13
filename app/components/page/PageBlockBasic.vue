@@ -66,9 +66,9 @@ defineProps<{ data?: BasicBlock }>();
       padding-inline: var(--app-padding-inline);
     }
 
-    p {
+    /* p {
       max-width: 58ch;
-    }
+    } */
   }
 }
 

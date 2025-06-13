@@ -1,0 +1,18 @@
+<script setup lang="ts">
+defineProps<{ data?: ButtonGroupContentBlock }>();
+</script>
+
+<template>
+  <div v-if="data?.buttons?.length" class="statamic-button-group">
+    <StatamicButton v-for="button in data?.buttons" :data="button" />
+  </div>
+</template>
+
+<style>
+.statamic-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3rem;
+}
+</style>
