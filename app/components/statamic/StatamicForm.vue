@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { proxy } = useScriptGoogleTagManager();
+
 const props = defineProps<{
   data: FormContentBlock | FormBlock;
 }>();
@@ -19,15 +21,6 @@ const { data: form } = await useAsyncData<{ data: StatamicForm }>(
 );
 
 async function handleSubmit(formData: FormData) {
-  const checkboxFields = Object.values(form.value?.data?.fields)?.filter(
-    (f) => f.type === 'checkboxes'
-  );
-
-  const checkboxValues = formData.getAll('checkboxes');
-  formData.set(checkboxFields[0]?.handle, checkboxValues.split(','));
-
-  // return console.log(Object.fromEntries(formData));
-
   try {
     submittingForm.value = true;
 
@@ -44,6 +37,14 @@ async function handleSubmit(formData: FormData) {
     });
 
     if (response?.success) {
+      if (useRuntimeConfig().public.gtm) {
+        proxy.dataLayer.push({
+          event: 'generate_lead',
+          value: 1,
+          label: props.data.form.handle,
+        });
+      }
+
       showSuccessMessage.value = true;
     } else {
       showErrorMessage.value = true;
