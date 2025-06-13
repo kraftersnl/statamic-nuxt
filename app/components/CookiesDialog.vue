@@ -120,7 +120,7 @@ function denyCookies() {
     flex-wrap: wrap;
     margin-inline: auto;
     justify-content: center;
-    row-gap: 2rem;
+    row-gap: 1.5rem;
     column-gap: 3rem;
 
     .button-group {
