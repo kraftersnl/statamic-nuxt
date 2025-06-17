@@ -1,38 +1,37 @@
 <script setup lang="ts">
 import Cookies from 'js-cookie';
 
-const consentTrigger = useScriptTriggerConsent();
+// const consentTrigger = useScriptTriggerConsent();
 
-const gtm = useScriptGoogleTagManager({
-  id: useRuntimeConfig().public?.gtm,
-  scriptOptions: {
-    trigger: consentTrigger,
-  },
-});
+// const gtm = useScriptGoogleTagManager({
+//   id: useRuntimeConfig().public?.gtm,
+//   scriptOptions: {
+//     trigger: consentTrigger,
+//   },
+// });
 
 const { cookieConsent, cookiesDialogRef } = useCookiesDialog();
 
 onMounted(() => {
-  const consent = Cookies.get('cookieConsent');
-  if (consent) {
-    cookieConsent.value = JSON.parse(consent);
-  }
-
-  if (
-    cookieConsent.value?.necessary === true &&
-    cookieConsent.value?.analytics === true &&
-    cookieConsent.value?.marketing === true
-  ) {
-    consentTrigger.accept();
-  } else if (
-    cookieConsent.value?.necessary === true &&
-    cookieConsent.value?.analytics === false &&
-    cookieConsent.value?.marketing === false
-  ) {
-    // do nothing
-  } else {
-    cookiesDialogRef.value?.openDialog();
-  }
+  // const consent = Cookies.get('cookieConsent');
+  // if (consent) {
+  //   cookieConsent.value = JSON.parse(consent);
+  // }
+  // if (
+  //   cookieConsent.value?.necessary === true &&
+  //   cookieConsent.value?.analytics === true &&
+  //   cookieConsent.value?.marketing === true
+  // ) {
+  //   consentTrigger.accept();
+  // } else if (
+  //   cookieConsent.value?.necessary === true &&
+  //   cookieConsent.value?.analytics === false &&
+  //   cookieConsent.value?.marketing === false
+  // ) {
+  //   // do nothing
+  // } else {
+  //   cookiesDialogRef.value?.openDialog();
+  // }
 });
 
 function acceptCookies() {
@@ -50,7 +49,7 @@ function acceptCookies() {
   cookieConsent.value.marketing = true;
 
   cookiesDialogRef.value?.closeDialog();
-  consentTrigger.accept();
+  // consentTrigger.accept();
 }
 
 function denyCookies() {
@@ -68,7 +67,7 @@ function denyCookies() {
   cookieConsent.value.analytics = false;
   cookieConsent.value.marketing = false;
 
-  gtm.remove();
+  // gtm.remove();
   cookiesDialogRef.value?.closeDialog();
 }
 </script>
