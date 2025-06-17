@@ -1,40 +1,49 @@
 <script setup lang="ts">
 import Cookies from 'js-cookie';
 
-// const consentTrigger = useScriptTriggerConsent();
-
-// const gtm = useScriptGoogleTagManager({
-//   id: useRuntimeConfig().public?.gtm,
-//   scriptOptions: {
-//     trigger: consentTrigger,
-//   },
-// });
-
+const { proxy } = useScriptGoogleTagManager();
 const { cookieConsent, cookiesDialogRef } = useCookiesDialog();
 
+function gtag() {
+  proxy.dataLayer.push(arguments);
+}
+
 onMounted(() => {
-  // const consent = Cookies.get('cookieConsent');
-  // if (consent) {
-  //   cookieConsent.value = JSON.parse(consent);
-  // }
-  // if (
-  //   cookieConsent.value?.necessary === true &&
-  //   cookieConsent.value?.analytics === true &&
-  //   cookieConsent.value?.marketing === true
-  // ) {
-  //   consentTrigger.accept();
-  // } else if (
-  //   cookieConsent.value?.necessary === true &&
-  //   cookieConsent.value?.analytics === false &&
-  //   cookieConsent.value?.marketing === false
-  // ) {
-  //   // do nothing
-  // } else {
-  //   cookiesDialogRef.value?.openDialog();
-  // }
+  const consent = Cookies.get('cookieConsent');
+  if (consent) {
+    cookieConsent.value = JSON.parse(consent);
+  }
+  if (
+    cookieConsent.value?.necessary === true &&
+    cookieConsent.value?.analytics === true &&
+    cookieConsent.value?.marketing === true
+  ) {
+    // update consent to granted
+    gtag('consent', 'update', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted',
+    });
+  } else if (
+    cookieConsent.value?.necessary === true &&
+    cookieConsent.value?.analytics === false &&
+    cookieConsent.value?.marketing === false
+  ) {
+    // do nothing
+  } else {
+    cookiesDialogRef.value?.openDialog();
+  }
 });
 
 function acceptCookies() {
+  gtag('consent', 'update', {
+    ad_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted',
+    analytics_storage: 'granted',
+  });
+
   Cookies.set(
     'cookieConsent',
     JSON.stringify({
@@ -49,10 +58,16 @@ function acceptCookies() {
   cookieConsent.value.marketing = true;
 
   cookiesDialogRef.value?.closeDialog();
-  // consentTrigger.accept();
 }
 
 function denyCookies() {
+  gtag('consent', 'update', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+  });
+
   Cookies.set(
     'cookieConsent',
     JSON.stringify({
@@ -67,7 +82,6 @@ function denyCookies() {
   cookieConsent.value.analytics = false;
   cookieConsent.value.marketing = false;
 
-  // gtm.remove();
   cookiesDialogRef.value?.closeDialog();
 }
 </script>

@@ -37,7 +37,7 @@ async function handleSubmit(formData: FormData) {
     });
 
     if (response?.success) {
-      if (useRuntimeConfig().public.gtm) {
+      if (import.meta.env.NUXT_PUBLIC_GTM_ID) {
         proxy.dataLayer.push({
           event: 'generate_lead',
           value: 1,
