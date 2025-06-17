@@ -14,8 +14,13 @@ export function useCookiesDialog() {
     () => null
   );
 
+  const hasConsent = computed(
+    () => cookieConsent.value?.analytics && cookieConsent.value?.marketing
+  );
+
   return {
     cookieConsent,
     cookiesDialogRef,
+    hasConsent,
   };
 }

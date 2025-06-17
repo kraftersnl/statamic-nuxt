@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import Cookies from 'js-cookie';
 
-const { proxy } = useScriptGoogleTagManager();
+const { gtag } = useGtag();
 const { cookieConsent, cookiesDialogRef } = useCookiesDialog();
-
-function gtag() {
-  proxy.dataLayer.push(arguments);
-}
 
 onMounted(() => {
   const consent = Cookies.get('cookieConsent');
