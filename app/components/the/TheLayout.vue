@@ -4,7 +4,7 @@ defineProps<{
 }>();
 
 const { data: seo } = await useAsyncData<{ data: StatamicGlobalSEO }>(
-  'company',
+  'seo',
   () =>
     $fetch('/api/globals/seo', {
       baseURL: useRuntimeConfig().public.statamicUrl,
