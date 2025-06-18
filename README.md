@@ -28,17 +28,14 @@ defineNuxtConfig({
 
 ## Configuration
 
-Components access `useRuntimeConfig().public` for various purposes, like SEO and error handling. Override the default values in `nuxt.config.ts`:
+Components access `useRuntimeConfig().public` for various purposes, like SEO and error handling.
 
 ```ts
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      siteTitle: 'Statamic Nuxt Layer',
-      contactEmail: 'info@krafters.nl',
-      ogImage: '/og.png',
-      // siteUrl: import.meta.env.NUXT_PUBLIC_SITE_URL,
-      // statamicUrl: import.meta.env.NUXT_PUBLIC_STATAMIC_URL,
+      siteUrl: import.meta.env.NUXT_PUBLIC_SITE_URL,
+      statamicUrl: import.meta.env.NUXT_PUBLIC_STATAMIC_URL,
     },
   },
 });
@@ -46,7 +43,7 @@ export default defineNuxtConfig({
 
 ### Environment variables
 
-The `siteUrl` and `statamicUrl` variables are covered by your .env variables
+You can override these values with .env variables:
 
 ```bash
 NUXT_PUBLIC_SITE_URL = http://localhost:3000

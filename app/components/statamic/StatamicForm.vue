@@ -20,6 +20,15 @@ const { data: form } = await useAsyncData<{ data: StatamicForm }>(
   { lazy: true }
 );
 
+const { data: company } = await useAsyncData<{ data: StatamicGlobalCompany }>(
+  'company',
+  () =>
+    $fetch('/api/globals/company', {
+      baseURL: useRuntimeConfig().public.statamicUrl,
+    }),
+  { lazy: true }
+);
+
 async function handleSubmit(formData: FormData) {
   try {
     submittingForm.value = true;
@@ -125,9 +134,8 @@ async function handleSubmit(formData: FormData) {
       <Callout v-if="showErrorMessage" color="red">
         Er ging helaas iets mis. Probeer het later opnieuw of neem contact met
         ons op via
-        <a :href="'mailto:' + useRuntimeConfig().public.contactEmail">{{
-          useRuntimeConfig().public.contactEmail
-        }}</a
+        <a :href="'mailto:' + company.data?.email">
+          {{ company.data?.email }} </a
         >.
       </Callout>
     </div>
