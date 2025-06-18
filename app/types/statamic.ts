@@ -61,6 +61,16 @@ declare global {
 
   type StatamicPageEntry = StatamicEntry & {
     blocks?: StatamicPageBlock[];
+    meta_title?: string;
+    meta_description?: string;
+    meta_image?: string;
+    seo?: {
+      meta?: {
+        title?: string;
+        description?: string;
+        image?: string;
+      };
+    };
   };
 
   type StatamicArticleEntry = StatamicEntry & {

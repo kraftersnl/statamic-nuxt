@@ -17,16 +17,16 @@ const { data: entries } = await useAsyncData<{ data: StatamicPageEntry[] }>(
 if (!entries.value?.data?.length && !route.query.preview) {
   throw showError({
     statusCode: 404,
-    statusMessage: 'Page not found',
+    statusMessage: 'Pagina niet gevonden',
   });
 }
 
 const page = computed(() => entries.value?.data?.[0]);
 
 useSeoMeta({
-  title: page.value?.title,
-  description: page.value?.summary,
-  ogImage: page.value?.image?.permalink || useRuntimeConfig().public.ogImage,
+  title: page.value?.meta_title || page.value?.title,
+  description: page.value?.meta_description || page.value?.summary,
+  ogImage: page.value?.meta_image || useRuntimeConfig().public.ogImage,
 });
 </script>
 
