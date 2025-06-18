@@ -51,7 +51,13 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxt/scripts', '@nuxtjs/robots'],
+  modules: [
+    '@nuxt/fonts',
+    '@nuxt/image',
+    '@nuxt/scripts',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+  ],
 
   css: [join(currentDir, './app/assets/main.css')],
 
