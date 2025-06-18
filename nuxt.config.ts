@@ -51,6 +51,11 @@ export default defineNuxtConfig({
     },
   },
 
+  site: {
+    url: import.meta.env.NUXT_PUBLIC_SITE_URL,
+    name: import.meta.env.NUXT_PUBLIC_SITE_NAME,
+  },
+
   modules: [
     '@nuxt/fonts',
     '@nuxt/image',
