@@ -162,5 +162,16 @@ declare global {
     kvk?: string;
     btw?: string;
     bank?: string;
+    wysiwyg?: string;
+  };
+
+  type StatamicGlobalSEO = {
+    noindex_local: boolean;
+    noindex_production: boolean;
+    noindex_testing: boolean;
+    seo_meta_title_seperator: string;
+    seo_website_title: string;
+    handle: string;
+    api_url: string;
   };
 }

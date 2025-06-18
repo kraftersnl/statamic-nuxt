@@ -1,12 +1,20 @@
 <script setup lang="ts">
-useHead({ titleTemplate: '%s | ' + useRuntimeConfig().public.siteTitle });
-
 defineProps<{
   navList?: MenuItem[];
 }>();
 
-const route = useRoute();
-const appRef = useTemplateRef('app');
+const { data: seo } = await useAsyncData<{ data: StatamicGlobalSEO }>(
+  'company',
+  () =>
+    $fetch('/api/globals/seo', {
+      baseURL: useRuntimeConfig().public.statamicUrl,
+    }),
+  { lazy: true }
+);
+
+useHead({
+  titleTemplate: `%s ${seo.value?.data?.seo_meta_title_seperator} ${seo.value?.data?.seo_website_title}`,
+});
 
 const { data: company } = await useAsyncData<{ data: StatamicGlobalCompany }>(
   'company',
@@ -16,6 +24,9 @@ const { data: company } = await useAsyncData<{ data: StatamicGlobalCompany }>(
     }),
   { lazy: true }
 );
+
+const route = useRoute();
+const appRef = useTemplateRef('app');
 
 if (typeof window !== 'undefined') {
   window.onmessage = function (e) {
