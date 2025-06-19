@@ -20,12 +20,12 @@ defineProps<{ data?: CustomListItem[] }>();
 .statamic-icon-list {
   margin-block: 1.5rem;
   display: grid;
-  gap: 2.25rem;
+  gap: 1.5rem;
 
   > li {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .list-item-title {
@@ -33,12 +33,13 @@ defineProps<{ data?: CustomListItem[] }>();
     font-size: var(--font-size-md);
 
     &:has(+ .list-item-text) {
-      margin-block-end: 0.75rem;
+      margin-block: 0.5rem;
+      /* margin-block-end: 0.5rem; */
     }
   }
 
   .list-item-text {
-    margin-block-end: 0rem;
+    margin-block: 0rem;
   }
 
   .icon svg {

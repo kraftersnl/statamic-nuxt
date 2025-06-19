@@ -26,7 +26,7 @@ const { is = 'h2' } = defineProps<{
   .super-title {
     font-size: var(--font-size-xxxs);
     color: var(--color-grey-text);
-    letter-spacing: 10%;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-block-end: 1.5rem;
   }

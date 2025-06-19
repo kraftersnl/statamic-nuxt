@@ -10,7 +10,13 @@ defineProps<{ data?: FormBlock }>();
 
         <p>{{ data?.description }}</p>
 
-        <StatamicForm v-if="data?.form?.handle" :data="data" />
+        <template v-if="data?.form?.handle">
+          <StatamicForm :data="data" />
+          <p v-if="data?.legal" class="legal">
+            {{ data.legal }}
+          </p>
+        </template>
+
         <ContentBlockMapper v-else :content="data?.content" />
       </div>
 
@@ -70,6 +76,11 @@ defineProps<{ data?: FormBlock }>();
 
     p {
       margin-block: 2rem 4rem;
+    }
+
+    .legal {
+      margin-block-start: 3rem;
+      font-size: var(--font-size-xxs);
     }
   }
 

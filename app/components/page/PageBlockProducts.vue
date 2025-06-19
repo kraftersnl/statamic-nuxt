@@ -26,7 +26,9 @@ defineProps<{ data?: ProductsBlock }>();
           </div>
 
           <div class="product-content">
-            <h3 class="product-title">{{ product.title }}</h3>
+            <NuxtLink :to="product.button_link" class="title-link">
+              <h3 class="product-title">{{ product.title }}</h3>
+            </NuxtLink>
 
             <p class="product-text">{{ product.text }}</p>
 
@@ -61,12 +63,12 @@ defineProps<{ data?: ProductsBlock }>();
     }
   }
 
-  .product-item {
-    /* @media (min-width: 1024px) {
-      display: grid;
-      gap: 5rem;
-      grid-template-columns: 1fr 1fr;
-    } */
+  .title-link {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .product-title {

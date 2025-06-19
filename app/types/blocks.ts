@@ -96,6 +96,7 @@ declare global {
   type FormBlock = StatamicPageBlock & {
     form?: StatamicForm;
     form_button_label?: string;
+    legal?: string;
     super_title?: string;
     title?: string;
     description?: string;

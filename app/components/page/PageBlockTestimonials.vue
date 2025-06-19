@@ -92,7 +92,7 @@ const scrollWidth = computed(
   isolation: isolate;
 
   h2 {
-    margin-block-end: 10rem;
+    margin-block-end: 5rem;
   }
 
   .page-block-content {
@@ -119,7 +119,7 @@ const scrollWidth = computed(
     }
 
     .testimonials-list {
-      padding-block-end: 5rem;
+      padding-block: 2.5rem;
       display: flex;
       gap: 4rem;
       grid-auto-flow: column;
