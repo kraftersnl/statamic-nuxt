@@ -3,7 +3,12 @@ defineProps<{ data?: CustomListItem[] }>();
 </script>
 
 <template>
-  <ul v-if="data?.length" role="list" class="statamic-icon-list">
+  <component
+    :is="data.variant === 'numbers' ? 'ol' : 'ol'"
+    v-if="data?.length"
+    role="list"
+    class="statamic-icon-list"
+  >
     <li v-for="item in data">
       <StatamicIcon :icon="item.icon" />
 
@@ -13,7 +18,7 @@ defineProps<{ data?: CustomListItem[] }>();
         <p v-if="item.text" class="list-item-text">{{ item.text }}</p>
       </div>
     </li>
-  </ul>
+  </component>
 </template>
 
 <style>
@@ -46,6 +51,17 @@ defineProps<{ data?: CustomListItem[] }>();
     color: var(--color-accent-graphic);
     width: var(--font-size-xl);
     height: var(--font-size-xl);
+  }
+}
+
+ol.statamic-icon-list {
+  counter-reset: steps;
+  li {
+    counter-increment: steps;
+
+    .list-item-title::before {
+      content: counter(steps) '. ';
+    }
   }
 }
 </style>

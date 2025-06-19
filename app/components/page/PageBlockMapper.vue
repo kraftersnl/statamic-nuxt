@@ -89,6 +89,7 @@ function getBlockComponent(block: StatamicPageBlock) {
     width: var(--shape-width, 120px);
     height: auto;
     right: 0;
+    top: 10%;
 
     @media (min-width: 1200px) {
       left: var(--app-padding-inline);
@@ -118,10 +119,6 @@ function getBlockComponent(block: StatamicPageBlock) {
         width: var(--shape-width, 240px);
         left: 160px;
       }
-    }
-
-    .background-shape--rectangle-dots {
-      top: 10%;
     }
   }
 

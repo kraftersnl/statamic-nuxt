@@ -150,6 +150,7 @@ declare global {
   type ListContentBlock = {
     type: 'list';
     id?: string;
+    variant?: 'icons' | 'numbers';
     list: CustomListItem[];
   };
 
