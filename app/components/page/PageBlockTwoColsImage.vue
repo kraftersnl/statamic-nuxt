@@ -65,6 +65,10 @@ defineProps<{ data?: TwoColsImageBlock }>();
   .page-block-content {
     padding-block: 4rem;
 
+    @media (min-width: 1200px) {
+      padding-inline: 5rem;
+    }
+
     p {
       max-width: 640ch;
     }
