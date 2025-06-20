@@ -17,7 +17,7 @@ useHead({
 });
 
 const { data: company } = await useAsyncData<{ data: StatamicGlobalCompany }>(
-  'company',
+  'company-globals-for-footer',
   () =>
     $fetch('/api/globals/company', {
       baseURL: useRuntimeConfig().public.statamicUrl,

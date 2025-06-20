@@ -2,13 +2,19 @@
 const props = defineProps<{ data?: HeroBlock }>();
 
 const imageBg = computed(
-  () => props.data?.image && props.data?.image_position?.key === 'background'
+  () =>
+    props.data?.image?.permalink &&
+    props.data?.image_position?.key === 'background'
 );
 const imageFirst = computed(
-  () => props.data?.image && props.data?.image_position?.key?.endsWith('-start')
+  () =>
+    props.data?.image?.permalink &&
+    props.data?.image_position?.key?.endsWith('-start')
 );
 const imageLast = computed(
-  () => props.data?.image && props.data?.image_position?.key?.endsWith('-end')
+  () =>
+    props.data?.image?.permalink &&
+    props.data?.image_position?.key?.endsWith('-end')
 );
 </script>
 

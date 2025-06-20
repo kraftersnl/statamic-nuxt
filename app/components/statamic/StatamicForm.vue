@@ -21,7 +21,7 @@ const { data: form } = await useAsyncData<{ data: StatamicForm }>(
 );
 
 const { data: company } = await useAsyncData<{ data: StatamicGlobalCompany }>(
-  'company',
+  'company-globals-for-form',
   () =>
     $fetch('/api/globals/company', {
       baseURL: useRuntimeConfig().public.statamicUrl,
