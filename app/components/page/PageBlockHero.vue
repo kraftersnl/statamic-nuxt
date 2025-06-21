@@ -6,11 +6,13 @@ const imageBg = computed(
     props.data?.image?.permalink &&
     props.data?.image_position?.key === 'background'
 );
+
 const imageFirst = computed(
   () =>
     props.data?.image?.permalink &&
     props.data?.image_position?.key?.endsWith('-start')
 );
+
 const imageLast = computed(
   () =>
     props.data?.image?.permalink &&
@@ -18,20 +20,21 @@ const imageLast = computed(
 );
 
 const img = useImage();
-const backgroundStyles = computed(() => {
-  const imgUrl = img(props.data?.image?.permalink, {
+
+const imgUrl = computed(() =>
+  img(props.data?.image?.permalink, {
     sizes: 'sm:320px md:640px lg:1200px xl:1920px',
-    loading: 'eager',
-    preload: { fetchPriority: 'high' },
-    placeholder: [32, 18, 80, 250],
     modifiers: {
       format: 'webp',
       quality: 80,
       width: 320,
       height: 180,
     },
-  });
-  return { backgroundImage: `url('${imgUrl}')` };
+  })
+);
+
+const backgroundStyles = computed(() => {
+  return { backgroundImage: `url('${imgUrl.value}')` };
 });
 </script>
 
@@ -48,6 +51,13 @@ const backgroundStyles = computed(() => {
     ]"
     :style="[imageBg && backgroundStyles]"
   >
+    <NuxtImg
+      v-if="imageBg"
+      :src="imgUrl"
+      style="display: none"
+      :preload="{ fetchPriority: 'high' }"
+    />
+
     <div v-if="data?.show_background_shapes" class="background-shapes-wrapper">
       <CircleDots />
       <CircleStripes />
