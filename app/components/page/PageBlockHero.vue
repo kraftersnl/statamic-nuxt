@@ -44,7 +44,6 @@ const imageLast = computed(
           :data="data?.image"
           width="320"
           height="180"
-          sizes="mobile:640px normal:960px big:1440px"
         />
       </div>
 

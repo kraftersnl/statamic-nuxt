@@ -16,12 +16,7 @@ defineProps<{ data?: ProductsBlock }>();
           <div class="product-image">
             <NuxtLink :to="product.button_link">
               <span class="visuallyhidden">{{ product.button_label }}</span>
-              <StatamicImage
-                :data="product.image"
-                width="400"
-                height="400"
-                sizes="mobile:400px normal:800px"
-              />
+              <StatamicImage :data="product.image" width="360" height="360" />
             </NuxtLink>
           </div>
 

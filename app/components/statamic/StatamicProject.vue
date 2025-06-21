@@ -13,8 +13,8 @@ defineProps<{
     <StatamicImage
       v-if="data?.image"
       :data="data.image"
-      width="1440"
-      height="480"
+      width="360"
+      height="120"
       class="project-image"
     />
   </div>
