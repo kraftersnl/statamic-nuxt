@@ -19,22 +19,22 @@ const imageLast = computed(
     props.data?.image_position?.key?.endsWith('-end')
 );
 
-const img = useImage();
+// const img = useImage();
 
-const imgUrl = computed(() =>
-  img(props.data?.image?.permalink, {
-    sizes: 'sm:320px md:640px lg:1200px xl:1920px',
-    modifiers: {
-      format: 'webp',
-      quality: 80,
-      width: 320,
-      height: 180,
-    },
-  })
-);
+// const imgUrl = computed(() =>
+//   img(props.data?.image?.permalink, {
+//     sizes: 'sm:320px md:640px lg:1200px xl:1920px',
+//     modifiers: {
+//       format: 'webp',
+//       quality: 80,
+//       width: 320,
+//       height: 180,
+//     },
+//   })
+// );
 
 const backgroundStyles = computed(() => {
-  return { backgroundImage: `url('${imgUrl.value}')` };
+  return { backgroundImage: `url('${props.data?.image?.permalink}')` };
 });
 </script>
 
@@ -51,12 +51,13 @@ const backgroundStyles = computed(() => {
     ]"
     :style="[imageBg && backgroundStyles]"
   >
-    <NuxtImg
+    <!-- <NuxtImg
       v-if="imageBg"
-      :src="imgUrl"
       style="display: none"
+      :src="imgUrl"
+      loading="eager"
       :preload="{ fetchPriority: 'high' }"
-    />
+    /> -->
 
     <div v-if="data?.show_background_shapes" class="background-shapes-wrapper">
       <CircleDots />
