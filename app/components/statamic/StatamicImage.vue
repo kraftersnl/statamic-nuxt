@@ -3,7 +3,7 @@ const {
   loading = 'lazy',
   width = '240',
   height = '160',
-  sizes = 'sm:320px md:640px lg:960px xl:1440px',
+  sizes = 'sm:320px md:640px lg:1200px',
   placeholder = true,
 } = defineProps<{
   data?: StatamicImage;

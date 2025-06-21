@@ -16,6 +16,12 @@ const imageLast = computed(
     props.data?.image?.permalink &&
     props.data?.image_position?.key?.endsWith('-end')
 );
+
+const img = useImage();
+const backgroundStyles = computed(() => {
+  const imgUrl = img(props.data?.image?.permalink, {});
+  return { backgroundImage: `url('${imgUrl}')` };
+});
 </script>
 
 <template>
@@ -29,7 +35,7 @@ const imageLast = computed(
       data?.background_color?.key &&
         `background-color--${data.background_color.key}`,
     ]"
-    :style="[imageBg && `background-image: url(${data?.image?.permalink})`]"
+    :style="[imageBg && backgroundStyles]"
   >
     <div v-if="data?.show_background_shapes" class="background-shapes-wrapper">
       <CircleDots />

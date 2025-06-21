@@ -40,9 +40,8 @@ export default defineNuxtConfig({
     densities: [1, 2],
     screens: {
       sm: 320,
-      md: 768,
-      lg: 1024,
-      xl: 1200,
+      md: 640,
+      lg: 1200,
     },
   },
 
