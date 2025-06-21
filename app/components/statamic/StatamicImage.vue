@@ -8,7 +8,6 @@ const {
 } = defineProps<{
   data?: StatamicImage;
   loading?: 'lazy' | 'eager';
-  fetchPriority?: 'high' | 'low' | 'auto';
   sizes?: string;
   caption?: string;
   width?: string;

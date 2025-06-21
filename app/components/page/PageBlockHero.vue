@@ -19,7 +19,18 @@ const imageLast = computed(
 
 const img = useImage();
 const backgroundStyles = computed(() => {
-  const imgUrl = img(props.data?.image?.permalink, {});
+  const imgUrl = img(props.data?.image?.permalink, {
+    sizes: 'sm:320px md:640px lg:1200px xl:1920px',
+    loading: 'eager',
+    preload: { fetchPriority: 'high' },
+    placeholder: [32, 18, 80, 250],
+    modifiers: {
+      format: 'webp',
+      quality: 80,
+      width: 320,
+      height: 180,
+    },
+  });
   return { backgroundImage: `url('${imgUrl}')` };
 });
 </script>
@@ -67,6 +78,7 @@ const backgroundStyles = computed(() => {
         width="320"
         height="180"
         :placeholder="[64, 32, 90, 250]"
+        sizes=""
       />
     </div>
   </section>
