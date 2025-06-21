@@ -3,7 +3,7 @@ const {
   loading = 'lazy',
   width = '240',
   height = '160',
-  sizes = 'sm:320px md:640px lg:960px xl:1200px',
+  sizes = 'sm:320px md:640px lg:960px xl:1440px',
   placeholder = true,
 } = defineProps<{
   data?: StatamicImage;
@@ -40,13 +40,11 @@ const {
 
 <style>
 .image-wrapper {
-  /* width:100%;
-  height:100%; */
 }
 
 .statamic-image {
-  height: auto;
-  width: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .image-caption {
