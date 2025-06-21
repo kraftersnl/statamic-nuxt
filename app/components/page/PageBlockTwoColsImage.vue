@@ -16,7 +16,7 @@ defineProps<{ data?: TwoColsImageBlock }>();
       v-if="data?.image && data?.image_position?.key === 'inline-start'"
       class="image-column"
     >
-      <StatamicImage :data="data.image" width="360" height="360" />
+      <StatamicImage :data="data.image" width="640" height="640" />
     </div>
 
     <div class="page-block-content">
@@ -29,7 +29,7 @@ defineProps<{ data?: TwoColsImageBlock }>();
       v-if="data?.image && data?.image_position?.key === 'inline-end'"
       class="image-column"
     >
-      <StatamicImage :data="data.image" width="360" height="360" />
+      <StatamicImage :data="data.image" width="640" height="640" />
     </div>
   </section>
 </template>

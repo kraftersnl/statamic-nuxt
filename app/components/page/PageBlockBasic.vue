@@ -31,8 +31,8 @@ defineProps<{ data?: BasicBlock }>();
       v-if="data?.image?.permalink"
       :data="data.image"
       :caption="data.image_caption"
-      width="360"
-      height="240"
+      width="960"
+      height="640"
       class="image-column"
     />
   </section>

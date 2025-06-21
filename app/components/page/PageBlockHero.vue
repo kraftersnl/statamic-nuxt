@@ -70,8 +70,8 @@ const backgroundStyles = computed(() => {
           class="hero-image"
           loading="eager"
           :data="data?.image"
-          width="320"
-          height="180"
+          width="960"
+          height="960"
         />
       </div>
 
@@ -86,8 +86,8 @@ const backgroundStyles = computed(() => {
         class="hero-image"
         loading="eager"
         :data="data?.image"
-        width="320"
-        height="180"
+        width="960"
+        height="960"
         :placeholder="[64, 32, 90, 250]"
         sizes=""
       />
