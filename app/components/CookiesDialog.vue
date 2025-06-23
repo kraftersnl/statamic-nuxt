@@ -1,8 +1,25 @@
 <script setup lang="ts">
 import Cookies from 'js-cookie';
 
-const { proxy } = useScriptGoogleTagManager();
 const { cookieConsent, cookiesDialogRef } = useCookiesDialog();
+const consentTrigger = useScriptTriggerConsent();
+
+const { proxy, remove } = useScriptGoogleTagManager({
+  onBeforeGtmStart: (gtag) => {
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'denied',
+      personalization_storage: 'denied',
+    });
+  },
+
+  scriptOptions: {
+    trigger: consentTrigger,
+  },
+});
 
 function gtag() {
   proxy.dataLayer.push(arguments);
@@ -18,30 +35,30 @@ onMounted(() => {
     cookieConsent.value?.analytics === true &&
     cookieConsent.value?.marketing === true
   ) {
-    // update consent to granted
-    gtag('consent', 'update', {
-      ad_storage: 'granted',
-      ad_user_data: 'granted',
-      ad_personalization: 'granted',
-      analytics_storage: 'granted',
-    });
+    acceptCookies();
   } else if (
     cookieConsent.value?.necessary === true &&
     cookieConsent.value?.analytics === false &&
     cookieConsent.value?.marketing === false
   ) {
-    // do nothing
+    denyCookies();
   } else {
     cookiesDialogRef.value?.openDialog();
   }
 });
 
 function acceptCookies() {
+  cookiesDialogRef.value?.closeDialog();
+
+  consentTrigger.accept();
+
   gtag('consent', 'update', {
     ad_storage: 'granted',
     ad_user_data: 'granted',
     ad_personalization: 'granted',
     analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    personalization_storage: 'granted',
   });
 
   Cookies.set(
@@ -56,16 +73,20 @@ function acceptCookies() {
   cookieConsent.value.necessary = true;
   cookieConsent.value.analytics = true;
   cookieConsent.value.marketing = true;
-
-  cookiesDialogRef.value?.closeDialog();
 }
 
 function denyCookies() {
+  cookiesDialogRef.value?.closeDialog();
+
+  remove();
+
   gtag('consent', 'update', {
     ad_storage: 'denied',
     ad_user_data: 'denied',
     ad_personalization: 'denied',
     analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
   });
 
   Cookies.set(
@@ -81,8 +102,6 @@ function denyCookies() {
   cookieConsent.value.necessary = true;
   cookieConsent.value.analytics = false;
   cookieConsent.value.marketing = false;
-
-  cookiesDialogRef.value?.closeDialog();
 }
 </script>
 
