@@ -5,16 +5,16 @@ const { cookieConsent, cookiesDialogRef } = useCookiesDialog();
 const consentTrigger = useScriptTriggerConsent();
 
 const { proxy, remove } = useScriptGoogleTagManager({
-  onBeforeGtmStart: (gtag) => {
-    gtag('consent', 'default', {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'denied',
-      functionality_storage: 'denied',
-      personalization_storage: 'denied',
-    });
-  },
+  // onBeforeGtmStart: (gtag) => {
+  //   gtag('consent', 'default', {
+  //     ad_storage: 'denied',
+  //     ad_user_data: 'denied',
+  //     ad_personalization: 'denied',
+  //     analytics_storage: 'denied',
+  //     functionality_storage: 'denied',
+  //     personalization_storage: 'denied',
+  //   });
+  // },
 
   scriptOptions: {
     trigger: consentTrigger,
