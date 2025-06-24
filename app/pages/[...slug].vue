@@ -24,9 +24,9 @@ if (!entries.value?.data?.length && !route.query.preview) {
 const page = computed(() => entries.value?.data?.[0]);
 
 useSeoMeta({
-  title: page.value?.meta_title || page.value?.title,
-  description: page.value?.meta_description || page.value?.summary,
-  ogImage: page.value?.social_image || useRuntimeConfig().public.ogImage,
+  title: page.value?.meta?.title || page.value?.title,
+  description: page.value?.meta?.description || page.value?.summary,
+  ogImage: page.value?.social?.image,
 });
 </script>
 
