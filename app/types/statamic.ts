@@ -63,7 +63,7 @@ declare global {
     blocks?: StatamicPageBlock[];
     meta_title?: string;
     meta_description?: string;
-    meta_image?: string;
+    social_image?: string;
     seo?: {
       meta?: {
         title?: string;
