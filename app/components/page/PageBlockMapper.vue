@@ -80,7 +80,7 @@ function getBlockComponent(block: StatamicPageBlock) {
     color: #ffffff;
   }
 
-  &:not(.hero-block) {
+  &:not(.hero-block, .testimonials-block, .form-block) {
     .background-shape {
       position: absolute;
       z-index: -1;

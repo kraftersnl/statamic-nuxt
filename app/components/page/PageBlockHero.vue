@@ -76,7 +76,6 @@ const backgroundStyles = computed(() => {
 <style>
 .hero-block {
   display: grid;
-  min-height: calc(100svh - var(--app-header-height));
 
   h1 {
     max-width: 640px;
@@ -99,9 +98,14 @@ const backgroundStyles = computed(() => {
 
   .hero-image {
     z-index: -1;
-    height: 100%;
+
+    @media (min-width: 1200px) {
+      height: calc(100svh - var(--app-header-height));
+    }
 
     img {
+      object-position: center;
+      height: 100%;
       width: 100%;
     }
   }
@@ -135,6 +139,14 @@ const backgroundStyles = computed(() => {
 
   .background-attachment--fixed {
     background-attachment: fixed;
+  }
+}
+
+.hero-block.image-position--background,
+.hero-block.image-position--inline-end,
+.hero-block.image-position--inline-start {
+  @media (min-width: 1200px) {
+    height: calc(100svh - var(--app-header-height));
   }
 }
 
@@ -194,7 +206,7 @@ const backgroundStyles = computed(() => {
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1200px) {
     .hero-block-wrapper {
       grid-template-columns:
         1fr calc(var(--app-max-width) / 2)
@@ -212,9 +224,6 @@ const backgroundStyles = computed(() => {
 
       img {
         width: 100%;
-        height: calc(
-          100svh - var(--app-header-height) - var(--app-top-header-height)
-        );
       }
     }
   }
@@ -226,7 +235,7 @@ const backgroundStyles = computed(() => {
     padding-block-end: 4rem;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1200px) {
     .hero-block-wrapper {
       align-items: center;
       grid-template-columns:
@@ -246,7 +255,6 @@ const backgroundStyles = computed(() => {
 
       img {
         width: 100%;
-        height: calc(100svh - var(--app-header-height));
       }
     }
   }

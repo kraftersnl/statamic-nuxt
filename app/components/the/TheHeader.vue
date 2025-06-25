@@ -89,7 +89,6 @@ const mainNav = computed((): MenuItem[] =>
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
-  padding-inline-end: 7.5rem;
 
   @media (min-width: 1120px) {
     justify-content: center;
