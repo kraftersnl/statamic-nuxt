@@ -4,7 +4,7 @@ defineProps<{ data?: CustomListItem[] }>();
 
 <template>
   <component
-    :is="data.variant === 'numbers' ? 'ol' : 'ol'"
+    :is="data.variant === 'numbers' ? 'ol' : 'ul'"
     v-if="data?.length"
     role="list"
     class="statamic-icon-list"
@@ -56,6 +56,7 @@ defineProps<{ data?: CustomListItem[] }>();
 
 ol.statamic-icon-list {
   counter-reset: steps;
+
   li {
     counter-increment: steps;
 
