@@ -22,6 +22,8 @@ defineProps<{ data?: TwoColsTextBlock }>();
 
       <div class="left-column">
         <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
+
+        <p v-if="data?.description">{{ data.description }}</p>
       </div>
 
       <ContentBlockMapper :content="data?.content" />

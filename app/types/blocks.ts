@@ -68,6 +68,7 @@ declare global {
   type TwoColsTextBlock = StatamicPageBlock & {
     super_title?: string;
     title?: string;
+    description?: string;
     content?: StatamicContentBlock[];
     background_color?: StatamicSelectOption;
     background_shape?: StatamicSelectOption;
