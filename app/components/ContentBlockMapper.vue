@@ -39,7 +39,10 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
         :data="contentBlock"
       />
 
-      <StatamicForm v-if="contentBlock?.type === 'form'" :data="contentBlock" />
+      <LazyStatamicForm
+        v-if="contentBlock?.type === 'form'"
+        :data="contentBlock"
+      />
 
       <VideoPlayer
         v-if="contentBlock?.type === 'video'"

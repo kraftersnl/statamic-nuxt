@@ -11,7 +11,7 @@ defineProps<{ data?: FormBlock }>();
         <p>{{ data?.description }}</p>
 
         <template v-if="data?.form?.handle">
-          <StatamicForm :data="data" />
+          <LazyStatamicForm :data="data" />
 
           <p v-if="data?.legal" class="legal">
             {{ data.legal }}
