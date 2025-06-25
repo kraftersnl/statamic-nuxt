@@ -130,12 +130,14 @@ function getBlockComponent(block: StatamicPageBlock) {
       }
 
       .background-shape--circle-stripes {
+        top: auto;
         bottom: -20%;
         left: var(--app-padding-inline);
         width: var(--shape-width, 140px);
       }
 
       .background-shape--rectangle-dots {
+        top: auto;
         bottom: 2%;
       }
     }
