@@ -25,7 +25,7 @@ const page = computed(() => entries.value?.data?.[0]);
 
 useSeoMeta({
   title: page.value?.meta?.title || page.value?.title,
-  description: page.value?.meta?.description || page.value?.summary,
+  description: page.value?.seo?.meta?.description || page.value?.summary,
   ogImage: page.value?.social?.image || useRuntimeConfig()?.public?.ogImage,
 });
 </script>
