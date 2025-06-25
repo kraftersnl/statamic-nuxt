@@ -56,6 +56,10 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
   display: grid;
   gap: 1rem;
 
+  > :first-child {
+    margin-block: 0;
+  }
+
   .statamic-icon svg {
     width: var(--font-size-xxl);
     height: var(--font-size-xxl);

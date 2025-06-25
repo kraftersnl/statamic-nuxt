@@ -63,10 +63,6 @@ defineProps<{
     line-height: 1.35;
     font-size: var(--font-size-xl);
 
-    @media (min-width: 1024px) {
-      font-size: var(--font-size-xxl);
-    }
-
     &:not(:empty)::before {
       content: open-quote;
     }

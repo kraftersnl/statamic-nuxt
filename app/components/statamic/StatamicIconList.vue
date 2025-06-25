@@ -39,7 +39,6 @@ defineProps<{ data?: CustomListItem[] }>();
 
     &:has(+ .list-item-text) {
       margin-block: 0.5rem;
-      /* margin-block-end: 0.5rem; */
     }
   }
 
