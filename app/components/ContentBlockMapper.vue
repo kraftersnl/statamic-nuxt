@@ -71,24 +71,8 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
   ul,
   ol {
     > a {
-      @media (prefers-reduced-motion: no-preference) {
-        text-decoration: none;
-        border-bottom: 1.5px solid var(--color-text);
-        background-image: linear-gradient(var(--color-accent-graphic));
-        background-repeat: no-repeat;
-        background-size: 0% 1px;
-        background-position: right bottom;
-        transition-timing-function: ease-in-out;
-        transition: background-size var(--duration-md),
-          border-color var(--duration-sm) var(--duration-sm);
-
-        &:hover {
-          border-color: var(--color-accent-graphic);
-          background-size: 100% 1px;
-          background-position: left bottom;
-          transition: background-size var(--duration-md),
-            border-color var(--duration-sm), color var(--duration-sm);
-        }
+      &:hover {
+        color: var(--color-accent-text);
       }
     }
 

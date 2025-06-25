@@ -80,28 +80,28 @@ function getBlockComponent(block: StatamicPageBlock) {
     color: #ffffff;
   }
 
-  .background-shape {
-    position: absolute;
-    z-index: -1;
-  }
-
-  .background-shape--rectangle-dots {
-    width: var(--shape-width, 120px);
-    height: auto;
-    right: 0;
-    top: 10%;
-
-    @media (min-width: 1200px) {
-      left: var(--app-padding-inline);
+  &:not(.hero-block) {
+    .background-shape {
+      position: absolute;
+      z-index: -1;
     }
-  }
 
-  .background-shape--circle-stripes,
-  .background-shape--circle-dots {
-    height: auto;
-  }
+    .background-shape--rectangle-dots {
+      width: var(--shape-width, 120px);
+      height: auto;
+      right: 0;
+      top: 10%;
 
-  &.shape-position--block-start {
+      @media (min-width: 1200px) {
+        left: var(--app-padding-inline);
+      }
+    }
+
+    .background-shape--circle-stripes,
+    .background-shape--circle-dots {
+      height: auto;
+    }
+
     .background-shape--circle-dots {
       top: 2%;
       left: 25%;
@@ -115,28 +115,29 @@ function getBlockComponent(block: StatamicPageBlock) {
       width: var(--shape-width, 180px);
 
       @media (min-width: 1200px) {
-        top: -8%;
+        top: 5%;
         width: var(--shape-width, 240px);
         left: 160px;
       }
     }
-  }
 
-  &.shape-position--block-end {
-    .background-shape--circle-dots {
-      bottom: -120px;
-      left: 30%;
-      width: var(--shape-width, 240px);
-    }
+    &.shape-position--block-end {
+      .background-shape--circle-dots {
+        top: auto;
+        bottom: -120px;
+        left: 30%;
+        width: var(--shape-width, 240px);
+      }
 
-    .background-shape--circle-stripes {
-      bottom: -20%;
-      left: var(--app-padding-inline);
-      width: var(--shape-width, 140px);
-    }
+      .background-shape--circle-stripes {
+        bottom: -20%;
+        left: var(--app-padding-inline);
+        width: var(--shape-width, 140px);
+      }
 
-    .background-shape--rectangle-dots {
-      bottom: 2%;
+      .background-shape--rectangle-dots {
+        bottom: 2%;
+      }
     }
   }
 }
