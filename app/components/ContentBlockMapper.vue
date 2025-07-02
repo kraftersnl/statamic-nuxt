@@ -15,7 +15,7 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
 
       <StatamicIconList
         v-else-if="contentBlock?.type === 'list'"
-        :data="contentBlock.list"
+        :data="contentBlock"
       />
 
       <StatamicImage

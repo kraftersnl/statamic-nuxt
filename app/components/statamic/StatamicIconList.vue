@@ -1,16 +1,16 @@
 <script setup lang="ts">
-defineProps<{ data?: CustomListItem[] }>();
+defineProps<{ data?: ListContentBlock }>();
 </script>
 
 <template>
   <component
     :is="data.variant === 'numbers' ? 'ol' : 'ul'"
-    v-if="data?.length"
+    v-if="data?.list?.length"
     role="list"
     class="statamic-icon-list"
   >
-    <li v-for="item in data">
-      <StatamicIcon :icon="item.icon" />
+    <li v-for="item in data.list">
+      <StatamicIcon v-if="item.icon" :icon="item.icon" />
 
       <div class="list-item-content">
         <h3 v-if="item.title" class="list-item-title">{{ item.title }}</h3>
@@ -30,7 +30,7 @@ defineProps<{ data?: CustomListItem[] }>();
   > li {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
   .list-item-title {

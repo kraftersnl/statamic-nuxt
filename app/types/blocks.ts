@@ -121,6 +121,7 @@ declare global {
     | IconContentBlock
     | ListContentBlock
     | ButtonContentBlock
+    | ButtonGroupContentBlock
     | ImageContentBlock
     | VideoContentBlock
     | QuoteContentBlock

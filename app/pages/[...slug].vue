@@ -23,10 +23,23 @@ if (!entries.value?.data?.length && !route.query.preview) {
 
 const page = computed(() => entries.value?.data?.[0]);
 
+const seoTitle = computed(
+  () => page.value?.seo?.meta?.title || page.value?.title
+);
+const seoDescription = computed(
+  () => page.value?.seo?.meta?.description || page.value?.summary
+);
+const seoImage = computed(
+  () => page.value?.seo?.social?.image || useRuntimeConfig()?.public?.ogImage
+);
+
 useSeoMeta({
-  title: page.value?.meta?.title || page.value?.title,
-  description: page.value?.seo?.meta?.description || page.value?.summary,
-  ogImage: page.value?.social?.image || useRuntimeConfig()?.public?.ogImage,
+  title: seoTitle.value,
+  ogTitle: seoTitle.value,
+  description: seoDescription.value,
+  ogDescription: seoDescription.value,
+  ogImage: seoImage.value,
+  ogUrl: useRuntimeConfig()?.public?.siteUrl + page.value?.url,
 });
 </script>
 
