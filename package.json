@@ -38,7 +38,6 @@
     "happy-dom": "^18.0.1",
     "js-cookie": "^3.0.5",
     "nuxt": "^3.17.6",
-    "nuxt-security": "2.2.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4",
     "vitest-axe": "1.0.0-pre.5",
