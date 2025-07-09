@@ -64,7 +64,7 @@ const scrollWidth = computed(
             class="carousel-controls"
           >
             <Button
-              icon="material-symbols:arrow-back"
+              icon="material-symbols:arrow-back-rounded"
               radius="full"
               label="Vorige ervaring"
               hide-label
@@ -72,7 +72,7 @@ const scrollWidth = computed(
               @click="x = x + -1 * scrollWidth"
             />
             <Button
-              icon="material-symbols:arrow-forward"
+              icon="material-symbols:arrow-forward-rounded"
               radius="full"
               label="Volgende ervaring"
               hide-label
