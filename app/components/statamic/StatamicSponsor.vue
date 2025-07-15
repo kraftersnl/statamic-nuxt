@@ -11,7 +11,7 @@ defineProps<{
     <StatamicImage :data="data?.image" class="sponsor-image" />
 
     <NuxtLink v-if="data?.website" :to="data.website" target="_blank" external>
-      {{ stripTrailingSlash(removeHttp(data.website)) }}
+      {{ stripUrl(data.website) }}
     </NuxtLink>
   </div>
 </template>

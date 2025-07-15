@@ -13,9 +13,11 @@ const { data: seo } = await useAsyncData<{ data: StatamicGlobalSEO }>(
 );
 
 useHead({
-  titleTemplate: `%s ${seo.value?.data?.seo_meta_title_seperator || '|'} ${
-    seo.value?.data?.seo_website_title || useRuntimeConfig()?.public?.siteTitle
-  }`,
+  titleTemplate: seo.value?.data?.seo_website_title
+    ? undefined
+    : `%s ${seo.value?.data?.seo_meta_title_seperator || '|'} ${
+        useRuntimeConfig()?.public?.siteTitle
+      }`,
 });
 
 const { data: company } = await useAsyncData<{ data: StatamicGlobalCompany }>(
