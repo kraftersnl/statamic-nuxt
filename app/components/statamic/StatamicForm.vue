@@ -50,7 +50,7 @@ async function handleSubmit(formData: FormData) {
         proxy.dataLayer.push({
           event: 'generate_lead',
           value: 1,
-          label: props.data.form.handle,
+          label: props.data.form?.handle,
         });
       }
 
@@ -134,8 +134,8 @@ async function handleSubmit(formData: FormData) {
       <Callout v-if="showErrorMessage" color="red">
         Er ging helaas iets mis. Probeer het later opnieuw of neem contact met
         ons op via
-        <a :href="'mailto:' + company.data?.email">
-          {{ company.data?.email }} </a
+        <a :href="'mailto:' + company?.data?.email">
+          {{ company?.data?.email }} </a
         >.
       </Callout>
     </div>
