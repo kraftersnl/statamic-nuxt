@@ -75,9 +75,9 @@ blockquote {
 }
 
 .bard-content {
-  white-space: pre-line;
   margin-inline: auto;
   display: grid;
+  align-content: start;
   gap: 1rem;
 
   > :first-child {

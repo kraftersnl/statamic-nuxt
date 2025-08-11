@@ -149,7 +149,6 @@ async function handleSubmit(formData: FormData) {
       :label="data.form_button_label || 'Verzenden'"
       :loading="submittingForm"
       :disabled="showSuccessMessage || showErrorMessage"
-      :style="`--col-width: 10rem`"
     />
   </Form>
 </template>
