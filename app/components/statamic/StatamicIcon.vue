@@ -3,7 +3,8 @@ defineProps<{ icon?: string }>();
 </script>
 
 <template>
-  <span v-if="icon" class="icon" aria-hidden="true" v-html="icon" />
+  <Icon v-if="icon?.includes(':')" :name="icon" />
+  <span v-else-if="icon" class="icon" aria-hidden="true" v-html="icon" />
 </template>
 
 <style>

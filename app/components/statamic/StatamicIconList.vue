@@ -46,6 +46,7 @@ defineProps<{ data?: ListContentBlock }>();
     margin-block: 0rem;
   }
 
+  .iconify,
   .icon svg {
     color: var(--color-accent-graphic);
     width: var(--font-size-xl);
