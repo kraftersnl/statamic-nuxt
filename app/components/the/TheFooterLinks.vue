@@ -13,12 +13,12 @@ defineProps<{
 
     <NuxtLink v-if="data?.email" :to="'mailto:' + data.email">
       <Icon name="heroicons-solid:mail" class="nav-list-item-icon" />
-      <span>{{ data.email }}</span>
+      <address>{{ data.email }}</address>
     </NuxtLink>
 
     <NuxtLink v-if="data?.phone" :to="'tel:' + data.phone">
       <Icon name="heroicons-solid:phone" class="nav-list-item-icon" />
-      <span>{{ data.phone }}</span>
+      <address>{{ data.phone }}</address>
     </NuxtLink>
 
     <div v-if="data?.address" class="grid-list-item">
