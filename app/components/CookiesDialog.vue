@@ -112,6 +112,7 @@ function denyCookies() {
     position="block-end"
     :click-outside="false"
     aria-label="Cookies"
+    close-button-variant="ghost"
   >
     <template #header>
       <div class="cookies-dialog-content">
@@ -146,24 +147,7 @@ function denyCookies() {
 
 <style>
 .cookies-dialog {
-  --dialog-padding-inline: 1.5rem;
-
-  @media (min-width: 768px) {
-    --dialog-padding-inline: 2rem;
-  }
-
-  .dialog-header {
-    .close-button {
-      position: absolute;
-      top: calc(var(--dialog-padding-block) / 2);
-      right: calc(var(--dialog-padding-inline) / 2);
-
-      @media (min-width: 768px) {
-        position: static;
-        margin-inline-start: 1rem;
-      }
-    }
-  }
+  --dialog-padding-inline: 3.5rem;
 
   .cookies-dialog-content {
     display: flex;
