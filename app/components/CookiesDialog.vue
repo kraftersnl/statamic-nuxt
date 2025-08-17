@@ -124,8 +124,7 @@ function denyCookies() {
           <Button
             class="accept-button"
             aria-describedby="cookiesDescription"
-            variant="secondary"
-            size="lg"
+            variant="cta"
             label="Accepteren"
             @click="acceptCookies"
           />
@@ -134,8 +133,6 @@ function denyCookies() {
             class="deny-button"
             aria-describedby="cookiesDescription"
             variant="ghost"
-            size="lg"
-            font-size="xs"
             label="Weigeren"
             @click="denyCookies"
           />
