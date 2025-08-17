@@ -7,7 +7,7 @@ const { is = 'h2' } = defineProps<{
 </script>
 
 <template>
-  <component :is="is" v-if="superTitle || title">
+  <component :is="is" v-if="superTitle || title" class="double-title">
     <span v-if="superTitle" class="super-title">
       {{ superTitle }}
     </span>

@@ -4,45 +4,51 @@ defineProps<{ data?: ArticlesBlock }>();
 
 <template>
   <section class="page-block articles-block">
-    <slot />
+    <div class="page-block-content">
+      <slot />
 
-    <ContentBlockMapper :content="data?.content" />
+      <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
 
-    <ul v-if="data?.entries?.length" class="entries-list" role="list">
-      <li v-for="entry in data.entries" :key="entry.id">
-        <StatamicArticleCard :data="entry" />
-      </li>
-    </ul>
+      <ContentBlockMapper :content="data?.content" />
+
+      <StatamicArticleList
+        v-if="data?.entries?.length"
+        :entries="data.entries"
+      />
+      <StatamicBlog v-else />
+    </div>
   </section>
 </template>
 
 <style>
 .articles-block {
   .page-block-content {
-    min-width: 100%;
-    max-width: 800px;
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    gap: 4rem;
-    text-align: center;
-  }
-
-  .entries-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
     margin-inline: auto;
     padding-inline: var(--app-padding-inline);
     max-width: var(--app-max-width);
+    padding-block: 5rem;
 
-    > * {
-      flex-basis: calc(420px - var(--app-padding-inline, 2rem));
+    @media (min-width: 1200px) {
+      padding-block: 8rem;
+    }
+  }
 
-      @media (min-width: 1024px) {
-        flex-basis: 100%;
-      }
+  .double-title {
+    text-align: center;
+
+    .title {
+      margin-inline: auto;
+    }
+  }
+
+  .entries-list {
+    margin-block-start: 3.5rem;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+
+    :nth-of-type(odd) .card {
+      background-color: var(--color-grey-bg);
     }
   }
 }

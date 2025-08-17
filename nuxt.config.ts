@@ -60,7 +60,7 @@ export default defineNuxtConfig({
 
   css: [join(currentDir, './app/assets/main.css')],
 
-  compatibilityDate: '2025-07-22',
+  compatibilityDate: '2025-08-17',
 
   future: {
     compatibilityVersion: 4,

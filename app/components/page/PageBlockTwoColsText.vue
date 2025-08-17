@@ -50,10 +50,12 @@ defineProps<{ data?: TwoColsTextBlock }>();
       padding-block-start: 3rem;
     }
 
-    p {
+    p,
+    ul {
       margin-block-start: 0;
 
-      + p {
+      + p,
+      + ul {
         margin-block-start: 1.5rem;
       }
     }

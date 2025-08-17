@@ -1,4 +1,16 @@
 declare global {
+  type CollectionEntriesResponse<T> = {
+    data: T[];
+    links: PaginationLinks;
+    meta: PaginationMeta;
+  };
+
+  type CollectionTreeItem<T> = {
+    page: T;
+    depth: number;
+    children: CollectionTreeItem<T>[];
+  };
+
   type NavTreeItem = {
     page: NavItem;
     depth: number;
@@ -61,22 +73,13 @@ declare global {
 
   type StatamicPageEntry = StatamicEntry & {
     blocks?: StatamicPageBlock[];
-    seo?: {
-      meta?: {
-        title?: string;
-        description?: string;
-        image?: string;
-      };
-      social?: {
-        title?: string;
-        description?: string;
-        image?: string;
-      };
-    };
+    seo?: StatamicSEO;
   };
 
   type StatamicArticleEntry = StatamicEntry & {
     blocks?: StatamicPageBlock[];
+    seo?: StatamicSEO;
+    content?: StatamicContentBlock[];
     date?: string;
   };
 
@@ -165,6 +168,19 @@ declare global {
     btw?: string;
     bank?: string;
     wysiwyg?: string;
+  };
+
+  type StatamicSEO = {
+    meta?: {
+      title?: string;
+      description?: string;
+      image?: string;
+    };
+    social?: {
+      title?: string;
+      description?: string;
+      image?: string;
+    };
   };
 
   type StatamicGlobalSEO = {

@@ -103,10 +103,11 @@ declare global {
     description?: string;
   };
 
-  type ArticlesBlock = StatamicPageBlock &
-    StatamicButton & {
-      entries: StatamicArticleEntry[];
-    };
+  type ArticlesBlock = StatamicPageBlock & {
+    entries: StatamicArticleEntry[];
+    super_title?: string;
+    title?: string;
+  };
 
   type EmployeesBlock = StatamicPageBlock & {
     entries: StatamicEmployeesEntry[];
