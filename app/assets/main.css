@@ -104,11 +104,12 @@ blockquote {
       }
     }
 
-    &:has(+ h2) {
-      margin-block-end: 3rem;
+    &:has(+ h2),
+    &:has(+ div) {
+      margin-block-end: 4rem;
     }
     &:has(+ h3) {
-      margin-block-end: 2.5rem;
+      margin-block-end: 3rem;
     }
     &:has(+ h4) {
       margin-block-end: 2rem;

@@ -43,11 +43,9 @@ defineProps<{ data?: BasicBlock }>();
   margin-inline: auto;
 
   .image-column {
-    width: 100%;
-    max-width: 400px;
+    padding-inline: var(--app-padding-inline);
     margin-inline: auto;
-    margin-block-start: 0.25rem;
-    margin-block-end: 1.5rem;
+    max-width: var(--app-max-width);
 
     img {
       width: 100%;
@@ -58,16 +56,21 @@ defineProps<{ data?: BasicBlock }>();
 
   .page-block-content {
     max-width: var(--app-max-width);
-    padding-block: 5rem;
+    padding-block: 4rem;
 
     @media (min-width: 1200px) {
-      padding-block-end: 8rem;
       padding-inline: var(--app-padding-inline);
     }
   }
 }
 
 @media (min-width: 768px) {
+  .image-position--block-start {
+    .image-column {
+      order: -1;
+    }
+  }
+
   .image-position--inline-end {
     &:has(.image-column) {
       display: grid;

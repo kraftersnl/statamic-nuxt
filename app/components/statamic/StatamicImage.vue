@@ -38,9 +38,6 @@ const {
 </template>
 
 <style>
-.image-wrapper {
-}
-
 .statamic-image {
   width: 100%;
   height: 100%;
