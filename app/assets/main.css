@@ -80,10 +80,6 @@ blockquote {
   align-content: start;
   gap: 1rem;
 
-  > :first-child {
-    margin-block: 0;
-  }
-
   .statamic-icon svg {
     width: var(--font-size-xxl);
     height: var(--font-size-xxl);
@@ -98,14 +94,15 @@ blockquote {
   p,
   ul,
   ol {
+    margin-block-start: 1em;
+
     > a {
       &:hover {
         color: var(--color-accent-text);
       }
     }
 
-    &:has(+ h2),
-    &:has(+ div) {
+    &:has(+ h2) {
       margin-block-end: 4rem;
     }
     &:has(+ h3) {

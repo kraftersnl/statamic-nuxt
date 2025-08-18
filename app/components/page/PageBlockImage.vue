@@ -13,16 +13,9 @@ defineProps<{ data?: BasicBlock }>();
     ]"
   >
     <div class="page-block-content">
-      <DoubleTitle
-        v-if="data?.title || data?.super_title"
-        :title="data.title"
-        :super-title="data.super_title"
-      />
+      <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
 
-      <ContentBlockMapper
-        v-if="data?.content?.length"
-        :content="data?.content"
-      />
+      <ContentBlockMapper :content="data?.content" />
     </div>
 
     <StatamicImage
@@ -52,10 +45,6 @@ defineProps<{ data?: BasicBlock }>();
     padding-block: 2rem;
     max-width: var(--app-max-width);
     margin-inline: auto;
-
-    &:empty {
-      display: none;
-    }
   }
 }
 </style>

@@ -126,6 +126,7 @@ const backgroundStyles = computed(() => {
   }
 
   .article-date {
+    color: var(--color-grey-text);
     display: inline-block;
     margin-block-start: 1.5rem;
   }

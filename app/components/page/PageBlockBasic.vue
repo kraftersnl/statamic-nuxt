@@ -59,6 +59,7 @@ defineProps<{ data?: BasicBlock }>();
     padding-block: 4rem;
 
     @media (min-width: 1200px) {
+      padding-block-end: 8rem;
       padding-inline: var(--app-padding-inline);
     }
   }
