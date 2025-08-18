@@ -45,6 +45,6 @@ useSeoMeta({
 
 <template>
   <div class="page-wrapper">
-    <PageBlockMapper :data="page?.blocks" />
+    <PageBlockMapper :blocks="page?.blocks" />
   </div>
 </template>

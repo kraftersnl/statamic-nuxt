@@ -1,5 +1,8 @@
 <script setup lang="ts">
-defineProps<{ data?: StatamicPageBlock[] }>();
+defineProps<{
+  blocks?: StatamicPageBlock[];
+  date?: string;
+}>();
 
 const PageBlockHero = resolveComponent('PageBlockHero');
 const PageBlockTwoColsText = resolveComponent('PageBlockTwoColsText');
@@ -40,8 +43,12 @@ function getBlockComponent(block: StatamicPageBlock) {
   <div class="page-blocks-wrapper">
     <slot />
 
-    <template v-for="pageBlock in data" :key="pageBlock.id">
-      <component :is="getBlockComponent(pageBlock)" :data="pageBlock" />
+    <template v-for="pageBlock in blocks" :key="pageBlock.id">
+      <component
+        :is="getBlockComponent(pageBlock)"
+        :data="pageBlock"
+        :date="date"
+      />
     </template>
   </div>
 </template>

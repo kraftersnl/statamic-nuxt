@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const props = defineProps<{ data?: HeroBlock }>();
+const props = defineProps<{
+  data?: HeroBlock;
+  date?: string;
+}>();
+
+const { locale } = useI18n();
 
 const imageBg = computed(
   () =>
@@ -56,6 +61,16 @@ const backgroundStyles = computed(() => {
       <div class="page-block-content">
         <h1 v-if="data?.title">{{ data.title }}</h1>
 
+        <NuxtTime
+          v-if="date"
+          :datetime="date"
+          :locale="locale"
+          day="numeric"
+          month="long"
+          year="numeric"
+          class="article-date"
+        />
+
         <ContentBlockMapper :content="data?.content" />
       </div>
 
@@ -108,6 +123,11 @@ const backgroundStyles = computed(() => {
       height: 100%;
       width: 100%;
     }
+  }
+
+  .article-date {
+    display: inline-block;
+    margin-block-start: 1.5rem;
   }
 
   .background-shapes-wrapper {
