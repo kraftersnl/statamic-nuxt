@@ -23,7 +23,7 @@ defineProps<{ data?: ListContentBlock }>();
 
 <style>
 .statamic-icon-list {
-  margin-block: 1.5rem;
+  margin-block-start: 1.5rem;
   display: grid;
   gap: 1.5rem;
 

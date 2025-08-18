@@ -61,11 +61,12 @@ defineProps<{ data?: FormBlock }>();
   }
 
   .page-block-content {
-    padding-block: 8rem;
+    padding-block: 3rem 5rem;
     display: grid;
     gap: 4rem;
 
     @media (min-width: 1200px) {
+      padding-block-end: 8rem;
       grid-template-columns: 1fr 1fr;
     }
   }

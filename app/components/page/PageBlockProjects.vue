@@ -37,7 +37,7 @@ const { data: entries } = await useAsyncData<{
 .page-block.projects-block {
   .page-block-content {
     display: grid;
-    padding-block-start: 5rem;
+    padding-block: 5rem;
     padding-inline: 2rem;
 
     p {

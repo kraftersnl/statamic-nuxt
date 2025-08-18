@@ -25,7 +25,10 @@ const { data: entries } = await useAsyncData<{
         <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
       </div>
 
-      <p v-if="data?.text">{{ data.text }}</p>
+      <p v-if="data?.text" class="employees-description">
+        {{ data.text }}
+      </p>
+
       <ul v-if="entries?.data?.length" role="list" class="entries-list">
         <li v-for="entry in entries?.data" :key="entry.id">
           <StatamicEmployee :data="entry" />
@@ -38,18 +41,26 @@ const { data: entries } = await useAsyncData<{
 <style>
 .employees-block {
   .page-block-content {
-    padding-block: 4rem;
+    padding-block: 5rem;
     display: grid;
     justify-content: center;
     gap: 4rem;
 
     @media (min-width: 1200px) {
-      padding-block: 8rem;
+      padding-block-end: 8rem;
 
       display: grid;
       padding-inline: var(--app-padding-inline);
       gap: 4rem;
       grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .employees-description {
+    margin-block-start: 0;
+
+    @media (min-width: 1200px) {
+      margin-block-start: 4.35em;
     }
   }
 
@@ -59,12 +70,16 @@ const { data: entries } = await useAsyncData<{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: 2rem;
+    column-gap: 1.5rem;
     row-gap: 4rem;
     margin-block: 4rem;
 
+    @media (min-width: 1200px) {
+      justify-content: start;
+    }
+
     > * {
-      flex-basis: 24rem;
+      flex-basis: 23rem;
     }
   }
 }

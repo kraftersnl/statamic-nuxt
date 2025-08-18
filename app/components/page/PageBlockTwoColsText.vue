@@ -39,7 +39,7 @@ defineProps<{ data?: TwoColsTextBlock }>();
     padding-block: 5rem;
 
     @media (min-width: 1200px) {
-      padding-block: 8rem;
+      padding-block-end: 8rem;
       display: grid;
       padding-inline: var(--app-padding-inline);
       gap: 4rem;
@@ -47,7 +47,11 @@ defineProps<{ data?: TwoColsTextBlock }>();
     }
 
     .bard-content {
-      padding-block-start: 3rem;
+      padding-block-start: 1.5em;
+
+      @media (min-width: 1200px) {
+        padding-block-start: 4.35em;
+      }
     }
 
     p,

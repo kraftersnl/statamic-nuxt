@@ -90,7 +90,7 @@ function getBlockComponent(block: StatamicPageBlock) {
       width: var(--shape-width, 120px);
       height: auto;
       right: 0;
-      top: 10%;
+      top: 7.5%;
 
       @media (min-width: 1200px) {
         left: var(--app-padding-inline);

@@ -194,7 +194,7 @@ const backgroundStyles = computed(() => {
 }
 
 .hero-block.image-position--block-end {
-  padding-block: var(--app-header-height) calc(2 * var(--app-header-height));
+  padding-block: var(--app-header-height);
 }
 
 .hero-block.image-position--inline-end {

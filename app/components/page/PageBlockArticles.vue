@@ -29,7 +29,7 @@ defineProps<{ data?: ArticlesBlock }>();
     padding-block: 5rem;
 
     @media (min-width: 1200px) {
-      padding-block: 8rem;
+      padding-block-end: 8rem;
     }
   }
 
