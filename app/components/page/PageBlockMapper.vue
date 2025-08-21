@@ -3,40 +3,6 @@ defineProps<{
   blocks?: StatamicPageBlock[];
   date?: string;
 }>();
-
-const PageBlockHero = resolveComponent('PageBlockHero');
-const PageBlockTwoColsText = resolveComponent('PageBlockTwoColsText');
-const PageBlockTwoColsImage = resolveComponent('PageBlockTwoColsImage');
-const PageBlockTestimonials = resolveComponent('PageBlockTestimonials');
-const PageBlockProjects = resolveComponent('PageBlockProjects');
-const PageBlockProducts = resolveComponent('PageBlockProducts');
-const PageBlockSteps = resolveComponent('PageBlockSteps');
-const PageBlockBasic = resolveComponent('PageBlockBasic');
-const PageBlockImage = resolveComponent('PageBlockImage');
-const PageBlockColumns = resolveComponent('PageBlockColumns');
-const PageBlockForm = resolveComponent('PageBlockForm');
-const PageBlockArticles = resolveComponent('PageBlockArticles');
-const PageBlockEmployees = resolveComponent('PageBlockEmployees');
-const PageBlockSponsors = resolveComponent('PageBlockSponsors');
-const PageBlockGrid = resolveComponent('PageBlockGrid');
-
-function getBlockComponent(block: StatamicPageBlock) {
-  if (block.type === 'hero') return PageBlockHero;
-  if (block.type === 'two_cols_text') return PageBlockTwoColsText;
-  if (block.type === 'two_cols_image') return PageBlockTwoColsImage;
-  if (block.type === 'testimonials') return PageBlockTestimonials;
-  if (block.type === 'projects') return PageBlockProjects;
-  if (block.type === 'products') return PageBlockProducts;
-  if (block.type === 'steps') return PageBlockSteps;
-  if (block.type === 'basic') return PageBlockBasic;
-  if (block.type === 'columns') return PageBlockColumns;
-  if (block.type === 'image') return PageBlockImage;
-  if (block.type === 'form') return PageBlockForm;
-  if (block.type === 'articles') return PageBlockArticles;
-  if (block.type === 'employees') return PageBlockEmployees;
-  if (block.type === 'sponsors') return PageBlockSponsors;
-  if (block.type === 'grid') return PageBlockGrid;
-}
 </script>
 
 <template>
@@ -44,8 +10,78 @@ function getBlockComponent(block: StatamicPageBlock) {
     <slot />
 
     <template v-for="pageBlock in blocks" :key="pageBlock.id">
-      <component
-        :is="getBlockComponent(pageBlock)"
+      <PageBlockHero
+        v-if="pageBlock?.type === 'hero'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockBasic
+        v-else-if="pageBlock?.type === 'basic'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockTwoColsText
+        v-else-if="pageBlock?.type === 'two_cols_text'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockTwoColsImage
+        v-else-if="pageBlock?.type === 'two_cols_image'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockTestimonials
+        v-else-if="pageBlock?.type === 'testimonials'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockProjects
+        v-else-if="pageBlock?.type === 'projects'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockProducts
+        v-else-if="pageBlock?.type === 'products'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockSteps
+        v-else-if="pageBlock?.type === 'steps'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockColumns
+        v-else-if="pageBlock?.type === 'columns'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockImage
+        v-else-if="pageBlock?.type === 'image'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockForm
+        v-else-if="pageBlock?.type === 'form'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockArticles
+        v-else-if="pageBlock?.type === 'articles'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockEmployees
+        v-else-if="pageBlock?.type === 'employees'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockSponsors
+        v-else-if="pageBlock?.type === 'sponsors'"
+        :data="pageBlock"
+        :date="date"
+      />
+      <PageBlockGrid
+        v-else-if="pageBlock?.type === 'grid'"
         :data="pageBlock"
         :date="date"
       />
