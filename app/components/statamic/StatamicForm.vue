@@ -45,14 +45,12 @@ async function handleSubmit(formData: FormData) {
       headers: { 'X-Requested-With': 'XMLHttpRequest' },
     });
 
-    proxy.dataLayer.push({
-      event: 'generate_lead',
-      value: 1,
-      label: props.data.form?.handle,
-    });
     if (response?.success) {
-      if (import.meta.env.NUXT_PUBLIC_GTM_ID) {
-      }
+      proxy.dataLayer.push({
+        event: 'generate_lead',
+        value: 1,
+        label: props.data.form?.handle,
+      });
 
       showSuccessMessage.value = true;
     } else {
