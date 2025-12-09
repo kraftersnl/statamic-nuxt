@@ -52,7 +52,12 @@ const mainNav = computed((): MenuItem[] =>
         </div>
       </NuxtLink>
 
-      <MenuList :list="mainNav" button-variant="topbar" inline />
+      <MenuList
+        :list="mainNav"
+        button-variant="topbar"
+        button-size="md"
+        inline
+      />
     </div>
 
     <slot name="right" />
