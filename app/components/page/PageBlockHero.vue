@@ -42,9 +42,9 @@ const backgroundStyles = computed(() => {
     ]"
     :style="[imageBg && backgroundStyles]"
   >
-    <div v-if="data?.show_background_shapes" class="background-shapes-wrapper">
-      <CircleDots />
-      <CircleStripes />
+    <div v-if="data?.background_shape?.key" class="background-shapes-wrapper">
+      <CircleDots v-if="data?.background_shape?.key === 'hero_shape_one'" />
+      <CircleStripes v-if="data?.background_shape?.key === 'hero_shape_one'" />
     </div>
 
     <div class="hero-block-wrapper">
@@ -74,8 +74,10 @@ const backgroundStyles = computed(() => {
         <ContentBlockMapper :content="data?.content" />
       </div>
 
+      <HeroShapeTwo v-if="data?.background_shape?.key === 'hero_shape_two'" />
+
       <StatamicImage
-        v-if="imageLast"
+        v-else-if="imageLast"
         class="hero-image"
         loading="eager"
         :data="data?.image"
