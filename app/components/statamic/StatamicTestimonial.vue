@@ -61,7 +61,7 @@ defineProps<{
     padding: 0;
     margin-block-start: 3rem;
     line-height: 1.35;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
 
     &:not(:empty)::before {
       content: open-quote;
