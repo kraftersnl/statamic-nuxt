@@ -28,17 +28,24 @@ defineProps<{
 
 <style>
 .testimonial-card {
+  display: grid;
+  gap: 2rem;
+  background-color: var(--color-accent-grey);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.25rem;
+
   .testimonial-author {
     display: grid;
+    gap: 0.25em;
   }
 
   .author-name {
     font-size: var(--font-size-sm);
-    margin-block-end: 0;
+    margin-block: 0;
   }
 
   .author-subtitle {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
   }
 
   .testimonial-top {
@@ -50,16 +57,19 @@ defineProps<{
 
   .testimonial-avatar {
     .statamic-image {
-      width: 3rem;
-      height: 3rem;
+      width: 4rem;
+      height: 4rem;
       border-radius: var(--radius-full);
     }
+  }
+
+  .testimonial-content {
+    order: -1;
   }
 
   blockquote {
     border: none;
     padding: 0;
-    margin-block-start: 3rem;
     line-height: 1.35;
     font-size: var(--font-size-lg);
 
