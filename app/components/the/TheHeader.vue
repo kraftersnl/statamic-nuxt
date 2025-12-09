@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const isDesktop = useMediaQuery('(min-width: 1024px)');
+
 const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
   'main-nav',
   () =>
@@ -29,6 +31,21 @@ const mainNav = computed((): MenuItem[] =>
 
   <header class="app-header">
     <div class="app-header-content">
+      <NuxtLink to="/" class="logo-link">
+        <span class="visuallyhidden">Home</span>
+        <div class="logo-slot">
+          <slot name="logo" />
+        </div>
+      </NuxtLink>
+
+      <ThemeSwitch v-if="isDesktop" />
+      <MenuList
+        :list="mainNav"
+        button-variant="topbar"
+        button-size="md"
+        inline
+      />
+
       <MobileMenu
         ref="mobileMenu"
         button-variant="ghost"
@@ -42,33 +59,20 @@ const mainNav = computed((): MenuItem[] =>
             button-size="xl"
             font-size="md"
           />
+
+          <ThemeSwitch />
         </template>
       </MobileMenu>
-
-      <NuxtLink to="/" class="logo-link">
-        <span class="visuallyhidden">Home</span>
-        <div class="logo-slot">
-          <slot name="logo" />
-        </div>
-      </NuxtLink>
-
-      <MenuList
-        :list="mainNav"
-        button-variant="topbar"
-        button-size="md"
-        inline
-      />
     </div>
 
     <slot name="right" />
-    <ThemeToggle />
 
     <NuxtLoadingIndicator color="var(--color-accent-graphic)" />
   </header>
 </template>
 
 <style>
-@media (min-width: 1120px) {
+@media (min-width: 1024px) {
   .app-header-content .mobile-menu-wrapper {
     display: none;
   }
@@ -95,14 +99,14 @@ const mainNav = computed((): MenuItem[] =>
   align-items: center;
   gap: 1rem;
 
-  @media (min-width: 1120px) {
+  @media (min-width: 1024px) {
     justify-content: center;
     gap: 2rem;
   }
 
   .logo-link {
     outline-offset: 0.5rem;
-    margin-inline: auto;
+    margin-inline-end: auto;
 
     .logo-slot {
       display: grid;
@@ -112,7 +116,7 @@ const mainNav = computed((): MenuItem[] =>
       display: none;
     }
 
-    @media (min-width: 1120px) {
+    @media (min-width: 1024px) {
       margin-left: 0;
       padding-right: 0;
     }
@@ -124,16 +128,25 @@ const mainNav = computed((): MenuItem[] =>
     padding-inline-end: 3rem;
   }
 
-  @media (min-width: 1120px) {
+  @media (min-width: 1024px) {
     .menu-list-nav {
       display: block;
     }
   }
 }
 
-.theme-toggle-button {
-  position: absolute;
-  right: 2rem;
-  top: calc((var(--app-header-height) - 2rem) / 2);
+.mobile-dialog {
+  .theme-switch {
+    margin-inline-start: 2.25rem;
+    margin-block-start: 2.5rem;
+  }
+}
+
+.app-header-content {
+  .theme-switch {
+    position: absolute;
+    right: 2rem;
+    top: 1.35rem;
+  }
 }
 </style>

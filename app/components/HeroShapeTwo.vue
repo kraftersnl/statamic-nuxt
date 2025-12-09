@@ -972,6 +972,7 @@
 .hero-shape-one {
   height: auto;
   margin-inline: auto;
+  padding-inline: var(--app-padding-inline);
 
   path {
     &.shape--black {
