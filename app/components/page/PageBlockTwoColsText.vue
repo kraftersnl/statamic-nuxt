@@ -28,7 +28,9 @@ defineProps<{ data?: TwoColsTextBlock }>();
         <slot />
       </div>
 
-      <ContentBlockMapper :content="data?.content" />
+      <div class="right-column">
+        <ContentBlockMapper :content="data?.content" />
+      </div>
     </div>
   </section>
 </template>
