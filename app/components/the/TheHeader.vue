@@ -80,7 +80,7 @@ const mainNav = computed((): MenuItem[] =>
 
 .app-header {
   position: relative;
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
 
   @media (min-width: 360px) and (min-height: 360px) {
     position: sticky;
