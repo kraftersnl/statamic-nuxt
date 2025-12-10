@@ -87,9 +87,6 @@ defineProps<{ data?: FormBlock }>();
   }
 
   .right-column {
-    @media (min-width: 1200px) {
-    }
-
     .background-shape {
       position: static;
     }

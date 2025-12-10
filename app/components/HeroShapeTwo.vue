@@ -6,7 +6,7 @@
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    class="hero-shape-one"
+    class="hero-shape-two"
     aria-hidden="true"
   >
     <g clip-path="url(#clip0_1169_2955)">
@@ -969,10 +969,16 @@
 </template>
 
 <style>
-.hero-shape-one {
+.hero-shape-two {
   height: auto;
   margin-inline: auto;
   padding-inline: var(--app-padding-inline);
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: viewportFadeOut linear;
+    animation-timeline: view();
+    animation-range: exit;
+  }
 
   path {
     &.shape--black {
