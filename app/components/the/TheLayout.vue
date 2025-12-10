@@ -12,13 +12,13 @@ const { data: seo } = await useAsyncData<{ data: StatamicGlobalSEO }>(
   { lazy: true }
 );
 
-useHead({
-  titleTemplate: seo.value?.data?.seo_website_title
-    ? undefined
-    : `%s ${seo.value?.data?.seo_meta_title_seperator || '|'} ${
-        useRuntimeConfig()?.public?.siteTitle
-      }`,
-});
+// useHead({
+//   titleTemplate: seo.value?.data?.seo_website_title
+//     ? undefined
+//     : `%s ${seo.value?.data?.seo_meta_title_seperator || '|'} ${
+//         useRuntimeConfig()?.public?.siteTitle
+//       }`,
+// });
 
 const { data: company } = await useAsyncData<{ data: StatamicGlobalCompany }>(
   'company-globals-for-footer',
