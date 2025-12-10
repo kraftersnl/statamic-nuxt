@@ -35,6 +35,12 @@ const { data: entries } = await useAsyncData<{
 
 <style>
 .page-block.projects-block {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: viewportFadeUp linear;
+    animation-timeline: view();
+    animation-range: entry;
+  }
+
   .page-block-content {
     display: grid;
     padding-block: 5rem;

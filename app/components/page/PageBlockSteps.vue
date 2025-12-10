@@ -36,6 +36,12 @@ defineProps<{ data?: StepsBlock }>();
   }
 
   .step-item {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: viewportScaleUp linear;
+      animation-timeline: view();
+      animation-range: entry;
+    }
+
     counter-increment: steps;
     position: relative;
     display: grid;

@@ -20,5 +20,11 @@ const { entries } = defineProps<{ entries?: StatamicArticleEntry[] }>();
   :nth-of-type(odd) .card {
     background-color: var(--color-grey-bg);
   }
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: viewportFadeUp linear;
+    animation-timeline: view();
+    animation-range: entry;
+  }
 }
 </style>

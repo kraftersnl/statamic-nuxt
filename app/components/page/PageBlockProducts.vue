@@ -58,6 +58,19 @@ defineProps<{ data?: ProductsBlock }>();
     }
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    .product-item:nth-of-type(odd) {
+      animation: viewportFadeUp linear;
+      animation-timeline: view();
+      animation-range: entry;
+    }
+    .product-item:nth-of-type(even) {
+      animation: viewportFadeUpDelayed linear;
+      animation-timeline: view();
+      animation-range: entry;
+    }
+  }
+
   .title-link {
     text-decoration: none;
 

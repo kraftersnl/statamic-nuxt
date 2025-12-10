@@ -70,5 +70,13 @@ defineProps<{ data?: TwoColsTextBlock }>();
       }
     }
   }
+
+  .right-column {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: viewportFadeUp linear;
+      animation-timeline: view();
+      animation-range: entry;
+    }
+  }
 }
 </style>

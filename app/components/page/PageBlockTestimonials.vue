@@ -126,6 +126,12 @@ const scrollWidth = computed(
       overflow: scroll;
       scroll-snap-type: x mandatory;
 
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportSlideRight linear;
+        animation-timeline: view();
+        animation-range: entry -250px;
+      }
+
       &:focus-visible {
         outline: 2px solid white;
         outline-offset: 0.5rem;
@@ -138,6 +144,7 @@ const scrollWidth = computed(
         flex: none;
       }
     }
+
     .carousel-controls {
       margin-block-start: 1.5rem;
       display: flex;

@@ -116,6 +116,12 @@ const backgroundStyles = computed(() => {
   .hero-image {
     z-index: -1;
 
+    @media (prefers-reduced-motion: no-preference) {
+      animation: viewportFadeOut linear;
+      animation-timeline: view();
+      animation-range: exit 200px;
+    }
+
     @media (min-width: 1200px) {
       height: calc(100svh - var(--app-header-height));
     }

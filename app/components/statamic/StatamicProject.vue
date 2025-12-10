@@ -31,6 +31,12 @@ defineProps<{
   .project-image {
     width: 100%;
 
+    @media (prefers-reduced-motion: no-preference) {
+      animation: viewportFadeUp linear;
+      animation-timeline: view();
+      animation-range: entry;
+    }
+
     img {
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
