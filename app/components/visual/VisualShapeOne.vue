@@ -969,7 +969,6 @@
 
 <style>
 .visual-shape-one {
-  height: auto;
   margin-inline: auto;
   padding-inline: var(--app-padding-inline);
 

@@ -125,6 +125,8 @@
 
 <style>
 .visual-kraft-k {
+  margin-inline: auto;
+
   .stroke--grey-graphic {
     stroke: var(--color-grey-graphic);
   }

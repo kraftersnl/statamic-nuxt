@@ -38,13 +38,16 @@ const mainNav = computed((): MenuItem[] =>
         </div>
       </NuxtLink>
 
-      <ThemeSwitch v-if="isDesktop" />
-      <MenuList
-        :list="mainNav"
-        button-variant="topbar"
-        button-size="md"
-        inline
-      />
+      <div class="flex-wrapper">
+        <MenuList
+          :list="mainNav"
+          button-variant="topbar"
+          button-size="md"
+          inline
+        />
+
+        <ThemeSwitch v-if="isDesktop" />
+      </div>
 
       <MobileMenu
         ref="mobileMenu"
@@ -124,9 +127,9 @@ const mainNav = computed((): MenuItem[] =>
   }
 
   .menu-list-nav {
-    margin-inline: auto;
+    margin-inline-start: auto;
     display: none;
-    padding-inline-end: 3rem;
+    padding-inline-end: 2.5rem;
   }
 
   @media (min-width: 1024px) {
@@ -140,14 +143,6 @@ const mainNav = computed((): MenuItem[] =>
   .theme-switch {
     margin-inline-start: 2.25rem;
     margin-block-start: 2.5rem;
-  }
-}
-
-.app-header-content {
-  .theme-switch {
-    position: absolute;
-    right: 2rem;
-    top: 1.35rem;
   }
 }
 </style>

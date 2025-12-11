@@ -77,7 +77,10 @@ const backgroundStyles = computed(() => {
         <ContentBlockMapper :content="data?.content" />
       </div>
 
-      <VisualShapeOne v-if="data?.graphic_visual?.key === 'shapes_one'" />
+      <VisualMapper
+        v-if="data?.graphic_visual?.key"
+        :visual="data?.graphic_visual?.key"
+      />
 
       <StatamicImage
         v-else-if="imageLast"
@@ -247,7 +250,7 @@ const backgroundStyles = computed(() => {
 
     .page-block-content {
       grid-column: 2 / span 1;
-      padding-inline-end: 4rem;
+      padding-inline-end: 3.5rem;
     }
 
     .hero-image {
