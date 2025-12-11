@@ -1,0 +1,66 @@
+<script setup lang="ts">
+defineProps<{ data?: TwoColsVisualBlock }>();
+</script>
+
+<template>
+  <section :id="data?.anchor" :class="['page-block', 'two-cols-visual-block']">
+    <div class="page-block-content">
+      <div
+        v-if="
+          data?.graphic_visual?.key &&
+          data?.image_position?.key === 'inline-start'
+        "
+        class="visual-column"
+      >
+        <VisualMapper :visual="data?.graphic_visual?.key" />
+      </div>
+
+      <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
+
+      <ContentBlockMapper :content="data?.content" />
+
+      <div
+        v-if="
+          data?.graphic_visual?.key &&
+          data?.image_position?.key === 'inline-end'
+        "
+        class="visual-column"
+      >
+        <VisualMapper :visual="data?.graphic_visual?.key" />
+      </div>
+    </div>
+  </section>
+</template>
+
+<style>
+.page-block.two-cols-visual-block {
+  margin-block-end: 8rem;
+
+  .page-block-content {
+    display: grid;
+    gap: 4rem;
+
+    @media (min-width: 1200px) {
+      grid-template-columns: 1fr 1fr;
+
+      h2 {
+        margin-block: 0 2rem;
+      }
+    }
+
+    .visual-column {
+      display: none;
+
+      @media (min-width: 1200px) {
+        display: block;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportFadeOut linear;
+        animation-timeline: view();
+        animation-range: exit;
+      }
+    }
+  }
+}
+</style>

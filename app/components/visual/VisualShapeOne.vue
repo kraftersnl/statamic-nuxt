@@ -5,8 +5,7 @@
     viewBox="0 0 456 480"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    class="hero-shape-two"
+    class="visual-shape-one"
     aria-hidden="true"
   >
     <g clip-path="url(#clip0_1169_2955)">
@@ -969,7 +968,7 @@
 </template>
 
 <style>
-.hero-shape-two {
+.visual-shape-one {
   height: auto;
   margin-inline: auto;
   padding-inline: var(--app-padding-inline);

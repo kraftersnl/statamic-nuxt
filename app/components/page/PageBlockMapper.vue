@@ -30,6 +30,11 @@ defineProps<{
         :data="pageBlock"
         :date="date"
       />
+      <PageBlockTwoColsVisual
+        v-else-if="pageBlock?.type === 'two_cols_visual'"
+        :data="pageBlock"
+        :date="date"
+      />
       <PageBlockTestimonials
         v-else-if="pageBlock?.type === 'testimonials'"
         :data="pageBlock"

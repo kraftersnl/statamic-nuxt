@@ -9,7 +9,7 @@ declare global {
 
   type HeroBlock = StatamicPageBlock & {
     title?: string;
-    background_shape?: StatamicSelectOption;
+    graphic_visual?: StatamicSelectOption;
     image_position?: StatamicSelectOption;
     background_color?: StatamicSelectOption;
   };
@@ -82,6 +82,15 @@ declare global {
     content?: StatamicContentBlock[];
     background_color?: StatamicSelectOption;
     image?: StatamicImage;
+    image_position?: StatamicSelectOption;
+    graphic_visual?: StatamicSelectOption;
+  };
+
+  type TwoColsVisualBlock = StatamicPageBlock & {
+    super_title?: string;
+    title?: string;
+    content?: StatamicContentBlock[];
+    graphic_visual?: StatamicSelectOption;
     image_position?: StatamicSelectOption;
   };
 
