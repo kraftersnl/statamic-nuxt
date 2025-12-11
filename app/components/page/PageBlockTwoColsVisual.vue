@@ -15,9 +15,11 @@ defineProps<{ data?: TwoColsVisualBlock }>();
         <VisualMapper :visual="data?.graphic_visual?.key" />
       </div>
 
-      <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
+      <div class="text-column">
+        <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
 
-      <ContentBlockMapper :content="data?.content" />
+        <ContentBlockMapper :content="data?.content" />
+      </div>
 
       <div
         v-if="
@@ -43,7 +45,12 @@ defineProps<{ data?: TwoColsVisualBlock }>();
     @media (min-width: 1200px) {
       grid-template-columns: 1fr 1fr;
 
-      h2 {
+      .double-title {
+        margin-block: 0;
+      }
+
+      h2,
+      h3 {
         margin-block: 0 2rem;
       }
     }
