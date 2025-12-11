@@ -44,7 +44,7 @@ defineProps<{ data?: TwoColsImageBlock }>();
 
   .image-column {
     @media (prefers-reduced-motion: no-preference) {
-      animation: viewportFadeOut linear;
+      animation: fadeOut linear;
       animation-timeline: view();
       animation-range: exit;
     }

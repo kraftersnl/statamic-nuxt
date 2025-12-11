@@ -75,10 +75,12 @@ defineProps<{ data?: TwoColsVisualBlock }>();
       }
 
       @supports (animation-timeline: view()) {
+        opacity: 0;
+
         @media (prefers-reduced-motion: no-preference) {
-          animation: viewportScaleDown linear forwards;
+          animation: fadeIn linear forwards;
           animation-timeline: view();
-          animation-range: exit;
+          animation-range: entry;
         }
       }
     }
