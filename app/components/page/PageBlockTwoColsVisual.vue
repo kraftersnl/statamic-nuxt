@@ -55,6 +55,18 @@ defineProps<{ data?: TwoColsVisualBlock }>();
       }
     }
 
+    .text-column {
+      @supports (animation-timeline: view()) {
+        opacity: 0;
+
+        @media (prefers-reduced-motion: no-preference) {
+          animation: viewportFadeUp linear forwards;
+          animation-timeline: view();
+          animation-range: entry;
+        }
+      }
+    }
+
     .visual-column {
       display: none;
 
@@ -62,10 +74,12 @@ defineProps<{ data?: TwoColsVisualBlock }>();
         display: block;
       }
 
-      @media (prefers-reduced-motion: no-preference) {
-        animation: viewportFadeOut linear;
-        animation-timeline: view();
-        animation-range: exit;
+      @supports (animation-timeline: view()) {
+        @media (prefers-reduced-motion: no-preference) {
+          animation: viewportScaleDown linear forwards;
+          animation-timeline: view();
+          animation-range: exit;
+        }
       }
     }
   }
