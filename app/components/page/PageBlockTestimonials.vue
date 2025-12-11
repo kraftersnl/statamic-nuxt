@@ -52,7 +52,11 @@ const scrollWidth = computed(
       </div>
 
       <div class="testimonials-wrapper">
-        <ul ref="testimonialsWrapper" role="list" class="testimonials-list">
+        <ul
+          ref="testimonialsWrapper"
+          role="list"
+          class="testimonials-list hide-scrollbar"
+        >
           <li v-for="t in testimonialList" :key="t.id">
             <StatamicTestimonial :data="t" />
           </li>
