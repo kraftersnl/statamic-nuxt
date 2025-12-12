@@ -90,6 +90,10 @@ defineProps<{
         :data="pageBlock"
         :date="date"
       />
+      <PageBlockDivider
+        v-else-if="pageBlock?.type === 'divider'"
+        :data="pageBlock"
+      />
     </template>
   </div>
 </template>
@@ -97,6 +101,7 @@ defineProps<{
 <style>
 .page-block-content {
   position: relative;
+  width: 100%;
   max-width: var(--app-max-width);
   padding-inline: var(--app-padding-inline);
   margin-inline: auto;

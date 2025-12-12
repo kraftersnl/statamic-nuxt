@@ -99,6 +99,10 @@ declare global {
     background_color?: StatamicSelectOption;
   };
 
+  type DividerBlock = StatamicPageBlock & {
+    margin?: number[];
+  };
+
   type GridBlock = StatamicPageBlock & {
     images?: StatamicImage[];
   };

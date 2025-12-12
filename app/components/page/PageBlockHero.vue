@@ -77,10 +77,9 @@ const backgroundStyles = computed(() => {
         <ContentBlockMapper :content="data?.content" />
       </div>
 
-      <VisualMapper
-        v-if="data?.graphic_visual?.key"
-        :visual="data?.graphic_visual?.key"
-      />
+      <div v-if="data?.graphic_visual?.key" class="background-visual">
+        <VisualMapper :visual="data?.graphic_visual?.key" />
+      </div>
 
       <StatamicImage
         v-else-if="imageLast"
@@ -142,6 +141,10 @@ const backgroundStyles = computed(() => {
     color: var(--color-grey-text);
     display: inline-block;
     margin-block-start: 1.5rem;
+  }
+
+  .background-visual {
+    padding-inline: var(--app-padding-inline);
   }
 
   .background-shapes-wrapper {

@@ -49,6 +49,11 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
         :url="contentBlock?.video_url"
         :caption="contentBlock?.image_caption"
       />
+
+      <StatamicAccordion
+        v-else-if="contentBlock?.type === 'accordion'"
+        :data="contentBlock"
+      />
     </template>
   </div>
 </template>
