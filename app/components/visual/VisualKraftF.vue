@@ -1058,6 +1058,10 @@
 
 <style>
 .visual-kraft-f {
+  width: 100%;
+  height: auto;
+  margin-inline: auto;
+
   .stroke--grey-graphic {
     stroke: var(--color-grey-graphic);
   }

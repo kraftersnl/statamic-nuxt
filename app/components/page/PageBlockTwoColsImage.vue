@@ -40,16 +40,18 @@ defineProps<{ data?: TwoColsImageBlock }>();
 .page-block.two-cols-image-block {
   margin-block-end: 8rem;
 
+  h2 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+  }
+
   .page-block-content {
     display: grid;
-    gap: 4rem;
-
-    p:first-of-type {
-      margin-block-start: 0;
-    }
+    row-gap: 4rem;
+    column-gap: 8rem;
 
     @media (min-width: 1200px) {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 3fr 4fr;
     }
   }
 
@@ -64,12 +66,6 @@ defineProps<{ data?: TwoColsImageBlock }>();
       aspect-ratio: 1;
       width: 100%;
       object-fit: cover;
-    }
-  }
-
-  .page-block-content {
-    @media (min-width: 1200px) {
-      padding-inline: 5rem;
     }
   }
 }

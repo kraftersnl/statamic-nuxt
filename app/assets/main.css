@@ -42,8 +42,8 @@ h3,
 h4,
 h5,
 h6 {
-  /* margin-block-start: 0; */
-  margin-block-end: 1rem;
+  margin-block-start: 0;
+  margin-block-end: 1em;
 
   @media (min-width: 360px) {
     hyphens: none;
@@ -94,7 +94,7 @@ blockquote {
   p,
   ul,
   ol {
-    margin-block-start: 1em;
+    margin-block-start: 1.5em;
 
     > a {
       &:hover {

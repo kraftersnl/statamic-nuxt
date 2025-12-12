@@ -125,6 +125,8 @@
 
 <style>
 .visual-kraft-k {
+  width: 100%;
+  height: auto;
   margin-inline: auto;
 
   .stroke--grey-graphic {

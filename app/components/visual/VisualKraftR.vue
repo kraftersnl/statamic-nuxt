@@ -219,6 +219,10 @@
 
 <style>
 .visual-kraft-r {
+  width: 100%;
+  height: auto;
+  margin-inline: auto;
+
   .fill--accent {
     fill: var(--color-accent);
   }

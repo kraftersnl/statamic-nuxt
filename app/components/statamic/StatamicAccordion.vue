@@ -41,6 +41,7 @@ defineProps<{ data?: AccordionContentBlock }>();
   }
 
   .accordion-panel {
+    color: var(--color-grey-text);
     p {
       padding-block-start: 2.5rem;
     }

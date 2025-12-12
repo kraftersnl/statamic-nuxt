@@ -245,19 +245,17 @@ const backgroundStyles = computed(() => {
 
   @media (min-width: 1200px) {
     .hero-block-wrapper {
-      grid-template-columns:
-        1fr calc(var(--app-max-width) / 2)
-        calc(var(--app-max-width) / 2)
-        1fr;
+      grid-template-columns: 1fr 1fr;
+      max-width: var(--app-max-width);
     }
 
     .page-block-content {
-      grid-column: 2 / span 1;
+      /* grid-column: 2 / span 1; */
       padding-inline-end: 3.5rem;
     }
 
     .hero-image {
-      grid-column: 3 / span 2;
+      /* grid-column: 3 / span 2; */
 
       img {
         width: 100%;

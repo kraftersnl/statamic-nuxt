@@ -16,9 +16,6 @@ const computedStyle = computed(() => {
 
 <style>
 .divider {
-  max-width: calc(var(--app-max-width) - 5 * var(--app-padding-inline));
-  margin-inline: auto;
   background-color: var(--color-grey-light);
 }
 </style>
-x4

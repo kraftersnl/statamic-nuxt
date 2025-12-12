@@ -68,7 +68,7 @@ async function handleSubmit(formData: FormData) {
 <template>
   <Form
     v-if="form?.data?.fields && Object.keys(form.data.fields)?.length"
-    style="--column-gap: 0.75rem"
+    style="--row-gap: 2rem"
     @submit="handleSubmit"
   >
     <template v-for="field in form.data.fields" :key="field.handle">
@@ -78,7 +78,7 @@ async function handleSubmit(formData: FormData) {
         :name="field.handle"
         :options="field.options"
         :label="field.display"
-        variant="krafters"
+        variant="minimal"
       />
 
       <CheckboxGroup
@@ -88,7 +88,7 @@ async function handleSubmit(formData: FormData) {
         :options="field.options"
         :label="field.display"
         :required="field.validate?.includes('required')"
-        variant="krafters"
+        variant="minimal"
       />
 
       <ClientOnly v-if="field.handle === 'source'">
@@ -103,7 +103,7 @@ async function handleSubmit(formData: FormData) {
         :autocomplete="field.autocomplete"
         :required="field.validate?.includes('required')"
         size="lg"
-        variant="krafters"
+        variant="minimal"
         :style="`--col-width: calc(${field.width}% - var(--column-gap))`"
       />
 
@@ -113,20 +113,10 @@ async function handleSubmit(formData: FormData) {
         :name="field.handle"
         :required="field.validate?.includes('required')"
         :style="`--col-width: calc(${field.width}% - var(--column-gap))`"
-        variant="krafters"
+        variant="minimal"
+        autoresize
       />
     </template>
-
-    <div aria-live="polite">
-      <Callout
-        v-if="showSuccessMessage"
-        color="green"
-        :content="
-          useRuntimeConfig().public.formSuccessMessage ||
-          'Bedankt voor je bericht, we nemen zo snel mogelijk contact met je op.'
-        "
-      />
-    </div>
 
     <div role="alert">
       <Callout v-if="showErrorMessage" color="red">
@@ -148,5 +138,24 @@ async function handleSubmit(formData: FormData) {
       :loading="submittingForm"
       :disabled="showSuccessMessage || showErrorMessage"
     />
+
+    <div aria-live="polite">
+      <Callout
+        v-if="showSuccessMessage"
+        color="green"
+        :content="
+          useRuntimeConfig().public.formSuccessMessage ||
+          'Bedankt voor je bericht, we nemen zo snel mogelijk contact met je op.'
+        "
+      />
+    </div>
   </Form>
 </template>
+
+<style>
+.form {
+  button[type='submit'] {
+    max-width: max-content;
+  }
+}
+</style>

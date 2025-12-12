@@ -10,6 +10,14 @@ defineProps<{ data?: FormBlock }>();
 
         <p>{{ data?.description }}</p>
 
+        <ContentBlockMapper :content="data?.content" />
+      </div>
+
+      <div class="right-column">
+        <!-- <div class="background-shapes-wrapper">
+          <CircleDots />
+        </div> -->
+
         <template v-if="data?.form?.handle">
           <LazyStatamicForm :data="data" />
 
@@ -17,19 +25,6 @@ defineProps<{ data?: FormBlock }>();
             {{ data.legal }}
           </p>
         </template>
-
-        <ContentBlockMapper v-else :content="data?.content" />
-      </div>
-
-      <div class="right-column">
-        <div class="background-shapes-wrapper">
-          <CircleDots />
-        </div>
-
-        <ContentBlockMapper
-          v-if="data?.form?.handle"
-          :content="data?.content"
-        />
       </div>
     </div>
   </section>
@@ -38,6 +33,9 @@ defineProps<{ data?: FormBlock }>();
 <style>
 .page-block.form-block {
   --focus-color: var(--color-accent-graphic);
+  background-color: var(--color-accent-grey);
+  padding-block-start: 4rem;
+  border-block-end: 2px solid var(--color-grey-light);
 
   .background-shapes-wrapper {
     position: relative;
@@ -63,21 +61,18 @@ defineProps<{ data?: FormBlock }>();
   .page-block-content {
     padding-block: 3rem 5rem;
     display: grid;
-    gap: 4rem;
+    row-gap: 4rem;
+    column-gap: 8rem;
 
     @media (min-width: 1200px) {
       padding-block-end: 8rem;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 3fr 4fr;
     }
   }
 
   .left-column {
     @media (min-width: 1200px) {
       padding-inline-end: var(--app-padding-inline);
-    }
-
-    p {
-      margin-block: 2rem 4rem;
     }
 
     .legal {

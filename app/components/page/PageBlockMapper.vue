@@ -105,6 +105,14 @@ defineProps<{
   max-width: var(--app-max-width);
   padding-inline: var(--app-padding-inline);
   margin-inline: auto;
+
+  p:first-of-type {
+    margin-block-start: 0;
+  }
+
+  .double-title {
+    margin-block-start: 4rem;
+  }
 }
 
 .page-block {

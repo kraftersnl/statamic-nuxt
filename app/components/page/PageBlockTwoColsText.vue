@@ -52,7 +52,7 @@ defineProps<{ data?: TwoColsTextBlock }>();
       padding-block-start: 1.5em;
 
       @media (min-width: 1200px) {
-        padding-block-start: 4.35em;
+        padding-block-start: 8rem;
       }
 
       > :first-child {

@@ -100,7 +100,7 @@ declare global {
   };
 
   type DividerBlock = StatamicPageBlock & {
-    margin?: number[];
+    margin?: number;
   };
 
   type GridBlock = StatamicPageBlock & {
@@ -175,6 +175,18 @@ declare global {
     title?: string;
     text?: string;
     id?: string;
+  };
+
+  type AccordionContentBlock = {
+    type: 'accordion';
+    id: string;
+    items: AccordionItem[];
+  };
+
+  type AccordionItem = StatamicButton & {
+    id: string;
+    title: string;
+    content: string;
   };
 
   type FormContentBlock = {
