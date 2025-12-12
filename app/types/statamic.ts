@@ -105,6 +105,7 @@ declare global {
     button_link?: string;
     button_icon?: string;
     button_variant?: StatamicSelectOption;
+    button_icon_position?: StatamicSelectOption;
   };
 
   type StatamicSelectOption = {

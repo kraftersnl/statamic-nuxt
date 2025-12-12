@@ -132,7 +132,7 @@ async function handleSubmit(formData: FormData) {
       type="submit"
       variant="cta"
       class="form-button"
-      icon="material-symbols:chevron-right-rounded"
+      icon="material-symbols:arrow-circle-right"
       icon-pos="end"
       :label="data.form_button_label || 'Verzenden'"
       :loading="submittingForm"
