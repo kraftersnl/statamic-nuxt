@@ -81,6 +81,16 @@ declare global {
     seo?: StatamicSEO;
     content?: StatamicContentBlock[];
     date?: string;
+    tags?: TaxonomyTerm[];
+    author?: StatamicAuthor;
+  };
+
+  type StatamicAuthor = {
+    id: string;
+    name: string;
+    email: string;
+    sub_title?: string;
+    image?: StatamicImage;
   };
 
   type StatamicProjectEntry = StatamicEntry & {

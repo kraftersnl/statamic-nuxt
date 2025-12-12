@@ -26,10 +26,10 @@ defineProps<{ data?: ArticlesBlock }>();
     margin-inline: auto;
     padding-inline: var(--app-padding-inline);
     max-width: var(--app-max-width);
-    padding-block: 5rem;
+    margin-block: 5rem;
 
     @media (min-width: 1200px) {
-      padding-block-end: 8rem;
+      margin-block-end: 8rem;
     }
   }
 

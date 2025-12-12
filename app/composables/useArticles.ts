@@ -6,7 +6,8 @@ export function useArticles() {
         baseURL: useRuntimeConfig().public.statamicUrl,
         query: {
           limit: 100,
-          fields: 'id,title,summary,url,permalink,image,published,date',
+          fields:
+            'id,title,summary,url,permalink,image,published,date,tags,author',
         },
       })
   );

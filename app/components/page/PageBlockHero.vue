@@ -245,21 +245,34 @@ const backgroundStyles = computed(() => {
 
   @media (min-width: 1200px) {
     .hero-block-wrapper {
-      grid-template-columns: 1fr 1fr;
-      max-width: var(--app-max-width);
+      grid-template-columns:
+        1fr
+        calc(100vw / 2)
+        calc(100vw / 2)
+        1fr;
     }
 
     .page-block-content {
-      /* grid-column: 2 / span 1; */
+      grid-column: 2 / span 1;
       padding-inline-end: 3.5rem;
     }
 
     .hero-image {
-      /* grid-column: 3 / span 2; */
+      grid-column: 3 / span 2;
 
       img {
         width: 100%;
       }
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .hero-block-wrapper {
+      grid-template-columns:
+        1fr
+        calc(var(--app-max-width) / 2)
+        calc(var(--app-max-width) / 2)
+        1fr;
     }
   }
 }
@@ -274,8 +287,9 @@ const backgroundStyles = computed(() => {
     .hero-block-wrapper {
       align-items: center;
       grid-template-columns:
-        1fr calc(var(--app-max-width) / 2)
-        calc(var(--app-max-width) / 2)
+        1fr
+        calc(100vw / 2)
+        calc(100vw / 2)
         1fr;
     }
 
@@ -291,6 +305,16 @@ const backgroundStyles = computed(() => {
       img {
         width: 100%;
       }
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .hero-block-wrapper {
+      grid-template-columns:
+        1fr
+        calc(var(--app-max-width) / 2)
+        calc(var(--app-max-width) / 2)
+        1fr;
     }
   }
 }

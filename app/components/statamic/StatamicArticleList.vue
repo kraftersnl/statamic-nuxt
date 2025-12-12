@@ -17,10 +17,6 @@ const { entries } = defineProps<{ entries?: StatamicArticleEntry[] }>();
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
 
-  :nth-of-type(odd) .card {
-    background-color: var(--color-grey-bg);
-  }
-
   .article-list-item {
     @media (prefers-reduced-motion: no-preference) {
       animation: viewportFadeUp linear;

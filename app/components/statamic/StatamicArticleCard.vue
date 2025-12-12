@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { hTag = 'h3', loading = 'eager' } = defineProps<{
+const { hTag = 'h2', loading = 'eager' } = defineProps<{
   data: StatamicArticleEntry;
   hTag?: string;
   loading?: 'lazy' | 'eager';
@@ -13,8 +13,9 @@ const { locale } = useI18n();
     is="article"
     class="article-card"
     border-radius="md"
-    padding-block="2rem"
-    padding-inline="2rem"
+    padding-block="0rem"
+    padding-inline="0rem"
+    background-color="transparent"
     :shadow="false"
     :border-width="4"
   >
@@ -26,25 +27,16 @@ const { locale } = useI18n();
           </NuxtLink>
         </component>
 
-        <NuxtTime
-          v-if="data.date"
-          :datetime="data.date"
-          :locale="locale"
-          day="numeric"
-          month="long"
-          year="numeric"
-          class="card-date"
-        />
+        <div v-if="data.author" class="card-author">
+          Door {{ data.author?.name }}
+        </div>
 
-        <p v-if="data.summary" class="card-description">
+        <!-- <p v-if="data.summary" class="card-description">
           {{ data.summary }}
-        </p>
-
-        <p class="fake-link">
-          <span>Lees dit artikel</span>
-          <Icon name="material-symbols:expand-circle-right-rounded" />
-        </p>
+        </p> -->
       </div>
+
+      <TaxonomyTags :tags="data?.tags" />
 
       <StatamicImage :data="data.image" :loading="loading" class="card-image" />
     </div>
@@ -56,23 +48,21 @@ const { locale } = useI18n();
   position: relative;
   height: 100%;
 
-  &:hover {
-    .fake-link {
-      color: var(--color-accent-text);
-    }
-  }
-
   .card-content {
     display: grid;
-    gap: 1.5rem;
   }
 
   .card-title {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
+    margin-block-end: 1em;
   }
 
   .card-link {
     text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     &::after {
       /* increase click target */
@@ -88,16 +78,23 @@ const { locale } = useI18n();
     color: var(--color-grey-text);
   }
 
+  .card-author {
+    font-size: var(--font-size-sm);
+    color: var(--color-grey-text);
+  }
+
   .card-description {
     font-size: var(--font-size-sm);
+    margin-block-end: 0;
   }
 
   .card-image {
     order: -1;
     height: 180px;
+    margin-block-end: 1.5rem;
 
     img {
-      border-radius: var(--radius-sm);
+      /* border-radius: var(--radius-sm); */
     }
   }
 
