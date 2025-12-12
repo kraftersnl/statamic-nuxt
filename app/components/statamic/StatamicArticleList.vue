@@ -4,7 +4,7 @@ const { entries } = defineProps<{ entries?: StatamicArticleEntry[] }>();
 
 <template>
   <ul role="list" class="statamic-articles-list">
-    <li v-for="entry in entries" :key="entry.id">
+    <li v-for="entry in entries" :key="entry.id" class="article-list-item">
       <StatamicArticleCard :data="entry" />
     </li>
   </ul>
@@ -21,10 +21,12 @@ const { entries } = defineProps<{ entries?: StatamicArticleEntry[] }>();
     background-color: var(--color-grey-bg);
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    animation: viewportFadeUp linear;
-    animation-timeline: view();
-    animation-range: entry;
+  .article-list-item {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: viewportFadeUp linear;
+      animation-timeline: view();
+      animation-range: entry;
+    }
   }
 }
 </style>
