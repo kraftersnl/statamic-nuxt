@@ -44,23 +44,19 @@ const { data: entries } = await useAsyncData<{
     padding-block: 5rem;
     display: grid;
     justify-content: center;
-    gap: 4rem;
 
     @media (min-width: 1200px) {
       padding-block-end: 8rem;
-
       display: grid;
       padding-inline: var(--app-padding-inline);
-      gap: 4rem;
       grid-template-columns: 1fr 1fr;
     }
   }
 
   .employees-description {
-    margin-block-start: 0;
-
     @media (min-width: 1200px) {
-      margin-block-start: 4.35em;
+      margin-block-start: 7rem;
+      margin-block-end: 4rem;
     }
   }
 
@@ -79,7 +75,7 @@ const { data: entries } = await useAsyncData<{
     }
 
     > * {
-      flex-basis: 23rem;
+      flex-basis: 24rem;
     }
   }
 }

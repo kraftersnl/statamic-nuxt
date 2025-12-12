@@ -92,6 +92,8 @@ defineProps<{ data?: ProductsBlock }>();
     padding-inline: 3rem;
 
     img {
+      aspect-ratio: 5 / 3;
+      object-position: top;
       border-radius: var(--radius-md) var(--radius-md) 0 0;
     }
   }

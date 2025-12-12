@@ -49,8 +49,6 @@ defineProps<{ data?: TwoColsTextBlock }>();
     }
 
     .bard-content {
-      padding-block-start: 1.5em;
-
       @media (min-width: 1200px) {
         padding-block-start: 8rem;
       }
