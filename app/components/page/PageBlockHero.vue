@@ -100,7 +100,7 @@ const backgroundStyles = computed(() => {
 
   h1 {
     max-width: 640px;
-    margin-block-end: 0;
+    margin-block-end: 0.5em;
     font-size: var(--font-calc-heading-1);
   }
 
