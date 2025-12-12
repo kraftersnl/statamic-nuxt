@@ -94,6 +94,7 @@ const mainNav = computed((): MenuItem[] =>
 }
 
 .app-header-content {
+  position: relative;
   margin-inline: auto;
   padding-inline: var(--app-padding-inline);
   max-width: var(--app-max-width);
@@ -129,7 +130,7 @@ const mainNav = computed((): MenuItem[] =>
   .menu-list-nav {
     margin-inline-start: auto;
     display: none;
-    padding-inline-end: 2.5rem;
+    padding-inline-end: 8rem;
   }
 
   @media (min-width: 1024px) {
@@ -143,6 +144,15 @@ const mainNav = computed((): MenuItem[] =>
   .theme-switch {
     margin-inline-start: 2.25rem;
     margin-block-start: 2.5rem;
+  }
+}
+
+.app-header {
+  .theme-switch {
+    position: absolute;
+    top: 1.25rem;
+    top: calc(1px + 1.25rem);
+    right: var(--app-padding-inline);
   }
 }
 </style>
