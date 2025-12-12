@@ -105,13 +105,16 @@ blockquote {
       }
     }
 
-    &:has(+ h2) {
+    &:has(+ h2),
+    &:has(+ div > h2) {
       margin-block-end: 4rem;
     }
-    &:has(+ h3) {
+    &:has(+ h3),
+    &:has(+ div > h3) {
       margin-block-end: 3rem;
     }
-    &:has(+ h4) {
+    &:has(+ h4),
+    &:has(+ div > h4) {
       margin-block-end: 2rem;
     }
     &:has(+ h5) {
