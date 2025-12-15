@@ -40,6 +40,7 @@ const backgroundStyles = computed(() => {
       data?.background_color?.key &&
         `background-color--${data.background_color.key}`,
       data?.full_height && 'page-block--full-height',
+      data?.text_align?.key && `text-align--${data?.text_align.key}`,
     ]"
     :style="[imageBg && backgroundStyles]"
   >
@@ -178,12 +179,12 @@ const backgroundStyles = computed(() => {
 
 .page-block--full-height {
   @media (min-width: 1200px) {
-    height: calc(100svh - var(--app-header-height));
+    /* min-height: calc(100svh - var(--app-header-height)); */
   }
 
   .hero-image {
     @media (min-width: 1200px) {
-      height: calc(100svh - var(--app-header-height));
+      min-height: calc(100svh - var(--app-header-height));
     }
   }
 }
@@ -233,6 +234,10 @@ const backgroundStyles = computed(() => {
 
 .hero-block.image-position--block-end {
   padding-block: var(--app-header-height);
+
+  @media (min-width: 1200px) {
+    padding-block-start: 8rem;
+  }
 }
 
 .hero-block.image-position--inline-end {
@@ -314,6 +319,25 @@ const backgroundStyles = computed(() => {
         calc(var(--app-max-width) / 2)
         1fr;
     }
+  }
+}
+
+.hero-block.text-align--center {
+  h1 {
+    margin-inline: auto;
+    text-align: center;
+  }
+  .page-block-content {
+    p {
+      margin-inline: auto;
+    }
+    text-align: center;
+  }
+}
+
+.hero-block.text-align--right {
+  .page-block-content {
+    text-align: right;
   }
 }
 </style>

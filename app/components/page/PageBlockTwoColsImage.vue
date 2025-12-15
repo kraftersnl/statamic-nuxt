@@ -44,7 +44,7 @@ defineProps<{ data?: TwoColsImageBlock }>();
 
   h2 {
     font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-medium);
+    /* font-weight: var(--font-weight-medium); */
   }
 
   .page-block-content {

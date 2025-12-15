@@ -12,6 +12,8 @@ declare global {
     graphic_visual?: StatamicSelectOption;
     image_position?: StatamicSelectOption;
     background_color?: StatamicSelectOption;
+    full_height?: boolean;
+    text_align?: StatamicSelectOption;
   };
 
   type BasicBlock = StatamicPageBlock & {
