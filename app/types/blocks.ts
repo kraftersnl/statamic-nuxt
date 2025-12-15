@@ -122,6 +122,7 @@ declare global {
     entries: StatamicArticleEntry[];
     super_title?: string;
     title?: string;
+    anchor?: string;
   };
 
   type EmployeesBlock = StatamicPageBlock & {

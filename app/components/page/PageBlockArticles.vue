@@ -3,7 +3,7 @@ defineProps<{ data?: ArticlesBlock }>();
 </script>
 
 <template>
-  <section class="page-block articles-block">
+  <section :id="data?.anchor" class="page-block articles-block">
     <div class="page-block-content">
       <slot />
 

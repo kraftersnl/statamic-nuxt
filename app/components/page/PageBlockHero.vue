@@ -127,10 +127,6 @@ const backgroundStyles = computed(() => {
       animation-range: exit 200px;
     }
 
-    @media (min-width: 1200px) {
-      height: calc(100svh - var(--app-header-height));
-    }
-
     img {
       object-position: center;
       height: 100%;
@@ -191,6 +187,12 @@ const backgroundStyles = computed(() => {
 .page-block--full-height {
   @media (min-width: 1200px) {
     height: calc(100svh - var(--app-header-height));
+  }
+
+  .hero-image {
+    @media (min-width: 1200px) {
+      height: calc(100svh - var(--app-header-height));
+    }
   }
 }
 
