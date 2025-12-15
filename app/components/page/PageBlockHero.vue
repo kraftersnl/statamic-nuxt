@@ -228,7 +228,11 @@ const backgroundStyles = computed(() => {
 
 .hero-block.image-position--block-start {
   .page-block-content {
-    padding-block: var(--app-header-height);
+    padding-block: 4rem;
+
+    @media (min-width: 1200px) {
+      padding-block-start: 8rem;
+    }
   }
 }
 

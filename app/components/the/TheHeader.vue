@@ -11,20 +11,6 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
       },
     })
 );
-
-const mobileMenuRef = useTemplateRef<MobileMenuComponent>('mobileMenu');
-
-// const mainNav = computed(() =>
-//   nav.value?.data?.length
-//     ? nav.value.data.map((x) => ({
-//         ...x,
-//         // id: x.page.id,
-//         // to: x.page.url,
-//         // label: x.page.title,
-//         onClick: mobileMenuRef.value?.closeDialog,
-//       }))
-//     : []
-// );
 </script>
 
 <template>
@@ -68,32 +54,7 @@ const mobileMenuRef = useTemplateRef<MobileMenuComponent>('mobileMenu');
         <ThemeSwitch />
       </div>
 
-      <MobileMenu
-        ref="mobileMenu"
-        button-variant="ghost"
-        position="inline-end"
-        :width="400"
-        menu-button-size="xl"
-      >
-        <template #default>
-          <NuxtLink
-            to="/"
-            class="logo-link"
-            @click="mobileMenuRef?.closeDialog"
-          >
-            <slot name="logo" />
-          </NuxtLink>
-
-          <MenuList
-            :list="mainNav"
-            button-variant="sidebar"
-            button-size="xl"
-            font-size="md"
-          />
-
-          <ThemeSwitch />
-        </template>
-      </MobileMenu>
+      <TheMobileMenu :list="nav?.data" />
     </div>
 
     <slot name="right" />
@@ -192,30 +153,8 @@ const mobileMenuRef = useTemplateRef<MobileMenuComponent>('mobileMenu');
 
       > a {
         margin-block: 1.25rem;
-        /* padding-inline-start: 0.25rem; */
-      }
-
-      > a:hover {
-        /* text-decoration: underline; */
       }
     }
-  }
-}
-
-.mobile-dialog {
-  .dialog-content {
-    padding-block-start: var(--app-padding-block);
-  }
-
-  .logo-link {
-    max-width: max-content;
-    margin-inline: 2.25rem;
-    margin-block-end: 4rem;
-  }
-
-  .theme-switch {
-    margin-inline-start: 2.25rem;
-    margin-block-start: 2.5rem;
   }
 }
 
