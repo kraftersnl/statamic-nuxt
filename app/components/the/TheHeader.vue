@@ -52,10 +52,19 @@ const mainNav = computed((): MenuItem[] =>
       <MobileMenu
         ref="mobileMenu"
         button-variant="ghost"
-        position="inline-start"
+        position="inline-end"
+        :width="400"
         menu-button-size="xl"
       >
         <template #default>
+          <NuxtLink
+            to="/"
+            class="logo-link"
+            @click="mobileMenuRef?.closeDialog"
+          >
+            <slot name="logo" />
+          </NuxtLink>
+
           <MenuList
             :list="mainNav"
             button-variant="sidebar"
@@ -141,6 +150,16 @@ const mainNav = computed((): MenuItem[] =>
 }
 
 .mobile-dialog {
+  .dialog-content {
+    padding-block-start: var(--app-padding-block);
+  }
+
+  .logo-link {
+    max-width: max-content;
+    margin-inline: 2.25rem;
+    margin-block-end: 4rem;
+  }
+
   .theme-switch {
     margin-inline-start: 2.25rem;
     margin-block-start: 2.5rem;
@@ -150,7 +169,6 @@ const mainNav = computed((): MenuItem[] =>
 .app-header {
   .theme-switch {
     position: absolute;
-    top: 1.25rem;
     top: calc(1px + 1.25rem);
     right: var(--app-padding-inline);
   }
