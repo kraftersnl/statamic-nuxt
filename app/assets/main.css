@@ -44,7 +44,7 @@ h5,
 h6 {
   margin-block-start: 0;
 
-  @media (min-width: 360px) {
+  @media (min-width: 768px) {
     hyphens: none;
   }
 }
