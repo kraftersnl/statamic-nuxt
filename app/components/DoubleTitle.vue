@@ -31,6 +31,7 @@ const { is = 'h2' } = defineProps<{
     text-transform: uppercase;
     margin-block-end: 1.5rem;
   }
+
   .title {
     max-width: 640px;
   }

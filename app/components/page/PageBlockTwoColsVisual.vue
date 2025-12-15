@@ -48,8 +48,14 @@ defineProps<{ data?: TwoColsVisualBlock }>();
     @media (min-width: 1200px) {
       grid-template-columns: 1fr 1fr;
 
-      .double-title:has(.super-title):not(:has(.title)) {
-        margin-block: 0;
+      .double-title {
+        .title {
+          font-weight: var(--font-weight-bold);
+        }
+
+        &:has(.super-title):not(:has(.title)) {
+          margin-block: 0;
+        }
       }
 
       h2,
