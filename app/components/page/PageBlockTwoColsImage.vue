@@ -38,7 +38,9 @@ defineProps<{ data?: TwoColsImageBlock }>();
 
 <style>
 .page-block.two-cols-image-block {
-  margin-block-end: 8rem;
+  &:not(:last-child) {
+    margin-block-end: 8rem;
+  }
 
   h2 {
     font-size: var(--font-size-xl);
@@ -67,6 +69,10 @@ defineProps<{ data?: TwoColsImageBlock }>();
       width: 100%;
       object-fit: cover;
     }
+  }
+
+  .text-column {
+    padding-block-end: 1.5rem;
   }
 }
 </style>

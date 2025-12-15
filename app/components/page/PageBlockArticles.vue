@@ -29,7 +29,9 @@ defineProps<{ data?: ArticlesBlock }>();
     margin-block: 5rem;
 
     @media (min-width: 1200px) {
-      margin-block-end: 8rem;
+      &:not(:last-child) {
+        margin-block-end: 8rem;
+      }
     }
   }
 

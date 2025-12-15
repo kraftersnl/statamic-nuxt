@@ -36,7 +36,9 @@ defineProps<{ data?: TwoColsVisualBlock }>();
 
 <style>
 .page-block.two-cols-visual-block {
-  margin-block-end: 8rem;
+  &:not(:last-child) {
+    margin-block-end: 8rem;
+  }
 
   .page-block-content {
     display: grid;

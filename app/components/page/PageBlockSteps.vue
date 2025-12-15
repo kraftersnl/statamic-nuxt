@@ -50,7 +50,7 @@ defineProps<{ data?: StepsBlock }>();
     gap: 1.5rem;
     width: 280px;
     height: 160px;
-    border: 1.5px solid var(--color-grey-bg);
+    border: 1.5px solid var(--color-grey-light);
     border-radius: var(--radius-sm);
 
     .step-title {
@@ -68,7 +68,7 @@ defineProps<{ data?: StepsBlock }>();
         left: 50%;
         height: calc(1.5rem + 1px);
         width: 2px;
-        background-color: var(--color-grey-bg);
+        background-color: var(--color-grey-light);
       }
     }
 
@@ -80,7 +80,7 @@ defineProps<{ data?: StepsBlock }>();
         top: 50%;
         width: calc(1.5rem + 1px);
         height: 2px;
-        background-color: var(--color-grey-bg);
+        background-color: var(--color-grey-light);
       }
     }
 
