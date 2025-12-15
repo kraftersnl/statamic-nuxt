@@ -36,9 +36,15 @@ const seoImage = computed(
 useSeoMeta({
   title: seoTitle.value,
   ogTitle: seoTitle.value,
+  twitterTitle: seoTitle.value,
   description: seoDescription.value,
   ogDescription: seoDescription.value,
+  twitterDescription: seoDescription.value,
   ogImage: seoImage.value,
+  twitterImage: seoImage.value,
+  twitterCard: 'summary_large_image',
+  lang: 'nl-NL',
+  icon: useRuntimeConfig()?.public?.siteUrl + '/favicon.svg',
   ogUrl: useRuntimeConfig()?.public?.siteUrl + page.value?.url,
 });
 </script>

@@ -254,7 +254,7 @@ const backgroundStyles = computed(() => {
 
     .page-block-content {
       grid-column: 2 / span 1;
-      padding-inline-end: 3.5rem;
+      padding-block: 2.5rem;
     }
 
     .hero-image {

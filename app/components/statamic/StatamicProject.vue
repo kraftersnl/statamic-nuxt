@@ -28,6 +28,11 @@ defineProps<{
     max-width: none;
     font-size: var(--font-size-xxl);
   }
+
+  p {
+    margin-inline: auto;
+  }
+
   .project-image {
     width: 100%;
 

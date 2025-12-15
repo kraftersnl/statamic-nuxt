@@ -52,6 +52,10 @@ const { locale } = useI18n();
     display: grid;
   }
 
+  .text-content {
+    margin-block-end: 1rem;
+  }
+
   .card-title {
     font-size: var(--font-size-lg);
     margin-block-end: 1em;

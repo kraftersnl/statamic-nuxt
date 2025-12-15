@@ -43,6 +43,7 @@ const { data: entries } = await useAsyncData<{
   .page-block-content {
     padding-block: 5rem;
     display: grid;
+    gap: 4rem;
     justify-content: center;
 
     @media (min-width: 1200px) {
