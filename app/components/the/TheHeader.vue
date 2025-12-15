@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const isDesktop = useMediaQuery('(min-width: 1024px)');
+const { openMenuId, closeMenu } = useNav();
 
 const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
   'main-nav',
@@ -14,16 +14,17 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
 
 const mobileMenuRef = useTemplateRef<MobileMenuComponent>('mobileMenu');
 
-const mainNav = computed((): MenuItem[] =>
-  nav.value?.data?.length
-    ? nav.value.data.map((x) => ({
-        id: x.page.id,
-        to: x.page.url,
-        label: x.page.title,
-        onClick: mobileMenuRef.value?.closeDialog,
-      }))
-    : []
-);
+// const mainNav = computed(() =>
+//   nav.value?.data?.length
+//     ? nav.value.data.map((x) => ({
+//         ...x,
+//         // id: x.page.id,
+//         // to: x.page.url,
+//         // label: x.page.title,
+//         onClick: mobileMenuRef.value?.closeDialog,
+//       }))
+//     : []
+// );
 </script>
 
 <template>
@@ -39,14 +40,32 @@ const mainNav = computed((): MenuItem[] =>
       </NuxtLink>
 
       <div class="flex-wrapper">
-        <MenuList
-          :list="mainNav"
-          button-variant="topbar"
-          button-size="md"
-          inline
-        />
+        <nav class="menu-list-nav" aria-label="Hoofdnavigatie">
+          <ul class="nav-list" role="list">
+            <li v-for="item in nav?.data" :key="item.page.id" class="nav-item">
+              <Button
+                v-if="item.page"
+                variant="topbar"
+                :to="item.page.link || item.page.url"
+                class="nav-link"
+                @mouseover="openMenuId = item.page.id"
+                @click="closeMenu"
+              >
+                <span>{{ item.page.title }}</span>
+              </Button>
 
-        <ThemeSwitch v-if="isDesktop" />
+              <StatamicSubMenu
+                v-if="item.children?.length"
+                ref="subMenuElements"
+                v-model="openMenuId"
+                :data="item"
+                @click="closeMenu"
+              />
+            </li>
+          </ul>
+        </nav>
+
+        <ThemeSwitch />
       </div>
 
       <MobileMenu
@@ -91,6 +110,7 @@ const mainNav = computed((): MenuItem[] =>
 }
 
 .app-header {
+  border-block-end: 1px solid var(--color-grey-light);
   position: relative;
   background-color: hsl(var(--hsl-app-nav) / 90%);
   backdrop-filter: blur(5px);
@@ -147,6 +167,39 @@ const mainNav = computed((): MenuItem[] =>
       display: block;
     }
   }
+
+  .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list {
+    flex-shrink: 0;
+    flex-grow: 1;
+    display: flex;
+    margin-inline: auto;
+    align-items: center;
+    column-gap: 1rem;
+
+    @media (min-width: 360px) {
+      justify-content: center;
+    }
+
+    > li {
+      min-height: 4rem;
+      white-space: nowrap;
+
+      > a {
+        margin-block: 1.25rem;
+        /* padding-inline-start: 0.25rem; */
+      }
+
+      > a:hover {
+        /* text-decoration: underline; */
+      }
+    }
+  }
 }
 
 .mobile-dialog {
@@ -168,9 +221,14 @@ const mainNav = computed((): MenuItem[] =>
 
 .app-header {
   .theme-switch {
-    position: absolute;
-    top: calc(1px + 1.25rem);
-    right: var(--app-padding-inline);
+    display: none;
+
+    @media (min-width: 1024px) {
+      display: flex;
+      position: absolute;
+      top: calc(1px + 1.25rem);
+      right: var(--app-padding-inline);
+    }
   }
 }
 </style>
