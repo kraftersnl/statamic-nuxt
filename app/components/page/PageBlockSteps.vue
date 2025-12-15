@@ -48,7 +48,7 @@ defineProps<{ data?: StepsBlock }>();
     align-content: center;
     justify-items: center;
     gap: 1.5rem;
-    width: 280px;
+    flex-basis: 256px;
     height: 160px;
     border: 1.5px solid var(--color-grey-light);
     border-radius: var(--radius-sm);
@@ -72,7 +72,7 @@ defineProps<{ data?: StepsBlock }>();
       }
     }
 
-    @container (min-width: 1200px) {
+    @container (min-width: 1440px) {
       + .step-item::after {
         content: '';
         position: absolute;
