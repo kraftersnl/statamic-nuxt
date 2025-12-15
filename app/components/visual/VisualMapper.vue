@@ -6,6 +6,7 @@ defineProps<{
 
 <template>
   <VisualShapeOne v-if="visual === 'shapes_one'" />
+  <VisualShapeTwo v-if="visual === 'shapes_two'" />
 
   <VisualKraftK v-if="visual === 'kraft_k'" />
   <VisualKraftR v-if="visual === 'kraft_r'" />
