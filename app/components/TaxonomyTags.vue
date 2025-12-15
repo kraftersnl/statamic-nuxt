@@ -26,7 +26,7 @@ const { tags = [] } = defineProps<{
   flex-wrap: wrap;
   gap: 0.5rem;
 
-  .tag-chip {
+  .tag-chip.chip-color--grey {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     background-color: transparent;

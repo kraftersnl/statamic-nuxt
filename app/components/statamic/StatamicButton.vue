@@ -16,6 +16,7 @@ const variant = computed(() =>
     :icon-pos="data?.button_icon_position?.key ?? 'end'"
     :target="data?.button_link?.startsWith('http') ? '_blank' : undefined"
     :external="data?.button_link?.startsWith('http')"
+    size="lg"
     class="content-block-link"
   >
     <template #icon>
