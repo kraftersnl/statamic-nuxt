@@ -50,7 +50,6 @@ defineProps<{ data?: TwoColsVisualBlock }>();
       .double-title {
         margin-block: 0;
       }
-
       h2,
       h3 {
         margin-block: 0 2rem;

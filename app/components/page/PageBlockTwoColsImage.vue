@@ -70,9 +70,5 @@ defineProps<{ data?: TwoColsImageBlock }>();
       object-fit: cover;
     }
   }
-
-  .text-column {
-    padding-block-end: 1.5rem;
-  }
 }
 </style>

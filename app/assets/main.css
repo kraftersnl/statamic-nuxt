@@ -78,6 +78,7 @@ blockquote {
   display: grid;
   align-content: start;
   gap: 1rem;
+  padding-block-end: 1.5rem;
 
   .statamic-icon svg {
     width: var(--font-size-xxl);
