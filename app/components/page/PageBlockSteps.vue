@@ -91,6 +91,7 @@ defineProps<{ data?: StepsBlock }>();
     .icon {
       margin-block-start: 0.5rem;
       color: var(--color-accent-graphic);
+
       svg {
         width: 2.5rem;
         height: 2.5rem;

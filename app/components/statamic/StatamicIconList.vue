@@ -30,6 +30,22 @@ defineProps<{ data?: ListContentBlock }>();
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1.25rem;
+    position: relative;
+
+    &:not(:has(.icon)) {
+      padding-inline-start: 1.25rem;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 1rem;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: var(--radius-full);
+        background-color: var(--color-accent-graphic);
+      }
+    }
   }
 
   .list-item-title {
