@@ -6,18 +6,18 @@ const backgroundColor = computed(() => {
     return 'transparent';
   return `var(--${props.data.color.key})`;
 });
-const computedStyle = computed(() => {
+
+const spacingStyle = computed(() => {
   return {
-    'background-color': backgroundColor.value,
-    'margin-block-start': props.data.margin_block_start + 'px',
-    'margin-block-end': props.data.margin_block_end + 'px',
+    'padding-block-start': (props.data.margin_block_start ?? 0) + 'px',
+    'padding-block-end': (props.data.margin_block_end ?? 0) + 'px',
   };
 });
 </script>
 
 <template>
-  <div class="divider-wrapper">
-    <div class="divider" :style="computedStyle" />
+  <div class="divider-wrapper" :style="spacingStyle">
+    <div class="divider" :style="{ 'background-color': backgroundColor }" />
   </div>
 </template>
 
