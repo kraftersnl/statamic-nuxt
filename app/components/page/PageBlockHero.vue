@@ -39,6 +39,7 @@ const backgroundStyles = computed(() => {
         `image-position--${data?.image_position.key}`,
       data?.background_color?.key &&
         `background-color--${data.background_color.key}`,
+      data?.full_height && 'page-block--full-height',
     ]"
     :style="[imageBg && backgroundStyles]"
   >
@@ -179,13 +180,17 @@ const backgroundStyles = computed(() => {
   }
 }
 
-.hero-block.image-position--background,
+/* .hero-block.image-position--background,
 .hero-block.image-position--inline-end,
 .hero-block.image-position--inline-start {
-  margin-block-end: 4rem;
-
   @media (min-width: 1200px) {
-    /* height: calc(100svh - var(--app-header-height)); */
+    height: calc(100svh - var(--app-header-height));
+    }
+    } */
+
+.page-block--full-height {
+  @media (min-width: 1200px) {
+    height: calc(100svh - var(--app-header-height));
   }
 }
 
