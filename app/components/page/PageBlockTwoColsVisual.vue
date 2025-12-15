@@ -43,7 +43,7 @@ defineProps<{ data?: TwoColsVisualBlock }>();
   .page-block-content {
     display: grid;
     gap: 4rem;
-    padding-block-end: 2.5rem;
+    padding-block-end: 4rem;
 
     @media (min-width: 1200px) {
       grid-template-columns: 1fr 1fr;

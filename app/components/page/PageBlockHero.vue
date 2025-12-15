@@ -182,8 +182,10 @@ const backgroundStyles = computed(() => {
 .hero-block.image-position--background,
 .hero-block.image-position--inline-end,
 .hero-block.image-position--inline-start {
+  margin-block-end: 4rem;
+
   @media (min-width: 1200px) {
-    height: calc(100svh - var(--app-header-height));
+    /* height: calc(100svh - var(--app-header-height)); */
   }
 }
 

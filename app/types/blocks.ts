@@ -100,7 +100,9 @@ declare global {
   };
 
   type DividerBlock = StatamicPageBlock & {
-    margin?: number;
+    color?: StatamicSelectOption;
+    margin_block_start?: number;
+    margin_block_end?: number;
   };
 
   type GridBlock = StatamicPageBlock & {

@@ -26,7 +26,7 @@ defineProps<{ data?: ArticlesBlock }>();
     margin-inline: auto;
     padding-inline: var(--app-padding-inline);
     max-width: var(--app-max-width);
-    margin-block: 5rem;
+    padding-block: 4rem;
 
     @media (min-width: 1200px) {
       &:not(:last-child) {
