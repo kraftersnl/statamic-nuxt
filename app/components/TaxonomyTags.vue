@@ -21,7 +21,6 @@ const { tags = [] } = defineProps<{
 
 <style>
 .card-tags {
-  margin-block-start: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
