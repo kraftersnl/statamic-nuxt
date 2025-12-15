@@ -176,14 +176,6 @@ const backgroundStyles = computed(() => {
   }
 }
 
-/* .hero-block.image-position--background,
-.hero-block.image-position--inline-end,
-.hero-block.image-position--inline-start {
-  @media (min-width: 1200px) {
-    height: calc(100svh - var(--app-header-height));
-    }
-    } */
-
 .page-block--full-height {
   @media (min-width: 1200px) {
     height: calc(100svh - var(--app-header-height));
@@ -246,10 +238,6 @@ const backgroundStyles = computed(() => {
 .hero-block.image-position--inline-end {
   .page-block-content {
     padding-block-start: 4rem;
-
-    @media (min-width: 1200px) {
-      padding-block-start: 0;
-    }
   }
 
   @media (min-width: 1200px) {
@@ -263,7 +251,8 @@ const backgroundStyles = computed(() => {
 
     .page-block-content {
       grid-column: 2 / span 1;
-      padding-block: 2.5rem;
+      padding-block-end: 4rem;
+      padding-block-start: 8rem;
     }
 
     .hero-image {

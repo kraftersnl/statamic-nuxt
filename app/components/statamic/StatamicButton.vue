@@ -10,6 +10,7 @@ const variant = computed(() =>
 
 <template>
   <Button
+    v-if="data?.button_link"
     :to="data?.button_link"
     :label="data?.button_label"
     :variant="variant"
