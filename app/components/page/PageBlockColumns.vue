@@ -32,7 +32,7 @@ defineProps<{ data: ColumnsBlock }>();
   gap: 0.5rem;
 
   .page-block-column {
-    flex-basis: 18rem;
+    flex-basis: 20rem;
   }
 
   @media (min-width: 1200px) {
