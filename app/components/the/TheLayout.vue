@@ -90,8 +90,5 @@ if (typeof window !== 'undefined') {
   z-index: 1;
   isolation: isolate;
   background-color: var(--color-bg);
-
-  /* cut off background shape when revealing footer*/
-  overflow: clip;
 }
 </style>
