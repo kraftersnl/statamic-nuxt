@@ -94,8 +94,8 @@ const { locale } = useI18n();
 
   .card-image {
     order: -1;
-    height: 180px;
     margin-block-end: 1.5rem;
+    aspect-ratio: 3 / 2;
 
     img {
       /* border-radius: var(--radius-sm); */
