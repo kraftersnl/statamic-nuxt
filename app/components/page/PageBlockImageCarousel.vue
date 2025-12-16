@@ -83,7 +83,7 @@ const scrollWidth = computed(
 
     .image-carousel-list {
       display: flex;
-      gap: 4rem;
+      gap: 1.5rem;
       grid-auto-flow: column;
       overflow: scroll;
       scroll-snap-type: x mandatory;

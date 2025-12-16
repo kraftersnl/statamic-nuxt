@@ -38,7 +38,13 @@ const { locale } = useI18n();
 
       <TaxonomyTags :tags="data?.tags" />
 
-      <StatamicImage :data="data.image" :loading="loading" class="card-image" />
+      <StatamicImage
+        v-if="data?.image?.permalink"
+        :data="data.image"
+        :loading="loading"
+        class="card-image"
+      />
+      <div v-else class="card-image" />
     </div>
   </Card>
 </template>
@@ -96,10 +102,7 @@ const { locale } = useI18n();
     order: -1;
     margin-block-end: 1.5rem;
     aspect-ratio: 3 / 2;
-
-    img {
-      /* border-radius: var(--radius-sm); */
-    }
+    background-color: var(--color-accent-grey);
   }
 
   .fake-link {

@@ -29,7 +29,6 @@ defineProps<{ data: ColumnsBlock }>();
   flex-wrap: wrap;
   max-width: var(--app-max-width);
   margin-inline: auto;
-  padding-block-end: 4rem;
   gap: 0.5rem;
 
   .page-block-column {

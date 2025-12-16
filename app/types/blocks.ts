@@ -63,6 +63,11 @@ declare global {
     image_list?: StatamicImage[];
   };
 
+  type CalloutBlock = StatamicPageBlock & {
+    content?: StatamicContentBlock[];
+    background_color?: StatamicSelectOption;
+  };
+
   type ProductsBlock = StatamicPageBlock & {
     super_title?: string;
     title?: string;
@@ -161,7 +166,9 @@ declare global {
     | VideoContentBlock
     | QuoteContentBlock
     | FormContentBlock
-    | SpacerContentBlock;
+    | SpacerContentBlock
+    | CalloutContentBlock
+    | AccordionContentBlock;
 
   type TextContentBlock = {
     type: 'text';
@@ -197,6 +204,13 @@ declare global {
     title?: string;
     text?: string;
     id?: string;
+  };
+
+  type CalloutContentBlock = {
+    type: 'callout';
+    id: string;
+    content?: string;
+    background_color?: StatamicSelectOption;
   };
 
   type AccordionContentBlock = {

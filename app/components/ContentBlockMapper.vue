@@ -55,6 +55,11 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
         :data="contentBlock"
       />
 
+      <StatamicCallout
+        v-else-if="contentBlock?.type === 'callout'"
+        :data="contentBlock"
+      />
+
       <div
         v-else-if="contentBlock?.type === 'spacer'"
         class="spacer"

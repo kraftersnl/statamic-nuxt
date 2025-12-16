@@ -99,6 +99,11 @@ defineProps<{
         v-else-if="pageBlock?.type === 'divider'"
         :data="pageBlock"
       />
+      <PageBlockCallout
+        v-else-if="pageBlock?.type === 'callout'"
+        :data="pageBlock"
+        :date="date"
+      />
     </template>
   </div>
 </template>
@@ -110,10 +115,6 @@ defineProps<{
   max-width: var(--app-max-width);
   padding-inline: var(--app-padding-inline);
   margin-inline: auto;
-
-  .double-title {
-    /* margin-block-start: 4rem; */
-  }
 }
 
 .page-block {
@@ -127,6 +128,12 @@ defineProps<{
 
   h2 {
     font-size: var(--font-calc-heading-2, var(--font-size-xxxl));
+  }
+
+  &:last-child {
+    .page-block-content {
+      padding-block-end: 8rem;
+    }
   }
 
   &.background-color--white {
