@@ -34,11 +34,7 @@ const emit = defineEmits(['update:modelValue', 'click']);
     >
       <Icon name="material-symbols:keyboard-arrow-down-rounded" />
       <span class="visuallyhidden">
-        {{
-          $t('general.expand-menu', {
-            item: data.page.title,
-          })
-        }}
+        Menu uitklappen voor {{ data.page.title }}
       </span>
     </button>
 
@@ -71,6 +67,7 @@ const emit = defineEmits(['update:modelValue', 'click']);
 .sub-menu-wrapper {
   .sub-menu-content {
     position: absolute;
+    z-index: 9;
     left: -0.5rem;
     top: calc(100% + 2px);
     border: 1px solid var(--color-grey-light);

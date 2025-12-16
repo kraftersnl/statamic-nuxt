@@ -54,6 +54,12 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
         v-else-if="contentBlock?.type === 'accordion'"
         :data="contentBlock"
       />
+
+      <div
+        v-else-if="contentBlock?.type === 'spacer'"
+        class="spacer"
+        :style="{ 'margin-top': `${contentBlock?.margin ?? 0}px` }"
+      />
     </template>
   </div>
 </template>

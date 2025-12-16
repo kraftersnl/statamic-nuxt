@@ -99,6 +99,8 @@ declare global {
 
   type StatamicEmployeesEntry = StatamicEntry & {
     sub_title?: string;
+    email?: string;
+    phone?: string;
   };
 
   type StatamicTestimonialEntry = StatamicEntry & {

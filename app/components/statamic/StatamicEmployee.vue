@@ -14,13 +14,26 @@ defineProps<{
       <span v-if="data?.sub_title" class="employee-jobtitle">
         {{ data.sub_title }}
       </span>
+
+      <p v-if="data?.email || data?.phone" class="employee-contact">
+        <NuxtLink :to="'mailto:' + data.email">
+          {{ data.email }}
+        </NuxtLink>
+        <NuxtLink :to="'tel:' + data.phone?.replaceAll(' ', '')">
+          <address>
+            {{ data.phone }}
+          </address>
+        </NuxtLink>
+      </p>
     </div>
+
     <StatamicImage
       v-if="data?.image"
       :data="data.image"
       width="120"
       height="120"
     />
+    <VisualPlaceholder v-else />
   </div>
 </template>
 
@@ -28,13 +41,7 @@ defineProps<{
 .employee-entry {
   display: grid;
   align-items: center;
-  text-align: center;
   gap: 1.5rem;
-
-  @container (min-width: 400px) {
-    text-align: left;
-    grid-template-columns: 120px auto;
-  }
 
   .employee-name {
     font-size: var(--font-size-md);
@@ -43,19 +50,26 @@ defineProps<{
   }
 
   .employee-jobtitle {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
     color: var(--color-grey-text);
   }
 
-  figure {
-    order: -1;
-    margin-inline: auto;
+  .employee-contact {
+    display: grid;
+    gap: 0.5em;
+    font-size: var(--font-size-xs);
+    color: var(--color-text);
 
-    img {
-      width: 120px;
-      height: 120px;
-      border-radius: var(--radius-full);
+    a:hover {
+      color: var(--color-accent-text);
     }
+  }
+
+  figure,
+  .visual-placeholder {
+    order: -1;
+    height: 300px;
+    width: 300px;
   }
 }
 </style>

@@ -7,7 +7,7 @@ const { data: entries } = await useAsyncData<{
   $fetch(`/api/collections/employees/entries/`, {
     baseURL: useRuntimeConfig().public.statamicUrl,
     query: {
-      fields: 'id,title,sub_title,summary,image',
+      fields: 'id,title,sub_title,summary,image,email,phone',
     },
   })
 );
@@ -33,6 +33,17 @@ const { data: entries } = await useAsyncData<{
         <li v-for="entry in entries?.data" :key="entry.id">
           <StatamicEmployee :data="entry" />
         </li>
+
+        <li>
+          <StatamicEmployee
+            :data="{
+              title: 'Werken aan beter digitaal?',
+              sub_title: 'Stuur een mailtje of bel ons',
+              email: 'jobs@krafters.nl',
+              phone: '+31 (0)88 500 4070',
+            }"
+          />
+        </li>
       </ul>
     </div>
   </section>
@@ -56,7 +67,7 @@ const { data: entries } = await useAsyncData<{
 
   .employees-description {
     @media (min-width: 1200px) {
-      margin-block-start: 7rem;
+      margin-block-start: 1.5rem;
       margin-block-end: 4rem;
     }
   }
@@ -67,16 +78,19 @@ const { data: entries } = await useAsyncData<{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: 1.5rem;
+    column-gap: 4rem;
     row-gap: 4rem;
     margin-block: 4rem;
 
-    @media (min-width: 1200px) {
-      justify-content: start;
-    }
-
     > * {
-      flex-basis: 24rem;
+      /* flex-basis: 24rem; */
+
+      @media (min-width: 1200px) {
+        flex-basis: 20rem;
+      }
+      @media (min-width: 1440px) {
+        flex-basis: 24rem;
+      }
     }
   }
 }

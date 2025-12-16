@@ -25,12 +25,23 @@ defineProps<{ data: ColumnsBlock }>();
 
 <style>
 .page-block.columns-block {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   max-width: var(--app-max-width);
   margin-inline: auto;
+  padding-block-end: 4rem;
+  gap: 0.5rem;
 
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
+  .page-block-column {
+    flex-basis: 18rem;
+  }
+
+  @media (min-width: 1200px) {
+    justify-content: space-between;
+
+    h3 {
+      min-height: 2lh;
+    }
   }
 
   .page-block-content {

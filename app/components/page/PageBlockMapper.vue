@@ -40,6 +40,11 @@ defineProps<{
         :data="pageBlock"
         :date="date"
       />
+      <PageBlockImageCarousel
+        v-else-if="pageBlock?.type === 'image_carousel'"
+        :data="pageBlock"
+        :date="date"
+      />
       <PageBlockProjects
         v-else-if="pageBlock?.type === 'projects'"
         :data="pageBlock"
@@ -107,7 +112,7 @@ defineProps<{
   margin-inline: auto;
 
   .double-title {
-    margin-block-start: 4rem;
+    /* margin-block-start: 4rem; */
   }
 }
 

@@ -153,6 +153,7 @@ const scrollWidth = computed(
       margin-block-start: 1.5rem;
       display: flex;
       gap: 1rem;
+
       .button {
         --focus-color: white;
       }

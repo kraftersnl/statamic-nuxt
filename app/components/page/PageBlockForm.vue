@@ -6,17 +6,13 @@ defineProps<{ data?: FormBlock }>();
   <section :id="data?.anchor" class="page-block form-block">
     <div class="page-block-content">
       <div class="left-column">
-        <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
-
-        <p>{{ data?.description }}</p>
-
         <ContentBlockMapper :content="data?.content" />
       </div>
 
       <div class="right-column">
-        <!-- <div class="background-shapes-wrapper">
+        <div class="background-shapes-wrapper">
           <CircleDots />
-        </div> -->
+        </div>
 
         <template v-if="data?.form?.handle">
           <LazyStatamicForm :data="data" />

@@ -21,9 +21,20 @@ declare global {
     image_caption?: string;
     super_title?: string;
     title?: string;
+    content?: StatamicContentBlock[];
     background_color?: StatamicSelectOption;
     background_shape?: StatamicSelectOption;
     shape_position?: StatamicSelectOption;
+  };
+
+  type ImageBlock = StatamicPageBlock & {
+    image?: StatamicImage;
+    image_caption?: string;
+    super_title?: string;
+    title?: string;
+    content?: StatamicContentBlock[];
+    background_color?: StatamicSelectOption;
+    full_width?: boolean;
   };
 
   type ColumnsBlock = StatamicPageBlock & {
@@ -45,6 +56,11 @@ declare global {
     title?: string;
     background_color?: StatamicSelectOption;
     entries?: StatamicTestimonialEntry[];
+  };
+
+  type ImageCarouselBlock = StatamicPageBlock & {
+    background_color?: StatamicSelectOption;
+    image_list?: StatamicImage[];
   };
 
   type ProductsBlock = StatamicPageBlock & {
@@ -144,7 +160,8 @@ declare global {
     | ImageContentBlock
     | VideoContentBlock
     | QuoteContentBlock
-    | FormContentBlock;
+    | FormContentBlock
+    | SpacerContentBlock;
 
   type TextContentBlock = {
     type: 'text';
@@ -217,5 +234,11 @@ declare global {
 
   type QuoteContentBlock = StatamicQuote & {
     type: 'quote';
+  };
+
+  type SpacerContentBlock = {
+    type: 'spacer';
+    id: string;
+    margin?: number;
   };
 }

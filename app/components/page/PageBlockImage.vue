@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ data?: BasicBlock }>();
+defineProps<{ data?: ImageBlock }>();
 </script>
 
 <template>
@@ -10,29 +10,36 @@ defineProps<{ data?: BasicBlock }>();
       'image-block',
       data?.background_color?.key &&
         `background-color--${data.background_color.key}`,
+      data?.full_width && 'full-width',
     ]"
   >
     <div class="page-block-content">
       <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
 
       <ContentBlockMapper :content="data?.content" />
+      <StatamicImage
+        v-if="data?.image?.permalink"
+        :data="data.image"
+        :caption="data.image_caption"
+        width="960"
+        height="640"
+      />
     </div>
-
-    <StatamicImage
-      v-if="data?.image?.permalink"
-      :data="data.image"
-      :caption="data.image_caption"
-      width="960"
-      height="640"
-    />
   </section>
 </template>
 
 <style>
 .page-block.image-block {
+  &.full-width {
+    .page-block-content {
+      max-width: none;
+      padding-inline: 0;
+    }
+  }
+
   .statamic-image {
     width: 100%;
-    max-width: 1280px;
+    /* max-width: 1280px; */
     margin-inline: auto;
 
     img {

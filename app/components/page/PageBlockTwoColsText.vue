@@ -50,7 +50,7 @@ defineProps<{ data?: TwoColsTextBlock }>();
 
     .bard-content {
       @media (min-width: 1200px) {
-        padding-block-start: 8rem;
+        padding-block-start: 1.5rem;
       }
 
       > :first-child {

@@ -13,12 +13,12 @@
   --font-calc-body-1: min(calc(var(--font-size-sm) + 1vw), var(--font-size-lg));
 
   --font-calc-heading-1: min(
-    calc(var(--font-size-lg) + 4vw),
+    calc(var(--font-size-lg) + 3.5vw),
     var(--font-size-xxxxl)
   );
 
   --font-calc-heading-2: min(
-    calc(var(--font-size-lg) + 4vw),
+    calc(var(--font-size-lg) + 2.5vw),
     var(--font-size-xxxl)
   );
 }
@@ -44,7 +44,7 @@ h5,
 h6 {
   margin-block-start: 0;
 
-  @media (min-width: 768px) {
+  @media (min-width: 360px) {
     hyphens: none;
   }
 }
@@ -75,9 +75,6 @@ blockquote {
 
 :where(.bard-content) {
   margin-inline: auto;
-  display: grid;
-  align-content: start;
-  gap: 1rem;
 
   .statamic-icon svg {
     width: var(--font-size-xxl);
