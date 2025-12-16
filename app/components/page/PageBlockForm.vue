@@ -10,10 +10,6 @@ defineProps<{ data?: FormBlock }>();
       </div>
 
       <div class="right-column">
-        <div class="background-shapes-wrapper">
-          <CircleDots />
-        </div>
-
         <template v-if="data?.form?.handle">
           <LazyStatamicForm :data="data" />
 
@@ -32,27 +28,6 @@ defineProps<{ data?: FormBlock }>();
   background-color: var(--color-accent-grey);
   padding-block-start: 4rem;
   border-block-end: 2px solid var(--color-grey-light);
-
-  .background-shapes-wrapper {
-    position: relative;
-    display: grid;
-    align-content: end;
-    padding-inline-start: 2rem;
-    margin-block-end: 3rem;
-
-    &::before {
-      position: absolute;
-      left: -3rem;
-      bottom: -0.5rem;
-      content: '';
-      width: 180px;
-      height: 180px;
-      display: block;
-      border-radius: var(--radius-full);
-      background-color: var(--color-accent-grey);
-      opacity: 50%;
-    }
-  }
 
   .page-block-content {
     padding-block: 3rem 5rem;
