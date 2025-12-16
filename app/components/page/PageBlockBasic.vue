@@ -55,6 +55,7 @@ defineProps<{ data?: BasicBlock }>();
   }
 
   .page-block-content {
+    padding-block: 4rem;
     max-width: var(--app-max-width);
 
     @media (min-width: 1200px) {

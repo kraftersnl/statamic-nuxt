@@ -8,7 +8,7 @@ const { data: entries } = await useAsyncData<{ data: StatamicPageEntry[] }>(
       baseURL: useRuntimeConfig().public.statamicUrl,
       query: {
         'filter[url]': stripTrailingSlash(route.path),
-        fields: 'id,title,summary,blocks,url,permalink,image,published',
+        fields: 'id,title,summary,blocks,url,permalink,image,parent',
         token: route.query.token,
       },
     })
@@ -51,6 +51,27 @@ useSeoMeta({
 
 <template>
   <div class="page-wrapper">
+    <div class="page-block-content">
+      <Button
+        v-if="page?.parent && page?.parent?.url !== '/'"
+        :to="page?.parent?.url"
+        :label="page?.parent?.title"
+        variant="topbar"
+        radius="xl"
+        icon="material-symbols:arrow-back"
+        class="back-button"
+      />
+    </div>
+
     <PageBlockMapper :blocks="page?.blocks" />
   </div>
 </template>
+
+<style>
+.back-button {
+  margin-block-start: 1.5rem;
+  max-width: max-content;
+  gap: 0;
+  padding-inline-start: 0;
+}
+</style>

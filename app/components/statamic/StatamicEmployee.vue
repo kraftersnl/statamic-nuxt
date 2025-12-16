@@ -56,7 +56,7 @@ defineProps<{
 
   .employee-contact {
     display: grid;
-    gap: 0.5em;
+    gap: 0.25em;
     font-size: var(--font-size-xs);
     color: var(--color-text);
 

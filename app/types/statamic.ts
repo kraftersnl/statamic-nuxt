@@ -74,6 +74,7 @@ declare global {
   type StatamicPageEntry = StatamicEntry & {
     blocks?: StatamicPageBlock[];
     seo?: StatamicSEO;
+    parent?: StatamicPageEntry;
   };
 
   type StatamicArticleEntry = StatamicEntry & {
