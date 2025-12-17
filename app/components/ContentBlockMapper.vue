@@ -5,7 +5,10 @@ const props = defineProps<{ content?: StatamicContentBlock[] }>();
 <template>
   <div class="bard-content">
     <template v-for="contentBlock in content" :key="contentBlock.id">
-      <div v-if="contentBlock.type === 'text'" v-html="contentBlock.text" />
+      <div
+        v-if="contentBlock.type === 'text'"
+        v-html="fixBoldText(contentBlock.text)"
+      />
 
       <StatamicIcon
         v-else-if="contentBlock?.type === 'icon'"
