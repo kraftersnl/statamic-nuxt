@@ -13,7 +13,7 @@ defineProps<{ data?: LinksBlock }>();
 
             <p class="link-text">{{ item.description }}</p>
 
-            <Icon name="material-symbols:arrow-right-alt" />
+            <Icon name="material-symbols:arrow-right-alt-rounded" />
           </NuxtLink>
         </li>
       </ul>
@@ -41,7 +41,7 @@ defineProps<{ data?: LinksBlock }>();
     margin-inline: calc(var(--app-padding-inline) * -1);
 
     @media (min-width: 1440px) {
-      padding-inline: 0;
+      padding-inline: 0.75rem;
       margin-inline: 0;
     }
 
@@ -50,7 +50,7 @@ defineProps<{ data?: LinksBlock }>();
     }
 
     &:hover {
-      background-color: var(--color-grey-light);
+      color: var(--color-accent-text);
     }
   }
 
@@ -82,7 +82,7 @@ defineProps<{ data?: LinksBlock }>();
     }
 
     .iconify {
-      font-size: var(--font-size-lg);
+      font-size: var(--font-size-xl);
       color: var(--color-accent-graphic);
       margin-inline-start: auto;
     }

@@ -178,14 +178,10 @@ const backgroundStyles = computed(() => {
 }
 
 .page-block--full-height {
-  @media (min-width: 1200px) {
-    min-height: calc(100svh - var(--app-header-height));
-  }
+  min-height: calc(100svh - var(--app-header-height));
 
   .hero-image {
-    @media (min-width: 1200px) {
-      min-height: calc(100svh - var(--app-header-height));
-    }
+    min-height: calc(100svh - var(--app-header-height));
   }
 }
 

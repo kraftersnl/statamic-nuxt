@@ -77,7 +77,7 @@ const emit = defineEmits(['update:modelValue', 'click']);
     .nav-link {
       width: 100%;
       text-decoration: none;
-      padding-block: 1rem;
+      padding-block: 0.75rem;
       padding-inline: 1.5rem;
 
       &:focus-visible {
@@ -130,6 +130,12 @@ const emit = defineEmits(['update:modelValue', 'click']);
     }
   }
 
+  li:first-of-type .nav-link {
+    padding-block-start: 1.25rem;
+  }
+  li:last-of-type .nav-link {
+    padding-block-end: 1.25rem;
+  }
   li:last-of-type .nav-link:not(:focus-visible) {
     border-radius: 0 0 var(--radius-md) var(--radius-md);
   }
