@@ -26,13 +26,8 @@ defineProps<{ data?: ArticlesBlock }>();
     margin-inline: auto;
     padding-inline: var(--app-padding-inline);
     max-width: var(--app-max-width);
-    padding-block: 4rem;
-
-    @media (min-width: 1200px) {
-      &:not(:last-child) {
-        margin-block-end: 8rem;
-      }
-    }
+    padding-block-start: 4rem;
+    padding-block-end: 8rem;
   }
 
   .double-title {

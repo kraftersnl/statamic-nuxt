@@ -11,8 +11,6 @@ const { hTag = 'h2', loading = 'eager' } = defineProps<{
     is="article"
     class="article-card"
     border-radius="md"
-    padding-block="0rem"
-    padding-inline="0rem"
     background-color="transparent"
     border-color="transparent"
     :shadow="false"
@@ -52,6 +50,8 @@ const { hTag = 'h2', loading = 'eager' } = defineProps<{
   position: relative;
   height: 100%;
 
+  padding: 0 !important;
+
   .card-content {
     display: grid;
   }
@@ -87,7 +87,7 @@ const { hTag = 'h2', loading = 'eager' } = defineProps<{
   }
 
   .card-author {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     color: var(--color-grey-text);
   }
 

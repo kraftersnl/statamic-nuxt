@@ -12,9 +12,9 @@ const { entries } = defineProps<{ entries?: StatamicArticleEntry[] }>();
 
 <style>
 .statamic-articles-list {
-  margin-block-start: 3.5rem;
   display: grid;
-  gap: 1.5rem;
+  row-gap: 4rem;
+  column-gap: 2.5rem;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
 
   .article-list-item {
