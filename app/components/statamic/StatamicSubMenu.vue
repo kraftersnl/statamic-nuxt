@@ -88,6 +88,15 @@ const emit = defineEmits(['update:modelValue', 'click']);
         text-decoration: underline;
         color: var(--color-text);
       }
+
+      &[aria-current='page'] {
+        color: var(--color-accent-text);
+        font-weight: var(--font-weight-medium);
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 
