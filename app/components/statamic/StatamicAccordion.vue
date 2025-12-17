@@ -42,8 +42,19 @@ defineProps<{ data?: AccordionContentBlock }>();
 
   .accordion-panel {
     color: var(--color-grey-text);
+
     p {
       padding-block-start: 2.5rem;
+      padding-inline-end: 4rem;
+      max-width: none;
+    }
+  }
+}
+
+.light-mode {
+  .background-color--grey {
+    .statamic-accordion {
+      border-block-end-color: var(--color-grey-graphic);
     }
   }
 }
