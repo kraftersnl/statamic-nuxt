@@ -40,6 +40,11 @@ defineProps<{ data?: LinksBlock }>();
     padding-inline: var(--app-padding-inline);
     margin-inline: calc(var(--app-padding-inline) * -1);
 
+    @media (min-width: 1440px) {
+      padding-inline: 0;
+      margin-inline: 0;
+    }
+
     &:not(:last-child) {
       border-block-end: 1px solid var(--color-grey-light);
     }
