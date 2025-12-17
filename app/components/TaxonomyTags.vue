@@ -8,7 +8,7 @@ const { tags = [] } = defineProps<{
   <ul v-if="tags?.length" role="list" class="card-tags">
     <li v-for="tag in tags" :key="tag.id">
       <Chip
-        :label="tag.title"
+        :label="tag.title || tag"
         font-size="xxxs"
         radius="full"
         variant="outline"
