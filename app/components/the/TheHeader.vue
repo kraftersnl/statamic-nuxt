@@ -33,12 +33,11 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
                 v-if="item.page"
                 variant="topbar"
                 :to="item.page.link || item.page.url"
+                :label="item.page.title"
                 class="nav-link"
                 @mouseover="openMenuId = item.page.id"
                 @click="closeMenu"
-              >
-                <span>{{ item.page.title }}</span>
-              </Button>
+              />
 
               <StatamicSubMenu
                 v-if="item.children?.length"
@@ -140,7 +139,7 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
     display: flex;
     margin-inline: auto;
     align-items: center;
-    column-gap: 1rem;
+    column-gap: 2.5rem;
 
     @media (min-width: 360px) {
       justify-content: center;

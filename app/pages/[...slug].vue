@@ -68,10 +68,13 @@ useSeoMeta({
 </template>
 
 <style>
-.back-button {
-  margin-block-start: 1.5rem;
-  max-width: max-content;
-  gap: 0;
-  padding-inline-start: 0;
+.page-wrapper {
+  .back-button {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    margin-block-start: 1.25rem;
+    max-width: max-content;
+  }
 }
 </style>
