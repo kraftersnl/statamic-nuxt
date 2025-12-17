@@ -60,6 +60,10 @@ defineProps<{
         :data="pageBlock"
         :date="date"
       />
+      <PageBlockLinks
+        v-else-if="pageBlock?.type === 'links'"
+        :data="pageBlock"
+      />
       <PageBlockColumns
         v-else-if="pageBlock?.type === 'columns'"
         :data="pageBlock"
@@ -132,7 +136,7 @@ defineProps<{
 
   &:last-child {
     overflow-y: clip;
-    border-block-end: 2px solid var(--color-grey-bg);
+    /* border-block-end: 2px solid var(--color-grey-bg); */
 
     .page-block-content {
       padding-block-end: 8rem;

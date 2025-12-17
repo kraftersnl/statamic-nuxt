@@ -45,6 +45,10 @@ declare global {
     list: Step[];
   };
 
+  type LinksBlock = StatamicPageBlock & {
+    list: StatamicEntry[];
+  };
+
   type Step = {
     id?: string;
     title?: string;

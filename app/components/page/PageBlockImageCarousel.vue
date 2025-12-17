@@ -77,7 +77,7 @@ const scrollWidth = computed(
       display: grid;
 
       .statamic-image {
-        aspect-ratio: 16/9;
+        /* aspect-ratio: 3 / 2; */
       }
     }
 
