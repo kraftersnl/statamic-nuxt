@@ -4,8 +4,6 @@ const { hTag = 'h2', loading = 'eager' } = defineProps<{
   hTag?: string;
   loading?: 'lazy' | 'eager';
 }>();
-
-const { locale } = useI18n();
 </script>
 
 <template>
