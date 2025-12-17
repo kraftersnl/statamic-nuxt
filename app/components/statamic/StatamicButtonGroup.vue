@@ -13,6 +13,6 @@ defineProps<{ data?: ButtonGroupContentBlock }>();
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 3rem;
+  gap: 2.5rem;
 }
 </style>
