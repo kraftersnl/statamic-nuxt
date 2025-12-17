@@ -38,13 +38,8 @@ defineProps<{ data?: TwoColsImageBlock }>();
 
 <style>
 .page-block.two-cols-image-block {
-  &:not(:last-child) {
-    margin-block-end: 8rem;
-  }
-
   h2 {
     font-size: var(--font-size-xl);
-    /* font-weight: var(--font-weight-medium); */
   }
 
   .page-block-content {

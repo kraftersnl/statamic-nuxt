@@ -26,7 +26,7 @@ const scrollWidth = computed(
         `background-color--${data.background_color.key}`,
     ]"
   >
-    <div class="page-block-content">
+    <div class="page-block-cotent">
       <div class="image-carousel-wrapper">
         <ul
           ref="imageCarouselWrapper"
@@ -70,7 +70,7 @@ const scrollWidth = computed(
 
 <style>
 .page-block.image-carousel-block {
-  .page-block-content {
+  .page-block-cotent {
     display: grid;
 
     .image-carousel-wrapper {
@@ -89,15 +89,19 @@ const scrollWidth = computed(
       scroll-snap-type: x mandatory;
 
       @media (prefers-reduced-motion: no-preference) {
-        animation: viewportSlideRight linear;
+        animation: viewportFadeUp linear;
         animation-timeline: view();
         animation-range: entry -250px;
       }
-
       &:focus-visible {
         outline: 2px solid white;
         outline-offset: 0.5rem;
         border-radius: var(--radius-xs);
+      }
+
+      img {
+        object-fit: contain;
+        max-height: calc(100svh - 5rem - var(--app-header-height));
       }
 
       li {

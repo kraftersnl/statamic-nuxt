@@ -38,10 +38,10 @@ defineProps<{ data?: TwoColsTextBlock }>();
 <style>
 .page-block.two-cols-text-block {
   .page-block-content {
-    padding-block: 8rem;
+    padding-block: 4rem;
 
     @media (min-width: 1200px) {
-      padding-block-end: 8rem;
+      padding-block-end: 1.5rem;
       display: grid;
       padding-inline: var(--app-padding-inline);
       gap: 4rem;
@@ -75,6 +75,12 @@ defineProps<{ data?: TwoColsTextBlock }>();
       animation-timeline: view();
       animation-range: entry;
     }
+  }
+}
+
+.page-block.two-cols-text-block.background-color--grey {
+  .page-block-content {
+    padding-block-start: 8rem;
   }
 }
 </style>
