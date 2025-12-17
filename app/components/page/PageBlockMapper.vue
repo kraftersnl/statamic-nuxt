@@ -131,6 +131,8 @@ defineProps<{
   }
 
   &:last-child {
+    overflow-y: clip;
+
     .page-block-content {
       padding-block-end: 8rem;
     }
