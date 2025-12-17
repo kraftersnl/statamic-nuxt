@@ -48,7 +48,7 @@ const emit = defineEmits(['update:modelValue', 'click']);
           <Button
             :to="child.page.link || child.page.url"
             class="nav-link"
-            variant="link"
+            variant="topbar"
             font-size="sm"
             :label="child.page.title"
             @click="handleSubMenuItemClick"
@@ -75,27 +75,24 @@ const emit = defineEmits(['update:modelValue', 'click']);
     background-color: var(--color-white);
 
     .nav-link {
-      width: 100%;
+      margin-block: 0.5rem;
+      margin-inline: 1.25rem;
+      font-weight: var(--font-weight-regular);
+      max-width: max-content;
       text-decoration: none;
-      padding-block: 0.75rem;
-      padding-inline: 1.5rem;
 
       &:focus-visible {
         outline: 2px solid var(--focus-color);
       }
 
       &:hover {
-        text-decoration: underline;
         color: var(--color-text);
       }
 
       &[aria-current='page'] {
         color: var(--color-accent-text);
         font-weight: var(--font-weight-medium);
-
-        &:hover {
-          text-decoration: underline;
-        }
+        --button-underline-color: var(--color-accent-graphic);
       }
     }
   }
@@ -120,24 +117,23 @@ const emit = defineEmits(['update:modelValue', 'click']);
     }
 
     &:hover .iconify {
-      color: var(--color-grey-text);
+      color: var(--color-text);
     }
 
     &[aria-expanded='true'] {
       .iconify {
+        color: var(--color-text);
         transform: rotate(180deg);
       }
     }
   }
 
   li:first-of-type .nav-link {
-    padding-block-start: 1.25rem;
+    margin-block-start: 1.25rem;
   }
+
   li:last-of-type .nav-link {
-    padding-block-end: 1.25rem;
-  }
-  li:last-of-type .nav-link:not(:focus-visible) {
-    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    margin-block-end: 1.25rem;
   }
 }
 </style>

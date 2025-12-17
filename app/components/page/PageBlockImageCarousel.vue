@@ -118,8 +118,12 @@ const scrollWidth = computed(
       column-gap: 1.5rem;
 
       .button {
-        --color-grey-bg: var(--color-grey-light);
-        --focus-color: white;
+        color: var(--color-white);
+        --color-grey-bg: var(--color-grey-text);
+
+        &:hover {
+          background-color: var(--color-text);
+        }
       }
     }
   }

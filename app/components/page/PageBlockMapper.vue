@@ -214,7 +214,7 @@ defineProps<{
 
       .background-shape--rectangle-dots {
         top: auto;
-        bottom: 2%;
+        bottom: 10%;
       }
     }
   }
