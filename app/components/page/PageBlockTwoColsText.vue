@@ -38,7 +38,7 @@ defineProps<{ data?: TwoColsTextBlock }>();
 <style>
 .page-block.two-cols-text-block {
   .page-block-content {
-    padding-block: 5rem;
+    padding-block: 8rem;
 
     @media (min-width: 1200px) {
       padding-block-end: 8rem;
