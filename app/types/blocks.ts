@@ -139,6 +139,7 @@ declare global {
     super_title?: string;
     title?: string;
     description?: string;
+    background_color?: StatamicSelectOption;
   };
 
   type ArticlesBlock = StatamicPageBlock & {

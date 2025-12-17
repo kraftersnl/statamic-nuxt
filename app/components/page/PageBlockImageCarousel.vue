@@ -26,8 +26,8 @@ const scrollWidth = computed(
         `background-color--${data.background_color.key}`,
     ]"
   >
-    <div class="page-block-cotent">
-      <div class="image-carousel-wrapper">
+    <div class="image-carousel-wrapper">
+      <div class="image-carousel">
         <ul
           ref="imageCarouselWrapper"
           role="list"
@@ -70,10 +70,10 @@ const scrollWidth = computed(
 
 <style>
 .page-block.image-carousel-block {
-  .page-block-cotent {
+  .image-carousel-wrapper {
     display: grid;
 
-    .image-carousel-wrapper {
+    .image-carousel {
       display: grid;
 
       .statamic-image {

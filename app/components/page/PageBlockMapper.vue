@@ -132,6 +132,7 @@ defineProps<{
 
   &:last-child {
     overflow-y: clip;
+    border-block-end: 2px solid var(--color-grey-bg);
 
     .page-block-content {
       padding-block-end: 8rem;

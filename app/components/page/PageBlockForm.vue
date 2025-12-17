@@ -3,7 +3,15 @@ defineProps<{ data?: FormBlock }>();
 </script>
 
 <template>
-  <section :id="data?.anchor" class="page-block form-block">
+  <section
+    :id="data?.anchor"
+    :class="[
+      'page-block',
+      'form-block',
+      data?.background_color?.key &&
+        `background-color--${data.background_color.key}`,
+    ]"
+  >
     <div class="page-block-content">
       <div class="left-column">
         <ContentBlockMapper :content="data?.content" />
@@ -25,18 +33,14 @@ defineProps<{ data?: FormBlock }>();
 <style>
 .page-block.form-block {
   --focus-color: var(--color-accent-graphic);
-  background-color: var(--color-accent-grey);
-  padding-block-start: 4rem;
-  border-block-end: 2px solid var(--color-grey-light);
 
   .page-block-content {
-    padding-block: 3rem 5rem;
+    padding-block: 8rem;
     display: grid;
     row-gap: 4rem;
     column-gap: 8rem;
 
     @media (min-width: 1200px) {
-      padding-block-end: 8rem;
       grid-template-columns: 3fr 4fr;
     }
   }
