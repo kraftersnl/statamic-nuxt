@@ -25,7 +25,7 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
         </div>
       </NuxtLink>
 
-      <div class="flex-wrapper">
+      <div class="wrapper">
         <nav class="menu-list-nav" aria-label="Hoofdnavigatie">
           <ul class="nav-list" role="list">
             <li v-for="item in nav?.data" :key="item.page.id" class="nav-item">
@@ -112,13 +112,12 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
     }
 
     @media (min-width: 1024px) {
-      margin-left: 0;
-      padding-right: 0;
+      margin-inline-start: 0;
+      padding-inline-end: 0;
     }
   }
 
   .menu-list-nav {
-    margin-inline-start: auto;
     display: none;
     padding-inline-end: 8rem;
   }
@@ -161,12 +160,12 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
 .app-header {
   .theme-switch {
     display: none;
+    position: absolute;
+    top: calc(1px + 1.25rem);
+    right: var(--app-padding-inline);
 
     @media (min-width: 1024px) {
       display: flex;
-      position: absolute;
-      top: calc(1px + 1.25rem);
-      right: var(--app-padding-inline);
     }
   }
 }
