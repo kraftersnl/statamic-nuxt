@@ -140,7 +140,7 @@ defineProps<{
   }
 
   &.background-color--white {
-    background-color: var(--color-bg);
+    background-color: var(--color-white);
   }
   &.background-color--grey {
     background-color: var(--color-accent-grey);

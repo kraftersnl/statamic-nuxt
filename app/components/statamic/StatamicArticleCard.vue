@@ -16,8 +16,8 @@ const { locale } = useI18n();
     padding-block="0rem"
     padding-inline="0rem"
     background-color="transparent"
+    border-color="transparent"
     :shadow="false"
-    :border-width="4"
   >
     <div class="card-content">
       <div class="text-content">
