@@ -129,11 +129,11 @@ const emit = defineEmits(['update:modelValue', 'click']);
   }
 
   li:first-of-type .nav-link {
-    margin-block-start: 1.25rem;
+    margin-block-start: 1rem;
   }
 
   li:last-of-type .nav-link {
-    margin-block-end: 1.25rem;
+    margin-block-end: 1rem;
   }
 }
 </style>

@@ -14,5 +14,6 @@ defineProps<{ data?: ButtonGroupContentBlock }>();
   flex-wrap: wrap;
   align-items: center;
   gap: 2.5rem;
+  margin-block: 2.5rem;
 }
 </style>

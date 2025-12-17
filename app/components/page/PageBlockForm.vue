@@ -50,6 +50,12 @@ defineProps<{ data?: FormBlock }>();
       padding-inline-end: var(--app-padding-inline);
     }
 
+    @media (prefers-reduced-motion: no-preference) {
+      animation: viewportFadeUp linear;
+      animation-timeline: view();
+      animation-range: entry;
+    }
+
     .legal {
       margin-block-start: 3rem;
       font-size: var(--font-size-xxs);

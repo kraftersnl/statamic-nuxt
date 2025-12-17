@@ -41,6 +41,7 @@ defineProps<{ data?: TwoColsTextBlock }>();
     padding-block: 4rem;
 
     @media (min-width: 1200px) {
+      padding-block-start: 8rem;
       padding-block-end: 1.5rem;
       display: grid;
       padding-inline: var(--app-padding-inline);

@@ -176,29 +176,30 @@ declare global {
     | AccordionContentBlock;
 
   type TextContentBlock = {
-    type: 'text';
+    type?: 'text';
     id?: string;
     text: string;
   };
 
   type IconContentBlock = {
-    type: 'icon';
+    type?: 'icon';
     id?: string;
     icon: string;
   };
 
   type ButtonContentBlock = StatamicButton & {
-    type: 'button';
+    type?: 'button';
     id?: string;
   };
 
   type ButtonGroupContentBlock = {
-    type: 'button_group';
+    type?: 'button_group';
+    id?: string;
     buttons?: StatamicButton[];
   };
 
   type ListContentBlock = {
-    type: 'list';
+    type?: 'list';
     id?: string;
     variant?: 'icons' | 'numbers';
     list: CustomListItem[];
@@ -212,14 +213,14 @@ declare global {
   };
 
   type CalloutContentBlock = {
-    type: 'callout';
+    type?: 'callout';
     id: string;
     content?: string;
     background_color?: StatamicSelectOption;
   };
 
   type AccordionContentBlock = {
-    type: 'accordion';
+    type?: 'accordion';
     id: string;
     items: AccordionItem[];
   };
@@ -231,32 +232,33 @@ declare global {
   };
 
   type FormContentBlock = {
-    type: 'form';
+    type?: 'form';
     id: string;
     form: StatamicForm;
     form_button_label?: string;
   };
 
   type ImageContentBlock = {
-    type: 'image';
+    type?: 'image';
     id: string;
     image: StatamicImage;
     image_caption?: string;
   };
 
   type VideoContentBlock = {
-    type: 'video';
+    type?: 'video';
     id: string;
     video_url?: string;
     image_caption?: string;
   };
 
   type QuoteContentBlock = StatamicQuote & {
-    type: 'quote';
+    type?: 'quote';
+    id?: string;
   };
 
   type SpacerContentBlock = {
-    type: 'spacer';
+    type?: 'spacer';
     id: string;
     margin?: number;
   };

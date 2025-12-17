@@ -101,7 +101,7 @@ const backgroundStyles = computed(() => {
   display: grid;
 
   h1 {
-    max-width: 640px;
+    max-width: 720px;
     margin-block-end: 0.5em;
     font-size: var(--font-calc-heading-1);
   }
