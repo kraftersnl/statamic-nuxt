@@ -131,6 +131,7 @@ async function handleSubmit(formData: FormData) {
     <Button
       type="submit"
       variant="cta"
+      size="lg"
       class="form-button"
       icon="material-symbols:arrow-circle-right"
       icon-pos="end"

@@ -57,7 +57,7 @@ useHead({ title: 'Sitemap' });
     margin-block-end: 0.25em;
 
     &::marker {
-      color: var(--color-accent-graphic);
+      color: var(--color-accent);
     }
 
     > ul {

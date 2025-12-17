@@ -36,15 +36,13 @@ defineProps<{ data?: TwoColsVisualBlock }>();
 
 <style>
 .page-block.two-cols-visual-block {
-  &:not(:last-child) {
-    margin-block-end: 8rem;
-  }
-
   .page-block-content {
+    padding-block: 4rem;
     display: grid;
     gap: 4rem;
 
     @media (min-width: 1200px) {
+      padding-block-end: 8rem;
       grid-template-columns: 1fr 1fr;
 
       .double-title {
