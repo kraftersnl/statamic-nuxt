@@ -61,13 +61,15 @@ function handleClose() {
 
 <style>
 .mobile-dialog {
+  --app-padding-inline: 2rem;
+
   .dialog-content {
     padding-block-start: var(--app-padding-block);
   }
 
   .logo-link {
     max-width: max-content;
-    margin-inline: 2.25rem;
+    margin-inline-start: var(--app-padding-inline);
     margin-block-end: 2.5rem;
 
     .logo {
@@ -77,7 +79,7 @@ function handleClose() {
   }
 
   .theme-switch {
-    margin-inline-start: 2.25rem;
+    margin-inline-start: var(--app-padding-inline);
     margin-block-start: 2.5rem;
   }
 }

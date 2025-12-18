@@ -36,12 +36,10 @@ defineProps<{ data?: LinksBlock }>();
 
   .links-list-item {
     min-width: 100%;
-    padding-block: 1.5rem;
-    padding-inline: var(--app-padding-inline);
     margin-inline: calc(var(--app-padding-inline) * -1);
+    transition: color var(--duration-sm), background-color var(--duration-sm);
 
     @media (min-width: 1440px) {
-      padding-inline: 0.75rem;
       margin-inline: 0;
     }
 
@@ -51,10 +49,13 @@ defineProps<{ data?: LinksBlock }>();
 
     &:hover {
       color: var(--color-accent-text);
+      background-color: var(--color-semi-transparent);
     }
   }
 
   .link-item {
+    padding-block: 1.5rem;
+    padding-inline: 0.75rem;
     text-decoration: none;
     min-width: 100%;
     display: grid;
@@ -91,7 +92,7 @@ defineProps<{ data?: LinksBlock }>();
 
 .dark-mode {
   .page-block.links-block .links-list-item:hover {
-    background-color: var(--color-accent-grey);
+    /* background-color: var(--color-accent-grey); */
   }
 }
 </style>
