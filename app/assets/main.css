@@ -13,12 +13,12 @@
   --font-calc-body-1: min(calc(var(--font-size-sm) + 1vw), var(--font-size-lg));
 
   --font-calc-heading-1: min(
-    calc(var(--font-size-lg) + 3.5vw),
+    calc(var(--font-size-lg) + 3vw),
     var(--font-size-xxxxl)
   );
 
   --font-calc-heading-2: min(
-    calc(var(--font-size-lg) + 2.5vw),
+    calc(var(--font-size-lg) + 2vw),
     var(--font-size-xxxl)
   );
 }

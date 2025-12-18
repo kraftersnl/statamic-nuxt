@@ -10,7 +10,6 @@ const { hTag = 'h2', loading = 'eager' } = defineProps<{
   <Card
     is="article"
     class="article-card"
-    border-radius="md"
     background-color="transparent"
     border-color="transparent"
     :shadow="false"
@@ -99,8 +98,10 @@ const { hTag = 'h2', loading = 'eager' } = defineProps<{
   .card-image {
     order: -1;
     margin-block-end: 1.5rem;
-    aspect-ratio: 3 / 2;
     background-color: var(--color-accent-grey);
+    img {
+      aspect-ratio: 3 / 2;
+    }
   }
 
   .fake-link {
