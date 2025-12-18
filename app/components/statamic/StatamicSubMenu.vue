@@ -75,11 +75,11 @@ const emit = defineEmits(['update:modelValue', 'click']);
     background-color: var(--color-white);
 
     .nav-link {
+      --button-active-color: var(--color-accent-text);
       margin-block: 0.5rem;
       margin-inline: 1.25rem;
       font-weight: var(--font-weight-regular);
       max-width: max-content;
-      text-decoration: none;
 
       &:focus-visible {
         outline: 2px solid var(--focus-color);
@@ -89,10 +89,8 @@ const emit = defineEmits(['update:modelValue', 'click']);
         color: var(--color-text);
       }
 
-      &[aria-current='page'] {
-        color: var(--color-accent-text);
+      &.router-link-exact-active {
         font-weight: var(--font-weight-medium);
-        --button-underline-color: var(--color-accent-graphic);
       }
     }
   }
