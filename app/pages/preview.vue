@@ -17,12 +17,12 @@ console.log(entry.value);
 </script>
 
 <template>
-  <div class="page-wrapper">
-    <BlogArticle
-      v-if="entry?.data?.collection?.handle === 'articles'"
-      :page="entry?.data"
-    />
+  <BlogArticle
+    v-if="entry?.data?.collection?.handle === 'articles'"
+    :page="entry?.data"
+  />
 
-    <PageBlockMapper v-else :blocks="entry?.data?.blocks" />
+  <div v-else class="page-wrapper">
+    <PageBlockMapper :blocks="entry?.data?.blocks" />
   </div>
 </template>
