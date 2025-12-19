@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   navList?: MenuItem[];
+  showFooter?: boolean;
 }>();
 
 const { data: seo } = await useAsyncData<{ data: StatamicGlobalSEO }>(
@@ -71,7 +72,11 @@ if (typeof window !== 'undefined') {
     </div>
 
     <slot name="footer" v-bind="{ company }">
-      <LazyTheFooter :data="company?.data" :nav-list="navList">
+      <LazyTheFooter
+        v-if="showFooter"
+        :data="company?.data"
+        :nav-list="navList"
+      >
         <template #favicon>
           <slot name="favicon" />
         </template>
