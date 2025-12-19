@@ -10,6 +10,7 @@ const { data: entries } = await useAsyncData<{ data: StatamicPageEntry[] }>(
         'filter[url]': stripTrailingSlash(route.path),
         fields: 'id,title,summary,blocks,url,permalink,image,parent',
         token: route.query.token,
+        livePreview: route.query['live-preview'],
       },
     })
 );
