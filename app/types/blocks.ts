@@ -139,6 +139,7 @@ declare global {
   type FormBlock = StatamicPageBlock & {
     form?: StatamicForm;
     form_button_label?: string;
+    form_success_message?: string;
     legal?: string;
     super_title?: string;
     title?: string;

@@ -4,7 +4,11 @@ defineProps<{ data?: AccordionContentBlock }>();
 
 <template>
   <ul role="list" class="statamic-accordion-list">
-    <li v-for="(item, index) in data?.items" :key="item.id">
+    <li
+      v-for="(item, index) in data?.items"
+      :key="item.id"
+      class="accordion-list-item"
+    >
       <Accordion
         icon="material-symbols:arrow-downward"
         class="statamic-accordion"
@@ -46,7 +50,18 @@ defineProps<{ data?: AccordionContentBlock }>();
     p {
       padding-block-start: 2.5rem;
       padding-inline-end: 4rem;
-      max-width: none;
+    }
+  }
+}
+
+.accordion-list-item {
+  @supports (animation-timeline: view()) {
+    opacity: 0;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: viewportFadeUp linear forwards;
+      animation-timeline: view();
+      animation-range: entry;
     }
   }
 }

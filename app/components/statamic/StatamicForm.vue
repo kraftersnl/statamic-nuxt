@@ -145,6 +145,7 @@ async function handleSubmit(formData: FormData) {
         v-if="showSuccessMessage"
         color="green"
         :content="
+          data.form_success_message ||
           useRuntimeConfig().public.formSuccessMessage ||
           'Bedankt voor je bericht, we nemen zo snel mogelijk contact met je op.'
         "

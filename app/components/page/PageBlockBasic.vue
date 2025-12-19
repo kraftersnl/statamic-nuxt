@@ -24,6 +24,8 @@ defineProps<{ data?: BasicBlock }>();
 
       <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
 
+      <slot />
+
       <ContentBlockMapper :content="data?.content" />
     </div>
 

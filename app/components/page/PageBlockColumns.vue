@@ -32,6 +32,15 @@ defineProps<{ data: ColumnsBlock }>();
   gap: 0.5rem;
 
   .page-block-column {
+    @supports (animation-timeline: view()) {
+      opacity: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportFadeUp linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+      }
+    }
     flex-basis: 20rem;
   }
 

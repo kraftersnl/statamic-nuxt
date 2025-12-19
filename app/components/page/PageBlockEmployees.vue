@@ -30,11 +30,15 @@ const { data: entries } = await useAsyncData<{
       </p>
 
       <ul v-if="entries?.data?.length" role="list" class="entries-list">
-        <li v-for="entry in entries?.data" :key="entry.id">
+        <li
+          v-for="entry in entries?.data"
+          :key="entry.id"
+          class="employee-list-item"
+        >
           <StatamicEmployee :data="entry" />
         </li>
 
-        <li>
+        <li class="employee-list-item">
           <StatamicEmployee
             :data="{
               title: 'Werken aan beter digitaal?',
@@ -69,6 +73,28 @@ const { data: entries } = await useAsyncData<{
     @media (min-width: 1200px) {
       margin-block-start: 1.5rem;
       margin-block-end: 4rem;
+    }
+
+    @supports (animation-timeline: view()) {
+      opacity: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportFadeUp linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+      }
+    }
+  }
+
+  .employee-list-item {
+    @supports (animation-timeline: view()) {
+      opacity: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportFadeUp linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+      }
     }
   }
 

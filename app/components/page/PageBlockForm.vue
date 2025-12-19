@@ -50,15 +50,14 @@ defineProps<{ data?: FormBlock }>();
       padding-inline-end: var(--app-padding-inline);
     }
 
-    @media (prefers-reduced-motion: no-preference) {
-      animation: viewportFadeUp linear;
-      animation-timeline: view();
-      animation-range: entry;
-    }
+    @supports (animation-timeline: view()) {
+      opacity: 0;
 
-    .legal {
-      margin-block-start: 3rem;
-      font-size: var(--font-size-xxs);
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportFadeUp linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+      }
     }
   }
 
@@ -70,6 +69,12 @@ defineProps<{ data?: FormBlock }>();
     h2 {
       font-size: var(--font-size-xl);
     }
+  }
+
+  .legal {
+    margin-block-start: 3rem;
+    font-size: var(--font-size-xs);
+    max-width: 64ch;
   }
 }
 </style>

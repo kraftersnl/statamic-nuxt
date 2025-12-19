@@ -67,10 +67,14 @@ defineProps<{ data?: LinksBlock }>();
       grid-template-columns: 1fr 1fr auto;
     }
 
-    @media (prefers-reduced-motion: no-preference) {
-      animation: viewportFadeUp linear;
-      animation-timeline: view();
-      animation-range: entry;
+    @supports (animation-timeline: view()) {
+      opacity: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportFadeUp linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+      }
     }
 
     h3 {
@@ -79,7 +83,6 @@ defineProps<{ data?: LinksBlock }>();
 
     p {
       margin-block: 0;
-      max-width: none;
     }
 
     .iconify {

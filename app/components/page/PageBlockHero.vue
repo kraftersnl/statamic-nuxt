@@ -108,6 +108,7 @@ const backgroundStyles = computed(() => {
 
   p {
     font-size: var(--font-calc-body-1);
+    max-width: 59ch;
   }
 
   .hero-block-wrapper {
@@ -180,7 +181,8 @@ const backgroundStyles = computed(() => {
 .page-block--full-height {
   min-height: calc(100svh - var(--app-header-height));
 
-  .hero-image {
+  .hero-image,
+  .hero-image img {
     min-height: calc(100svh - var(--app-header-height));
   }
 }
@@ -327,11 +329,13 @@ const backgroundStyles = computed(() => {
     margin-inline: auto;
     text-align: center;
   }
+
   .page-block-content {
+    text-align: center;
+
     p {
       margin-inline: auto;
     }
-    text-align: center;
   }
 }
 
