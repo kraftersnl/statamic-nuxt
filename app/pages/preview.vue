@@ -7,9 +7,9 @@ const { data: entry } = await useAsyncData<{ data: StatamicPageEntry }>(
     $fetch('/api/entry/preview/', {
       baseURL: useRuntimeConfig().public.statamicUrl,
       query: {
-        slug: route.query.slug,
         id: route.query.id,
         url: route.query.url,
+        token: route.query.token,
       },
     })
 );
