@@ -18,8 +18,11 @@ console.log(entry.value);
 
 <template>
   <div class="page-wrapper">
-    <PageBlockMapper v-if="entry?.data?.blocks" :blocks="entry?.data?.blocks" />
+    <BlogArticle
+      v-if="entry?.data?.collection?.handle === 'articles'"
+      :page="entry?.data"
+    />
 
-    <pre v-else>{{ entry }}</pre>
+    <PageBlockMapper v-else :blocks="entry?.data?.blocks" />
   </div>
 </template>

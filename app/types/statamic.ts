@@ -62,6 +62,9 @@ declare global {
   };
 
   type StatamicEntry = {
+    collection?: {
+      handle?: string;
+    };
     id: string;
     title: string;
     summary?: string;
