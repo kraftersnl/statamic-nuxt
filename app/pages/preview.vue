@@ -2,7 +2,7 @@
 const route = useRoute();
 
 const { data: entry } = await useAsyncData<{ data: StatamicPageEntry }>(
-  route.path + route.query.token,
+  `${route.path}-${route.query.token}`,
   () =>
     $fetch('/api/entry/preview/', {
       baseURL: useRuntimeConfig().public.statamicUrl,
@@ -13,16 +13,14 @@ const { data: entry } = await useAsyncData<{ data: StatamicPageEntry }>(
       },
     })
 );
-console.log(entry.value);
+const page = computed(() => entry.value?.data);
+console.log(page.value);
 </script>
 
 <template>
-  <BlogArticle
-    v-if="entry?.data?.collection?.handle === 'articles'"
-    :page="entry?.data"
-  />
+  <BlogArticle v-if="page?.collection?.handle === 'articles'" :page="page" />
 
   <div v-else class="page-wrapper">
-    <PageBlockMapper :blocks="entry?.data?.blocks" />
+    <PageBlockMapper :blocks="page?.blocks" />
   </div>
 </template>
