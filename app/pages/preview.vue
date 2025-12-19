@@ -10,6 +10,7 @@ const { data: entry } = await useAsyncData<{ data: StatamicPageEntry }>(
         id: route.query.id,
         url: route.query.url,
         token: route.query.token,
+        preview: true,
       },
     })
 );
