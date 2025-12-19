@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { entries } = defineProps<{ entries?: StatamicArticleEntry[] }>();
+const { entries = [] } = defineProps<{ entries?: StatamicArticleEntry[] }>();
 </script>
 
 <template>

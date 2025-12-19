@@ -1,9 +1,11 @@
 <script setup lang="ts">
 const {
+  data = undefined,
   loading = 'lazy',
   width = '240',
   height = '160',
   sizes = 'sm:320px md:640px lg:1200px',
+  caption = undefined,
   placeholder = true,
 } = defineProps<{
   data?: StatamicImage;

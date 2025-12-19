@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{ content?: StatamicContentBlock[] }>();
+defineProps<{ content?: StatamicContentBlock[] }>();
 </script>
 
 <template>

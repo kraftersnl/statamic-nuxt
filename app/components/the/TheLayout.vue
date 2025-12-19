@@ -4,14 +4,14 @@ defineProps<{
   showFooter?: boolean;
 }>();
 
-const { data: seo } = await useAsyncData<{ data: StatamicGlobalSEO }>(
-  'seo',
-  () =>
-    $fetch('/api/globals/seo', {
-      baseURL: useRuntimeConfig().public.statamicUrl,
-    }),
-  { lazy: true }
-);
+// const { data: seo } = await useAsyncData<{ data: StatamicGlobalSEO }>(
+//   'seo',
+//   () =>
+//     $fetch('/api/globals/seo', {
+//       baseURL: useRuntimeConfig().public.statamicUrl,
+//     }),
+//   { lazy: true }
+// );
 
 // useHead({
 //   titleTemplate: seo.value?.data?.seo_website_title

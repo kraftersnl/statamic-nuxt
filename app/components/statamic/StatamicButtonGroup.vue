@@ -4,7 +4,11 @@ defineProps<{ data?: ButtonGroupContentBlock }>();
 
 <template>
   <div v-if="data?.buttons?.length" class="statamic-button-group">
-    <StatamicButton v-for="button in data?.buttons" :data="button" />
+    <StatamicButton
+      v-for="button in data?.buttons"
+      :key="button.id"
+      :data="button"
+    />
   </div>
 </template>
 

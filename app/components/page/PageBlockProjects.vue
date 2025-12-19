@@ -1,16 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{ data: ProjectsBlock }>();
-
-const { data: entries } = await useAsyncData<{
-  data: StatamicProjectEntry[];
-}>('projects', () =>
-  $fetch(`/api/collections/projects/entries/`, {
-    baseURL: useRuntimeConfig().public.statamicUrl,
-    query: {
-      fields: 'id,title,sub_title,summary,image',
-    },
-  })
-);
+defineProps<{ data: ProjectsBlock }>();
 </script>
 
 <template>

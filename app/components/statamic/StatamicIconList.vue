@@ -9,7 +9,7 @@ defineProps<{ data?: ListContentBlock }>();
     role="list"
     class="statamic-icon-list"
   >
-    <li v-for="item in data.list">
+    <li v-for="item in data.list" :key="item.id">
       <StatamicIcon v-if="item.icon" :icon="item.icon" />
 
       <div class="list-item-content">

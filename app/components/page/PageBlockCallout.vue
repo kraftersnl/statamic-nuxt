@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{ data?: CalloutBlock }>();
+defineProps<{ data?: CalloutBlock }>();
 </script>
 
 <template>

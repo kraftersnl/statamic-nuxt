@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const { is = 'h2' } = defineProps<{
+const {
+  is = 'h2',
+  superTitle = undefined,
+  title = undefined,
+} = defineProps<{
   is?: string;
   superTitle?: string;
   title?: string;
