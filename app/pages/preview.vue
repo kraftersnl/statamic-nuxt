@@ -11,7 +11,10 @@ const { data: entry } = await useAsyncData<{ data: StatamicPageEntry }>(
         url: route.query.url,
         token: route.query.token,
       },
-    })
+    }),
+  {
+    watch: [() => route.query.token],
+  }
 );
 console.log(entry.value);
 </script>
