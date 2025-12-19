@@ -12,6 +12,7 @@ const { data: entry } = await useAsyncData<{ data: StatamicPageEntry }>(
       },
     })
 );
+console.log(entry.value);
 
 if (!entry.value?.data?.id && !route.query.preview) {
   throw showError({
