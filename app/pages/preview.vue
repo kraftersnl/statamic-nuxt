@@ -2,7 +2,7 @@
 const route = useRoute();
 
 const { data: entry } = await useAsyncData<{ data: StatamicPageEntry }>(
-  route.path,
+  route.path + route.query.token,
   () =>
     $fetch('/api/entry/preview/', {
       baseURL: useRuntimeConfig().public.statamicUrl,
@@ -11,10 +11,7 @@ const { data: entry } = await useAsyncData<{ data: StatamicPageEntry }>(
         url: route.query.url,
         token: route.query.token,
       },
-    }),
-  {
-    watch: [() => route.query.token],
-  }
+    })
 );
 console.log(entry.value);
 </script>
