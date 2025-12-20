@@ -2,7 +2,7 @@
 const route = useRoute();
 
 const { data: entry } = await useAsyncData<{ data: StatamicPageEntry }>(
-  route.path,
+  route.fullPath,
   () =>
     $fetch('/api/entry/preview/', {
       baseURL: useRuntimeConfig().public.statamicUrl,
@@ -15,7 +15,7 @@ const { data: entry } = await useAsyncData<{ data: StatamicPageEntry }>(
     })
 );
 const page = computed(() => entry.value?.data);
-console.log(route.path);
+console.log(route.fullPath);
 console.log(page.value);
 </script>
 
