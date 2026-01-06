@@ -40,6 +40,10 @@ defineProps<{
         :data="pageBlock"
         :date="date"
       />
+      <PageBlockQuote
+        v-else-if="pageBlock?.type === 'quote'"
+        :data="pageBlock"
+      />
       <PageBlockImageCarousel
         v-else-if="pageBlock?.type === 'image_carousel'"
         :data="pageBlock"

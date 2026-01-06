@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <figure class="blockquote-wrapper">
+  <figure class="statamic-quote">
     <blockquote v-if="data.quote">
       <p>{{ data.quote }}</p>
     </blockquote>
@@ -17,9 +17,10 @@ defineProps<{
 </template>
 
 <style>
-.blockquote-wrapper {
+.statamic-quote {
   blockquote {
-    border-color: var(--color-grey-bg);
+    border: none;
+    padding-inline-start: 0;
   }
 
   .author {

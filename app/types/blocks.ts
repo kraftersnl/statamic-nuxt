@@ -162,6 +162,12 @@ declare global {
     entries: StatamicSponsorsEntry[];
   };
 
+  type QuotePageBlock = StatamicPageBlock & {
+    quote?: string;
+    author_name?: string;
+    author_sub_title?: string;
+  };
+
   type StatamicContentBlock =
     | TextContentBlock
     | IconContentBlock
