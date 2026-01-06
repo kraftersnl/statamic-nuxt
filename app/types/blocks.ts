@@ -168,6 +168,11 @@ declare global {
     author_sub_title?: string;
   };
 
+  type CTAPageBlock = StatamicPageBlock & {
+    link?: string;
+    link_label?: string;
+  };
+
   type StatamicContentBlock =
     | TextContentBlock
     | IconContentBlock

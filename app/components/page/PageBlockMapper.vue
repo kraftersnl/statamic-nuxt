@@ -44,6 +44,7 @@ defineProps<{
         v-else-if="pageBlock?.type === 'quote'"
         :data="pageBlock"
       />
+      <PageBlockCTA v-else-if="pageBlock?.type === 'cta'" :data="pageBlock" />
       <PageBlockImageCarousel
         v-else-if="pageBlock?.type === 'image_carousel'"
         :data="pageBlock"
