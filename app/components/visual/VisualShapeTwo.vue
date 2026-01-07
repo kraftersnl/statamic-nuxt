@@ -355,7 +355,7 @@
       fill: var(--color-white);
     }
     &.fill--accent {
-      fill: var(--color-accent);
+      fill: var(--color-accent-graphic);
     }
     &.fill--grey-light {
       fill: var(--color-grey-light);
