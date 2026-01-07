@@ -127,7 +127,7 @@ defineProps<{
 }
 
 .page-block {
-  overflow: clip;
+  overflow-x: clip;
   isolation: isolate;
   position: relative;
   scroll-margin-block: 1rem;
