@@ -49,7 +49,6 @@ defineProps<{ data?: ImageBlock }>();
   }
 
   .page-block-content {
-    padding-block: 2rem;
     max-width: var(--app-max-width);
     margin-inline: auto;
   }
