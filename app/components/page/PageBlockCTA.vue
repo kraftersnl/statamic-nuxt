@@ -25,9 +25,10 @@ defineProps<{
     display: block;
     padding-block: 8rem;
     font-size: var(--font-size-xl);
+    color: var(--color-white);
     font-family: var(--font-family-heading);
     line-height: var(--line-height-heading);
-    background-color: var(--color-card-bg);
+    background-color: var(--color-black);
     text-decoration: none;
 
     .iconify {
@@ -36,10 +37,10 @@ defineProps<{
     }
 
     &:hover {
-      background-color: var(--color-accent-bg);
+      background-color: var(--color-accent-graphic);
 
       .iconify {
-        color: var(--color-text);
+        color: var(--color-white);
       }
     }
 
