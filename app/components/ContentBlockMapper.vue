@@ -7,7 +7,7 @@ defineProps<{ content?: StatamicContentBlock[] }>();
     <template v-for="contentBlock in content" :key="contentBlock.id">
       <div
         v-if="contentBlock.type === 'text'"
-        v-html="fixBoldText(contentBlock.text)"
+        v-html="fixBoldAndItalicText(contentBlock.text)"
       />
 
       <StatamicIcon

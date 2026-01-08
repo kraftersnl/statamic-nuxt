@@ -18,7 +18,7 @@ defineProps<{ data?: CaseDetailsBlock }>();
         </div>
 
         <div class="right-column">
-          <div v-html="data?.summary" class="summary" />
+          <div v-html="fixBoldAndItalicText(data?.summary)" class="summary" />
         </div>
       </div>
 
