@@ -11,6 +11,7 @@ defineProps<{ data?: CaseDetailsBlock }>();
         <div class="left-column">
           <ClientLogoHypotheek v-if="data?.client?.slug === 'hypotheek'" />
           <ClientLogoCardan v-if="data?.client?.slug === 'cardan'" />
+          <ClientLogoFunka v-if="data?.client?.slug === 'funka'" />
         </div>
 
         <div class="right-column">
