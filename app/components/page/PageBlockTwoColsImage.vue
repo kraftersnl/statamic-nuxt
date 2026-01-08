@@ -10,6 +10,8 @@ defineProps<{ data?: TwoColsImageBlock }>();
       'two-cols-image-block',
       data?.background_color?.key &&
         `background-color--${data.background_color.key}`,
+      data?.image_background_color?.key &&
+        `image-background-color--${data.image_background_color.key}`,
     ]"
   >
     <div class="page-block-content">
@@ -38,6 +40,22 @@ defineProps<{ data?: TwoColsImageBlock }>();
 
 <style>
 .page-block.two-cols-image-block {
+  &.image-background-color--white {
+    .image-column {
+      background-color: var(--color-white);
+    }
+  }
+  &.image-background-color--black {
+    .image-column {
+      background-color: var(--color-black);
+    }
+  }
+  &.image-background-color--grey {
+    .image-column {
+      background-color: var(--color-accent-grey);
+    }
+  }
+
   h2 {
     font-size: var(--font-size-xl);
   }
@@ -57,12 +75,6 @@ defineProps<{ data?: TwoColsImageBlock }>();
       animation: fadeOut linear;
       animation-timeline: view();
       animation-range: exit;
-    }
-
-    img {
-      aspect-ratio: 1;
-      width: 100%;
-      object-fit: cover;
     }
   }
 }

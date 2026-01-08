@@ -92,6 +92,14 @@ declare global {
     background_color?: StatamicSelectOption;
   };
 
+  type CaseDetailsBlock = StatamicPageBlock & {
+    client?: StatamicTaxonomyTerm;
+    tags?: string[];
+    employee?: StatamicEmployeesEntry;
+    summary?: StatamicContentBlock[];
+    wysiwyg?: string;
+  };
+
   type TwoColsTextBlock = StatamicPageBlock & {
     super_title?: string;
     title?: string;
@@ -108,6 +116,7 @@ declare global {
     title?: string;
     content?: StatamicContentBlock[];
     background_color?: StatamicSelectOption;
+    image_background_color?: StatamicSelectOption;
     image?: StatamicImage;
     image_position?: StatamicSelectOption;
     graphic_visual?: StatamicSelectOption;

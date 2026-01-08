@@ -1,11 +1,15 @@
 <script setup lang="ts">
 defineProps<{
   data?: StatamicEmployeesEntry;
+  variant?: 'default' | 'small';
 }>();
 </script>
 
 <template>
-  <div class="employee-entry">
+  <div
+    class="employee-entry"
+    :class="{ 'employee-entry--small': variant === 'small' }"
+  >
     <div class="employee-details">
       <h3 v-if="data?.title" class="employee-name">
         {{ data.title }}
@@ -39,9 +43,21 @@ defineProps<{
 
 <style>
 .employee-entry {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1.5rem;
+
+  &.employee-entry--small {
+    .image-wrapper {
+      width: 6rem;
+      height: 6rem;
+
+      img {
+        border-radius: var(--radius-full);
+      }
+    }
+  }
 
   .employee-name {
     font-size: var(--font-size-md);

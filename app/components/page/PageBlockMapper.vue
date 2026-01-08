@@ -35,6 +35,10 @@ defineProps<{
         :data="pageBlock"
         :date="date"
       />
+      <PageBlockCaseDetails
+        v-else-if="pageBlock?.type === 'case_details'"
+        :data="pageBlock"
+      />
       <PageBlockTestimonials
         v-else-if="pageBlock?.type === 'testimonials'"
         :data="pageBlock"

@@ -26,7 +26,7 @@ defineProps<{
 
 <style>
 .page-block.quote-block {
-  margin-block: 4rem;
+  padding-block: 8rem;
 
   .blockquote-wrapper {
     text-align: center;

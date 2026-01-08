@@ -107,6 +107,14 @@ declare global {
     phone?: string;
   };
 
+  type StatamicUser = {
+    id: string;
+    name: string;
+    email: string;
+    sub_title?: string;
+    image?: StatamicImage;
+  };
+
   type StatamicTestimonialEntry = StatamicEntry & {
     sub_title?: string;
   };
