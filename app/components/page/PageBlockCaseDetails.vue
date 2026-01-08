@@ -12,6 +12,9 @@ defineProps<{ data?: CaseDetailsBlock }>();
           <ClientLogoHypotheek v-if="data?.client?.slug === 'hypotheek'" />
           <ClientLogoCardan v-if="data?.client?.slug === 'cardan'" />
           <ClientLogoFunka v-if="data?.client?.slug === 'funka'" />
+          <span v-if="data?.client?.slug === 'tehv'" class="client-logo-text">
+            tehv.nl
+          </span>
         </div>
 
         <div class="right-column">
@@ -78,6 +81,12 @@ defineProps<{ data?: CaseDetailsBlock }>();
     + ul {
       margin-block-start: 1.5rem;
     }
+  }
+
+  .client-logo-text {
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xl);
   }
 
   .right-column {
