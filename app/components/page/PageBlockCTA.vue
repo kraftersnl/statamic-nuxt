@@ -30,6 +30,7 @@ defineProps<{
     line-height: var(--line-height-heading);
     background-color: var(--color-black);
     text-decoration: none;
+    transition: background-color var(--duration-xs);
 
     .iconify {
       font-size: var(--font-size-xxl);
