@@ -87,6 +87,7 @@ declare global {
     date?: string;
     tags?: TaxonomyTerm[];
     author?: StatamicAuthor;
+    employee?: StatamicEmployeesEntry;
   };
 
   type StatamicAuthor = {
