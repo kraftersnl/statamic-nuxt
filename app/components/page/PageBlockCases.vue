@@ -16,7 +16,10 @@ defineProps<{ data: CasesBlock }>();
 
 <style>
 .page-block.cases-block {
-  padding-block-end: 8rem;
+  .page-block-content {
+    padding-block-start: 5rem;
+    padding-block-end: 8rem;
+  }
 
   @supports (animation-timeline: view()) {
     opacity: 0;

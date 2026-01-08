@@ -26,7 +26,7 @@ defineProps<{ data?: ArticlesBlock }>();
     margin-inline: auto;
     padding-inline: var(--app-padding-inline);
     max-width: var(--app-max-width);
-    padding-block-start: 4rem;
+    padding-block-start: 5rem;
     padding-block-end: 8rem;
   }
 
