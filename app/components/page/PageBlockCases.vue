@@ -18,27 +18,32 @@ defineProps<{ data: CasesBlock }>();
 .page-block.cases-block {
   padding-block-end: 8rem;
 
-  @media (prefers-reduced-motion: no-preference) {
-    animation: viewportFadeUp linear;
-    animation-timeline: view();
-    animation-range: entry;
+  @supports (animation-timeline: view()) {
+    opacity: 0;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: viewportFadeUp linear forwards;
+      animation-timeline: view();
+      animation-range: entry;
+    }
   }
 
   .cases-list {
     display: grid;
-    gap: 2rem;
+    column-gap: 1.5rem;
+    row-gap: 4rem;
 
     @media (min-width: 1200px) {
       grid-template-columns: 1fr 1fr;
     }
 
     .case-item {
-      /* &:nth-of-type(2) {
+      &:nth-of-type(2) {
         grid-column: 1 / -1;
       }
       &:nth-of-type(3) {
         grid-column: 1 / -1;
-      } */
+      }
     }
   }
 }

@@ -28,15 +28,19 @@ defineProps<{
 
 <style>
 .case-entry {
+  position: relative;
   display: grid;
-  gap: 1em;
 
   .case-link {
     text-decoration: none;
     color: inherit;
 
-    &:hover {
-      text-decoration: underline;
+    &::after {
+      /* increase click target */
+      z-index: 1;
+      position: absolute;
+      content: '';
+      inset: 0;
     }
   }
 
@@ -57,12 +61,20 @@ defineProps<{
 
   .case-image {
     order: -1;
+    margin-block-end: 1.5rem;
     width: 100%;
+    transition: filter var(--duration-xs) ease-in-out;
 
     @media (prefers-reduced-motion: no-preference) {
       animation: viewportFadeUp linear;
       animation-timeline: view();
       animation-range: entry;
+    }
+  }
+
+  &:has(.case-link:hover) {
+    .case-image {
+      filter: brightness(0.65);
     }
   }
 }
