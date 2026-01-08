@@ -59,6 +59,10 @@ defineProps<{
         :data="pageBlock"
         :date="date"
       />
+      <PageBlockCases
+        v-else-if="pageBlock?.type === 'cases'"
+        :data="pageBlock"
+      />
       <PageBlockProducts
         v-else-if="pageBlock?.type === 'products'"
         :data="pageBlock"

@@ -92,6 +92,10 @@ declare global {
     background_color?: StatamicSelectOption;
   };
 
+  type CasesBlock = StatamicPageBlock & {
+    entries?: StatamicCaseEntry[];
+  };
+
   type CaseDetailsBlock = StatamicPageBlock & {
     client?: StatamicTaxonomyTerm;
     tags?: string[];

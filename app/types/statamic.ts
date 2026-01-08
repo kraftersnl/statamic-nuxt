@@ -101,6 +101,11 @@ declare global {
     sub_title?: string;
   };
 
+  type StatamicCaseEntry = StatamicEntry & {
+    sub_title?: string;
+    tags?: string[];
+  };
+
   type StatamicEmployeesEntry = StatamicEntry & {
     sub_title?: string;
     email?: string;
