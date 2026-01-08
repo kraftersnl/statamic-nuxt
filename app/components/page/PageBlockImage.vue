@@ -39,7 +39,6 @@ defineProps<{ data?: ImageBlock }>();
 
   .statamic-image {
     width: 100%;
-    /* max-width: 1280px; */
     margin-inline: auto;
 
     img {

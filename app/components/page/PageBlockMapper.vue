@@ -144,12 +144,6 @@ defineProps<{
     font-size: var(--font-calc-heading-2, var(--font-size-xxxl));
   }
 
-  &:last-child {
-    .page-block-content {
-      padding-block-end: 8rem;
-    }
-  }
-
   &.background-color--white {
     background-color: var(--color-white);
   }
