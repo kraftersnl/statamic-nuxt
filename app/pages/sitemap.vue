@@ -7,7 +7,7 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
     })
 );
 
-useHead({ title: 'Sitemap' });
+useHead({ title: 'Sitemap | Krafters' });
 </script>
 
 <template>
