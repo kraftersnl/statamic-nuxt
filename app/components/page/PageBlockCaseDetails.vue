@@ -26,6 +26,7 @@ defineProps<{ data?: CaseDetailsBlock }>();
         <div class="left-column">
           <TaxonomyTags :tags="data?.tags" />
 
+          <h2 class="visuallyhidden">Team</h2>
           <ul role="list" class="employees-list">
             <li v-for="employee in data?.employees" :key="employee.id">
               <StatamicEmployee :data="employee" variant="small" />
