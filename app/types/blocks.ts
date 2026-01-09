@@ -99,7 +99,7 @@ declare global {
   type CaseDetailsBlock = StatamicPageBlock & {
     client?: StatamicTaxonomyTerm;
     tags?: string[];
-    employee?: StatamicEmployeesEntry;
+    employees?: StatamicEmployeesEntry[];
     summary?: StatamicContentBlock[];
     wysiwyg?: string;
   };

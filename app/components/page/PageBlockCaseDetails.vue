@@ -26,7 +26,11 @@ defineProps<{ data?: CaseDetailsBlock }>();
         <div class="left-column">
           <TaxonomyTags :tags="data?.tags" />
 
-          <StatamicEmployee :data="data?.employee" variant="small" />
+          <ul role="list" class="employees-list">
+            <li v-for="employee in data?.employees" :key="employee.id">
+              <StatamicEmployee :data="employee" variant="small" />
+            </li>
+          </ul>
         </div>
 
         <div class="right-column">
@@ -58,8 +62,10 @@ defineProps<{ data?: CaseDetailsBlock }>();
     margin-block-end: 2.5rem;
   }
 
-  .employee-entry {
+  .employees-list {
     margin-block: 2.5rem;
+    display: grid;
+    gap: 1.5rem;
   }
 
   .bard-content {
