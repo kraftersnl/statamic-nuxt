@@ -42,7 +42,7 @@ const { limit = undefined, random_layout = undefined } = defineProps<{
       &:nth-of-type(3) {
         grid-column: 1 / -1;
       }
-      &:nth-of-type(4) {
+      &:nth-of-type(5) {
         .statamic-image {
           aspect-ratio: 1;
         }
