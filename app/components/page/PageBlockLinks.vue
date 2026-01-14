@@ -11,7 +11,9 @@ defineProps<{ data?: LinksBlock }>();
           <NuxtLink :to="item.link" class="link-item">
             <h3>{{ item.label }}</h3>
 
-            <p class="link-text">{{ item.description }}</p>
+            <p v-if="item.description" class="link-text">
+              {{ item.description }}
+            </p>
 
             <Icon name="material-symbols:arrow-right-alt-rounded" />
           </NuxtLink>
@@ -59,9 +61,12 @@ defineProps<{ data?: LinksBlock }>();
     text-decoration: none;
     min-width: 100%;
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     gap: 0.5rem;
+
+    &:has(p) {
+      flex-direction: column;
+    }
 
     @media (min-width: 1024px) {
       display: grid;
