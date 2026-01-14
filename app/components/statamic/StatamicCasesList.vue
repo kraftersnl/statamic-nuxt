@@ -25,26 +25,37 @@ const { limit = undefined, random_layout = undefined } = defineProps<{
   row-gap: 4rem;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
 
+  .statamic-image {
+    aspect-ratio: 5 / 4;
+  }
+
   &.random-layout {
     @media (min-width: 1200px) {
       grid-template-columns: 1fr 1fr;
-    }
 
-    .case-item {
-      &:nth-of-type(1) {
-        .statamic-image {
-          aspect-ratio: 1;
+      .statamic-image {
+        aspect-ratio: initial;
+      }
+
+      .case-item {
+        &:nth-of-type(1) {
+          .statamic-image {
+            aspect-ratio: 9 / 10;
+          }
         }
-      }
-      &:nth-of-type(2) {
-        grid-column: 1 / -1;
-      }
-      &:nth-of-type(3) {
-        grid-column: 1 / -1;
-      }
-      &:nth-of-type(5) {
-        .statamic-image {
-          aspect-ratio: 1;
+
+        &:nth-of-type(2) {
+          grid-column: 1 / -1;
+        }
+
+        &:nth-of-type(3) {
+          grid-column: 1 / -1;
+        }
+
+        &:nth-of-type(5) {
+          .statamic-image {
+            aspect-ratio: 9 / 10;
+          }
         }
       }
     }
