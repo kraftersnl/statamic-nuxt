@@ -64,12 +64,6 @@ defineProps<{
     margin-block-end: 1.5rem;
     width: 100%;
     transition: filter var(--duration-xs) ease-in-out;
-
-    @media (prefers-reduced-motion: no-preference) {
-      animation: viewportFadeUp linear;
-      animation-timeline: view();
-      animation-range: entry;
-    }
   }
 
   &:has(.case-link:hover) {

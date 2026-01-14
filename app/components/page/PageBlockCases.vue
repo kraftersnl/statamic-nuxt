@@ -46,16 +46,6 @@ defineProps<{ data: CasesBlock }>();
     margin-block-end: 4rem;
   }
 
-  @supports (animation-timeline: view()) {
-    opacity: 0;
-
-    @media (prefers-reduced-motion: no-preference) {
-      animation: viewportFadeUp linear forwards;
-      animation-timeline: view();
-      animation-range: entry;
-    }
-  }
-
   .cases-link {
     justify-self: end;
     text-decoration: none;
