@@ -30,7 +30,6 @@ defineProps<{
 .testimonial-card {
   display: grid;
   gap: 2rem;
-  background-color: var(--color-accent-grey);
   border-radius: var(--radius-lg);
   padding: 1.5rem 1.25rem;
 
