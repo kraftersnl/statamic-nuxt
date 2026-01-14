@@ -7,17 +7,17 @@ defineProps<{ data: CasesBlock }>();
     <div class="page-block-content">
       <ContentBlockMapper :content="data?.content" />
 
-      <ul
+      <StatamicCasesList
         v-if="data?.entries?.length"
-        role="list"
-        :class="['cases-list', data.random_layout && 'random-layout']"
-      >
-        <li v-for="entry in data.entries" :key="entry.id" class="case-item">
-          <StatamicCase :data="entry" />
-        </li>
-      </ul>
+        :entries="data.entries"
+        :random-layout="data?.random_layout"
+      />
 
-      <StatamicCasesList v-else :limit="data?.limit" />
+      <StatamicCasesAll
+        v-else
+        :limit="data?.limit"
+        :random_layout="data?.random_layout"
+      />
 
       <Button
         v-if="data?.link"
@@ -53,38 +53,6 @@ defineProps<{ data: CasesBlock }>();
       animation: viewportFadeUp linear forwards;
       animation-timeline: view();
       animation-range: entry;
-    }
-  }
-
-  .cases-list {
-    display: grid;
-    column-gap: 1.5rem;
-    row-gap: 4rem;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
-
-    &.random-layout {
-      @media (min-width: 1200px) {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .case-item {
-        &:nth-of-type(1) {
-          .statamic-image {
-            aspect-ratio: 1;
-          }
-        }
-        &:nth-of-type(2) {
-          grid-column: 1 / -1;
-        }
-        &:nth-of-type(3) {
-          grid-column: 1 / -1;
-        }
-        &:nth-of-type(4) {
-          .statamic-image {
-            aspect-ratio: 1;
-          }
-        }
-      }
     }
   }
 

@@ -1,6 +1,8 @@
 export function useArticles({ limit = 100 }: { limit?: number }) {
+  const route = useRoute();
+
   return useAsyncData<{ data: StatamicArticleEntry[] }>(
-    'statamic-articles',
+    'articles-' + route.path,
     () =>
       $fetch('/api/collections/articles/entries', {
         baseURL: useRuntimeConfig().public.statamicUrl,

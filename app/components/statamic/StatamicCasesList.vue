@@ -1,19 +1,18 @@
 <script setup lang="ts">
-const { limit = undefined, random_layout = false } = defineProps<{
+const { limit = undefined, random_layout = undefined } = defineProps<{
   limit?: number;
   random_layout?: boolean;
+  entries?: StatamicCaseEntry[];
 }>();
-
-const { data: entries } = useCases({ limit: limit });
 </script>
 
 <template>
   <ul
-    v-if="entries?.data?.length"
+    v-if="entries?.length"
     role="list"
     :class="['statamic-cases-list', random_layout && 'random-layout']"
   >
-    <li v-for="entry in entries?.data" :key="entry.id" class="case-item">
+    <li v-for="entry in entries" :key="entry.id" class="case-item">
       <StatamicCase :data="entry" />
     </li>
   </ul>
