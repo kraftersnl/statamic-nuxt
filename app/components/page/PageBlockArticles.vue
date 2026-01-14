@@ -7,8 +7,6 @@ defineProps<{ data?: ArticlesBlock }>();
     <div class="page-block-content">
       <slot />
 
-      <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
-
       <ContentBlockMapper :content="data?.content" />
 
       <StatamicArticleList

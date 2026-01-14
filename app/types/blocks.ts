@@ -166,8 +166,6 @@ declare global {
   type ArticlesBlock = StatamicPageBlock & {
     entries: StatamicArticleEntry[];
     limit?: number;
-    super_title?: string;
-    title?: string;
     anchor?: string;
     link?: string;
     link_label?: string;
