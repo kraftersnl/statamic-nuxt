@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { limit = 3, random_layout = false } = defineProps<{
+const { limit = undefined, random_layout = false } = defineProps<{
   limit?: number;
   random_layout?: boolean;
 }>();

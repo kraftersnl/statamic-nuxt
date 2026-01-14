@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { limit = 3 } = defineProps<{ limit?: number }>();
+const { limit = undefined } = defineProps<{ limit?: number }>();
 
-const { data } = useArticles({ limit: limit });
+const { data: entries } = useArticles({ limit: limit });
 </script>
 
 <template>
-  <StatamicArticleList :entries="data?.data" />
+  <StatamicArticleList :entries="entries?.data" />
 </template>
