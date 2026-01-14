@@ -94,6 +94,9 @@ declare global {
 
   type CasesBlock = StatamicPageBlock & {
     entries?: StatamicCaseEntry[];
+    random_layout?: boolean;
+    link?: string;
+    link_label?: string;
   };
 
   type CaseDetailsBlock = StatamicPageBlock & {
@@ -165,6 +168,8 @@ declare global {
     super_title?: string;
     title?: string;
     anchor?: string;
+    link?: string;
+    link_label?: string;
   };
 
   type EmployeesBlock = StatamicPageBlock & {

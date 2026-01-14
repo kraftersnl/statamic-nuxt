@@ -86,6 +86,7 @@ blockquote {
 }
 
 :where(.bard-content) {
+  width: 100%;
   margin-inline: auto;
 
   .statamic-icon svg {

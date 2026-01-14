@@ -49,13 +49,13 @@ defineProps<{ data?: LinksBlock }>();
 
     &:hover {
       color: var(--color-accent-text);
-      background-color: var(--color-semi-transparent);
+      /* background-color: var(--color-semi-transparent); */
     }
   }
 
   .link-item {
     padding-block: 1.5rem;
-    padding-inline: 0.75rem;
+    padding-inline: var(--app-padding-inline);
     text-decoration: none;
     min-width: 100%;
     display: grid;
@@ -65,6 +65,10 @@ defineProps<{ data?: LinksBlock }>();
 
     @container (min-width: 1024px) {
       grid-template-columns: 1fr 1fr auto;
+    }
+
+    @media (min-width: 1440px) {
+      padding-inline: 0.75rem;
     }
 
     @supports (animation-timeline: view()) {
@@ -90,12 +94,6 @@ defineProps<{ data?: LinksBlock }>();
       color: var(--color-accent-graphic);
       margin-inline-start: auto;
     }
-  }
-}
-
-.dark-mode {
-  .page-block.links-block .links-list-item:hover {
-    /* background-color: var(--color-accent-grey); */
   }
 }
 </style>
