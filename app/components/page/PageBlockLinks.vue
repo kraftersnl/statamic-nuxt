@@ -58,12 +58,13 @@ defineProps<{ data?: LinksBlock }>();
     padding-inline: var(--app-padding-inline);
     text-decoration: none;
     min-width: 100%;
-    display: grid;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 0.5rem;
 
-    @container (min-width: 1024px) {
+    @media (min-width: 1024px) {
+      display: grid;
       grid-template-columns: 1fr 1fr auto;
     }
 
@@ -83,6 +84,12 @@ defineProps<{ data?: LinksBlock }>();
 
     h3 {
       margin-block: 0;
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-lg);
+
+      @media (min-width: 1024px) {
+        font-size: var(--font-size-xl);
+      }
     }
 
     p {
