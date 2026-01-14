@@ -17,6 +17,8 @@ defineProps<{ data: CasesBlock }>();
         </li>
       </ul>
 
+      <StatamicCasesList v-else :limit="data?.limit" />
+
       <Button
         v-if="data?.link"
         :to="data?.link"

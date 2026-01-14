@@ -15,7 +15,7 @@ defineProps<{ data?: ArticlesBlock }>();
         v-if="data?.entries?.length"
         :entries="data.entries"
       />
-      <StatamicBlog v-else />
+      <StatamicBlog v-else :limit="data?.limit" />
 
       <Button
         v-if="data?.link"
