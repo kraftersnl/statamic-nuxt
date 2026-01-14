@@ -43,9 +43,6 @@ defineProps<{ data?: BasicBlock }>();
 <style>
 .page-block.basic-block {
   margin-inline: auto;
-  .bard-content {
-    max-width: 64ch;
-  }
 
   .image-column {
     padding-inline: var(--app-padding-inline);
