@@ -57,6 +57,12 @@ const { limit = undefined, random_layout = undefined } = defineProps<{
             aspect-ratio: 9 / 10;
           }
         }
+
+        &:nth-of-type(6) {
+          .statamic-image {
+            aspect-ratio: 9 / 10;
+          }
+        }
       }
     }
   }
