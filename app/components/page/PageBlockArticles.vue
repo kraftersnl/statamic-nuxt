@@ -41,7 +41,6 @@ defineProps<{ data?: ArticlesBlock }>();
   }
 
   .bard-content h2 {
-    font-size: var(--font-size-xxl);
     margin-block-end: 4rem;
   }
 
