@@ -62,6 +62,8 @@ const { hTag = 'h2', loading = 'eager' } = defineProps<{
   .card-title {
     font-size: var(--font-size-lg);
     margin-block-end: 1em;
+
+    min-height: 58px;
   }
 
   .card-link {

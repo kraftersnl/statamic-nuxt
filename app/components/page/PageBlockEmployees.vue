@@ -44,7 +44,7 @@ const { data: entries } = await useAsyncData<{
               title: 'Werken aan beter digitaal?',
               sub_title: 'Stuur een mailtje of bel ons',
               email: 'jobs@krafters.nl',
-              phone: '+31 (0)88 500 4070',
+              phone: '+31 (0)88 500 4010',
             }"
           />
         </li>
@@ -106,7 +106,6 @@ const { data: entries } = await useAsyncData<{
     justify-content: center;
     column-gap: 4rem;
     row-gap: 4rem;
-    margin-block: 4rem;
 
     > * {
       /* flex-basis: 24rem; */

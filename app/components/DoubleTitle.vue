@@ -28,7 +28,7 @@ const {
   display: grid;
 
   .super-title {
-    font-size: var(--font-size-xxxs);
+    font-size: var(--font-size-xxs);
     color: var(--color-grey-text);
     letter-spacing: 0.05em;
     font-weight: var(--font-weight-medium);

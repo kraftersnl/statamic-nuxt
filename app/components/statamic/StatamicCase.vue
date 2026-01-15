@@ -50,6 +50,7 @@ defineProps<{
 
     h2 {
       font-size: var(--font-size-lg);
+      min-height: 58px;
     }
   }
 
