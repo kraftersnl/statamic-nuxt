@@ -8,7 +8,9 @@ export function useCases({ limit = 100 }: { limit?: number }) {
         baseURL: useRuntimeConfig().public.statamicUrl,
         query: {
           limit: limit,
-          fields: 'id,title,summary,blocks,url,permalink,image,tags,sub_title',
+          sort: 'order',
+          fields:
+            'id,title,summary,blocks,url,permalink,image,tags,sub_title,order',
         },
       })
   );

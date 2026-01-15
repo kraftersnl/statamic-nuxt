@@ -38,14 +38,10 @@ const { limit = undefined, random_layout = undefined } = defineProps<{
       }
 
       .case-item {
-        &:nth-of-type(1) {
+        &:nth-of-type(2) {
           .statamic-image {
             aspect-ratio: 9 / 10;
           }
-        }
-
-        &:nth-of-type(2) {
-          grid-column: 1 / -1;
         }
 
         &:nth-of-type(3) {
