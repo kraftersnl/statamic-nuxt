@@ -32,6 +32,9 @@ defineProps<{ data: ColumnsBlock }>();
   gap: 0.5rem;
 
   .page-block-column {
+    flex-basis: 20rem;
+    flex-grow: 1;
+
     @supports (animation-timeline: view()) {
       opacity: 0;
 
@@ -41,7 +44,6 @@ defineProps<{ data: ColumnsBlock }>();
         animation-range: entry;
       }
     }
-    flex-basis: 20rem;
   }
 
   @media (min-width: 1200px) {
