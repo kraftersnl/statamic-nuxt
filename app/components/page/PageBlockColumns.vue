@@ -3,14 +3,22 @@ defineProps<{ data: ColumnsBlock }>();
 </script>
 
 <template>
-  <section :id="data?.anchor" :class="['page-block', 'columns-block']">
+  <section
+    :id="data?.anchor"
+    :class="[
+      'page-block',
+      'columns-block',
+      data?.background_color?.key &&
+        `background-color--${data.background_color.key}`,
+    ]"
+  >
     <div
       v-for="(col, i) in data.columns"
       :key="i"
       :class="[
         'page-block-column',
-        data.background_color?.key &&
-          `background-color--${data.background_color.key}`,
+        col.background_color?.key &&
+          `background-color--${col.background_color.key}`,
       ]"
     >
       <div
@@ -48,10 +56,6 @@ defineProps<{ data: ColumnsBlock }>();
 
   @media (min-width: 1200px) {
     justify-content: space-between;
-
-    h3 {
-      min-height: 2lh;
-    }
   }
 
   .page-block-content {
