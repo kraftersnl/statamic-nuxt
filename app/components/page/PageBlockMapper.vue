@@ -156,7 +156,7 @@ defineProps<{
   }
   &.background-color--black {
     --color-grey-text: hsl(132 4% 76%);
-    --color-accent-text: hsl(260 86% 70%);
+    --color-accent-text: hsl(232 79% 66%);
     background-color: var(--color-black-bg);
     color: #ffffff;
   }

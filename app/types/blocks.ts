@@ -39,7 +39,6 @@ declare global {
 
   type ColumnsBlock = StatamicPageBlock & {
     columns: Column[];
-    background_color?: StatamicSelectOption;
   };
 
   type StepsBlock = StatamicPageBlock & {

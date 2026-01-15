@@ -70,6 +70,17 @@ defineProps<{ data: ColumnsBlock }>();
     &.background-color--grey {
       background-color: var(--color-grey-bg);
     }
+
+    &.background-color--white {
+      background-color: var(--color-white);
+    }
+
+    &.background-color--black {
+      --color-grey-text: hsl(132 4% 76%);
+      --color-accent-text: hsl(232 79% 66%);
+      background-color: var(--color-black-bg);
+      color: #ffffff;
+    }
   }
 }
 </style>
