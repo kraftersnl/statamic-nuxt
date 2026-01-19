@@ -38,6 +38,7 @@ const {
 
   .title {
     max-width: 640px;
+    white-space: pre-line;
   }
 }
 </style>
