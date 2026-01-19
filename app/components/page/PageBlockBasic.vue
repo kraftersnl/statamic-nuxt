@@ -53,7 +53,6 @@ defineProps<{ data?: BasicBlock }>();
     img {
       width: 100%;
       object-fit: contain;
-      border-radius: var(--radius-lg);
     }
   }
 
