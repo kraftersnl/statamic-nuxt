@@ -25,6 +25,7 @@ const radioValue = ref<string>();
               :label="option.value"
               :value="option.key"
               :name="name"
+              variant="krafters"
             />
           </li>
         </ul>

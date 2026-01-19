@@ -3,47 +3,60 @@ defineProps<{ data?: ArticlesBlock }>();
 </script>
 
 <template>
-  <section class="page-block articles-block">
-    <slot />
+  <section :id="data?.anchor" class="page-block articles-block">
+    <div class="page-block-content">
+      <slot />
 
-    <ContentBlockMapper :content="data?.content" />
+      <ContentBlockMapper :content="data?.content" />
 
-    <ul v-if="data?.entries?.length" class="entries-list" role="list">
-      <li v-for="entry in data.entries" :key="entry.id">
-        <StatamicArticleCard :data="entry" />
-      </li>
-    </ul>
+      <StatamicArticleList
+        v-if="data?.entries?.length"
+        :entries="data.entries"
+      />
+      <StatamicBlog v-else :limit="data?.limit" />
+
+      <Button
+        v-if="data?.link"
+        :to="data?.link"
+        :label="data?.link_label"
+        icon="material-symbols:arrow-right-alt-rounded"
+        icon-pos="end"
+        variant="link"
+        font-size="sm"
+        class="articles-link"
+      />
+    </div>
   </section>
 </template>
 
 <style>
 .articles-block {
   .page-block-content {
-    min-width: 100%;
-    max-width: 800px;
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    gap: 4rem;
-    text-align: center;
-  }
-
-  .entries-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
     margin-inline: auto;
     padding-inline: var(--app-padding-inline);
     max-width: var(--app-max-width);
+    padding-block-start: 5rem;
+    padding-block-end: 8rem;
+    display: grid;
+  }
 
-    > * {
-      flex-basis: calc(420px - var(--app-padding-inline, 2rem));
+  .bard-content h2 {
+    margin-block-end: 4rem;
+  }
 
-      @media (min-width: 1024px) {
-        flex-basis: 100%;
-      }
+  .double-title {
+    text-align: center;
+
+    .title {
+      margin-inline: auto;
     }
+  }
+
+  .articles-link {
+    justify-self: end;
+    text-decoration: none;
+    margin-block-start: 4rem;
+    font-weight: var(--font-weight-medium);
   }
 }
 </style>

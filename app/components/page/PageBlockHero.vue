@@ -1,12 +1,32 @@
 <script setup lang="ts">
-const props = defineProps<{ data?: HeroBlock }>();
+const props = defineProps<{
+  data?: HeroBlock;
+  date?: string;
+}>();
+
+const { locale } = useI18n();
+
+const imageBg = computed(
+  () =>
+    props.data?.image?.permalink &&
+    props.data?.image_position?.key === 'background'
+);
 
 const imageFirst = computed(
-  () => props.data?.image && props.data?.image_pos?.key.endsWith('-start')
+  () =>
+    props.data?.image?.permalink &&
+    props.data?.image_position?.key?.endsWith('-start')
 );
+
 const imageLast = computed(
-  () => props.data?.image && props.data?.image_pos?.key.endsWith('-end')
+  () =>
+    props.data?.image?.permalink &&
+    props.data?.image_position?.key?.endsWith('-end')
 );
+
+const backgroundStyles = computed(() => {
+  return { backgroundImage: `url('${props.data?.image?.permalink}')` };
+});
 </script>
 
 <template>
@@ -15,37 +35,61 @@ const imageLast = computed(
     :class="[
       'page-block',
       'hero-block',
-      `image-position--${data?.image_pos?.key}
-    `,
+      data?.image_position?.key &&
+        `image-position--${data?.image_position.key}`,
+      data?.background_color?.key &&
+        `background-color--${data.background_color.key}`,
+      data?.full_height && 'page-block--full-height',
+      data?.text_align?.key && `text-align--${data?.text_align.key}`,
     ]"
-    :style="[
-      data?.image_max_height && `--image-max-height: ${data?.image_max_height}`,
-    ]"
+    :style="[imageBg && backgroundStyles]"
   >
-    <div v-if="imageFirst" class="hero-image">
-      <StatamicImage
-        loading="eager"
-        :data="data?.image"
-        :class="[data?.full_width_image && 'image--full-width']"
-        width="640"
-        height="320"
-        sizes="mobile:640px normal:960px big:1440px"
-      />
+    <div
+      v-if="data?.graphic_visual?.key === 'circles_stripes_dots'"
+      class="background-shapes-wrapper"
+    >
+      <CircleDots />
+      <CircleStripes />
     </div>
 
-    <div class="page-block-content">
-      <h1 v-if="data?.title">{{ data.title }}</h1>
+    <div class="hero-block-wrapper">
+      <div v-if="imageFirst" class="hero-image">
+        <StatamicImage
+          class="hero-image"
+          loading="eager"
+          :data="data?.image"
+          width="960"
+          height="960"
+        />
+      </div>
 
-      <ContentBlockMapper :content="data?.content" />
-    </div>
+      <div class="page-block-content">
+        <h1 v-if="data?.title">{{ data.title }}</h1>
 
-    <div v-if="imageLast" class="hero-image">
+        <NuxtTime
+          v-if="date"
+          :datetime="date"
+          :locale="locale"
+          day="numeric"
+          month="long"
+          year="numeric"
+          class="article-date"
+        />
+
+        <ContentBlockMapper :content="data?.content" />
+      </div>
+
+      <div v-if="data?.graphic_visual?.key" class="background-visual">
+        <VisualMapper :visual="data?.graphic_visual?.key" />
+      </div>
+
       <StatamicImage
+        v-else-if="imageLast"
+        class="hero-image"
         loading="eager"
         :data="data?.image"
-        :class="[data?.full_width_image && 'image--full-width']"
-        width="320"
-        height="180"
+        width="960"
+        height="960"
         :placeholder="[64, 32, 90, 250]"
       />
     </div>
@@ -55,75 +99,249 @@ const imageLast = computed(
 <style>
 .hero-block {
   display: grid;
-  gap: 2rem;
-  align-items: center;
-  padding-block-end: 2.5rem;
-
-  @media (min-width: 768px) {
-    padding-block-end: 5rem;
-  }
 
   h1 {
-    font-size: min(calc(var(--font-size-sm) + 3vw), var(--font-size-xxxl));
+    max-width: 720px;
+    margin-block-end: 0.5em;
+    font-size: var(--font-calc-heading-1);
   }
 
   p {
-    font-size: min(calc(var(--font-size-sm) + 1vw), var(--font-size-lg));
+    font-size: var(--font-calc-body-1);
+    max-width: 59ch;
+  }
+
+  .hero-block-wrapper {
+    width: 100%;
+    display: grid;
+    align-items: center;
+    align-content: center;
+    margin-inline: auto;
+    row-gap: 4rem;
   }
 
   .hero-image {
-    img {
-      max-height: var(--image-max-height, none);
-      max-width: 1920px;
-      object-fit: cover;
-      margin-inline: auto;
+    z-index: -1;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: fadeOut linear;
+      animation-timeline: view();
+      animation-range: exit 200px;
     }
 
-    .image--full-width {
-      img {
-        width: 100%;
-      }
+    img {
+      object-position: center;
+      height: 100%;
+      width: 100%;
     }
+  }
+
+  .article-date {
+    color: var(--color-grey-text);
+    display: inline-block;
+    margin-block-start: 1.5rem;
+  }
+
+  .background-visual {
+    padding-inline: var(--app-padding-inline);
+  }
+
+  .background-shapes-wrapper {
+    isolation: isolate;
+    position: absolute;
+    inset: 0;
+    overflow: clip;
+    mix-blend-mode: screen;
+  }
+
+  .background-shape {
+    position: absolute;
+  }
+
+  .background-shape--circle-stripes {
+    color: var(--color-accent-brown);
+    opacity: 1;
+    width: min(25%, 240px);
+    right: calc(-1 * var(--app-padding-inline));
+    top: 20%;
+  }
+
+  .background-shape--circle-dots {
+    width: min(50%, 480px);
+    inset: 0;
+    margin: auto;
+    margin-inline-end: 10%;
+  }
+
+  .background-attachment--fixed {
+    background-attachment: fixed;
+  }
+}
+
+.page-block--full-height {
+  min-height: calc(100svh - var(--app-header-height));
+
+  .hero-image,
+  .hero-image img {
+    min-height: calc(100svh - var(--app-header-height));
+  }
+}
+
+.hero-block.image-position--background {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+
+  &::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 0%, hsl(0 0 0 / 75%));
+
+    @media (min-width: 1024px) {
+      background: linear-gradient(to bottom, transparent 50%, hsl(0 0 0 / 50%));
+    }
+  }
+
+  h1 {
+    color: white;
+  }
+
+  .bard-content {
+    color: white;
+    margin-inline: 0;
+    max-width: 640px;
+  }
+
+  .page-block-content {
+    z-index: 2;
+    width: 100%;
+    display: grid;
+    text-align: left;
+    padding-block: var(--app-header-height);
   }
 }
 
 .hero-block.image-position--block-start {
   .page-block-content {
-    padding-block: var(--app-header-height);
+    padding-block: 4rem;
+
+    @media (min-width: 1200px) {
+      padding-block-start: 8rem;
+    }
   }
 }
 
 .hero-block.image-position--block-end {
-  padding-block: var(--app-header-height) calc(2 * var(--app-header-height));
+  padding-block-start: var(--app-header-height);
+
+  @media (min-width: 1200px) {
+    padding-block-start: 8rem;
+  }
 }
 
 .hero-block.image-position--inline-end {
-  padding-block: var(--app-header-height);
+  .page-block-content {
+    padding-block-start: 4rem;
+  }
 
-  @media (min-width: 1024px) {
-    padding-block-end: calc(2 * var(--app-header-height));
-    max-width: var(--app-max-width);
-    margin-inline: auto;
-    grid-template-columns: 3fr 2fr;
+  @media (min-width: 1200px) {
+    .hero-block-wrapper {
+      grid-template-columns:
+        1fr
+        calc(100vw / 2)
+        calc(100vw / 2)
+        1fr;
+    }
 
-    h1 {
-      font-size: min(calc(var(--font-size-xs) + 3vw), var(--font-size-xxl));
+    .page-block-content {
+      grid-column: 2 / span 1;
+      padding-block-end: 4rem;
+      padding-block-start: 8rem;
+    }
+
+    .hero-image {
+      grid-column: 3 / span 2;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .hero-block-wrapper {
+      grid-template-columns:
+        1fr
+        calc(var(--app-max-width) / 2)
+        calc(var(--app-max-width) / 2)
+        1fr;
     }
   }
 }
 
 .hero-block.image-position--inline-start {
-  padding-block: var(--app-header-height);
+  .page-block-content {
+    padding-block-start: 2rem;
+    padding-block-end: 4rem;
+  }
 
-  @media (min-width: 1024px) {
-    padding-block-end: calc(2 * var(--app-header-height));
-    max-width: var(--app-max-width);
-    margin-inline: auto;
-    grid-template-columns: 2fr 3fr;
-
-    h1 {
-      font-size: min(calc(var(--font-size-xs) + 3vw), var(--font-size-xxl));
+  @media (min-width: 1200px) {
+    .hero-block-wrapper {
+      align-items: center;
+      grid-template-columns:
+        1fr
+        calc(100vw / 2)
+        calc(100vw / 2)
+        1fr;
     }
+
+    .page-block-content {
+      grid-column: 3 / span 1;
+      padding-inline-start: 4rem;
+      padding-block: 4rem 0;
+    }
+
+    .hero-image {
+      grid-column: 1 / span 2;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .hero-block-wrapper {
+      grid-template-columns:
+        1fr
+        calc(var(--app-max-width) / 2)
+        calc(var(--app-max-width) / 2)
+        1fr;
+    }
+  }
+}
+
+.hero-block.text-align--center {
+  h1 {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .page-block-content {
+    text-align: center;
+
+    p {
+      margin-inline: auto;
+    }
+  }
+}
+
+.hero-block.text-align--right {
+  .page-block-content {
+    text-align: right;
   }
 }
 </style>

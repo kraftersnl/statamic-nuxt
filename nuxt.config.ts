@@ -18,8 +18,6 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteTitle: 'Statamic Nuxt Layer',
-      contactEmail: 'info@krafters.nl',
       ogImage: '/og.png',
       siteUrl: import.meta.env.NUXT_PUBLIC_SITE_URL,
       statamicUrl: import.meta.env.NUXT_PUBLIC_STATAMIC_URL,
@@ -39,21 +37,30 @@ export default defineNuxtConfig({
 
   image: {
     quality: 80,
-    format: ['avif', 'webp'],
     densities: [1, 2],
     screens: {
-      small: 320,
-      small2x: 640,
-      normal: 480,
-      normal2x: 960,
-      big: 960,
-      big2x: 1920,
+      sm: 320,
+      md: 640,
+      lg: 1200,
     },
   },
 
-  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots'],
+  site: {
+    url: import.meta.env.NUXT_PUBLIC_SITE_URL,
+    name: import.meta.env.NUXT_PUBLIC_SITE_NAME,
+  },
+
+  modules: [
+    '@nuxt/fonts',
+    '@nuxt/image',
+    '@nuxt/scripts',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+  ],
 
   css: [join(currentDir, './app/assets/main.css')],
+
+  compatibilityDate: '2025-08-17',
 
   future: {
     compatibilityVersion: 4,

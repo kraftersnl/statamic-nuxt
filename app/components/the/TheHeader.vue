@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { openMenuId, closeMenu } = useNav();
+
 const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
   'main-nav',
   () =>
@@ -9,42 +11,13 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
       },
     })
 );
-
-const mobileMenuRef = useTemplateRef<MobileMenuComponent>('mobileMenu');
-
-const mainNav = computed((): MenuItem[] =>
-  nav.value?.data?.length
-    ? nav.value.data.map((x) => ({
-        id: x.page.id,
-        to: x.page.url,
-        label: x.page.title,
-        onClick: mobileMenuRef.value?.closeDialog,
-      }))
-    : []
-);
 </script>
 
 <template>
+  <slot name="top" />
+
   <header class="app-header">
     <div class="app-header-content">
-      <MobileMenu
-        ref="mobileMenu"
-        button-variant="ghost"
-        button-size="lg"
-        button-icon-size="lg"
-        position="inline-start"
-      >
-        <template #default>
-          <MenuList
-            :list="mainNav"
-            button-variant="sidebar"
-            button-size="xl"
-            font-size="md"
-            label="Menu"
-          />
-        </template>
-      </MobileMenu>
-
       <NuxtLink to="/" class="logo-link">
         <span class="visuallyhidden">Home</span>
         <div class="logo-slot">
@@ -52,26 +25,54 @@ const mainNav = computed((): MenuItem[] =>
         </div>
       </NuxtLink>
 
-      <MenuList :list="mainNav" button-variant="topbar" inline />
+      <div class="wrapper">
+        <nav class="menu-list-nav" aria-label="Hoofdnavigatie">
+          <ul class="nav-list" role="list">
+            <li v-for="item in nav?.data" :key="item.page.id" class="nav-item">
+              <Button
+                v-if="item.page"
+                variant="topbar"
+                :to="item.page.link || item.page.url"
+                :label="item.page.title"
+                class="nav-link"
+                @mouseover="openMenuId = item.page.id"
+                @click="closeMenu"
+              />
+
+              <StatamicSubMenu
+                v-if="item.children?.length"
+                ref="subMenuElements"
+                v-model="openMenuId"
+                :data="item"
+                @click="closeMenu"
+              />
+            </li>
+          </ul>
+        </nav>
+
+        <ThemeSwitch />
+      </div>
+
+      <TheMobileMenu :list="nav?.data" />
     </div>
 
-    <ThemeToggle />
+    <slot name="right" />
 
-    <NuxtLoadingIndicator color="var(--color-accent)" />
+    <NuxtLoadingIndicator color="var(--color-accent-graphic)" />
   </header>
 </template>
 
 <style>
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .app-header-content .mobile-menu-wrapper {
     display: none;
   }
 }
 
 .app-header {
+  border-block-end: 1px solid var(--color-grey-light);
   position: relative;
-  background-color: rgb(var(--rgb-app-nav) / 85%);
-  -webkit-backdrop-filter: blur(5px);
+  background-color: hsl(var(--hsl-app-nav) / 90%);
   backdrop-filter: blur(5px);
 
   @media (min-width: 360px) and (min-height: 360px) {
@@ -82,26 +83,24 @@ const mainNav = computed((): MenuItem[] =>
 }
 
 .app-header-content {
+  position: relative;
   margin-inline: auto;
   padding-inline: var(--app-padding-inline);
   max-width: var(--app-max-width);
   min-height: var(--app-header-height);
-  width: 100%;
-  height: 100%;
   display: flex;
-  justify-content: start;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     justify-content: center;
     gap: 2rem;
   }
 
   .logo-link {
-    margin-inline: auto;
-    padding-right: 3.5rem;
+    outline-offset: 0.5rem;
+    margin-inline-end: auto;
 
     .logo-slot {
       display: grid;
@@ -111,27 +110,62 @@ const mainNav = computed((): MenuItem[] =>
       display: none;
     }
 
-    @media (min-width: 768px) {
-      margin-left: 0;
-      padding-right: 0;
+    @media (min-width: 1024px) {
+      margin-inline-start: 0;
+      padding-inline-end: 0;
     }
   }
 
   .menu-list-nav {
     display: none;
-    padding-inline-end: 3rem;
+    padding-inline-end: 8rem;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .menu-list-nav {
       display: block;
     }
   }
+
+  .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list {
+    flex-shrink: 0;
+    flex-grow: 1;
+    display: flex;
+    margin-inline: auto;
+    align-items: center;
+    column-gap: 2.5rem;
+
+    @media (min-width: 360px) {
+      justify-content: center;
+    }
+
+    > li {
+      min-height: 4rem;
+      white-space: nowrap;
+
+      > a {
+        margin-block: 1.25rem;
+      }
+    }
+  }
 }
 
-.theme-toggle-button {
-  position: absolute;
-  right: 2rem;
-  top: 1rem;
+.app-header {
+  .theme-switch {
+    display: none;
+    position: absolute;
+    top: calc(1px + 1.25rem);
+    right: var(--app-padding-inline);
+
+    @media (min-width: 1024px) {
+      display: flex;
+    }
+  }
 }
 </style>

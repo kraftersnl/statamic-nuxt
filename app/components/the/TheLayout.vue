@@ -1,21 +1,37 @@
 <script setup lang="ts">
-useHead({ titleTemplate: '%s | ' + useRuntimeConfig().public.siteTitle });
-
 defineProps<{
   navList?: MenuItem[];
+  showFooter?: boolean;
 }>();
 
-const route = useRoute();
-const appRef = useTemplateRef('app');
+// const { data: seo } = await useAsyncData<{ data: StatamicGlobalSEO }>(
+//   'seo',
+//   () =>
+//     $fetch('/api/globals/seo', {
+//       baseURL: useRuntimeConfig().public.statamicUrl,
+//     }),
+//   { lazy: true }
+// );
+
+// useHead({
+//   titleTemplate: seo.value?.data?.seo_website_title
+//     ? undefined
+//     : `%s ${seo.value?.data?.seo_meta_title_seperator || '|'} ${
+//         useRuntimeConfig()?.public?.siteTitle
+//       }`,
+// });
 
 const { data: company } = await useAsyncData<{ data: StatamicGlobalCompany }>(
-  'company',
+  'company-globals-for-footer',
   () =>
     $fetch('/api/globals/company', {
       baseURL: useRuntimeConfig().public.statamicUrl,
     }),
   { lazy: true }
 );
+
+const route = useRoute();
+const appRef = useTemplateRef('app');
 
 if (typeof window !== 'undefined') {
   window.onmessage = function (e) {
@@ -35,28 +51,49 @@ if (typeof window !== 'undefined') {
 
 <template>
   <div ref="app" tabindex="-1">
+    <slot name="dialog" />
+
     <NuxtRouteAnnouncer />
 
     <SkipLink />
 
-    <TheHeader>
-      <template #logo>
-        <slot name="logo" />
-      </template>
-    </TheHeader>
+    <div class="header-main-wrapper">
+      <slot name="header">
+        <TheHeader>
+          <template #logo>
+            <slot name="logo" />
+          </template>
+        </TheHeader>
+      </slot>
 
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
 
-    <LazyTheFooter :data="company?.data" :nav-list="navList">
-      <template #favicon>
-        <slot name="favicon" />
-      </template>
+    <slot name="footer" v-bind="{ company }">
+      <LazyTheFooter
+        v-if="showFooter"
+        :data="company?.data"
+        :nav-list="navList"
+      >
+        <template #favicon>
+          <slot name="favicon" />
+        </template>
 
-      <template #copyright>
-        <slot name="copyright" />
-      </template>
-    </LazyTheFooter>
+        <template #copyright>
+          <slot name="copyright" />
+        </template>
+      </LazyTheFooter>
+    </slot>
   </div>
 </template>
+
+<style>
+.header-main-wrapper {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  background-color: var(--color-bg);
+}
+</style>

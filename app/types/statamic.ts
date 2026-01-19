@@ -1,4 +1,16 @@
 declare global {
+  type CollectionEntriesResponse<T> = {
+    data: T[];
+    links: PaginationLinks;
+    meta: PaginationMeta;
+  };
+
+  type CollectionTreeItem<T> = {
+    page: T;
+    depth: number;
+    children: CollectionTreeItem<T>[];
+  };
+
   type NavTreeItem = {
     page: NavItem;
     depth: number;
@@ -50,6 +62,9 @@ declare global {
   };
 
   type StatamicEntry = {
+    collection?: {
+      handle?: string;
+    };
     id: string;
     title: string;
     summary?: string;
@@ -61,15 +76,53 @@ declare global {
 
   type StatamicPageEntry = StatamicEntry & {
     blocks?: StatamicPageBlock[];
+    seo?: StatamicSEO;
+    parent?: StatamicPageEntry;
   };
 
   type StatamicArticleEntry = StatamicEntry & {
     blocks?: StatamicPageBlock[];
+    seo?: StatamicSEO;
+    content?: StatamicContentBlock[];
     date?: string;
+    tags?: TaxonomyTerm[];
+    author?: StatamicAuthor;
+    employees?: StatamicEmployeesEntry[];
+  };
+
+  type StatamicAuthor = {
+    id: string;
+    name: string;
+    email: string;
+    sub_title?: string;
+    image?: StatamicImage;
+  };
+
+  type StatamicProjectEntry = StatamicEntry & {
+    sub_title?: string;
+  };
+
+  type StatamicCaseEntry = StatamicEntry & {
+    sub_title?: string;
+    tags?: string[];
   };
 
   type StatamicEmployeesEntry = StatamicEntry & {
-    jobtitle?: string;
+    sub_title?: string;
+    email?: string;
+    phone?: string;
+  };
+
+  type StatamicUser = {
+    id: string;
+    name: string;
+    email: string;
+    sub_title?: string;
+    image?: StatamicImage;
+  };
+
+  type StatamicTestimonialEntry = StatamicEntry & {
+    sub_title?: string;
   };
 
   type StatamicSponsorsEntry = StatamicEntry & {
@@ -82,6 +135,7 @@ declare global {
     button_link?: string;
     button_icon?: string;
     button_variant?: StatamicSelectOption;
+    button_icon_position?: StatamicSelectOption;
   };
 
   type StatamicSelectOption = {
@@ -144,5 +198,29 @@ declare global {
     kvk?: string;
     btw?: string;
     bank?: string;
+    wysiwyg?: string;
+  };
+
+  type StatamicSEO = {
+    meta?: {
+      title?: string;
+      description?: string;
+      image?: string;
+    };
+    social?: {
+      title?: string;
+      description?: string;
+      image?: string;
+    };
+  };
+
+  type StatamicGlobalSEO = {
+    noindex_local: boolean;
+    noindex_production: boolean;
+    noindex_testing: boolean;
+    seo_meta_title_seperator: string;
+    seo_website_title: string;
+    handle: string;
+    api_url: string;
   };
 }

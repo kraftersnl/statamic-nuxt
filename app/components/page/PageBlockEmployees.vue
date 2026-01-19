@@ -1,15 +1,52 @@
 <script setup lang="ts">
 defineProps<{ data?: EmployeesBlock }>();
+
+const { data: entries } = await useAsyncData<{
+  data: StatamicEmployeeEntry[];
+}>('employees', () =>
+  $fetch(`/api/collections/employees/entries/`, {
+    baseURL: useRuntimeConfig().public.statamicUrl,
+    query: {
+      fields: 'id,title,sub_title,summary,image,email,phone',
+    },
+  })
+);
 </script>
 
 <template>
-  <section :id="data?.anchor" class="page-block employees-block">
+  <section
+    :id="data?.anchor"
+    class="page-block employees-block shape-position--block-end"
+  >
     <div class="page-block-content">
-      <ContentBlockMapper :content="data?.content" />
+      <RectangleDots />
 
-      <ul v-if="data?.entries?.length" role="list" class="entries-list">
-        <li v-for="entry in data?.entries" :key="entry.id">
+      <div class="left-column">
+        <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
+      </div>
+
+      <p v-if="data?.text" class="employees-description">
+        {{ data.text }}
+      </p>
+
+      <ul v-if="entries?.data?.length" role="list" class="entries-list">
+        <li
+          v-for="entry in entries?.data"
+          :key="entry.id"
+          class="employee-list-item"
+        >
           <StatamicEmployee :data="entry" />
+        </li>
+
+        <li class="employee-list-item">
+          <StatamicEmployee
+            :data="{
+              title: 'Werken aan beter digitaal?',
+              sub_title: 'Stuur een mailtje of bel ons',
+              email: 'jobs@krafters.nl',
+              phone: '+31 (0)88 500 4010',
+            }"
+          />
         </li>
       </ul>
     </div>
@@ -19,22 +56,66 @@ defineProps<{ data?: EmployeesBlock }>();
 <style>
 .employees-block {
   .page-block-content {
-    max-width: 800px;
-    text-align: center;
+    padding-block: 5rem;
     display: grid;
-    justify-content: center;
     gap: 4rem;
+    justify-content: center;
+
+    @media (min-width: 1200px) {
+      padding-block-end: 8rem;
+      display: grid;
+      padding-inline: var(--app-padding-inline);
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .employees-description {
+    @media (min-width: 1200px) {
+      margin-block-start: 1.5rem;
+      margin-block-end: 4rem;
+    }
+
+    @supports (animation-timeline: view()) {
+      opacity: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportFadeUp linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+      }
+    }
+  }
+
+  .employee-list-item {
+    @supports (animation-timeline: view()) {
+      opacity: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportFadeUp linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+      }
+    }
   }
 
   .entries-list {
+    container-type: inline-size;
+    grid-column: 1 / -1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: 2rem;
+    column-gap: 4rem;
     row-gap: 4rem;
 
     > * {
-      flex-basis: 12rem;
+      /* flex-basis: 24rem; */
+
+      @media (min-width: 1200px) {
+        flex-basis: 20rem;
+      }
+      @media (min-width: 1440px) {
+        flex-basis: 24rem;
+      }
     }
   }
 }

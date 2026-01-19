@@ -22,7 +22,7 @@ defineProps<{ error: NuxtError }>();
           label="Home"
           variant="link"
           font-size="sm"
-          icon="chevron-left"
+          icon="material-symbols:chevron-left-rounded"
           class="go-back-button"
           @click="clearError({ redirect: '/' })"
         />
@@ -37,6 +37,7 @@ defineProps<{ error: NuxtError }>();
     margin-inline: auto;
     padding-inline: var(--app-padding-inline);
     max-width: var(--app-max-width);
+    width: 100%;
     padding-block: 4rem;
 
     h1 {

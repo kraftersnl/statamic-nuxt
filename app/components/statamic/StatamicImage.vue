@@ -1,14 +1,15 @@
 <script setup lang="ts">
 const {
+  data = undefined,
   loading = 'lazy',
   width = '240',
   height = '160',
-  sizes = 'small:640px normal:960px big:1280px',
+  sizes = 'sm:320px md:640px lg:1200px',
+  caption = undefined,
   placeholder = true,
 } = defineProps<{
   data?: StatamicImage;
   loading?: 'lazy' | 'eager';
-  fetchPriority?: 'high' | 'low' | 'auto';
   sizes?: string;
   caption?: string;
   width?: string;
@@ -18,18 +19,18 @@ const {
 </script>
 
 <template>
-  <figure>
+  <figure class="image-wrapper">
     <NuxtImg
-      ref="img"
+      class="statamic-image"
       :src="data?.permalink"
       :alt="data?.alt || ''"
-      :loading="loading"
-      :fetch-priority="fetchPriority ?? (loading === 'lazy' ? 'low' : 'high')"
       :width="width"
       :height="height"
       :sizes="sizes"
-      class="statamic-image"
       :placeholder="placeholder"
+      :loading="loading"
+      :preload="loading === 'eager' ? { fetchPriority: 'high' } : undefined"
+      format="webp"
     />
 
     <figcaption v-if="caption" class="image-caption">
@@ -40,8 +41,8 @@ const {
 
 <style>
 .statamic-image {
-  height: auto;
-  width: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .image-caption {

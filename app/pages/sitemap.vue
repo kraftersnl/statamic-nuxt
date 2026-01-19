@@ -7,7 +7,7 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
     })
 );
 
-useHead({ title: 'Sitemap' });
+useHead({ title: 'Sitemap | Krafters' });
 </script>
 
 <template>
@@ -38,12 +38,31 @@ useHead({ title: 'Sitemap' });
 .sitemap-page {
   padding-block: 4rem;
   margin-inline: auto;
+  width: 100%;
   max-width: var(--app-max-width);
   padding-inline: var(--app-padding-inline);
 
   h1 {
     font-size: var(--font-size-xl);
     margin-block-end: 2rem;
+  }
+
+  a {
+    &:hover {
+      color: var(--color-accent-text);
+    }
+  }
+
+  li {
+    margin-block-end: 0.25em;
+
+    &::marker {
+      color: var(--color-accent);
+    }
+
+    > ul {
+      margin-block-start: 0.25em;
+    }
   }
 }
 </style>

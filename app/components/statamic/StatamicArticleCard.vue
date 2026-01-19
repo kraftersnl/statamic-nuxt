@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { hTag = 'h3' } = defineProps<{
+const { hTag = 'h2', loading = 'eager' } = defineProps<{
   data: StatamicArticleEntry;
   hTag?: string;
   loading?: 'lazy' | 'eager';
@@ -10,12 +10,9 @@ const { hTag = 'h3' } = defineProps<{
   <Card
     is="article"
     class="article-card"
-    mobile-padding="0"
-    padding="0"
-    border-radius="md"
+    background-color="transparent"
+    border-color="transparent"
     :shadow="false"
-    :border-width="2"
-    @click="navigateTo(data.url)"
   >
     <div class="card-content">
       <div class="text-content">
@@ -25,94 +22,104 @@ const { hTag = 'h3' } = defineProps<{
           </NuxtLink>
         </component>
 
-        <time
-          v-if="data.date"
-          :datetime="data.date.slice(0, 10)"
-          class="card-date"
-        >
-          {{ d(data.date) }}
-        </time>
+        <div v-if="data.author" class="card-author">
+          Door {{ data.author?.name }}
+        </div>
 
-        <p v-if="data.summary">{{ data.summary }}</p>
+        <!-- <p v-if="data.summary" class="card-description">
+          {{ data.summary }}
+        </p> -->
       </div>
 
-      <StatamicImage :data="data.image" :loading="loading" class="card-image" />
+      <TaxonomyTags :tags="data?.tags" />
+
+      <StatamicImage
+        v-if="data?.image?.permalink"
+        :data="data.image"
+        :loading="loading"
+        class="card-image"
+      />
+      <div v-else class="card-image" />
     </div>
   </Card>
 </template>
 
 <style>
 .article-card {
-  overflow: hidden;
-  cursor: pointer;
-  outline-offset: 1rem;
-  container-type: inline-size;
-  transition: outline-offset var(--duration-md),
-    outline-color var(--duration-sm);
-  outline: 2px solid transparent;
+  position: relative;
+  height: 100%;
 
-  &:has(.card-link:focus-visible) {
-    outline-color: var(--focus-color);
-    outline-offset: 0.5rem;
-
-    .card-link {
-      outline: none;
-    }
-  }
-
-  &:hover {
-    /* border-color: var(--color-grey-graphic); */
-    outline-color: var(--color-grey-graphic);
-    outline-offset: 0.5rem;
-  }
-
-  .card-image {
-    order: -1;
-
-    img {
-      object-fit: cover;
-      width: 100%;
-      aspect-ratio: 2 / 1;
-
-      @container (min-width: 720px) {
-        aspect-ratio: 3/2;
-      }
-    }
-  }
+  padding: 0 !important;
 
   .card-content {
-    height: 100%;
     display: grid;
-
-    @container (min-width: 720px) {
-      grid-template-columns: 360px 1fr;
-    }
   }
 
   .text-content {
-    padding: 1.5rem 2rem;
-
-    @media (min-width: 480px) {
-      padding: 2rem 2.5rem;
-    }
+    margin-block-end: 1rem;
   }
 
   .card-title {
     font-size: var(--font-size-lg);
-    margin-bottom: 2rem;
+    margin-block-end: 1em;
+
+    min-height: 58px;
   }
 
-  p {
-    margin-block-end: 0;
-    font-size: var(--font-size-sm);
+  .card-link {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &::after {
+      /* increase click target */
+      z-index: 1;
+      position: absolute;
+      content: '';
+      inset: 0;
+    }
   }
 
   .card-date {
-    display: block;
-    font-weight: var(--font-weight-medium);
     font-size: var(--font-size-xs);
     color: var(--color-grey-text);
-    margin-bottom: 0.5rem;
+  }
+
+  .card-author {
+    font-size: var(--font-size-xs);
+    color: var(--color-grey-text);
+  }
+
+  .card-description {
+    font-size: var(--font-size-sm);
+    margin-block-end: 0;
+  }
+
+  .card-image {
+    order: -1;
+    margin-block-end: 1.5rem;
+    background-color: var(--color-accent-grey);
+    img {
+      aspect-ratio: 3 / 2;
+    }
+  }
+
+  .fake-link {
+    margin-block-start: 2.5rem;
+    margin-block-end: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.35em;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+
+    .iconify {
+      font-size: var(--font-size-md);
+    }
   }
 }
 </style>

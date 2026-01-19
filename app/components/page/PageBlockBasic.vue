@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ data: BasicBlock }>();
+defineProps<{ data?: BasicBlock }>();
 </script>
 
 <template>
@@ -8,32 +8,47 @@ defineProps<{ data: BasicBlock }>();
     :class="[
       'page-block',
       'basic-block',
-      `image-position--${data?.image_pos?.key}`,
+      data?.image_position?.key &&
+        `image-position--${data?.image_position.key}`,
+      data?.background_color?.key &&
+        `background-color--${data.background_color.key}`,
+      data?.background_shape?.key &&
+        `background-shape--${data.background_shape.key}`,
+  data?.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
-  >
-    <div class="page-block-content">
-      <ContentBlockMapper :content="data?.content" />
 
-      <div v-if="data?.image" class="image-column">
-        <StatamicImage
-          :data="data.image"
-          :caption="data.image_caption"
-          width="400"
-          height="267"
-          sizes="mobile:400px normal:800px"
-        />
-      </div>
+  >
+    <div class="page-block-content" :style="{ maxWidth: data?.max_width ? `${data.max_width}${data.max_width_unit?.key}` : undefined }">
+      <CircleStripes v-if="data?.background_shape?.key === 'circle_stripes'" />
+      <CircleDots v-if="data?.background_shape?.key === 'circle_dots'" />
+      <RectangleDots v-if="data?.background_shape?.key === 'rectangle_dots'" />
+
+      <DoubleTitle :title="data?.title" :super-title="data?.super_title" />
+
+      <slot />
+
+      <ContentBlockMapper :content="data?.content" />
     </div>
+
+    <StatamicImage
+      v-if="data?.image?.permalink"
+      :data="data.image"
+      :caption="data.image_caption"
+      width="960"
+      height="640"
+      class="image-column"
+    />
   </section>
 </template>
 
 <style>
-.basic-block {
+.page-block.basic-block {
+  margin-inline: auto;
+
   .image-column {
-    width: 100%;
-    max-width: 480px;
+    padding-inline: var(--app-padding-inline);
     margin-inline: auto;
-    margin-block-start: 0.25rem;
+    max-width: var(--app-max-width);
 
     img {
       width: 100%;
@@ -41,11 +56,26 @@ defineProps<{ data: BasicBlock }>();
       border-radius: var(--radius-lg);
     }
   }
+
+  .page-block-content {
+    padding-block: 1.5rem;
+    max-width: var(--app-max-width);
+
+    @media (min-width: 1200px) {
+      padding-inline: var(--app-padding-inline);
+    }
+  }
 }
 
 @media (min-width: 768px) {
+  .image-position--block-start {
+    .image-column {
+      order: -1;
+    }
+  }
+
   .image-position--inline-end {
-    .page-block-content:has(.image-column) {
+    &:has(.image-column) {
       display: grid;
       align-items: center;
       gap: 4rem;
@@ -54,7 +84,7 @@ defineProps<{ data: BasicBlock }>();
   }
 
   .image-position--inline-start {
-    .page-block-content:has(.image-column) {
+    &:has(.image-column) {
       display: grid;
       align-items: center;
       gap: 4rem;

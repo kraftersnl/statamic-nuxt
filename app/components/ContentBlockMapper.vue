@@ -5,73 +5,69 @@ defineProps<{ content?: StatamicContentBlock[] }>();
 <template>
   <div class="bard-content">
     <template v-for="contentBlock in content" :key="contentBlock.id">
-      <div v-if="contentBlock.type === 'text'" v-html="contentBlock.text" />
+      <div
+        v-if="contentBlock.type === 'text'"
+        v-html="fixBoldAndItalicText(contentBlock.text)"
+      />
+
+      <StatamicIcon
+        v-else-if="contentBlock?.type === 'icon'"
+        :icon="contentBlock.icon"
+        class="statamic-icon"
+      />
+
+      <StatamicIconList
+        v-else-if="contentBlock?.type === 'list'"
+        :data="contentBlock"
+      />
 
       <StatamicImage
-        v-if="contentBlock?.type === 'image'"
+        v-else-if="contentBlock?.type === 'image'"
         :data="contentBlock.image"
         :caption="contentBlock.image_caption"
       />
 
       <StatamicButton
-        v-if="contentBlock?.type === 'button'"
+        v-else-if="contentBlock?.type === 'button'"
+        :data="contentBlock"
+      />
+
+      <StatamicButtonGroup
+        v-else-if="contentBlock?.type === 'button_group'"
         :data="contentBlock"
       />
 
       <StatamicQuote
-        v-if="contentBlock?.type === 'quote'"
+        v-else-if="contentBlock?.type === 'quote'"
         :data="contentBlock"
       />
 
-      <StatamicForm v-if="contentBlock?.type === 'form'" :data="contentBlock" />
+      <LazyStatamicForm
+        v-else-if="contentBlock?.type === 'form'"
+        :data="contentBlock"
+      />
 
       <VideoPlayer
-        v-if="contentBlock?.type === 'video'"
+        v-else-if="contentBlock?.type === 'video'"
         :url="contentBlock?.video_url"
         :caption="contentBlock?.image_caption"
+      />
+
+      <StatamicAccordion
+        v-else-if="contentBlock?.type === 'accordion'"
+        :data="contentBlock"
+      />
+
+      <StatamicCallout
+        v-else-if="contentBlock?.type === 'callout'"
+        :data="contentBlock"
+      />
+
+      <div
+        v-else-if="contentBlock?.type === 'spacer'"
+        class="spacer"
+        :style="{ 'margin-top': `${contentBlock?.margin ?? 0}px` }"
       />
     </template>
   </div>
 </template>
-
-<style>
-.bard-content {
-  margin-inline: auto;
-  max-width: 860px;
-  display: grid;
-  gap: 1rem;
-
-  figure {
-    margin-block-end: 2rem;
-    border-radius: var(--radius-sm);
-  }
-
-  p,
-  ul,
-  ol {
-    > a:hover {
-      color: var(--color-accent);
-    }
-
-    &:has(+ h2) {
-      margin-block-end: 3rem;
-    }
-    &:has(+ h3) {
-      margin-block-end: 2.5rem;
-    }
-    &:has(+ h4) {
-      margin-block-end: 2rem;
-    }
-    &:has(+ h5) {
-      margin-block-end: 1.5rem;
-    }
-    &:has(+ h6) {
-      margin-block-end: 1rem;
-    }
-  }
-
-  ul > li::marker {
-    color: var(--color-accent-text);
-  }
-}
-</style>

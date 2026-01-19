@@ -167,7 +167,11 @@ export const mockPageData: StatamicPageEntry[] = [
           alt: null,
         },
         image_caption: null,
-        image_pos: { value: 'inline-end', label: 'Right', key: 'inline-end' },
+        image_position: {
+          value: 'inline-end',
+          label: 'Right',
+          key: 'inline-end',
+        },
         anchor: 'websites',
         id: 'm7xdgqp3',
         type: 'basic',
@@ -187,7 +191,7 @@ export const mockPageData: StatamicPageEntry[] = [
           alt: null,
         },
         image_caption: null,
-        image_pos: {
+        image_position: {
           value: 'inline-start',
           label: 'Left',
           key: 'inline-start',
@@ -219,7 +223,7 @@ export const mockPageData: StatamicPageEntry[] = [
                 'http://localhost:8000/api/assets/assets/danny-degenkamp.jpg',
               alt: null,
             },
-            jobtitle: 'Lead Development',
+            sub_title: 'Lead Development',
           },
           {
             id: '3bc5234b-f49c-4cb7-8709-ca1aea6b7f2a',
@@ -236,7 +240,7 @@ export const mockPageData: StatamicPageEntry[] = [
                 'http://localhost:8000/api/assets/assets/martijn-halekor.jpg',
               alt: null,
             },
-            jobtitle: 'Accessibility Developer',
+            sub_title: 'Accessibility Developer',
           },
           {
             id: '28c0caad-1b10-421e-94d9-82f18bf3ab05',
@@ -254,7 +258,7 @@ export const mockPageData: StatamicPageEntry[] = [
                 'http://localhost:8000/api/assets/assets/jeroen-van-der-heijden.jpeg',
               alt: null,
             },
-            jobtitle: 'Security Expert & Developer',
+            sub_title: 'Security Expert & Developer',
           },
           {
             id: '4a8f9854-e398-47a0-911b-304e3b6fcb20',
@@ -271,7 +275,7 @@ export const mockPageData: StatamicPageEntry[] = [
                 'http://localhost:8000/api/assets/assets/joost-eijkens.jpeg',
               alt: null,
             },
-            jobtitle: 'Operations',
+            sub_title: 'Operations',
           },
           {
             id: 'c8e70139-f2a4-4acd-8c58-42f598a69676',
@@ -289,7 +293,7 @@ export const mockPageData: StatamicPageEntry[] = [
                 'http://localhost:8000/api/assets/assets/marijn-van-der-laan.jpeg',
               alt: null,
             },
-            jobtitle: 'Marketing & Sales',
+            sub_title: 'Marketing & Sales',
           },
         ],
         anchor: 'team',

@@ -24,7 +24,7 @@ defineProps<{
 
 <style>
 .app-footer {
-  background-color: var(--color-bg);
+  background-color: var(--color-grey-bg);
   font-size: var(--font-size-xs);
 
   img {

@@ -3,14 +3,14 @@ defineProps<{ icon?: string }>();
 </script>
 
 <template>
-  <span v-if="icon" class="icon" aria-hidden="true" v-html="icon" />
+  <Icon v-if="icon?.startsWith('material-symbols:')" :name="icon" />
+  <span v-else-if="icon" class="icon" aria-hidden="true" v-html="icon" />
 </template>
 
 <style>
 .icon {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   flex-shrink: 0;
   transition: inherit;
 

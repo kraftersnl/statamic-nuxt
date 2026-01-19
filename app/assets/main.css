@@ -1,7 +1,4 @@
 :root {
-  --app-max-width: 1280px;
-  --app-header-height: 4rem;
-
   --font-size-xxxxl: 4rem;
   --font-size-xxxl: 3rem;
   --font-size-xxl: 2.5rem;
@@ -13,39 +10,17 @@
   --font-size-xxs: 0.8rem;
   --font-size-xxxs: 0.7rem;
 
-  @media (min-width: 480px) {
-    --app-padding-inline: 2rem;
-  }
-}
+  --font-calc-body-1: min(calc(var(--font-size-sm) + 1vw), var(--font-size-lg));
 
-.dark-mode {
-  --color-accent: hsl(0 0% 100%);
-  --color-accent-bg: hsl(0 0% 20%);
-  --color-accent-text: hsl(0 0% 60%);
+  --font-calc-heading-1: min(
+    calc(var(--font-size-lg) + 3vw),
+    var(--font-size-xxxxl)
+  );
 
-  --color-grey-text: hsl(0 0% 50%);
-  --color-grey-graphic: hsl(0 0% 40%);
-  --color-grey-bg: hsl(0 0% 10%);
-  --color-bg: hsl(0 0% 4%);
-  --color-card-bg: hsl(0 0% 0%);
-  --color-white: hsl(0 0% 0%);
-
-  --color-sub-footer: hsl(0 0% 0%);
-}
-
-.light-mode {
-  --color-accent: hsl(0 0% 20%);
-  --color-accent-bg: hsl(0 0% 87%);
-  --color-accent-text: hsl(0 0% 33%);
-
-  --color-grey-text: hsl(0 0% 40%);
-  --color-grey-graphic: hsl(0 0% 50%);
-  --color-grey-bg: hsl(0 0% 96%);
-  --color-bg: hsl(0 0% 100%);
-  --color-card-bg: white;
-  --color-white: white;
-
-  --color-sub-footer: hsl(0 0% 96%);
+  --font-calc-heading-2: min(
+    calc(var(--font-size-lg) + 2vw),
+    var(--font-size-xxl)
+  );
 }
 
 body {
@@ -61,6 +36,18 @@ h6 {
   font-family: var(--font-family-heading, var(--font-family));
 }
 
+h1 {
+  text-wrap: balance;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: pretty;
+}
+
 h1,
 h2,
 h3,
@@ -68,19 +55,18 @@ h4,
 h5,
 h6 {
   margin-block-start: 0;
-  margin-block-end: 1rem;
-}
 
-h1 {
-  color: var(--color-accent);
+  @media (min-width: 360px) {
+    hyphens: none;
+  }
 }
 
 h2 {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-xxxl);
 }
 
 h3 {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
 }
 
 h4,
@@ -89,8 +75,8 @@ h6 {
   font-size: var(--font-size-md);
 }
 
-a {
-  text-underline-offset: 0.35em;
+p {
+  text-wrap: pretty;
 }
 
 blockquote {
@@ -99,10 +85,57 @@ blockquote {
   }
 }
 
-/* p,
-ul,
-ol {
-  > a:hover {
-    color: var(--color-accent);
+:where(.bard-content) {
+  width: 100%;
+  margin-inline: auto;
+
+  .statamic-icon svg {
+    width: var(--font-size-xxl);
+    height: var(--font-size-xxl);
+    margin-block-end: 1rem;
   }
-} */
+
+  figure {
+    margin-block-end: 2rem;
+    border-radius: var(--radius-sm);
+  }
+
+  p,
+  ul,
+  ol {
+    margin-block-start: 1.5em;
+
+    &:first-of-type {
+      margin-block-start: 0;
+    }
+
+    > a {
+      &:hover {
+        color: var(--color-accent-text);
+      }
+    }
+
+    &:has(+ h2),
+    &:has(+ div > h2) {
+      margin-block-end: 4rem;
+    }
+    &:has(+ h3),
+    &:has(+ div > h3) {
+      margin-block-end: 3rem;
+    }
+    &:has(+ h4),
+    &:has(+ div > h4) {
+      margin-block-end: 2rem;
+    }
+    &:has(+ h5) {
+      margin-block-end: 1.5rem;
+    }
+    &:has(+ h6) {
+      margin-block-end: 1rem;
+    }
+  }
+
+  ul > li::marker {
+    color: var(--color-accent-graphic);
+  }
+}

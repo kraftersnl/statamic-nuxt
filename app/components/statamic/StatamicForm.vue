@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { proxy } = useScriptGoogleTagManager();
+
 const props = defineProps<{
   data: FormContentBlock | FormBlock;
 }>();
@@ -13,6 +15,15 @@ const { data: form } = await useAsyncData<{ data: StatamicForm }>(
   props.data.form?.handle ?? 'form',
   () =>
     $fetch('/api/forms/' + props.data.form?.handle, {
+      baseURL: useRuntimeConfig().public.statamicUrl,
+    }),
+  { lazy: true }
+);
+
+const { data: company } = await useAsyncData<{ data: StatamicGlobalCompany }>(
+  'company-globals-for-form',
+  () =>
+    $fetch('/api/globals/company', {
       baseURL: useRuntimeConfig().public.statamicUrl,
     }),
   { lazy: true }
@@ -35,6 +46,12 @@ async function handleSubmit(formData: FormData) {
     });
 
     if (response?.success) {
+      proxy.dataLayer.push({
+        event: 'generate_lead',
+        value: 1,
+        label: props.data.form?.handle,
+      });
+
       showSuccessMessage.value = true;
     } else {
       showErrorMessage.value = true;
@@ -51,6 +68,7 @@ async function handleSubmit(formData: FormData) {
 <template>
   <Form
     v-if="form?.data?.fields && Object.keys(form.data.fields)?.length"
+    style="--row-gap: 2rem"
     @submit="handleSubmit"
   >
     <template v-for="field in form.data.fields" :key="field.handle">
@@ -60,6 +78,7 @@ async function handleSubmit(formData: FormData) {
         :name="field.handle"
         :options="field.options"
         :label="field.display"
+        variant="minimal"
       />
 
       <CheckboxGroup
@@ -69,6 +88,7 @@ async function handleSubmit(formData: FormData) {
         :options="field.options"
         :label="field.display"
         :required="field.validate?.includes('required')"
+        variant="minimal"
       />
 
       <ClientOnly v-if="field.handle === 'source'">
@@ -83,7 +103,8 @@ async function handleSubmit(formData: FormData) {
         :autocomplete="field.autocomplete"
         :required="field.validate?.includes('required')"
         size="lg"
-        :style="`--col-width: ${field.width}%`"
+        variant="minimal"
+        :style="`--col-width: calc(${field.width}% - var(--column-gap))`"
       />
 
       <Textarea
@@ -91,44 +112,52 @@ async function handleSubmit(formData: FormData) {
         :label="field.display"
         :name="field.handle"
         :required="field.validate?.includes('required')"
-        :style="`--col-width: ${field.width}%`"
+        :style="`--col-width: calc(${field.width}% - var(--column-gap))`"
+        variant="minimal"
+        autoresize
       />
     </template>
-
-    <div aria-live="polite">
-      <Callout
-        v-if="showSuccessMessage"
-        color="green"
-        :content="
-          useRuntimeConfig().public.formSuccessMessage ||
-          'Bedankt voor je bericht, we nemen zo snel mogelijk contact met je op.'
-        "
-      />
-    </div>
 
     <div role="alert">
       <Callout v-if="showErrorMessage" color="red">
         Er ging helaas iets mis. Probeer het later opnieuw of neem contact met
         ons op via
-        <a :href="'mailto:' + useRuntimeConfig().public.contactEmail">{{
-          useRuntimeConfig().public.contactEmail
-        }}</a
+        <a :href="'mailto:' + company?.data?.email">
+          {{ company?.data?.email }} </a
         >.
       </Callout>
     </div>
 
     <Button
       type="submit"
-      icon="paper-airplane"
+      variant="cta"
       size="lg"
-      variant="primary"
       class="form-button"
+      icon="material-symbols:arrow-circle-right"
+      icon-pos="end"
       :label="data.form_button_label || 'Verzenden'"
       :loading="submittingForm"
       :disabled="showSuccessMessage || showErrorMessage"
-      :style="`--col-width: 10rem`"
     />
+
+    <div aria-live="polite">
+      <Callout
+        v-if="showSuccessMessage"
+        color="green"
+        :content="
+          data.form_success_message ||
+          useRuntimeConfig().public.formSuccessMessage ||
+          'Bedankt voor je bericht, we nemen zo snel mogelijk contact met je op.'
+        "
+      />
+    </div>
   </Form>
 </template>
 
-<style></style>
+<style>
+.form {
+  button[type='submit'] {
+    max-width: max-content;
+  }
+}
+</style>

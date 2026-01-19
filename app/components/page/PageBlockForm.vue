@@ -3,25 +3,78 @@ defineProps<{ data?: FormBlock }>();
 </script>
 
 <template>
-  <section :id="data?.anchor" class="page-block form-block">
+  <section
+    :id="data?.anchor"
+    :class="[
+      'page-block',
+      'form-block',
+      data?.background_color?.key &&
+        `background-color--${data.background_color.key}`,
+    ]"
+  >
     <div class="page-block-content">
-      <ContentBlockMapper :content="data?.content" />
+      <div class="left-column">
+        <ContentBlockMapper :content="data?.content" />
+      </div>
 
-      <StatamicForm v-if="data?.form?.handle" :data="data" />
+      <div class="right-column">
+        <template v-if="data?.form?.handle">
+          <LazyStatamicForm :data="data" />
+
+          <p v-if="data?.legal" class="legal">
+            {{ data.legal }}
+          </p>
+        </template>
+      </div>
     </div>
   </section>
 </template>
 
 <style>
-.form-block {
-  .page-block-content {
-    max-width: 1024px;
-    display: grid;
-    gap: 5rem;
+.page-block.form-block {
+  --focus-color: var(--color-accent-graphic);
 
-    @media (min-width: 768px) {
-      grid-template-columns: 1fr 1fr;
+  .page-block-content {
+    padding-block: 8rem;
+    display: grid;
+    row-gap: 4rem;
+    column-gap: 8rem;
+
+    @media (min-width: 1200px) {
+      grid-template-columns: 3fr 4fr;
     }
+  }
+
+  .left-column {
+    @media (min-width: 1200px) {
+      padding-inline-end: var(--app-padding-inline);
+    }
+
+    @supports (animation-timeline: view()) {
+      opacity: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportFadeUp linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+      }
+    }
+  }
+
+  .right-column {
+    .background-shape {
+      position: static;
+    }
+
+    h2 {
+      font-size: var(--font-size-xl);
+    }
+  }
+
+  .legal {
+    margin-block-start: 3rem;
+    font-size: var(--font-size-xs);
+    max-width: 64ch;
   }
 }
 </style>

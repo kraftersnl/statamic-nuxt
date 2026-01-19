@@ -1,23 +1,14 @@
 <script setup lang="ts">
 const route = useRoute();
 
-// get collection from URL
-const pathParts = route.path.split('/');
-const collection =
-  pathParts[1] !== '' &&
-  pathParts[2] !== '' &&
-  typeof pathParts[2] !== 'undefined'
-    ? pathParts[1]
-    : 'pages';
-
 const { data: entries } = await useAsyncData<{ data: StatamicPageEntry[] }>(
   route.path,
   () =>
-    $fetch(`/api/collections/${collection}/entries/`, {
+    $fetch('/api/collections/pages/entries', {
       baseURL: useRuntimeConfig().public.statamicUrl,
       query: {
         'filter[url]': stripTrailingSlash(route.path),
-        fields: 'id,title,summary,blocks,url,permalink,image,published',
+        fields: 'id,title,summary,blocks,url,permalink,image,parent',
         token: route.query.token,
       },
     })
@@ -26,21 +17,64 @@ const { data: entries } = await useAsyncData<{ data: StatamicPageEntry[] }>(
 if (!entries.value?.data?.length && !route.query.preview) {
   throw showError({
     statusCode: 404,
-    statusMessage: 'Page not found',
+    statusMessage: 'Pagina niet gevonden',
   });
 }
 
 const page = computed(() => entries.value?.data?.[0]);
 
+const seoTitle = computed(
+  () => page.value?.seo?.meta?.title || page.value?.title
+);
+const seoDescription = computed(
+  () => page.value?.seo?.meta?.description || page.value?.summary
+);
+const seoImage = computed(
+  () => page.value?.seo?.social?.image || useRuntimeConfig()?.public?.ogImage
+);
+
 useSeoMeta({
-  title: page.value?.title,
-  description: page.value?.summary,
-  ogImage: page.value?.image?.permalink || useRuntimeConfig().public.ogImage,
+  title: seoTitle.value,
+  ogTitle: seoTitle.value,
+  twitterTitle: seoTitle.value,
+  description: seoDescription.value,
+  ogDescription: seoDescription.value,
+  twitterDescription: seoDescription.value,
+  ogImage: seoImage.value,
+  twitterImage: seoImage.value,
+  twitterCard: 'summary_large_image',
+  lang: 'nl-NL',
+  icon: useRuntimeConfig()?.public?.siteUrl + '/favicon.svg',
+  ogUrl: useRuntimeConfig()?.public?.siteUrl + page.value?.url,
 });
 </script>
 
 <template>
   <div class="page-wrapper">
-    <PageBlockMapper :data="page?.blocks" />
+    <div class="page-block-content">
+      <Button
+        v-if="page?.parent && page?.parent?.url !== '/'"
+        :to="page?.parent?.url"
+        :label="page?.parent?.title"
+        variant="topbar"
+        radius="xl"
+        icon="material-symbols:arrow-back"
+        class="back-button"
+      />
+    </div>
+
+    <PageBlockMapper :blocks="page?.blocks" />
   </div>
 </template>
+
+<style>
+.page-wrapper {
+  .back-button {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    margin-block-start: 1.25rem;
+    max-width: max-content;
+  }
+}
+</style>
