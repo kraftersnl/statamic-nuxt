@@ -56,9 +56,6 @@ defineProps<{ data?: TwoColsImageBlock }>();
     }
   }
 
-  h2 {
-    font-size: var(--font-size-xl);
-  }
 
   .page-block-content {
     display: grid;
