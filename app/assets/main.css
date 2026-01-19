@@ -19,7 +19,7 @@
 
   --font-calc-heading-2: min(
     calc(var(--font-size-lg) + 2vw),
-    var(--font-size-xxxl)
+    var(--font-size-xxl)
   );
 }
 

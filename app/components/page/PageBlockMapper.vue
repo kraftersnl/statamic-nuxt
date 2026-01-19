@@ -145,7 +145,7 @@ defineProps<{
   }
 
   h2 {
-    font-size: var(--font-calc-heading-2, var(--font-size-xxxl));
+    font-size: var(--font-calc-heading-2, var(--font-size-xxl));
   }
 
   &.background-color--white {
