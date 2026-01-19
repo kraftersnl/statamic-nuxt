@@ -38,7 +38,7 @@ defineProps<{ data?: ListContentBlock }>();
       &::before {
         content: '';
         position: absolute;
-        top: 1rem;
+        top: 0.5em;
         left: 0;
         width: 8px;
         height: 8px;
