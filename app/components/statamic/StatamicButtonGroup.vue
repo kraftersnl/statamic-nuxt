@@ -17,7 +17,7 @@ defineProps<{ data?: ButtonGroupContentBlock }>();
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  row-gap: 2.5rem;
+  row-gap: 1.5rem;
   column-gap: 2.5rem;
   margin-block: 2.5rem;
 }
