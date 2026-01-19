@@ -14,10 +14,11 @@ defineProps<{ data?: BasicBlock }>();
         `background-color--${data.background_color.key}`,
       data?.background_shape?.key &&
         `background-shape--${data.background_shape.key}`,
-      data?.shape_position?.key && `shape-position--${data.shape_position.key}`,
+  data?.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
+
   >
-    <div class="page-block-content">
+    <div class="page-block-content" :style="{ maxWidth: data?.max_width ? `${data.max_width}${data.max_width_unit?.key}` : undefined }">
       <CircleStripes v-if="data?.background_shape?.key === 'circle_stripes'" />
       <CircleDots v-if="data?.background_shape?.key === 'circle_dots'" />
       <RectangleDots v-if="data?.background_shape?.key === 'rectangle_dots'" />

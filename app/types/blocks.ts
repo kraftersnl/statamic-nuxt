@@ -25,6 +25,8 @@ declare global {
     background_color?: StatamicSelectOption;
     background_shape?: StatamicSelectOption;
     shape_position?: StatamicSelectOption;
+    max_width?: number;
+    max_width_unit?: StatamicSelectOption;
   };
 
   type ImageBlock = StatamicPageBlock & {
