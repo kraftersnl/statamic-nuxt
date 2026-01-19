@@ -24,6 +24,12 @@ const {
 </template>
 
 <style>
+.double-title {
+  .title {
+    white-space: pre-line;
+  }
+}
+
 :where(h2:has(.super-title)) {
   display: grid;
 
@@ -38,7 +44,6 @@ const {
 
   .title {
     max-width: 640px;
-    white-space: pre-line;
   }
 }
 </style>
