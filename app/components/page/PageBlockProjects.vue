@@ -32,7 +32,7 @@ defineProps<{ data: ProjectsBlock }>();
 
   .page-block-content {
     display: grid;
-    padding-block: 5rem;
+    padding-block-start: 5rem;
     padding-inline: 2rem;
 
     p {
