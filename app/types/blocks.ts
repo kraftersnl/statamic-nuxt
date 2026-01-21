@@ -232,7 +232,7 @@ declare global {
   type ListContentBlock = {
     type?: 'list';
     id?: string;
-    variant?: 'icons' | 'numbers';
+    variant?: StatamicSelectOption;
     list: CustomListItem[];
   };
 

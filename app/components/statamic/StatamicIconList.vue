@@ -4,7 +4,7 @@ defineProps<{ data?: ListContentBlock }>();
 
 <template>
   <component
-    :is="data.variant === 'numbers' ? 'ol' : 'ul'"
+    :is="data.variant?.key === 'numbers' ? 'ol' : 'ul'"
     v-if="data?.list?.length"
     role="list"
     class="statamic-icon-list"
@@ -32,20 +32,7 @@ defineProps<{ data?: ListContentBlock }>();
     gap: 1.25rem;
     position: relative;
 
-    &:not(:has(.icon)) {
-      padding-inline-start: 1.25rem;
 
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0.5em;
-        left: 0;
-        width: 8px;
-        height: 8px;
-        border-radius: var(--radius-full);
-        background-color: var(--color-accent-graphic);
-      }
-    }
   }
 
   .list-item-title {
@@ -66,6 +53,23 @@ defineProps<{ data?: ListContentBlock }>();
     color: var(--color-accent-graphic);
     width: var(--font-size-xl);
     height: var(--font-size-xl);
+  }
+}
+
+ul.statamic-icon-list {
+  li:not(:has(.icon)) {
+    padding-inline-start: 1.25rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0.5em;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-accent-graphic);
+    }
   }
 }
 
