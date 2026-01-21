@@ -12,6 +12,7 @@ defineProps<{ data: ColumnsBlock }>();
         `background-color--${data.background_color.key}`,
     ]"
   >
+  <div class="page-block-content">
     <div
       v-for="(col, i) in data.columns"
       :key="i"
@@ -23,9 +24,10 @@ defineProps<{ data: ColumnsBlock }>();
     >
       <div
         v-if="col.super_title || col.title || col.content?.length"
-        class="page-block-content"
+
       >
         <ContentBlockMapper :content="col?.content" />
+      </div>
       </div>
     </div>
   </section>
@@ -33,11 +35,14 @@ defineProps<{ data: ColumnsBlock }>();
 
 <style>
 .page-block.columns-block {
-  display: flex;
+
+  .page-block-content{
+    display: flex;
   flex-wrap: wrap;
   max-width: var(--app-max-width);
   margin-inline: auto;
   gap: 0.5rem;
+  }
 
   .page-block-column {
     flex-basis: 20rem;
@@ -67,8 +72,13 @@ defineProps<{ data: ColumnsBlock }>();
   }
 
   .page-block-column {
+    &[class*="background-color--"]{
+      padding-block: 2rem;
+      padding-inline: var(--app-padding-inline);
+    }
+
     &.background-color--grey {
-      background-color: var(--color-grey-bg);
+      background-color: var(--color-grey-light);
     }
 
     &.background-color--white {
