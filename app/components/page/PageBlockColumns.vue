@@ -38,10 +38,10 @@ defineProps<{ data: ColumnsBlock }>();
 
   .page-block-content{
     display: flex;
-  flex-wrap: wrap;
-  max-width: var(--app-max-width);
-  margin-inline: auto;
-  gap: 0.5rem;
+    flex-wrap: wrap;
+    max-width: var(--app-max-width);
+    margin-inline: auto;
+    gap: 1.5rem;
   }
 
   .page-block-column {
