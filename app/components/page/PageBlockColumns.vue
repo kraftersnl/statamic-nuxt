@@ -35,7 +35,6 @@ defineProps<{ data: ColumnsBlock }>();
 
 <style>
 .page-block.columns-block {
-
   .page-block-content{
     display: flex;
     flex-wrap: wrap;

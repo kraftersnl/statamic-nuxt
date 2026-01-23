@@ -14,9 +14,9 @@ defineProps<{ error: NuxtError }>();
 
     <NuxtLayout>
       <div class="error-content">
-        <h1>Error {{ error?.statusCode }}</h1>
+        <h1>Error {{ error?.status }}</h1>
 
-        <p v-html="error?.statusMessage" />
+        <p v-html="error?.statusText" />
 
         <Button
           label="Home"
