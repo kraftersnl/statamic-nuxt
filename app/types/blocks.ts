@@ -29,6 +29,22 @@ declare global {
     max_width_unit?: StatamicSelectOption;
   };
 
+  type AllInOneBlock = StatamicPageBlock & {
+    columns: {
+      content: StatamicContentBlock;
+      background_color?: StatamicSelectOption;
+      max_width?: number;
+      max_width_unit?: StatamicSelectOption;
+    }[];
+    background_color?: StatamicSelectOption;
+    align_items?: StatamicSelectOption;
+    gap?: number;
+    margin_block_start?: StatamicSelectOption;
+    margin_block_end?: StatamicSelectOption;
+    padding_block_start?: StatamicSelectOption;
+    padding_block_end?: StatamicSelectOption;
+  };
+
   type ImageBlock = StatamicPageBlock & {
     image?: StatamicImage;
     image_caption?: string;
@@ -193,6 +209,7 @@ declare global {
   };
 
   type StatamicContentBlock =
+    | TitleContentBlock
     | TextContentBlock
     | IconContentBlock
     | ListContentBlock
@@ -202,9 +219,19 @@ declare global {
     | VideoContentBlock
     | QuoteContentBlock
     | FormContentBlock
+    | EmployeeContentBlock
     | SpacerContentBlock
     | CalloutContentBlock
     | AccordionContentBlock;
+
+  type TitleContentBlock = {
+    type?: 'title';
+    id?: string;
+    title: string;
+    font_size?: StatamicSelectOption;
+    font_weight?: StatamicSelectOption;
+    icon?: string;
+  };
 
   type TextContentBlock = {
     type?: 'text';
@@ -286,6 +313,13 @@ declare global {
   type QuoteContentBlock = StatamicQuote & {
     type?: 'quote';
     id?: string;
+  };
+
+  type EmployeeContentBlock = {
+    type?: 'employee';
+    id: string;
+    entry: StatamicEmployeesEntry;
+    variant?: StatamicSelectOption;
   };
 
   type SpacerContentBlock = {

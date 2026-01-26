@@ -15,6 +15,10 @@ defineProps<{
         :data="pageBlock"
         :date="date"
       />
+      <PageBlockAllInOne
+        v-else-if="pageBlock?.type === 'all_in_one'"
+        :data="pageBlock"
+      />
       <PageBlockBasic
         v-else-if="pageBlock?.type === 'basic'"
         :data="pageBlock"
@@ -161,7 +165,7 @@ defineProps<{
     color: #ffffff;
   }
 
-  &:not(.hero-block, .testimonials-block, .form-block) {
+  &:not(.hero-block, .testimonials-block, .form-block, .all-in-one-block) {
     .background-shape {
       position: absolute;
       z-index: -1;

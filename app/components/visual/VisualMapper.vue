@@ -14,4 +14,8 @@ defineProps<{
   <VisualKraftA v-if="visual === 'kraft_a'" />
   <VisualKraftF v-if="visual === 'kraft_f'" />
   <VisualKraftT v-if="visual === 'kraft_t'" />
+
+  <CircleStripes v-if="visual === 'circle_stripes'" />
+  <CircleDots v-if="visual === 'circle_dots'" />
+  <RectangleDots v-if="visual === 'rectangle_dots'" />
 </template>

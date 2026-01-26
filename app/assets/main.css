@@ -96,7 +96,6 @@ blockquote {
   }
 
   figure {
-    margin-block-end: 2rem;
     border-radius: var(--radius-sm);
   }
 

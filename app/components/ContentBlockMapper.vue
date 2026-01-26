@@ -10,6 +10,11 @@ defineProps<{ content?: StatamicContentBlock[] }>();
         v-html="fixBoldAndItalicText(contentBlock.text)"
       />
 
+      <StatamicTitle
+        v-else-if="contentBlock?.type === 'title'"
+        :data="contentBlock"
+      />
+
       <StatamicIcon
         v-else-if="contentBlock?.type === 'icon'"
         :icon="contentBlock.icon"
@@ -61,6 +66,17 @@ defineProps<{ content?: StatamicContentBlock[] }>();
       <StatamicCallout
         v-else-if="contentBlock?.type === 'callout'"
         :data="contentBlock"
+      />
+
+      <StatamicEmployee
+        v-else-if="contentBlock?.type === 'employee'"
+        :data="contentBlock.entry"
+        :variant="contentBlock.variant?.key"
+      />
+
+      <VisualMapper
+        v-else-if="contentBlock?.type === 'graphic_visual'"
+        :visual="contentBlock?.graphic_visual?.key"
       />
 
       <div

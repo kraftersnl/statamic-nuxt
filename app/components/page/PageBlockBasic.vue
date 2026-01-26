@@ -14,11 +14,17 @@ defineProps<{ data?: BasicBlock }>();
         `background-color--${data.background_color.key}`,
       data?.background_shape?.key &&
         `background-shape--${data.background_shape.key}`,
-  data?.shape_position?.key && `shape-position--${data.shape_position.key}`,
+      data?.shape_position?.key && `shape-position--${data.shape_position.key}`,
     ]"
-
   >
-    <div class="page-block-content" :style="{ maxWidth: data?.max_width ? `${data.max_width}${data.max_width_unit?.key}` : undefined }">
+    <div
+      class="page-block-content"
+      :style="{
+        maxWidth: data?.max_width
+          ? `${data.max_width}${data.max_width_unit?.key}`
+          : undefined,
+      }"
+    >
       <CircleStripes v-if="data?.background_shape?.key === 'circle_stripes'" />
       <CircleDots v-if="data?.background_shape?.key === 'circle_dots'" />
       <RectangleDots v-if="data?.background_shape?.key === 'rectangle_dots'" />
@@ -64,34 +70,34 @@ defineProps<{ data?: BasicBlock }>();
       padding-inline: var(--app-padding-inline);
     }
   }
-}
 
-@media (min-width: 768px) {
-  .image-position--block-start {
-    .image-column {
-      order: -1;
-    }
-  }
-
-  .image-position--inline-end {
-    &:has(.image-column) {
-      display: grid;
-      align-items: center;
-      gap: 4rem;
-      grid-template-columns: 1fr min(400px, 40vw);
-    }
-  }
-
-  .image-position--inline-start {
-    &:has(.image-column) {
-      display: grid;
-      align-items: center;
-      gap: 4rem;
-      grid-template-columns: min(400px, 40vw) 1fr;
+  @media (min-width: 768px) {
+    .image-position--block-start {
+      .image-column {
+        order: -1;
+      }
     }
 
-    .image-column {
-      order: -1;
+    .image-position--inline-end {
+      &:has(.image-column) {
+        display: grid;
+        align-items: center;
+        gap: 4rem;
+        grid-template-columns: 1fr min(400px, 40vw);
+      }
+    }
+
+    .image-position--inline-start {
+      &:has(.image-column) {
+        display: grid;
+        align-items: center;
+        gap: 4rem;
+        grid-template-columns: min(400px, 40vw) 1fr;
+      }
+
+      .image-column {
+        order: -1;
+      }
     }
   }
 }
