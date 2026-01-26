@@ -8,6 +8,7 @@ export function useArticles({ limit = 100 }: { limit?: number }) {
         baseURL: useRuntimeConfig().public.statamicUrl,
         query: {
           limit: limit,
+          sort: '-date',
           fields:
             'id,title,summary,url,permalink,image,published,date,tags,author',
         },
