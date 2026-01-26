@@ -26,7 +26,7 @@ defineProps<{ data?: AllInOneBlock }>();
         data?.align_items?.key && `align-items--${data.align_items.key}`,
       ]"
       :style="{
-        gap: data?.gap ? `${data.gap}px` : '1.5rem',
+        columnGap: data?.gap ? `${data.gap}px` : '1.5rem',
       }"
     >
       <div
@@ -122,7 +122,7 @@ defineProps<{ data?: AllInOneBlock }>();
     display: flex;
     flex-wrap: wrap;
     margin-inline: auto;
-    gap: 1.5rem;
+    row-gap: 1.5rem;
 
     &.align-items--stretch {
       align-items: stretch;

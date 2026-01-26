@@ -130,6 +130,11 @@ declare global {
   };
 
   // Statamic helper fieldsets
+  type StatamicSpacer = {
+    margin?: number;
+    mobile?: boolean;
+  };
+
   type StatamicButton = {
     button_label: string;
     button_link?: string;

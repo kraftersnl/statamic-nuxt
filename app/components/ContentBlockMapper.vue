@@ -79,10 +79,9 @@ defineProps<{ content?: StatamicContentBlock[] }>();
         :visual="contentBlock?.graphic_visual?.key"
       />
 
-      <div
+      <StatamicSpacer
         v-else-if="contentBlock?.type === 'spacer'"
-        class="spacer"
-        :style="{ 'margin-top': `${contentBlock?.margin ?? 0}px` }"
+        :data="contentBlock"
       />
     </template>
   </div>
