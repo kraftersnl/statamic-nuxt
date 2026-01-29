@@ -31,11 +31,14 @@ defineProps<{ data?: SponsorsBlock }>();
   }
 
   .entries-list {
-    column-gap: 2rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     row-gap: 4rem;
+    column-gap: 2.5rem;
+
+    > li {
+    }
   }
 }
 </style>

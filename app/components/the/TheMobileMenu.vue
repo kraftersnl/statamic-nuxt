@@ -20,9 +20,7 @@ function handleClose() {
     menu-button-size="xl"
   >
     <template #default>
-      <NuxtLink to="/" class="logo-link" @click="mobileMenuRef?.closeDialog">
-        <KraftersLogoHeader />
-      </NuxtLink>
+      <slot name="default" v-bind="{ handleClose }" />
 
       <nav class="mobile-nav" aria-label="Mobiele navigatie">
         <ul role="list" class="mobile-menu--1">

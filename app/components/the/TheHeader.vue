@@ -18,7 +18,7 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
 
   <header class="app-header">
     <div class="app-header-content">
-      <NuxtLink to="/" class="logo-link">
+      <NuxtLink v-if="$slots.logo" to="/" class="logo-link">
         <span class="visuallyhidden">Home</span>
         <div class="logo-slot">
           <slot name="logo" />
@@ -53,7 +53,11 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
         <ThemeSwitch />
       </div>
 
-      <TheMobileMenu :list="nav?.data" />
+      <TheMobileMenu :list="nav?.data">
+        <template #default="{ handleClose }">
+          <slot name="mobile-menu" v-bind="{ handleClose }" />
+        </template>
+      </TheMobileMenu>
     </div>
 
     <slot name="right" />
@@ -94,7 +98,6 @@ const { data: nav } = await useAsyncData<{ data: NavTreeItem[] }>(
   gap: 1rem;
 
   @media (min-width: 1024px) {
-    justify-content: center;
     gap: 2rem;
   }
 

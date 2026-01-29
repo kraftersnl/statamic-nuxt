@@ -52,7 +52,6 @@ defineProps<{ data?: BasicBlock }>();
   margin-inline: auto;
 
   .image-column {
-    padding-inline: var(--app-padding-inline);
     margin-inline: auto;
     max-width: var(--app-max-width);
 
@@ -72,27 +71,40 @@ defineProps<{ data?: BasicBlock }>();
   }
 
   @media (min-width: 768px) {
-    .image-position--block-start {
+    &.image-position--block-end {
+      .image-column {
+        padding-inline: var(--app-padding-inline);
+      }
+    }
+
+    &.image-position--block-start {
       .image-column {
         order: -1;
+        padding-inline: var(--app-padding-inline);
       }
     }
 
-    .image-position--inline-end {
+    &.image-position--inline-end {
       &:has(.image-column) {
         display: grid;
         align-items: center;
         gap: 4rem;
-        grid-template-columns: 1fr min(400px, 40vw);
+        grid-template-columns: 1fr min(480px, 40vw);
+      }
+      .image-column {
+        padding-inline-end: var(--app-padding-inline);
       }
     }
 
-    .image-position--inline-start {
+    &.image-position--inline-start {
       &:has(.image-column) {
         display: grid;
         align-items: center;
         gap: 4rem;
-        grid-template-columns: min(400px, 40vw) 1fr;
+        grid-template-columns: min(480px, 40vw) 1fr;
+      }
+      .image-column {
+        padding-inline-start: var(--app-padding-inline);
       }
 
       .image-column {

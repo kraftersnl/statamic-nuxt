@@ -40,15 +40,16 @@ defineProps<{
     background-color: white;
     display: grid;
     place-content: center;
-    aspect-ratio: 3 / 2;
     order: -1;
     margin-inline: auto;
-    padding: 3rem;
+    padding: 1.5rem;
     border-radius: var(--radius-md);
   }
 
   img {
-    width: 120px;
+    width: 160px;
+    aspect-ratio: 2 / 1;
+    object-fit: contain;
   }
 }
 </style>
