@@ -61,8 +61,12 @@ function handleClose() {
 .mobile-dialog {
   --app-padding-inline: 2rem;
 
+  .close-button {
+    top: 1.5rem;
+  }
+
   .dialog-content {
-    padding-block-start: var(--app-padding-block);
+    padding-block-start: 1.25rem;
   }
 
   .logo-link {
