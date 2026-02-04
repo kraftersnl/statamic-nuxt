@@ -25,11 +25,15 @@ defineProps<{ data?: TwoColsTextBlock }>();
 
         <p v-if="data?.description">{{ data.description }}</p>
 
-        <slot />
+        <slot name="left" />
       </div>
 
       <div class="right-column">
         <ContentBlockMapper :content="data?.content" />
+      </div>
+
+      <div v-if="$slots.bottom" class="bottom-content">
+        <slot name="bottom" />
       </div>
     </div>
   </section>
@@ -80,6 +84,10 @@ defineProps<{ data?: TwoColsTextBlock }>();
         animation-range: entry;
       }
     }
+  }
+
+  .bottom-content {
+    grid-column: 1/-1;
   }
 }
 
