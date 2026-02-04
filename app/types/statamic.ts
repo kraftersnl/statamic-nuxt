@@ -180,6 +180,7 @@ declare global {
     handle: string;
     display: string;
     type: string;
+    visibility?: string;
     input_type?: string;
     autocomplete?: string;
     instructions?: string;

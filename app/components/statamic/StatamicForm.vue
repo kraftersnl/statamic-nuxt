@@ -72,50 +72,52 @@ async function handleSubmit(formData: FormData) {
     @submit="handleSubmit"
   >
     <template v-for="field in form.data.fields" :key="field.handle">
-      <RadioGroup
-        v-if="field.type === 'radio'"
-        class="form-group"
-        :name="field.handle"
-        :options="field.options"
-        :label="field.display"
-        variant="minimal"
-      />
+      <template v-if="field.visibility !== 'read_only'">
+        <RadioGroup
+          v-if="field.type === 'radio'"
+          class="form-group"
+          :name="field.handle"
+          :options="field.options"
+          :label="field.display"
+          variant="minimal"
+        />
 
-      <CheckboxGroup
-        v-if="field.type === 'checkboxes'"
-        class="form-group"
-        :name="field.handle"
-        :options="field.options"
-        :label="field.display"
-        :required="field.validate?.includes('required')"
-        variant="minimal"
-      />
+        <CheckboxGroup
+          v-if="field.type === 'checkboxes'"
+          class="form-group"
+          :name="field.handle"
+          :options="field.options"
+          :label="field.display"
+          :required="field.validate?.includes('required')"
+          variant="minimal"
+        />
 
-      <ClientOnly v-if="field.handle === 'source'">
-        <input type="hidden" :value="currentRoute.fullPath" name="source" />
-      </ClientOnly>
+        <ClientOnly v-if="field.handle === 'source'">
+          <input type="hidden" :value="currentRoute.fullPath" name="source" />
+        </ClientOnly>
 
-      <Input
-        v-else-if="field.type === 'text'"
-        :label="field.display"
-        :type="field.input_type"
-        :name="field.handle"
-        :autocomplete="field.autocomplete"
-        :required="field.validate?.includes('required')"
-        size="lg"
-        variant="minimal"
-        :style="`--col-width: calc(${field.width}% - var(--column-gap))`"
-      />
+        <Input
+          v-else-if="field.type === 'text'"
+          :label="field.display"
+          :type="field.input_type"
+          :name="field.handle"
+          :autocomplete="field.autocomplete"
+          :required="field.validate?.includes('required')"
+          size="lg"
+          variant="minimal"
+          :style="`--col-width: calc(${field.width}% - var(--column-gap))`"
+        />
 
-      <Textarea
-        v-else-if="field.type === 'textarea'"
-        :label="field.display"
-        :name="field.handle"
-        :required="field.validate?.includes('required')"
-        :style="`--col-width: calc(${field.width}% - var(--column-gap))`"
-        variant="minimal"
-        autoresize
-      />
+        <Textarea
+          v-else-if="field.type === 'textarea'"
+          :label="field.display"
+          :name="field.handle"
+          :required="field.validate?.includes('required')"
+          :style="`--col-width: calc(${field.width}% - var(--column-gap))`"
+          variant="minimal"
+          autoresize
+        />
+      </template>
     </template>
 
     <div role="alert">
