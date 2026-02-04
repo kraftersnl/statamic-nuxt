@@ -18,10 +18,14 @@ const { entries = [] } = defineProps<{ entries?: StatamicArticleEntry[] }>();
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
 
   .article-list-item {
-    @media (prefers-reduced-motion: no-preference) {
-      animation: viewportFadeUp linear;
-      animation-timeline: view();
-      animation-range: entry;
+    @supports (animation-timeline: view()) {
+      opacity: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: viewportFadeUp linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+      }
     }
   }
 }
