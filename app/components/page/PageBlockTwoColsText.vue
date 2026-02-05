@@ -87,13 +87,13 @@ defineProps<{ data?: TwoColsTextBlock }>();
   }
 
   .bottom-content {
-    grid-column: 1/-1;
+    grid-column: 1 / -1;
   }
 }
 
 .page-block.two-cols-text-block.background-color--grey {
   .page-block-content {
-    padding-block-start: 8rem;
+    padding-block-start: 6rem;
   }
 }
 </style>
