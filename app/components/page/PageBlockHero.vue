@@ -198,11 +198,7 @@ const backgroundStyles = computed(() => {
     width: 100%;
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent 0%, hsl(0 0 0 / 75%));
-
-    @media (min-width: 1024px) {
-      background: linear-gradient(to bottom, transparent 50%, hsl(0 0 0 / 50%));
-    }
+    background-color: hsl(0 0 0 / 65%);
   }
 
   h1 {
