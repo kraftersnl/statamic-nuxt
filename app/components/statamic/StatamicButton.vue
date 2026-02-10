@@ -10,22 +10,14 @@ const variant = computed(() =>
 
 <template>
   <Button
-    v-if="data?.button_link"
-    :to="data?.button_link"
+    v-if="data?.button_link?.url"
+    :to="data?.button_link?.url"
     :label="data?.button_label"
     :variant="variant"
     :icon="data?.icon"
     :icon-pos="data?.button_icon_position?.key ?? 'end'"
-    :target="
-      typeof data?.button_link === 'string' &&
-      data.button_link.startsWith('http')
-        ? '_blank'
-        : undefined
-    "
-    :external="
-      typeof data?.button_link === 'string' &&
-      data.button_link.startsWith('http')
-    "
+    :target="data?.button_link?.url?.startsWith('http') ? '_blank' : undefined"
+    :external="data?.button_link?.url?.startsWith('http')"
     size="lg"
     class="content-block-link"
   >

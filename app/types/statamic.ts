@@ -137,10 +137,16 @@ declare global {
 
   type StatamicButton = {
     button_label: string;
-    button_link?: string;
+    button_link?: StatamicButtonLink;
     button_icon?: string;
     button_variant?: StatamicSelectOption;
     button_icon_position?: StatamicSelectOption;
+  };
+
+  type StatamicButtonLink = {
+    id: string;
+    url: string;
+    slug: string;
   };
 
   type StatamicSelectOption = {
