@@ -95,7 +95,7 @@ const scrollWidth = computed(
       }
       &:focus-visible {
         outline: 2px solid white;
-        outline-offset: 0.5rem;
+        outline-offset: -3px;
         border-radius: var(--radius-xs);
       }
 
