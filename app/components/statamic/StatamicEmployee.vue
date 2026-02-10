@@ -17,10 +17,13 @@ defineProps<{
       </span>
 
       <p v-if="data?.email || data?.phone" class="employee-contact">
-        <NuxtLink :to="'mailto:' + data.email">
+        <NuxtLink v-if="data?.email" :to="'mailto:' + data.email">
           {{ data.email }}
         </NuxtLink>
-        <NuxtLink :to="'tel:' + data.phone?.replaceAll(' ', '')">
+        <NuxtLink
+          v-if="data?.phone"
+          :to="'tel:' + data.phone?.replaceAll(' ', '')"
+        >
           <address>
             {{ data.phone }}
           </address>
