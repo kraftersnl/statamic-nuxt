@@ -16,8 +16,16 @@ const variant = computed(() =>
     :variant="variant"
     :icon="data?.icon"
     :icon-pos="data?.button_icon_position?.key ?? 'end'"
-    :target="data?.button_link?.startsWith('http') ? '_blank' : undefined"
-    :external="data?.button_link?.startsWith('http')"
+    :target="
+      typeof data?.button_link === 'string' &&
+      data.button_link.startsWith('http')
+        ? '_blank'
+        : undefined
+    "
+    :external="
+      typeof data?.button_link === 'string' &&
+      data.button_link.startsWith('http')
+    "
     size="lg"
     class="content-block-link"
   >
