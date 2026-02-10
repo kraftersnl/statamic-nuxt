@@ -8,7 +8,7 @@ defineProps<{ data?: LinksBlock }>();
       <h2 class="visuallyhidden">Links</h2>
       <ul role="list" class="links-list">
         <li v-for="item in data?.list" :key="item.id" class="links-list-item">
-          <NuxtLink :to="item.link" class="link-item">
+          <NuxtLink :to="item.link?.url" class="link-item">
             <h3>{{ item.label }}</h3>
 
             <p v-if="item.description" class="link-text">
@@ -51,7 +51,7 @@ defineProps<{ data?: LinksBlock }>();
 
     &:hover {
       color: var(--color-accent-text);
-      /* background-color: var(--color-semi-transparent); */
+      background-color: var(--color-semi-transparent);
     }
   }
 
@@ -63,6 +63,10 @@ defineProps<{ data?: LinksBlock }>();
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+
+    &:focus-visible {
+      outline-offset: -3px;
+    }
 
     &:has(p) {
       flex-direction: column;
