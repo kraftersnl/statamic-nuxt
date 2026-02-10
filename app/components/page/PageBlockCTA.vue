@@ -1,12 +1,12 @@
 <script setup lang="ts">
 defineProps<{
-  data: CTAPageBlock;
+  data?: CTAPageBlock;
 }>();
 </script>
 
 <template>
   <div class="page-block cta-block">
-    <NuxtLink :to="data?.link" class="cta-link">
+    <NuxtLink :to="data?.link?.url" class="cta-link">
       <div class="page-block-content">
         <div class="cta-link-content">
           <div class="link-label">

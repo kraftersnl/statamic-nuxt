@@ -16,12 +16,12 @@ defineProps<{ data?: ArticlesBlock }>();
       <StatamicBlog v-else :limit="data?.limit" />
 
       <Button
-        v-if="data?.link"
-        :to="data?.link"
+        v-if="data?.link?.url"
+        :to="data?.link?.url"
         :label="data?.link_label"
         icon="material-symbols:arrow-right-alt-rounded"
         icon-pos="end"
-        variant="link"
+        variant="topbar"
         font-size="sm"
         class="articles-link"
       />
@@ -53,8 +53,11 @@ defineProps<{ data?: ArticlesBlock }>();
   }
 
   .articles-link {
+    --button-hover-color: var(--color-accent-text);
+    --button-underline-color: var(--color-accent-graphic);
+    --button-underline-thickness: 1px;
+
     justify-self: end;
-    text-decoration: none;
     margin-block-start: 4rem;
     font-weight: var(--font-weight-medium);
   }

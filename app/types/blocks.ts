@@ -113,7 +113,7 @@ declare global {
   type CasesBlock = StatamicPageBlock & {
     entries?: StatamicCaseEntry[];
     random_layout?: boolean;
-    link?: string;
+    link?: StatamicButtonLink;
     link_label?: string;
   };
 
@@ -185,7 +185,7 @@ declare global {
     entries: StatamicArticleEntry[];
     limit?: number;
     anchor?: string;
-    link?: string;
+    link?: StatamicButtonLink;
     link_label?: string;
   };
 
@@ -204,7 +204,7 @@ declare global {
   };
 
   type CTAPageBlock = StatamicPageBlock & {
-    link?: string;
+    link?: StatamicButtonLink;
     link_label?: string;
   };
 
