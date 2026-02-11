@@ -14,6 +14,7 @@ export default defineNuxtConfig({
 
   $development: {
     extends: ['../krafters-ui'],
+    ssr: false,
   },
 
   runtimeConfig: {
