@@ -25,6 +25,10 @@ export default defineNuxtConfig({
     },
   },
 
+  typescript: {
+    includeWorkspace: true,
+  },
+
   modules: [
     '@nuxt/fonts',
     '@nuxt/image',
