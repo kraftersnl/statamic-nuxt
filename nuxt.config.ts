@@ -25,6 +25,14 @@ export default defineNuxtConfig({
     },
   },
 
+  modules: [
+    '@nuxt/fonts',
+    '@nuxt/image',
+    '@nuxt/scripts',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+  ],
+
   routeRules: {
     '/**': {
       isr: 60,
@@ -51,17 +59,9 @@ export default defineNuxtConfig({
     name: import.meta.env.NUXT_PUBLIC_SITE_NAME,
   },
 
-  modules: [
-    '@nuxt/fonts',
-    '@nuxt/image',
-    '@nuxt/scripts',
-    '@nuxtjs/robots',
-    '@nuxtjs/sitemap',
-  ],
-
   css: [join(currentDir, './app/assets/main.css')],
 
-  compatibilityDate: '2025-08-17',
+  compatibilityDate: '2026-02-11',
 
   future: {
     compatibilityVersion: 4,
