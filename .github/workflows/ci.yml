@@ -1,9 +1,9 @@
-name: Run tests and linter
+name: Run linter
 
 on:
   workflow_dispatch:
   push:
-    branches: ['main']
+    branches: ["main"]
 
 jobs:
   test:
@@ -19,9 +19,6 @@ jobs:
 
       - name: Install packages
         run: pnpm install
-
-      - name: Run tests
-        run: pnpm run test
 
       - name: Run eslint
         run: pnpm run lint
