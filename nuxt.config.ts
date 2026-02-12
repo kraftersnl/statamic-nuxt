@@ -37,8 +37,6 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
   ],
 
-  css: [join(currentDir, './app/assets/main.css')],
-
   routeRules: {
     '/**': {
       isr: 60,
