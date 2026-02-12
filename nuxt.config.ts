@@ -37,6 +37,8 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
   ],
 
+  css: [join(currentDir, './app/assets/main.css')],
+
   routeRules: {
     '/**': {
       isr: 60,
@@ -62,8 +64,6 @@ export default defineNuxtConfig({
     url: import.meta.env.NUXT_PUBLIC_SITE_URL,
     name: import.meta.env.NUXT_PUBLIC_SITE_NAME,
   },
-
-  // css: [join(currentDir, './app/assets/main.css')],
 
   compatibilityDate: '2026-02-11',
 
