@@ -15,6 +15,10 @@ export default defineNuxtConfig({
   $development: {
     extends: ['../krafters-ui'],
     ssr: false,
+
+    experimental: {
+      payloadExtraction: false,
+    },
   },
 
   runtimeConfig: {
@@ -59,7 +63,7 @@ export default defineNuxtConfig({
     name: import.meta.env.NUXT_PUBLIC_SITE_NAME,
   },
 
-  css: [join(currentDir, './app/assets/main.css')],
+  // css: [join(currentDir, './app/assets/main.css')],
 
   compatibilityDate: '2026-02-11',
 
