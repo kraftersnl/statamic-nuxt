@@ -33,7 +33,6 @@ const {
       :sizes="sizes"
       :placeholder="placeholder"
       :loading="loading"
-      :preload="loading === 'eager' ? { fetchPriority: 'high' } : undefined"
       format="webp"
     />
 
