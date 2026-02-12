@@ -14,7 +14,11 @@ const {
   caption?: string;
   width?: string;
   height?: string;
-  placeholder?: number[] | boolean;
+  placeholder?:
+    | boolean
+    | string
+    | number
+    | [w: number, h: number, q?: number, b?: number];
 }>();
 </script>
 
